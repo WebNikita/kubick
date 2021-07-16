@@ -219,8 +219,56 @@ class Protective_protective_workwear(Product):
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
-        verbose_name = 'Сигнал спецодежда'
-        verbose_name_plural = 'Сигнал спецодежда'
+        verbose_name = 'Спецодежда влагозащитная'
+        verbose_name_plural = 'Спецодежда влагозащитная'
+
+    def __str__(self):
+        return f"{self.category.name} : {self.title}"
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+
+class Clothing_for_hunting_and_fishing(Product):
+
+    product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
+    season = models.CharField(max_length=255, verbose_name='Сезон')
+    
+    class Meta:
+        verbose_name = 'Одежда для охоты и рыбалки'
+        verbose_name_plural = 'Одежда для охоты и рыбалки'
+
+    def __str__(self):
+        return f"{self.category.name} : {self.title}"
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Knitwearg(Product):
+
+    product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
+    
+    class Meta:
+        verbose_name = 'Трикотаж'
+        verbose_name_plural = 'Трикотаж'
+
+    def __str__(self):
+        return f"{self.category.name} : {self.title}"
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Hats(Product):
+
+    product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
+    сomposition = models.CharField(max_length=255, verbose_name='Состав')
+    
+    class Meta:
+        verbose_name = 'Головные уборы'
+        verbose_name_plural = 'Головные уборы'
 
     def __str__(self):
         return f"{self.category.name} : {self.title}"
