@@ -15,7 +15,7 @@ class Category(models.Model):
     class Meta:
         ordering = ('name',)
         verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
+        verbose_name_plural = '!Категории'
 
     def get_absolute_url(self):
         return reverse('shop:product_list_by_category', args=[self.slug])
@@ -25,6 +25,12 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'Позиции'
+        verbose_name_plural = 'Позиции'
 
     MALE = 'M'
     FEMAIL = 'Ж'
@@ -86,39 +92,6 @@ class Winter_workwear(Product):
     class Meta:
         verbose_name = 'Зимняя спецодежда'
         verbose_name_plural = 'Зимняя спецодежда'
-
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
-    def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
-
-class Winter_workwear(Product):
-
-    protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
-    product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
-    сomposition = models.CharField(max_length=255, verbose_name='Состав')
-    protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
-
-    class Meta:
-        verbose_name = 'Зимняя спецодежда'
-        verbose_name_plural = 'Зимняя спецодежда'
-
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
-    def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
-
-
-class Medical_workwear(Product):
-
-    product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
-    сomposition = models.CharField(max_length=255, verbose_name='Состав')
-    
-    class Meta:
-        verbose_name = 'Медицинская спецодежда'
-        verbose_name_plural = 'Медицинская спецодежда'
 
     def __str__(self):
         return f"{self.category.name} : {self.title}"
@@ -715,7 +688,7 @@ class Dermatological_agents(Product):
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
-######################################################################################
+
 class Technical_fabrics(Product):
 
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
