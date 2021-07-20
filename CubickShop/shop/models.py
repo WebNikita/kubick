@@ -44,24 +44,37 @@ class Product(models.Model):
     
     category = models.ForeignKey(Category,
                                 related_name='products',
-                                on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, db_index=True)
-    slug = models.SlugField(max_length=200, db_index=True)
-    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
-    description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    available = models.BooleanField(default=True)
-    size = models.CharField(max_length=200, db_index=False)
-    article = models.CharField(max_length=200, db_index=False)
+                                on_delete=models.CASCADE,
+                                verbose_name='Категория')
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Название товара')
+    slug = models.SlugField(max_length=200, db_index=True, verbose_name='Ссылка на товар(не трогать)')
+    image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True, verbose_name='Картинка на главной')
+    description = models.TextField(blank=True, verbose_name='Описание товара')
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    available = models.BooleanField(default=True, verbose_name='Наличие')
+    size = models.CharField(max_length=200, db_index=False, verbose_name='Размер')
+    article = models.CharField(max_length=200, db_index=False, verbose_name='Артикул')
     sex = models.CharField(max_length=1, 
                           choices=SEX_CHOICES,
-                          default=MALE,)
+                          default=MALE,
+                          verbose_name='Пол')
     
     def get_absolute_url(self):
         return reverse('shop:product_detail', args=[self.id, self.slug])
     
     def __str__(self):
         return self.name
+
+
+class Gallery(models.Model):
+
+    class Meta:
+
+        verbose_name = 'Фотографии товара'
+        verbose_name_plural = 'Фотографии товара'
+
+    image = models.ImageField(upload_to='gallproducts/%Y/%m/%d', verbose_name='Фото')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
 
 
 class Summer_workwear(Product):

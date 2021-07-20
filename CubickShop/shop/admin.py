@@ -16,7 +16,13 @@ from .models import Dermatological_agents, Technical_fabrics, Detergents_and_hou
 from .models import Firefighting_equipment_fire_extinguishers, Protective_equipment, Household_goods
 from .models import Snow_removal_equipment, Gardening_tools, Bristle_and_brush_products
 from .models import Bed_linen_sets, Mattresses, Blankets, Pillows, Bedspreads_blankets
-from .models import Waffle_towels, Terry_towels
+from .models import Waffle_towels, Terry_towels, Gallery
+
+
+class GalleryInline(admin.TabularInline):
+    fk_name = 'product'
+    model = Gallery
+
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -26,6 +32,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Summer_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -39,6 +46,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Winter_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -52,6 +60,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Medical_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -65,6 +74,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Clothing_for_the_service_sector)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -78,6 +88,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Protective_clothing_of_security_structures)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -91,6 +102,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Special_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -104,6 +116,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Signal_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -117,6 +130,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Protective_protective_workwear)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -130,6 +144,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Knitwearg)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -143,6 +158,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Hats)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -156,6 +172,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Summer_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -169,6 +186,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Insulated_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -182,6 +200,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Special_insulated_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -195,6 +214,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(PVC_rubber_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -208,6 +228,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Casual_walking_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -221,6 +242,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Medical_shoes)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -234,6 +256,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Shoe_accessories)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -247,6 +270,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Head_and_face_protection_products)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -260,6 +284,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Means_of_protection_of_the_organs_of_vision)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -273,6 +298,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Protective_equipment_during_welding_operations)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -286,6 +312,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Hearing_protection_equipment)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -293,12 +320,14 @@ class ProductAdmin(admin.ModelAdmin):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
+            inlines = [GalleryInline,]
             return ModelChoiceField(Category.objects.filter(slug='hearing_protection_equipment'))
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
 @admin.register(Respiratory_protection_equipment)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -312,6 +341,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Protective_equipment_during_highrise_works)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -325,6 +355,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Clothing_with_limited_service_life)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -338,6 +369,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Dielectric_safety_devices)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -351,6 +383,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Clothing_for_hunting_and_fishing)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -364,6 +397,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Knitted_gloves)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -377,6 +411,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Wool_blend_gloves)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -390,6 +425,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Split_gloves_combined)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -403,6 +439,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Kragi_vachegi)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -416,6 +453,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Specialized_gloves)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -429,6 +467,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Household_gloves_disposable)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -442,6 +481,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Working_gloves)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -455,6 +495,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Insulated_mittens)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -468,6 +509,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Medical_supplies)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -481,6 +523,7 @@ class ProductAdmin(admin.ModelAdmin):
 #########################
 @admin.register(Dermatological_agents)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -494,6 +537,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Technical_fabrics)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -507,6 +551,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Detergents_and_household_chemicals)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -520,6 +565,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Firefighting_equipment_fire_extinguishers)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -533,6 +579,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Protective_equipment)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -546,6 +593,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Household_goods)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -559,6 +607,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Snow_removal_equipment)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -572,6 +621,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Gardening_tools)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -585,6 +635,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Bristle_and_brush_products)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -598,6 +649,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Bed_linen_sets)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -611,6 +663,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Mattresses)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -624,6 +677,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Blankets)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -637,6 +691,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Pillows)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -650,6 +705,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Bedspreads_blankets)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -663,6 +719,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Waffle_towels)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
@@ -676,6 +733,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Terry_towels)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
