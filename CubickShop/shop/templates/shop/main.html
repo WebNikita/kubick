@@ -1,0 +1,123 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Кубик | Спецодежда
+{% endblock %}
+{% block content %}
+<body>
+<div class="app">
+  <div class="main">
+    <div class="main__picture">
+      <img class="picture" src="{% static "image/main-picture.jpg" %}" alt="picture">
+      <img class="picture picture__mobile" src="{% static "image/main-pictureV2.jpg" %}" alt="picture">
+      <div class="text">
+        <h1 class="text__name">Кубик — это многогранность</h1>
+        <p>
+          Мы успешная компания на российском рынке спецодежды 30 лет опыта поставок спецодежды и других товаров во все точки России. Мы растем и развиваемся, расширяем клиентскую базу. Все наши клиенты работают с нами снова и снова, становясь постоянными покупателями.
+        </p>
+      </div>
+    </div>
+    <div class="main__description main__margin body-size">
+      <div class="main__name main__name_margin main__margin_mobile">Мы это</div>
+      <ul class="list main__margin_mobile">
+        <li class="list__li">
+          <p class="main__h3 main__size_24">Команда профессионалов</p>
+          <p class="main__text">
+            Опытные сотрудники проконсультируют вас и помогут подобрать те товары, которые вам действительно подходят и прослужат долго. Вы точно сможете найти всё необходимое, ведь мы стремимся понять каждого клиента и его потребности.
+          </p>
+        </li>
+        <li class="list__li">
+          <p class="main__h3 main__size_24">Стабильность и гарантия качества</p>
+          <p class="main__text">
+            ТД Кубик на рынке специализированной продукции более 30 лет и зарекомендовал себя ответственным и надежным поставщиком, который выполняет все свои обязательства перед клиентом. Мы имеем отличную репутацию и положительные отзывы от наших клиентов.
+          </p>
+        </li>
+        <li class="list__li">
+          <p class="main__h3 main__size_24">Экономия времени</p>
+          <p class="main__text">
+            Даем возможность нашим клиентам купить все в одном месте, не тратить время на поиск и работу с разными поставщиками.
+          </p>
+        </li>
+      </ul>
+      <div class="img-text">
+        <img src="{% static "image/main-picture-2.jpg" %}" alt="picture">
+        <p class="main__h3 main__margin_mobile">
+          Мы сотрудничаем как с юридическими, так и с физическими лицами. Каждый наш клиент получает индивидуальный подход, честность и открытость взаимоотношений, а также положительные эмоции.
+        </p>
+      </div>
+    </div>
+    <div class="main__why main__margin body-size">
+      <p class="main__name main__margin_mobile main__name_margin">Почему Кубик?</p>
+      <div class="main__why_grid main__bd-t">
+        <p class="main__h3">Большой ассортимент</p>
+        <p class="main__text">
+          В нашем интернет-магазине вы можете приобрести товары из таких категорий как спецодежда, спецобувь, средства индивидуальной защиты, перчатки и многое другое. Мы можем предоставить все необходимое по комплексному обеспечению в области охраны труда. Наш ассортимент постоянно расширяется, учитывая потребности клиентов, поэтому каждый сможет найти для себя подходящий вариант
+        </p>
+      </div>
+      <div class="main__why_grid main__bd-t">
+        <p class="main__h3">Надежные поставщики</p>
+        <p class="main__text">
+          ТД Кубик сотрудничает, только с проверенными поставщиками. Мы считаем, что отношения с клиентами и поставщиками должны быть простыми и понятными, поэтому придерживается политики «прозрачности».
+        </p>
+      </div>
+      <div class="main__why_grid main__bd-t">
+        <p class="main__h3">Нанесение логотипов</p>
+        <p class="main__text">
+          Мы понимаем, как важна узнаваемость организации и рады сообщить нашим клиентам о том, что мы осуществляем нанесение логотипов с помощью термообработки термопленкой и термопленкой ORACAL. Если вам необходима индивидуализация одежды, нанесение логотипа или названия вашей компании на униформу, мы с радостью поможем вам с решением данного вопроса.
+        </p>
+      </div>
+      <div class="main__why_grid main__bd-t">
+        <p class="main__h3">Конкурентные цены</p>
+        <p class="main__text">
+          Для оптовых покупателей мы разработали специальную систему скидок и особые условия для взаимовыгодного сотрудничества.
+        </p>
+      </div>
+      <div class="main__why_grid main__bd-t">
+        <p class="main__h3">Простота покупки</p>
+        <p class="main__text">
+          Купить нужный товар вы можете любым удобным для вас способом: позвонить нам по телефону, оформить заказ на нашем сайте или подъехать к нам в офис.
+        </p>
+      </div>
+      <div class="main__why_grid main__bd-t main__bd-b">
+        <p class="main__h3">Доставка</p>
+        <p class="main__text">
+          Доставляем заказы в короткие сроки и любым удобным для вас способом, как по Москве так и по всей России.
+        </p>
+      </div>
+    </div>
+    <div class="main__color">
+      <div class="main__request main__margin main__margin_mobile body-size">
+        <div class="main__name main__name_margin main__request_size">Запросить прайс-лист</div>
+        <div class="data main__request_size">
+          <label class="data__label">
+            <input type="text" placeholder="Ваше имя">
+            <input type="tel" placeholder="Телефон">
+            <input type="email" placeholder="E-mail">
+          </label>
+          <p class="data__text">Нажимая на кнопку, Вы даете согласие на
+            <a href="">обработку персональных данных</a></p>
+          <button class="data__button">Запросить прайс-лист</button>
+        </div>
+        <div class="main__request_contact">
+          <div class="number">
+            <a href="tel:+74997358283">+7 (499) 735-82-83</a>
+            <a href="tel:+74997344058">+7 (499) 734-40-58</a>
+          </div>
+          <div class="time">ПН-ПТ  9:00-17:30</div>
+          <div class="address">
+            <p>124460</p>
+            <p class="address__text">г. Москва, г. Зеленоград,
+              2-ой Западный проезд, дом 4, строение 1 </p>
+          </div>
+          <div class="link">
+            <a href="">sale@cubik.ru</a>
+            <a href="">Instagram</a>
+            <a href="">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+{% endblock %}

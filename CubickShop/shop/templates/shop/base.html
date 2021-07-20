@@ -1,0 +1,209 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="{% static "css/bundle.css" %}" />
+  <title>{% block title %}Кубик{% endblock %}</title>
+  <title>base</title>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <ul class="header__list body-size">
+      <li class="header__menu-mobile">
+        <img class="header__menu-mobile_menu" data-button="menu-mobile" src="./image/menu.svg" alt="menu">
+        <img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo">
+      </li>
+      <li>
+        <img class="header__logo header__mobile_none_700" src="{% static "image/Logo.jpg" %}" alt="logo">
+      </li>
+      <li data-hover="catalog" class="header__list_padding_first header__mobile_none">Каталог</li>
+      <li class="header__mobile_none">Новости</li>
+      <li class="header__mobile_none">Доставка и оплата</li>
+      <li class="header__mobile_none">Контакты</li>
+      <li class="header__phone-number header__mobile_none">
+        <a href="tel:+74997358283">+7 (499) 735-82-83</a>
+        <a href="tel:+74997344058">+7 (499) 734-40-58</a>
+      </li>
+      <li class="header__display">
+        <label class="header__label">
+          <input data-focus="input" class="header__label_bd" placeholder="Поиск" type="text">
+          <svg data-focus="loop" class="header__icon" width="16" height="16" viewBox="0 0 16 16" fill="#3F3F3F"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M15.8045 14.8626L11.2545 10.3126C12.1359 9.22399 12.6665 7.84066 12.6665 6.33401C12.6665 2.84205 9.82522 0.000732422 6.33325 0.000732422C2.84128 0.000732422 0 2.84202 0 6.33398C0 9.82595 2.84132 12.6673 6.33328 12.6673C7.83992 12.6673 9.22325 12.1366 10.3119 11.2553L14.8619 15.8052C14.9919 15.9352 15.1625 16.0006 15.3332 16.0006C15.5039 16.0006 15.6745 15.9352 15.8045 15.8052C16.0652 15.5446 16.0652 15.1232 15.8045 14.8626ZM6.33328 11.3339C3.57597 11.3339 1.33333 9.0913 1.33333 6.33398C1.33333 3.57667 3.57597 1.33403 6.33328 1.33403C9.0906 1.33403 11.3332 3.57667 11.3332 6.33398C11.3332 9.0913 9.09057 11.3339 6.33328 11.3339Z"
+                fill="inherit"/>
+          </svg>
+        </label>
+        <a href="">
+          <img src="{% static "image/shopping-cart.svg" %}" alt="shopping-cart">
+        </a>
+      </li>
+    </ul>
+    <div data-visible="second" class="header__position">
+      <ul class="header__list header__list-two body-size">
+        <li data-hover="overalls" class="header__list_padding">Спецодежда
+          <ul class="header__list-three">
+            <li class="header__list_main"><a href="">Спецодежда</a></li>
+            <li><a href="">Спецодежда летняя</a></li>
+            <li><a href="">Спецодежда медицинская</a></li>
+            <li><a href="">Одежда для сферы услуг</a></li>
+            <li><a href="">Спецодежда зимняя</a></li>
+            <li><a href="">Спецодежда влагозащитная</a></li>
+            <li><a href="">Одежда специальная</a></li>
+            <li><a href="">Спецодежда сигнальная</a></li>
+            <li><a href="">Спецодежда для охранных структур</a></li>
+            <li><a href="">Головные уборы</a></li>
+            <li><a href="">Трикотаж</a></li>
+          </ul>
+        </li>
+        <li data-hover="overalls" class="header__list_padding">Обувь
+          <ul class="header__list-three">
+            <li class="header__list_main"><a href="">Спецодежда</a></li>
+            <li><a href="">Спецодежда летняя</a></li>
+            <li><a href="">Спецодежда медицинская</a></li>
+            <li><a href="">Одежда для сферы услуг</a></li>
+            <li><a href="">Спецодежда зимняя</a></li>
+            <li><a href="">Спецодежда влагозащитная</a></li>
+            <li><a href="">Одежда специальная</a></li>
+            <li><a href="">Спецодежда сигнальная</a></li>
+            <li><a href="">Спецодежда для охранных структур</a></li>
+            <li><a href="">Головные уборы</a></li>
+            <li><a href="">Трикотаж</a></li>
+          </ul>
+        </li>
+        <li class="header__list_padding">Средства индивидуальной защиты</li>
+        <li class="header__list_padding">Защита рук</li>
+        <li class="header__list_padding">Постельные принадлежности</li>
+        <li class="header__list_padding">Инструменты и хоз. инвентарь</li>
+      </ul>
+      <div class="header__background"></div>
+    </div>
+  </header>
+  <header class="header-mobile">
+    <div data-button="header-back" class="header-mobile_back">
+      <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+      Закрыть
+    </div>
+    <ul class="list">
+      <li class="list__li">Новости</li>
+      <li class="list__li">Контакты</li>
+      <li>
+        <p data-button="list_2" class="list__li">Cпецодежда</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <li class="list__li_2"><a href="">Спецодежда летняя</a></li>
+          <li class="list__li_2"><a href="">Спецодежда медицинская</a></li>
+          <li class="list__li_2"><a href="">Одежда для сферы услуг</a></li>
+          <li class="list__li_2"><a href="">Спецодежда зимняя</a></li>
+          <li class="list__li_2"><a href="">Спецодежда влагозащитная</a></li>
+          <li class="list__li_2"><a href="">Одежда специальная</a></li>
+          <li class="list__li_2"><a href="">Спецодежда сигнальная</a></li>
+          <li class="list__li_2"><a href="">Спецодежда для охранных структур</a></li>
+          <li class="list__li_2"><a href="">Головные уборы</a></li>
+          <li class="list__li_2"><a href="">Трикотаж</a></li>
+        </ul>
+      </li>
+      <li class="list__li">Обувь</li>
+      <li class="list__li">Средства индивидуальной защиты</li>
+      <li class="list__li">Защита рук</li>
+      <li class="list__li">Инструменты и хоз. инвентарь</li>
+      <li class="list__li">Постельные принадлежности</li>
+      <li class="list__li">Корзина</li>
+      <li class="list__li">Доставка и оплата</li></ul>
+    <div class="phone">
+      <a href="tel:+74997358283">+7 (499) 735-82-83</a>
+      <a href="tel:+74997344058">+7 (499) 734-40-58</a>
+    </div>
+    <div class="link">
+      <a href="">sale@cubik.ru</a>
+      <a href="">Instagram</a>
+      <a href="">Facebook</a>
+    </div>
+  </header>
+  {% block content %}{% endblock %}
+  <footer class="footer-color">
+    <div class="footer body-size">
+      <ul class="footer__block">
+        <li class="footer__list_main">Каталог</li>
+        <li class="footer__list footer__link"><a href="">Мужская спецодежда</a></li>
+        <li class="footer__list footer__link"><a href="">Женская спецодежда</a></li>
+        <li class="footer__list footer__link"><a href="">Мужская обувь</a></li>
+        <li class="footer__list footer__link"><a href="">Женская обувь</a></li>
+        <li class="footer__list footer__link"><a href="">Средства индивидуальной защиты</a></li>
+        <li class="footer__list footer__link"><a href="">Иструменты и хоз. инвентарь</a></li>
+        <li class="footer__list footer__link"><a href="">Постельные принадлежности</a></li>
+        <li class="footer__list footer__link"><a href="">Дерматологические средства</a></li>
+      </ul>
+      <ul class="footer__block">
+        <li class="footer__list_main">Контакты</li>
+        <li class="footer__link footer__list footer__list_ff"><a href="tel:+74997358283">+7 (499) 735-82-83</a></li>
+        <li class="footer__link footer__list footer__list_ff"><a href="tel:+74997344058">+7 (499) 734-40-58</a></li>
+        <li class="footer__list footer__list_margin-bottom footer__list_font-size footer__list_ff">ПН-ПТ 9:00-17:30</li>
+        <li class="footer__list footer__list_margin-bottom footer__list_font-size footer__list_fw">г. Москва, г. Зеленоград,
+          2-ой Западный проезд, дом 4, строение 1
+        </li>
+        <li class="footer__link footer__list footer__list_margin-bottom_5"><a href="">sale@cubik.ru</a></li>
+        <li class="footer__link footer__list footer__list_margin-bottom_5"><a href="">Instagram</a></li>
+        <li class="footer__link footer__list footer__list_margin-bottom_5"><a href="">Facebook</a></li>
+      </ul>
+      <ul class="footer__block">
+        <li class="footer__list">
+          <label class="footer__list_label">
+            <input type="text" placeholder="Поиск">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="#767676" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.8045 14.8626L11.2545 10.3126C12.1359 9.22399 12.6665 7.84066 12.6665 6.33401C12.6665 2.84205 9.82522 0.000732422 6.33325 0.000732422C2.84128 0.000732422 0 2.84202 0 6.33398C0 9.82595 2.84132 12.6673 6.33328 12.6673C7.83992 12.6673 9.22325 12.1366 10.3119 11.2553L14.8619 15.8052C14.9919 15.9352 15.1625 16.0006 15.3332 16.0006C15.5039 16.0006 15.6745 15.9352 15.8045 15.8052C16.0652 15.5446 16.0652 15.1232 15.8045 14.8626ZM6.33328 11.3339C3.57597 11.3339 1.33333 9.0913 1.33333 6.33398C1.33333 3.57667 3.57597 1.33403 6.33328 1.33403C9.0906 1.33403 11.3332 3.57667 11.3332 6.33398C11.3332 9.0913 9.09057 11.3339 6.33328 11.3339Z"
+                    fill="inherit"/>
+            </svg>
+          </label>
+        </li>
+        <li class="footer__link footer__list footer__list_font-size_15"><a href="">Карта сайта</a></li>
+        <li class="footer__link footer__list footer__list_font-size_15"><a href="">Блог</a></li>
+      </ul>
+      <hr class="footer__line">
+      <div class="footer__link footer__list footer__list_color"><a href="">Политика конфиденциальности</a></div>
+      <div class="footer__link footer__list footer__list_color"><a href="">Публичкая оферта</a></div>
+      <div class="footer__list">
+        <p class="footer__list_color ">Дизайнено в Sixty6</p>
+        <p class="footer__list_color">Программирование Yagoodco</p>
+      </div>
+    </div>
+    <div class="footer-mobile">
+      <p class="footer__list_main footer__padding">Контакты</p>
+      <div class="list footer__padding">
+        <div class="footer__link list_phone footer__list_ff">
+          <a href="tel:+74997358283">+7 (499) 735-82-83</a>
+          <a href="tel:+74997344058">+7 (499) 734-40-58</a>
+          <p>ПН-ПТ  9:00-17:30</p>
+        </div>
+        <div class="list_link footer__link">
+          <a href="">Instagram</a>
+          <a href="">Facebook</a>
+        </div>
+      </div>
+      <div class="footer__link footer__padding footer-mobile_link">
+        <a href="">sale@cubik.ru</a>
+      </div>
+      <div class="footer__link footer__padding list_source footer__list_margin-bottom">
+        <a href="">Политика конфиденциальности</a>
+        <a href="">Публичная оферта</a>
+      </div>
+      <hr class="footer__hr footer__list_margin-bottom">
+      <div class="author">
+        <p>Дизайнено в Sixty6</p>
+        <p>Программирование Yagoodco</p>
+      </div>
+    </div>
+  </footer>
+</div>	
+</body>
+<script type="text/javascript" src="{% static "js/bundle.js" %}"></script>
+<script type="text/javascript" src="{% static "js/bundle.js.map" %}"></script>
+</html>
