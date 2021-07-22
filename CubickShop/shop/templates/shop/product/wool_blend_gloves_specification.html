@@ -5,6 +5,18 @@
         <div class="block__product_info_second_top">
             <p class="block__product_info_text"> {{ product.description }} </p>
         </div>
+        <p class="block__product_info_title">Материал</p>
+        <div class="block__product_info_second_top">
+            <p class="block__product_info_text"> {{ product.material }} </p>
+        </div>
+        <p class="block__product_info_title">Соответствует требованиям ФСС</p>
+        <div class="block__product_info_second_top">
+            <p class="block__product_info_text"> {{ product.meets_the_requirements_of_the_FSS }} </p>
+        </div>
+        <p class="block__product_info_title">Особенности</p>
+        <div class="block__product_info_second_top">
+            <p class="block__product_info_text"> {{ product.features }} </p>
+        </div>
         <p class="block__product_info_title">Тип манжеты</p>
         <div class="block__product_info_second_top">
             <p class="block__product_info_text"> {{ product.cuff_Type }} </p>
@@ -13,21 +25,27 @@
 
     <div class="block__product_info block__product_info_third">
     <div class="block__product_info_third_material">
-        <p class="block__product_info_title">Материал</p>
+        <p class="block__product_info_title">Защитные свойства</p>
         <ul class="block__product_info_text">
-            <li>{{ product.material }}</li>
+            <li>{{ product.protective_properties }}</li>
         </ul>
     </div>
     <div class="block__product_info_third_size">
-        <p class="block__product_info_title">Соответствует требованиям ФСС</p>
+        <p class="block__product_info_title">Назначение</p>
         <ul class="block__product_info_text">
-            <li>{{ product.meets_the_requirements_of_the_FSS }}</li>
+            <li>{{ product.appointment }}</li>
         </ul>
     </div>
     <div class="block__product_info_third_size">
-        <p class="block__product_info_title">Особенности</p>
+        <p class="block__product_info_title">Утеплитель</p>
         <ul class="block__product_info_text">
-            <li>{{ product.features }}</li>
+            <li>{{ product.insulation_material }}</li>
+        </ul>
+    </div>
+    <div class="block__product_info_third_size">
+        <p class="block__product_info_title">Состав</p>
+        <ul class="block__product_info_text">
+            <li>{{ product.сomposition }}</li>
         </ul>
     </div>
     </div>

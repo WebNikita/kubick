@@ -535,8 +535,6 @@ class Wool_blend_gloves(Product):
         verbose_name = 'Перчатки полушерстяные'
         verbose_name_plural = 'Перчатки полушерстяные'
 
-    
-
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
@@ -552,8 +550,6 @@ class Split_gloves_combined(Product):
     class Meta:
         verbose_name = 'Перчатки спилковые, комбинированные'
         verbose_name_plural = 'Перчатки спилковые, комбинированные'
-
-    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
