@@ -102,13 +102,6 @@
                 <p class=" block__product_info_text">12.4.280-2014</p>
             </div>
         </div>
-        <div class="block__product_info block__product_info_second">
-            <p class="block__product_info_title">Информация о товаре</p>
-            <p class="block__product_info_text" style="text-decoration: underline;">{{ product.name }}</p>
-            <div class="block__product_info_second_top">
-                <p class="block__product_info_text"> {{ product.description }} </p>
-            </div>
-        </div>
         {% if product.category.slug == 'summer_workwear' %}
             {% include 'shop/product/summer_workwear_specification.html' %}
         {% elif product.category.slug == 'winter_workwear' %}
@@ -211,13 +204,8 @@
             {% include 'shop/product/waffle_towels_specification.html' %}
         {% elif product.category.slug == 'terry_towels' %}
             {% include 'shop/product/terry_towels_specification.html' %}
+        {% endif %}
     </div>
-    <!-- <div class="container button_blur">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="18" fill="none" viewBox="0 0 30 18">
-            <path fill="#4C95BD" d="M14.177 16.76L.339 2.884a1.163 1.163 0 011.647-1.642L15 14.292l13.014-13.05a1.163 1.163 0 111.646 1.642L15.823 16.76a1.162 1.162 0 01-1.646 0z"/>
-        </svg>
-    </div> -->
-
     <div class="block__append-to-card">
         <div class="container__append-to-card">
             <div class="block__append-to-card_title">
