@@ -1,0 +1,1024 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title%}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="block__sidebar_phone">
+        <div class="container sidebar__category">
+            <p>Спецодежда</p>
+        </div>
+        <div class="sidebar__list">
+            <button class="sidebar__sort_phone">
+                Сотрировать
+            </button>
+            <button class="sidebar__filter_phone">
+                Фильтры
+            </button>
+        </div>
+    </div>
+
+    <div class="container block__sidebar">
+        <div class="sidebar__category">
+            <p>Спецодежда</p>
+        </div>
+        <ul class="sidebar__list">
+            <li class="sidebar__filter">
+                <p style = "color: #767676;"> Фильтры
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10" class="filter__button">
+                        <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                    </svg>
+                </p>
+                <ul class="sidebar__list_filter">
+                    <ul class="sidebar__list_filter_first">
+                        <p class="filter_first_one-head">
+                            Защитные свойства
+                            <svg class="filter_first_one-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                            </svg>
+                        </p>
+                        <ul class="filter_first_one-content filter">
+                            <li id="f1-1">Кислоты</li>
+                            <li id="f1-2">Вредные биологические факторы</li>
+                            <li id="f1-3">Искры, брызги расплавленного металла</li>
+                            <li id="f1-4">Общие производственные загрязнения</li>
+                            <li id="f1-5">Тепловое излучение</li>
+                            <li id="f1-6">Вибрация</li>
+                            <li id="f1-7">Нагретые поверхности</li>
+                            <li id="f1-8">Статическое электричество</li>
+                        </ul>
+                    </ul>
+                    <ul class="sidebar__list_filter_second">
+                        <p class="filter_first_two-head">    
+                            Комплектность
+                            <svg class="filter_first_two-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                            </svg>
+                        </p>
+                        <ul class="filter_first_two-content filter">
+                            <li id="f2-1">Куртка</li>
+                            <li id="f2-2">Брюки</li>
+                            <li id="f2-3">Полукомбинезон</li>
+                            <li id="f2-4">Комбинезон</li>
+                            <li id="f2-5">Жилет</li>
+                            <li id="f2-6">Халат</li>
+                            <li id="f2-7">Костюм</li>
+                        </ul>
+                    </ul>
+                    <ul class="sidebar__list_filter_third">
+                        <p class="filter_first_four-head">
+                            Состав
+                            <svg class="filter_first_four-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                            </svg>
+                        </p>
+                        <ul class="filter_first_four-content filter">
+                            <li id="f3-1">65%ПЭ/35%ХБ</li>
+                            <li id="f3-2">80%ХБ/20%ПЭ,антист.нить</li>
+                            <li id="f3-3">95%ХБ/5%ПА, антистатическая нить</li>
+                            <li id="f3-4">100% ПЭ</li>
+                            <li id="f3-5">100% ХБ</li>
+                            <li id="f3-6">23%ХБ 77%ПЭ</li>
+                            <li id="f3-7">53%ХБ 47%ПЭ</li>
+                            <li id="f3-8">35%ХБ 65%ПЭ</li>
+                            <li id="f3-9">33%ХБ 67%ПЭ</li>
+                            <li id="f3-10">60%ХБ/40%ПЭ</li>
+                            <li id="f3-11">80%ХБ/20%ПЭ</li>
+                            <li id="f3-12">20%ХБ/80%ПЭ</li>
+                            <li id="f3-13">51%ХБ 49%ПЭ</li>
+                            <li id="f3-14">100% ПА</li>
+                            <li id="f3-15">80%ПЭ/20%ХБ</li>
+                        </ul>
+                    </ul>
+                    <ul class="sidebar__list_filter_fourth">
+                        <p class="filter_first_three-head"> 
+                            Класс защиты
+                            <svg class="filter_first_three-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
+                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                            </svg>
+                        </p>
+                        <ul class="filter_first_three-content filter">
+                            <li id="f4-1">2  класс</li>
+                            <li id="f4-2">3</li>
+                            <li id="f4-3">1</li>
+                            <li id="f4-4">1-2</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </li>
+            <li class="sidebar__sort">
+                <p style = "color: #767676;">
+                    Сортировка 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10" class="sort__button">
+                        <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                    </svg>
+                </p>
+                <ul class="sidebar__list_sort">
+                    <li>Рекомендованное</li>
+                    <li>Самое новое</li>
+                    <li>Цена: высокая-низкая</li>
+                    <li>Цена: низкая-высокая</li>
+                </ul>
+            </li>
+            <li class="sidebar__reveal">
+                
+                <p  style = "color: #767676;"> 
+                    Показать 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10" class="reveal__button">
+                        <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                    </svg>
+                </p>
+                <ul class="sidebar__list_reveal">
+                    <li>По 15</li>
+                    <li>По 30</li>
+                    <li>По 45</li>
+                    <li>Все</li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+    
+    <div class="container block__select-filter"></div>
+    
+    <div class="container block__card container__catalog">
+        <div class="card card__product">
+            <div class="card__img">
+                <img src="./image/1.png" alt="1">
+                <div class="quickly__preview">
+                    <p class="quickly__preview_button">Быстрый просмотр</p>
+                </div>
+            </div>
+            <div class="card__text">
+                <p class="card__text_name">Полукомбинезон Эдванс</p>
+                <p class="card__text_article">Артикул: Кос 034</p>
+                <p class="card__text_low">    
+                        4 294 Р
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container block__page">
+        <div class="page__prev">
+            <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
+            </svg>
+            Назад
+        </div>
+        <ul class="page__list">
+            <li class="select_page">1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div class="page__next">
+            Далее
+            <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="block__preview">
+        <div class="container container__product_preview">
+            <div class="block__product_preview block__product_preview_first">
+                <div id="slider">
+                    <div class="slide">
+                        <img src="./image/1.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="./image/2.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="./image/1.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="./image/1.png" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="./image/3.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="block__product_preview block__product_preview_second">
+                <div class="block__product_preview_second-top">
+                    <div class="close_preview">
+                        Закрыть
+                    </div>
+                    <div class="block__product_preview_second-top_name">
+                        Костюм Муравей
+                    </div>
+                    <div class="block__product_preview_second-top_price">
+                        2210 Р
+                    </div>
+                </div>
+                <div class="block__product_preview_second-center">
+                    <div class="block__product_preview_second-center_size">
+                        <p>Размер</p>
+                        <p>с 44–46 по 60-62 Рост: 170-176, 182-188</p>
+                    </div>
+                    <div class="block__product_preview_second-center_info">
+                        <p class="open-size">
+                            Таблица размеров
+                        </p>
+                    </div>
+                    <div class="block__product_preview_second-center_choice">
+                        <p class="choice-size">
+                            Выбрать размер
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
+                                <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
+                            </svg>
+                        </p>
+                    </div>
+                </div>
+                <div class="block__product_preview_second-bottom">
+                    <div class="block__product_preview_second-bottom_button-append">
+                        Добавить в корзину
+                    </div>
+                    <div class="block__product_preview_second-bottom_ability">
+                        Возможно нанесение логотипа
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block__append-to-card">
+        <div class="container__append-to-card">
+            <div class="block__append-to-card_title">
+                <p>
+                    Выберите размер
+                </p>
+                <p class="close">
+                    Закрыть
+                </p>
+            </div>
+            <div class="counter_block">
+                <div class="block__append-to-card_counter">
+                    <div class="counter_size">
+                        88-92 / 170-176
+                    </div>
+                    <div class="counter_price">
+                        <div class="price-counter">
+                            <span class="minus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
+                                </svg>
+                            </span>
+                            <span class="count">
+                                0
+                            </span>
+                            <span class="plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="end_price">
+                            0 Р
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="block__append-to-card_counter">
+                    <div class="counter_size">
+                        88-92 / 170-176
+                    </div>
+                    <div class="counter_price">
+                        <div class="price-counter">
+                            <span class="minus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
+                                </svg>
+                            </span>
+                            <span class="count">
+                                0
+                            </span>
+                            <span class="plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="end_price">
+                            0 Р
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="block__append-to-card_counter">
+                    <div class="counter_size">
+                        88-92 / 170-176
+                    </div>
+                    <div class="counter_price">
+                        <div class="price-counter">
+                            <span class="minus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
+                                </svg>
+                            </span>
+                            <span class="count">
+                                0
+                            </span>
+                            <span class="plus">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                </svg>
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="end_price">
+                            0 Р
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="block__append-to-card_bottom">
+                <button>Добавить в корзину</button>
+                <div class="end-price">
+                    0 Р
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block__size">
+        <div class="container__size">
+            <div class="block__size_title">
+                <p>
+                    Типовые размеры
+                </p>
+                <p class="close">
+                    Закрыть
+                </p>
+            </div>
+            <div class="block__size_content">
+                <hr>
+                <div class="size_content_men">
+                    <p class="size_content_title">
+                        Мужская одежда
+                    </p>
+                    <div class="size_content_men_table">
+                        <p>
+                            Стандартные размеры
+                        </p>
+                        <div class="size_content_men_table-first">
+                            <ul>
+                                <li>88-92/170-176</li>
+                                <li>88-92/182-188</li>
+                                <li>96-100/170-176</li>
+                                <li>96-100/182-188</li>
+                                <li>104-108/170-176</li>
+                                <li>104-108/182-188</li>
+                                <li>112-116/170-176</li>
+                                <li>112-116/182-188</li>
+                                <li>120-124/170-176</li>
+                                <li>120-124/182-188</li>
+                            </ul>
+                            <ul>
+                                <li>44-46/3-4</li>
+                                <li>44-46/5-6</li>
+                                <li>48-50/3-4</li>
+                                <li>48-50/5-6</li>
+                                <li>52-54/3-4</li>
+                                <li>52-54/5-6</li>
+                                <li>56-58/3-4</li>
+                                <li>56-58/5-6</li>
+                                <li>60-62/3-4</li>
+                                <li>60-62/5-6</li>
+                            </ul>
+                        </div>
+                        <p>
+                            Типовые фигуры мужчин
+                        </p>
+                        <div class="size_content_men_table-second">
+                            <ul>
+                                <li>Размер</li>
+                                <li>Обхват груди (см)</li>
+                                <li>Обхват талии (см)</li>
+                                <li>Рост (см)</li>
+                            </ul>
+                            <ul>
+                                <li>88-92</li>
+                                <li>88-92</li>
+                                <li>72-76</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>96-100</li>
+                                <li>96-100</li>
+                                <li>80-84</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>104-108</li>
+                                <li>104-108</li>
+                                <li>88-92</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>112-116</li>
+                                <li>112-116</li>
+                                <li>96-100</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>120-124</li>
+                                <li>120-124</li>
+                                <li>104-108</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="size_content_women">
+                    <p>
+                        Женская одежда
+                    </p>
+                    <div class="size_content_women_table">
+                        <p>
+                            Стандартные размеры
+                        </p>
+                        <div class="size_content_women_table-first">
+                            <ul>
+                                <li>88-92/158-164</li>
+                                <li>88-92/170-176</li>
+                                <li>96-100/158-164</li>
+                                <li>96-100/170-176</li>
+                                <li>104-108/158-164</li>
+                                <li>104-108/170-176</li>
+                                <li>112-116/158-164</li>
+                                <li>112-116/170-176</li>
+                                <li>120-124/158-164</li>
+                                <li>120-124/170-176</li>
+                            </ul>
+                            <ul>
+                                <li>44-46/3-4</li>
+                                <li>44-46/5-6</li>
+                                <li>48-50/3-4</li>
+                                <li>48-50/5-6</li>
+                                <li>52-54/3-4</li>
+                                <li>52-54/5-6</li>
+                                <li>56-58/3-4</li>
+                                <li>56-58/5-6</li>
+                                <li>60-62/3-4</li>
+                                <li>60-62/5-6</li>
+                            </ul>
+                        </div>
+                        <p>
+                            Типовые фигуры мужчин
+                        </p>
+                        <div class="size_content_women_table-second">
+                            <ul>
+                                <li>Размер</li>
+                                <li>Обхват груди (см)</li>
+                                <li>Обхват талии (см)</li>
+                                <li>Рост (см)</li>
+                            </ul>
+                            <ul>
+                                <li>88-92</li>
+                                <li>88-92</li>
+                                <li>94-98</li>
+                                <li>
+                                    158-164
+                                    170-176
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>96-100</li>
+                                <li>96-100</li>
+                                <li>102-106</li>
+                                <li>
+                                    158-164
+                                    170-176
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>104-108</li>
+                                <li>104-108</li>
+                                <li>110-114</li>
+                                <li>
+                                    158-164
+                                    170-176
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>112-116</li>
+                                <li>112-116</li>
+                                <li>118-122</li>
+                                <li>
+                                    158-164
+                                    170-176
+                                </li>
+                            </ul>
+                            <ul>
+                                <li>120-124</li>
+                                <li>120-124</li>
+                                <li>126-132</li>
+                                <li>
+                                    158-164
+                                    170-176
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="size_content_shoes">
+                    <p>
+                        Обувь
+                    </p>
+                    <div class="size_content_shoes_table">
+                        <p>
+                            Мужская
+                        </p>
+                        <div class="size_content_shoes_table-first">
+                            <ul>
+                                <li>Размер</li>
+                                <li>Длина стопы (см)</li>
+                            </ul>
+                            <ul>
+                                <li>39</li>
+                                <li>247</li>
+                            </ul>
+                            <ul>
+                                <li>40</li>
+                                <li>255</li>
+                            </ul>
+                            <ul>
+                                <li>41</li>
+                                <li>262</li>
+                            </ul>
+                            <ul>
+                                <li>42</li>
+                                <li>270</li>
+                            </ul>
+                            <ul>
+                                <li>43</li>
+                                <li>277</li>
+                            </ul>
+                            <ul>
+                                <li>44</li>
+                                <li>285</li>
+                            </ul>
+                            <ul>
+                                <li>45</li>
+                                <li>292</li>
+                            </ul>
+                            <ul>
+                                <li>46</li>
+                                <li>300</li>
+                            </ul>
+                        </div>
+                        <p>
+                            Женская
+                        </p>
+                        <div class="size_content_shoes_table-second">
+                            <ul>
+                                <li>Размер</li>
+                                <li>Длина стопы (см)</li>
+                            </ul>
+                            <ul>
+                                <li>35</li>
+                                <li>225</li>
+                            </ul>
+                            <ul>
+                                <li>36</li>
+                                <li>232</li>
+                            </ul>
+                            <ul>
+                                <li>37</li>
+                                <li>240</li>
+                            </ul>
+                            <ul>
+                                <li>38</li>
+                                <li>247</li>
+                            </ul>
+                            <ul>
+                                <li>39</li>
+                                <li>255</li>
+                            </ul>
+                            <ul>
+                                <li>40</li>
+                                <li>262</li>
+                            </ul>
+                        </div>
+                        <p>
+                            Валенки
+                        </p>
+                        <div class="size_content_shoes_table-third">
+                            <ul>
+                                <li>35</li>
+                                <li>23</li>
+                            </ul>
+                            <ul>
+                                <li>36</li>
+                                <li>24</li>
+                            </ul>
+                            <ul>
+                                <li>37</li>
+                                <li>25</li>
+                            </ul>
+                            <ul>
+                                <li>38</li>
+                                <li>26</li>
+                            </ul>
+                            <ul>
+                                <li>39</li>
+                                <li>27</li>
+                            </ul>
+                            <ul>
+                                <li>40</li>
+                                <li>28</li>
+                            </ul>
+                            <ul>
+                                <li>41</li>
+                                <li>29</li>
+                            </ul>
+                            <ul>
+                                <li>42</li>
+                                <li>30</li>
+                            </ul>
+                        </div>
+                        <p>
+                            Мужские носки
+                        </p>
+                        <div class="size_content_shoes_table-four">
+                            <ul>
+                                <li>25</li>
+                                <li>27</li>
+                                <li>29</li>
+                                <li>39</li>
+                            </ul>
+                            <ul>
+                                <li>39-40</li>
+                                <li>41-42</li>
+                                <li>43-44</li>
+                                <li>45-46</li>
+                            </ul>
+                            <ul>
+                                <li>24-26</li>
+                                <li>26-28</li>
+                                <li>28-30</li>
+                                <li>30-32</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="size_content_shirt">
+                    <p>
+                        Сорчки и рубашки
+                    </p>
+                    <div class="size_content_shirt_table">
+                        <div class="size_content_shirt_table-first">
+                            <ul>
+                                <li>Размер по вороту</li>
+                                <li>38</li>
+                                <li>39</li>
+                                <li>40</li>
+                                <li>41</li>
+                                <li>42</li>
+                                <li>43</li>
+                                <li>44</li>
+                                <li>45</li>
+                                <li>46</li>
+                            </ul>
+                            <ul>
+                                <li>Обхват груди (см)</li>
+                                <li>88</li>
+                                <li>92</li>
+                                <li>96</li>
+                                <li>100</li>
+                                <li>104</li>
+                                <li>108</li>
+                                <li>112</li>
+                                <li>116</li>
+                                <li>120</li>
+                            </ul>
+                            <ul>
+                                <li>Рост (см)</li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                                <li>
+                                    170-176
+                                    182-188
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="size_content_tee">
+                    <p>
+                        Футболки
+                    </p>
+                    <div class="size_content_tee_table">
+                        <div class="size_content_tee_table-first">
+                            <ul>
+                                <li>S</li>
+                                <li>44-46</li>
+                            </ul>
+                            <ul>
+                                <li>M</li>
+                                <li>46-48</li>
+                            </ul>
+                            <ul>
+                                <li>L</li>
+                                <li>48-50</li>
+                            </ul>
+                            <ul>
+                                <li>XL</li>
+                                <li>52-54</li>
+                            </ul>
+                            <ul>
+                                <li>XXL</li>
+                                <li>56-58</li>
+                            </ul>
+                            <ul>
+                                <li>XXXL</li>
+                                <li>60-62</li>
+                            </ul>
+                        </div>  
+                    </div>
+                </div>
+                <hr>
+                <div class="size_content_glove">
+                    <p>
+                        Перчатки
+                    </p>
+                    <div class="size_content_glove_table">
+                        <div class="size_content_glove_table-first">
+                            <ul>
+                                <li>S</li>
+                                <li>7</li>
+                            </ul>
+                            <ul>
+                                <li>M</li>
+                                <li>8</li>
+                            </ul>
+                            <ul>
+                                <li>L</li>
+                                <li>9</li>
+                            </ul>
+                            <ul>
+                                <li>XL</li>
+                                <li>10</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="block__filter_phone">
+        <ul class="sidebar__list_filter_phone">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li class="sidebar__list_filter_first">
+                Защитные свойства
+            </li>
+            <hr>
+            <li class="sidebar__list_filter_second">  
+                Комплектность
+            </li>
+            <hr>
+            <li class="sidebar__list_filter_third">
+                Состав
+            </li>
+            <hr>
+            <li class="sidebar__list_filter_fourth">
+                Класс защиты
+            </li>
+            <hr>
+        </ul>
+    </div>
+
+    <div class="block__filter_one">
+        <ul class="filter_first_one-content-phone filter">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li id="f1-1">Кислоты</li>
+            <hr>
+            <li id="f1-2">Вредные биологические факторы</li>
+            <hr>
+            <li id="f1-3">Искры, брызги расплавленного металла</li>
+            <hr>
+            <li id="f1-4">Общие производственные загрязнения</li>
+            <hr>
+            <li id="f1-5">Тепловое излучение</li>
+            <hr>
+            <li id="f1-6">Вибрация</li>
+            <hr>
+            <li id="f1-7">Нагретые поверхности</li>
+            <hr>
+            <li id="f1-8">Статическое электричество</li>
+            <hr>
+        </ul>
+    </div>
+
+    <div class="block__filter_two">
+        <ul class="filter_first_two-content-phone filter">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li id="f2-1">Куртка</li>
+            <hr>
+            <li id="f2-2">Брюки</li>
+            <hr>
+            <li id="f2-3">Полукомбинезон</li>
+            <hr>
+            <li id="f2-4">Комбинезон</li>
+            <hr>
+            <li id="f2-5">Жилет</li>
+            <hr>
+            <li id="f2-6">Халат</li>
+            <hr>
+            <li id="f2-7">Костюм</li>
+            <hr>
+        </ul>
+    </div>
+    
+    <div class="block__filter_four">
+        <ul class="filter_first_four-content-phone filter">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li id="f3-1">65%ПЭ/35%ХБ</li>
+            <hr>
+            <li id="f3-2">80%ХБ/20%ПЭ,антист.нить</li>
+            <hr>
+            <li id="f3-3">95%ХБ/5%ПА, антистатическая нить</li>
+            <hr>
+            <li id="f3-4">100% ПЭ</li>
+            <hr>
+            <li id="f3-5">100% ХБ</li>
+            <hr>
+            <li id="f3-6">23%ХБ 77%ПЭ</li>
+            <hr>
+            <li id="f3-7">53%ХБ 47%ПЭ</li>
+            <hr>
+            <li id="f3-8">35%ХБ 65%ПЭ</li>
+            <hr>
+            <li id="f3-9">33%ХБ 67%ПЭ</li>
+            <hr>
+            <li id="f3-10">60%ХБ/40%ПЭ</li>
+            <hr>
+            <li id="f3-11">80%ХБ/20%ПЭ</li>
+            <hr>
+            <li id="f3-12">20%ХБ/80%ПЭ</li>
+            <hr>
+            <li id="f3-13">51%ХБ 49%ПЭ</li>
+            <hr>
+            <li id="f3-14">100% ПА</li>
+            <hr>
+            <li id="f3-15">80%ПЭ/20%ХБ</li>
+            <hr>
+        </ul>
+    </div>
+    
+    <div class="block__filter_three">
+        <ul class="filter_first_three-content-phone filter">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li id="f4-1">2  класс</li>
+            <hr>
+            <li id="f4-2">3</li>
+            <hr>
+            <li id="f4-3">1</li>
+            <hr>
+            <li id="f4-4">1-2</li>
+            <hr>
+        </ul>
+    </div>
+    
+
+    <div class="block__sort_phone">
+        <ul class="sidebar__list_sort">
+            <div class="close_phone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
+                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
+                </svg>
+                <p>
+                    Назад
+                </p>
+            </div>
+            <hr>
+            <li>Рекомендованное</li>
+            <hr>
+            <li>Самое новое</li>
+            <hr>
+            <li>Цена: высокая-низкая</li>
+            <hr>
+            <li>Цена: низкая-высокая</li>
+            <hr>
+        </ul>
+    </div>
+</body>
+
+{% endblock %}

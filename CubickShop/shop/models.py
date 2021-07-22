@@ -1,5 +1,24 @@
 from django.db import models
+from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
+
+
+
+class ProductManager:
+
+    @staticmethod
+    def get_products_for_main_page(*args,**kwargs):
+        products = []
+        ct_models = ContentType.objects.filter(model__in=args)
+        for ct_model in ct_models:
+            model_products = ct_model.model_class()._base_manager.all().order_by('-id')
+            products.extend(model_products)
+        return products
+
+
+class All_products:
+
+    objects = ProductManager()
 
 
 def get_product_url(obj,viewname):
@@ -88,9 +107,6 @@ class Summer_workwear(Product):
         verbose_name = 'Летняя спецодежда'
         verbose_name_plural = 'Летняя спецодежда'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
@@ -106,9 +122,6 @@ class Winter_workwear(Product):
         verbose_name = 'Зимняя спецодежда'
         verbose_name_plural = 'Зимняя спецодежда'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
@@ -121,9 +134,6 @@ class Medical_workwear(Product):
     class Meta:
         verbose_name = 'Медицинская спецодежда'
         verbose_name_plural = 'Медицинская спецодежда'
-
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -138,9 +148,6 @@ class Clothing_for_the_service_sector(Product):
         verbose_name = 'Одежда для сферы услуг'
         verbose_name_plural = 'Одежда для сферы услуг'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
@@ -154,9 +161,6 @@ class Protective_clothing_of_security_structures(Product):
     class Meta:
         verbose_name = 'Спецодежда охранных структур'
         verbose_name_plural = 'Спецодежда охранных структур'
-
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -173,9 +177,6 @@ class Special_workwear(Product):
         verbose_name = 'Специальная спецодежда'
         verbose_name_plural = 'Специальная спецодежда'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
-
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
 
@@ -190,8 +191,7 @@ class Signal_workwear(Product):
         verbose_name = 'Сигнал спецодежда'
         verbose_name_plural = 'Сигнал спецодежда'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -208,8 +208,7 @@ class Protective_protective_workwear(Product):
         verbose_name = 'Спецодежда влагозащитная'
         verbose_name_plural = 'Спецодежда влагозащитная'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -225,8 +224,7 @@ class Clothing_for_hunting_and_fishing(Product):
         verbose_name = 'Одежда для охоты и рыбалки'
         verbose_name_plural = 'Одежда для охоты и рыбалки'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -240,8 +238,7 @@ class Knitwearg(Product):
         verbose_name = 'Трикотаж'
         verbose_name_plural = 'Трикотаж'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -256,8 +253,7 @@ class Hats(Product):
         verbose_name = 'Головные уборы'
         verbose_name_plural = 'Головные уборы'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -272,8 +268,7 @@ class Summer_shoes(Product):
         verbose_name = 'Обувь летняя,демисезонная'
         verbose_name_plural = 'Обувь летняя,демисезонная'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -289,8 +284,7 @@ class Insulated_shoes(Product):
         verbose_name = 'Обувь утепленная'
         verbose_name_plural = 'Обувь утепленная'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -306,8 +300,7 @@ class Special_insulated_shoes(Product):
         verbose_name = 'Обувь специальная, утепленная'
         verbose_name_plural = 'Обувь специальная, утепленная'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -323,8 +316,7 @@ class PVC_rubber_shoes(Product):
         verbose_name = 'Обувь резиновая ПВХ'
         verbose_name_plural = 'Обувь резиновая ПВХ'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -339,8 +331,7 @@ class Casual_walking_shoes(Product):
         verbose_name = 'Обувь повседневная, прогулочная'
         verbose_name_plural = 'Обувь повседневная, прогулочная'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -355,8 +346,7 @@ class Medical_shoes(Product):
         verbose_name = 'Обувь медицинская'
         verbose_name_plural = 'Обувь медицинская'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -371,8 +361,7 @@ class Shoe_accessories(Product):
         verbose_name = 'Аксессуары для обуви'
         verbose_name_plural = 'Аксессуары для обуви'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -390,8 +379,7 @@ class Head_and_face_protection_products(Product):
         verbose_name = 'Средства защиты головы и лица'
         verbose_name_plural = 'Средства защиты головы и лица'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -409,8 +397,7 @@ class Means_of_protection_of_the_organs_of_vision(Product):
         verbose_name = 'Средства защиты органов зрения'
         verbose_name_plural = 'Средства защиты органов зрения'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -428,8 +415,7 @@ class Protective_equipment_during_welding_operations(Product):
         verbose_name = 'Средства защиты при проведении сварочных работ'
         verbose_name_plural = 'Средства защиты при проведении сварочных работ'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -446,8 +432,7 @@ class Hearing_protection_equipment(Product):
         verbose_name = 'Средства защиты органов слуха'
         verbose_name_plural = 'Средства защиты органов слуха'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -465,8 +450,7 @@ class Respiratory_protection_equipment(Product):
         verbose_name = 'Средства защиты органов дыхания'
         verbose_name_plural = 'Средства защиты органов дыхания'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -484,8 +468,7 @@ class Protective_equipment_during_highrise_works(Product):
         verbose_name = 'Средства защиты при проведении высотных работ'
         verbose_name_plural = 'Средства защиты при проведении высотных работ'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -501,8 +484,7 @@ class Clothing_with_limited_service_life(Product):
         verbose_name = 'Одежда с ограниченным сроком эксплуатации'
         verbose_name_plural = 'Одежда с ограниченным сроком эксплуатации'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -514,8 +496,7 @@ class Dielectric_safety_devices(Product):
         verbose_name = 'Диэлектрические средства безопасности'
         verbose_name_plural = 'Диэлектрические средства безопасности'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -533,8 +514,7 @@ class Knitted_gloves(Product):
         verbose_name = 'Перчатки трикотажные'
         verbose_name_plural = 'Перчатки трикотажные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -555,8 +535,7 @@ class Wool_blend_gloves(Product):
         verbose_name = 'Перчатки полушерстяные'
         verbose_name_plural = 'Перчатки полушерстяные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -574,8 +553,7 @@ class Split_gloves_combined(Product):
         verbose_name = 'Перчатки спилковые, комбинированные'
         verbose_name_plural = 'Перчатки спилковые, комбинированные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -593,8 +571,7 @@ class Kragi_vachegi(Product):
         verbose_name = 'Краги, вачеги'
         verbose_name_plural = 'Краги, вачеги'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -611,8 +588,7 @@ class Specialized_gloves(Product):
         verbose_name = 'Перчатки специализированные'
         verbose_name_plural = 'Перчатки специализированные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -627,8 +603,7 @@ class Household_gloves_disposable(Product):
         verbose_name = 'Перчатки хозяйственные, одноразовые'
         verbose_name_plural = 'Перчатки хозяйственные, одноразовые'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -647,8 +622,7 @@ class Working_gloves(Product):
         verbose_name = 'Рукавицы рабочие'
         verbose_name_plural = 'Рукавицы рабочие'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -665,8 +639,7 @@ class Insulated_mittens(Product):
         verbose_name = 'Рукавицы утепленные'
         verbose_name_plural = 'Рукавицы утепленные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -680,8 +653,7 @@ class Medical_supplies(Product):
         verbose_name = 'Медицинские принадлежности'
         verbose_name_plural = 'Медицинские принадлежности'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -695,8 +667,7 @@ class Dermatological_agents(Product):
         verbose_name = 'Дерматологические средства'
         verbose_name_plural = 'Дерматологические средства'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -710,8 +681,7 @@ class Technical_fabrics(Product):
         verbose_name = 'Технические ткани'
         verbose_name_plural = 'Технические ткани'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -725,8 +695,7 @@ class Detergents_and_household_chemicals(Product):
         verbose_name = 'Моющие средства и бытовая химия'
         verbose_name_plural = 'Моющие средства и бытовая химия'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -740,8 +709,7 @@ class Firefighting_equipment_fire_extinguishers(Product):
         verbose_name = 'Противопожарные средства,огнетушители'
         verbose_name_plural = 'Противопожарные средства,огнетушители'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -755,8 +723,7 @@ class Protective_equipment(Product):
         verbose_name = 'Оградительные средства'
         verbose_name_plural = 'Оградительные средства'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -770,8 +737,7 @@ class Household_goods(Product):
         verbose_name = 'Хозяйственные товары'
         verbose_name_plural = 'Хозяйственные товары'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -785,8 +751,7 @@ class Snow_removal_equipment(Product):
         verbose_name = 'Снегоуборочный инвентарь'
         verbose_name_plural = 'Снегоуборочный инвентарь'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -800,8 +765,7 @@ class Gardening_tools(Product):
         verbose_name = 'Садово-огородный инвентарь'
         verbose_name_plural = 'Садово-огородный инвентарь'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -815,8 +779,7 @@ class Bristle_and_brush_products(Product):
         verbose_name = 'Щетинно щеточные изделия'
         verbose_name_plural = 'Щетинно щеточные изделия'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -829,8 +792,7 @@ class Bed_linen_sets(Product):
         verbose_name = 'Комплекты постельного белья'
         verbose_name_plural = 'Комплекты постельного белья'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -843,8 +805,7 @@ class Mattresses(Product):
         verbose_name = 'Матрасы'
         verbose_name_plural = 'Матрасы'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -857,8 +818,7 @@ class Blankets(Product):
         verbose_name = 'Одеяла'
         verbose_name_plural = 'Одеяла'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -871,8 +831,7 @@ class Pillows(Product):
         verbose_name = 'Подушки'
         verbose_name_plural = 'Подушки'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -885,8 +844,7 @@ class Bedspreads_blankets(Product):
         verbose_name = 'Покрывала, пледы'
         verbose_name_plural = 'Покрывала, пледы'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -899,8 +857,7 @@ class Waffle_towels(Product):
         verbose_name = 'Полотенца вафельные'
         verbose_name_plural = 'Полотенца вафельные'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
@@ -913,8 +870,7 @@ class Terry_towels(Product):
         verbose_name = 'Полотенца махровые'
         verbose_name_plural = 'Полотенца махровые'
 
-    def __str__(self):
-        return f"{self.category.name} : {self.title}"
+    
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
