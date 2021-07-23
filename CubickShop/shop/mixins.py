@@ -1,9 +1,6 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView
+from django.views.generic.detail import SingleObjectMixin
+from django.views.generic import View
 
-from .mixins import CategoryDetailMixin
-
-from cart.forms import CartAddProductForm
 from .models import Category, Product, Summer_workwear, Winter_workwear
 from .models import Medical_workwear, Clothing_for_the_service_sector, Protective_clothing_of_security_structures
 from .models import Special_workwear, Signal_workwear, Protective_protective_workwear
@@ -24,26 +21,10 @@ from .models import Waffle_towels, Terry_towels, Gallery
 
 
 
-
-def main_page(request):
-    return render(request, 'shop/main.html')
+class CategoryDetailMixin(SingleObjectMixin):
 
 
-class CategoryDetailView(CategoryDetailMixin, DetailView):
-
-    model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'category'
-    template_name = 'shop/category/category_detail.html'
-    slug_url_kwarg = 'slug'
-
-
-
-
-
-class ProductDetailView(DetailView):
-
-    CT_MODEL_MODEL_CLASS = {
+    CATEGORY_SLUG2PRODUCT_MODEL = {
         'summer_workwear': Summer_workwear,
         'winter_workwear': Winter_workwear,
         'medical_workwear': Medical_workwear,
@@ -97,13 +78,11 @@ class ProductDetailView(DetailView):
         'terry_towels': Terry_towels,
     }
 
-    def dispatch(self, request, *args, **kwargs):
-        self.model = self.CT_MODEL_MODEL_CLASS[kwargs['ct_model']]
-        self.queryset = self.model._base_manager.all()
-        return super().dispatch(request, *args, **kwargs)
-
-    context_object_name = 'product'
-    template_name = 'shop/product/detail.html'
-    slug_url_kwarg = 'slug'
-
-
+    def get_context_data(self, **kwargs):
+        if isinstance(self.get_object(), Category):
+            model = self.CATEGORY_SLUG2PRODUCT_MODEL[self.get_object().slug]
+            context = super().get_context_data(**kwargs)
+            context['category_products'] = model.objects.all()
+            return context
+        context = super().get_context_data(**kwargs)
+        return context

@@ -4,17 +4,18 @@
     Кубик | Спецодежда
 {% endblock %}
 {% block content %}
-<body>
 <div class="app">
   <div class="main">
     <div class="main__picture">
-      <img class="picture" src="{% static "image/main-picture.jpg" %}" alt="picture">
-      <img class="picture picture__mobile" src="{% static "image/main-pictureV2.jpg" %}" alt="picture">
-      <div class="text">
-        <h1 class="text__name">Кубик — это многогранность</h1>
-        <p>
-          Мы успешная компания на российском рынке спецодежды 30 лет опыта поставок спецодежды и других товаров во все точки России. Мы растем и развиваемся, расширяем клиентскую базу. Все наши клиенты работают с нами снова и снова, становясь постоянными покупателями.
-        </p>
+      <div class="text body-size">
+        <div class="text__margin">
+          <h1 class="text__name">Кубик — это многогранность</h1>
+          <p class="text__description">
+            Мы успешная компания на российском рынке спецодежды 30 лет опыта поставок спецодежды и других товаров во все
+            точки России. Мы растем и развиваемся, расширяем клиентскую базу. Все наши клиенты работают с нами снова и
+            снова, становясь постоянными покупателями.
+          </p>
+        </div>
       </div>
     </div>
     <div class="main__description main__margin body-size">
@@ -80,9 +81,21 @@
       </div>
       <div class="main__why_grid main__bd-t main__bd-b">
         <p class="main__h3">Доставка</p>
-        <p class="main__text">
+        <div class="main__text">
           Доставляем заказы в короткие сроки и любым удобным для вас способом, как по Москве так и по всей России.
-        </p>
+          <a href="" class="main__text_detail">Подробнее
+            <svg width="7" height="7" viewBox="0 0 12 14" fill="3f3f3f" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0)">
+                <path d="M9.31641 12.3667L3.94974 7L9.31641 1.63333L7.68307 -7.13953e-08L0.683073 7L7.68307 14L9.31641 12.3667Z" fill="inherit"/>
+              </g>
+              <defs>
+                <clipPath id="clip0">
+                  <rect width="14" height="12" fill="white" transform="translate(12) rotate(90)"/>
+                </clipPath>
+              </defs>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="main__color">

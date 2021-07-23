@@ -9,7 +9,7 @@
 <body>
     <div class="block__sidebar_phone">
         <div class="container sidebar__category">
-            <p>Спецодежда</p>
+            <p>{{ category.name }}</p>
         </div>
         <div class="sidebar__list">
             <button class="sidebar__sort_phone">
@@ -23,7 +23,7 @@
 
     <div class="container block__sidebar">
         <div class="sidebar__category">
-            <p>Спецодежда</p>
+            <p>{{ category.name }}</p>
         </div>
         <ul class="sidebar__list">
             <li class="sidebar__filter">
@@ -33,80 +33,109 @@
                     </svg>
                 </p>
                 <ul class="sidebar__list_filter">
-                    <ul class="sidebar__list_filter_first">
-                        <p class="filter_first_one-head">
-                            Защитные свойства
-                            <svg class="filter_first_one-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
-                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
-                            </svg>
-                        </p>
-                        <ul class="filter_first_one-content filter">
-                            <li id="f1-1">Кислоты</li>
-                            <li id="f1-2">Вредные биологические факторы</li>
-                            <li id="f1-3">Искры, брызги расплавленного металла</li>
-                            <li id="f1-4">Общие производственные загрязнения</li>
-                            <li id="f1-5">Тепловое излучение</li>
-                            <li id="f1-6">Вибрация</li>
-                            <li id="f1-7">Нагретые поверхности</li>
-                            <li id="f1-8">Статическое электричество</li>
-                        </ul>
-                    </ul>
-                    <ul class="sidebar__list_filter_second">
-                        <p class="filter_first_two-head">    
-                            Комплектность
-                            <svg class="filter_first_two-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
-                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
-                            </svg>
-                        </p>
-                        <ul class="filter_first_two-content filter">
-                            <li id="f2-1">Куртка</li>
-                            <li id="f2-2">Брюки</li>
-                            <li id="f2-3">Полукомбинезон</li>
-                            <li id="f2-4">Комбинезон</li>
-                            <li id="f2-5">Жилет</li>
-                            <li id="f2-6">Халат</li>
-                            <li id="f2-7">Костюм</li>
-                        </ul>
-                    </ul>
-                    <ul class="sidebar__list_filter_third">
-                        <p class="filter_first_four-head">
-                            Состав
-                            <svg class="filter_first_four-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
-                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
-                            </svg>
-                        </p>
-                        <ul class="filter_first_four-content filter">
-                            <li id="f3-1">65%ПЭ/35%ХБ</li>
-                            <li id="f3-2">80%ХБ/20%ПЭ,антист.нить</li>
-                            <li id="f3-3">95%ХБ/5%ПА, антистатическая нить</li>
-                            <li id="f3-4">100% ПЭ</li>
-                            <li id="f3-5">100% ХБ</li>
-                            <li id="f3-6">23%ХБ 77%ПЭ</li>
-                            <li id="f3-7">53%ХБ 47%ПЭ</li>
-                            <li id="f3-8">35%ХБ 65%ПЭ</li>
-                            <li id="f3-9">33%ХБ 67%ПЭ</li>
-                            <li id="f3-10">60%ХБ/40%ПЭ</li>
-                            <li id="f3-11">80%ХБ/20%ПЭ</li>
-                            <li id="f3-12">20%ХБ/80%ПЭ</li>
-                            <li id="f3-13">51%ХБ 49%ПЭ</li>
-                            <li id="f3-14">100% ПА</li>
-                            <li id="f3-15">80%ПЭ/20%ХБ</li>
-                        </ul>
-                    </ul>
-                    <ul class="sidebar__list_filter_fourth">
-                        <p class="filter_first_three-head"> 
-                            Класс защиты
-                            <svg class="filter_first_three-button" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
-                                <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
-                            </svg>
-                        </p>
-                        <ul class="filter_first_three-content filter">
-                            <li id="f4-1">2  класс</li>
-                            <li id="f4-2">3</li>
-                            <li id="f4-3">1</li>
-                            <li id="f4-4">1-2</li>
-                        </ul>
-                    </ul>
+                    {% if product.category.slug == 'summer_workwear' %}
+                        {% include 'shop/product/summer_workwear_filter.html' %}
+                    {% elif product.category.slug == 'winter_workwear' %}
+                        {% include 'shop/product/winter_workwear_filter.html' %}
+                    {% elif product.category.slug == 'medical_workwear' %}
+                        {% include 'shop/product/medical_workwear_filter.html' %}
+                    {% elif product.category.slug == 'clothing_for_the_service_sector' %}
+                        {% include 'shop/product/clothing_for_the_service_sector_filter.html' %}
+                    {% elif product.category.slug == 'protective_clothing_of_security_structures' %}
+                        {% include 'shop/product/protective_clothing_of_security_structures_filter.html' %}
+                    {% elif product.category.slug == 'special_workwear' %}
+                        {% include 'shop/product/special_workwear_filter.html' %}
+                    {% elif product.category.slug == 'signal_workwear' %}
+                        {% include 'shop/product/signal_workwear_filter.html' %}
+                    {% elif product.category.slug == 'protective_protective_workwear' %}
+                        {% include 'shop/product/protective_protective_workwear_filter.html' %}
+                    {% elif product.category.slug == 'clothing_for_hunting_and_fishing' %}
+                        {% include 'shop/product/clothing_for_hunting_and_fishing_filter.html' %}
+                    {% elif product.category.slug == 'knitwearg' %}
+                        {% include 'shop/product/knitwearg_filter.html' %}
+                    {% elif product.category.slug == 'hats' %}
+                        {% include 'shop/product/hats_filter.html' %}
+                    {% elif product.category.slug == 'summer_shoes' %}
+                        {% include 'shop/product/summer_shoes_filter.html' %}
+                    {% elif product.category.slug == 'insulated_shoes' %}
+                        {% include 'shop/product/insulated_shoes_filter.html' %}
+                    {% elif product.category.slug == 'special_insulated_shoes' %}
+                        {% include 'shop/product/special_insulated_shoes_filter.html' %}
+                    {% elif product.category.slug == 'pvc_rubber_shoes' %}
+                        {% include 'shop/product/pvc_rubber_shoes_filter.html' %}
+                    {% elif product.category.slug == 'casual_walking_shoes' %}
+                        {% include 'shop/product/casual_walking_shoes_filter.html' %}
+                    {% elif product.category.slug == 'medical_shoes' %}
+                        {% include 'shop/product/medical_shoes_filter.html' %}
+                    {% elif product.category.slug == 'medical_supplies' %}
+                        {% include 'shop/product/medical_supplies.html' %}
+                    {% elif product.category.slug == 'head_and_face_protection_products' %}
+                        {% include 'shop/product/head_and_face_protection_products_filter.html' %}
+                    {% elif product.category.slug == 'means_of_protection_of_the_organs_of_vision' %}
+                        {% include 'shop/product/means_of_protection_of_the_organs_of_vision_filter.html' %}
+                    {% elif product.category.slug == 'protective_equipment_during_welding_operations' %}
+                        {% include 'shop/product/protective_equipment_during_welding_operations_filter.html' %}
+                    {% elif product.category.slug == 'hearing_protection_equipment' %}
+                        {% include 'shop/product/hearing_protection_equipment_filter.html' %}
+                    {% elif product.category.slug == 'respiratory_protection_equipment' %}
+                        {% include 'shop/product/respiratory_protection_equipment_filter.html' %}
+                    {% elif product.category.slug == 'protective_equipment_during_highrise_works' %}
+                        {% include 'shop/product/protective_equipment_during_highrise_works_filter.html' %}
+                    {% elif product.category.slug == 'clothing_with_limited_service_life' %}
+                        {% include 'shop/product/clothing_with_limited_service_life_filter.html' %}
+                    {% elif product.category.slug == 'dielectric_safety_devices' %}
+                        {% include 'shop/product/dielectric_safety_devices_filter.html' %}
+                    {% elif product.category.slug == 'knitted_gloves' %}
+                        {% include 'shop/product/knitted_gloves_filter.html' %}
+                    {% elif product.category.slug == 'wool_blend_gloves' %}
+                        {% include 'shop/product/wool_blend_gloves_filter.html' %}
+                    {% elif product.category.slug == 'split_gloves_combined' %}
+                        {% include 'shop/product/split_gloves_combined_filter.html' %}
+                    {% elif product.category.slug == 'kragi_vachegi' %}
+                        {% include 'shop/product/kragi_vachegi_filter.html' %}
+                    {% elif product.category.slug == 'specialized_gloves' %}
+                        {% include 'shop/product/specialized_gloves_filter.html' %}
+                    {% elif product.category.slug == 'household_gloves_disposable' %}
+                        {% include 'shop/product/household_gloves_disposable_filter.html' %}
+                    {% elif product.category.slug == 'working_gloves' %}
+                        {% include 'shop/product/working_gloves_filter.html' %}
+                    {% elif product.category.slug == 'insulated_mittens' %}
+                        {% include 'shop/product/insulated_mittens_filter.html' %}
+                    {% elif product.category.slug == 'medical_supplies' %}
+                        {% include 'shop/product/medical_supplies_filter.html' %}
+                    {% elif product.category.slug == 'dermatological_agents' %}
+                        {% include 'shop/product/dermatological_agents_filter.html' %}
+                    {% elif product.category.slug == 'technical_fabrics' %}
+                        {% include 'shop/product/technical_fabrics_filter.html' %}
+                    {% elif product.category.slug == 'detergents_and_household_chemicals' %}
+                        {% include 'shop/product/detergents_and_household_chemicals_filter.html' %}
+                    {% elif product.category.slug == 'firefighting_equipment_fire_extinguishers' %}
+                        {% include 'shop/product/firefighting_equipment_fire_extinguishers_filter.html' %}
+                    {% elif product.category.slug == 'protective_equipment' %}
+                        {% include 'shop/product/protective_equipment_combined_filter.html' %}
+                    {% elif product.category.slug == 'household_goods' %}
+                        {% include 'shop/product/household_goods_filter.html' %}
+                    {% elif product.category.slug == 'snow_removal_equipment' %}
+                        {% include 'shop/product/snow_removal_equipment_filter.html' %}
+                    {% elif product.category.slug == 'gardening_tools' %}
+                        {% include 'shop/product/gardening_tools_filter.html' %}
+                    {% elif product.category.slug == 'bristle_and_brush_products' %}
+                        {% include 'shop/product/bristle_and_brush_products_filter.html' %}
+                    {% elif product.category.slug == 'bed_linen_sets' %}
+                        {% include 'shop/product/bed_linen_sets_filter.html' %}
+                    {% elif product.category.slug == 'mattresses' %}
+                        {% include 'shop/product/mattresses_filter.html' %}
+                    {% elif product.category.slug == 'blankets' %}
+                        {% include 'shop/product/blankets_filter.html' %}
+                    {% elif product.category.slug == 'pillows' %}
+                        {% include 'shop/product/pillows_filter.html' %}
+                    {% elif product.category.slug == 'bedspreads_blankets' %}
+                        {% include 'shop/product/bedspreads_blankets_filter.html' %}
+                    {% elif product.category.slug == 'waffle_towels' %}
+                        {% include 'shop/product/waffle_towels_filter.html' %}
+                    {% elif product.category.slug == 'terry_towels' %}
+                        {% include 'shop/product/terry_towels_filter.html' %}
+                    {% endif %}
                 </ul>
             </li>
             <li class="sidebar__sort">
@@ -144,23 +173,26 @@
     
     <div class="container block__select-filter"></div>
     
-    <div class="container block__card container__catalog">
-        <div class="card card__product">
+    <div  class="container block__card container__catalog">
+        {% for product in category_products %}
+        <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
-                <img src="./image/1.png" alt="1">
+                <img src="{{ product.image }}" alt="1">
                 <div class="quickly__preview">
                     <p class="quickly__preview_button">Быстрый просмотр</p>
                 </div>
             </div>
             <div class="card__text">
-                <p class="card__text_name">Полукомбинезон Эдванс</p>
-                <p class="card__text_article">Артикул: Кос 034</p>
+                <p class="card__text_name">{{ product.name }}</p>
+                <p class="card__text_article">Артикул: {{ product.article }}</p>
                 <p class="card__text_low">    
-                        4 294 Р
+                    {{ product.price }} Р
                 </p>
             </div>
         </div>
+        {% endfor %}
     </div>
+    
 
     <div class="container block__page">
         <div class="page__prev">
@@ -181,9 +213,10 @@
             </svg>
         </div>
     </div>
-
+    
     <div class="block__preview">
-        <div class="container container__product_preview">
+        {% for product in category_products %}
+        <div id="{{ product.id }}" class="container container__product_preview">
             <div class="block__product_preview block__product_preview_first">
                 <div id="slider">
                     <div class="slide">
@@ -209,16 +242,16 @@
                         Закрыть
                     </div>
                     <div class="block__product_preview_second-top_name">
-                        Костюм Муравей
+                        {{ product.name }}
                     </div>
                     <div class="block__product_preview_second-top_price">
-                        2210 Р
+                        {{ product.price }} Р
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
                     <div class="block__product_preview_second-center_size">
                         <p>Размер</p>
-                        <p>с 44–46 по 60-62 Рост: 170-176, 182-188</p>
+                        <p>{{ product.size }}</p>
                     </div>
                     <div class="block__product_preview_second-center_info">
                         <p class="open-size">
@@ -244,8 +277,9 @@
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-
+    
     <div class="block__append-to-card">
         <div class="container__append-to-card">
             <div class="block__append-to-card_title">

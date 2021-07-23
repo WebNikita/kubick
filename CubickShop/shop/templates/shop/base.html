@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
-<html lang="ru">
+
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
@@ -8,24 +9,23 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" type="text/css" href="{% static "css/bundle.css" %}" />
   <title>{% block title %}Кубик{% endblock %}</title>
-  <title>base</title>
 </head>
 <body>
 <div class="app">
   <header class="header">
     <ul class="header__list body-size">
       <li class="header__menu-mobile">
-        <img class="header__menu-mobile_menu" data-button="menu-mobile" src="./image/menu.svg" alt="menu">
+        <img class="header__menu-mobile_menu" data-button="menu-mobile" src="{% static "image/menu.svg" %}" alt="menu">
         <img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo">
       </li>
       <li>
         <img class="header__logo header__mobile_none_700" src="{% static "image/Logo.jpg" %}" alt="logo">
       </li>
       <li data-hover="catalog" class="header__list_padding_first header__mobile_none">Каталог</li>
-      <li class="header__mobile_none">Новости</li>
-      <li class="header__mobile_none">Доставка и оплата</li>
-      <li class="header__mobile_none">Контакты</li>
-      <li class="header__phone-number header__mobile_none">
+      <li class="header__mobile_none"><a href="">Новости</a></li>
+      <li class="header__mobile_none"><a href="">Доставка и оплата</a></li>
+      <li class="header__mobile_none"><a href="">Контакты</a></li>
+      <li class="header__phone-number header__mobile_none footer__list_ff">
         <a href="tel:+74997358283">+7 (499) 735-82-83</a>
         <a href="tel:+74997344058">+7 (499) 734-40-58</a>
       </li>
@@ -48,38 +48,76 @@
       <ul class="header__list header__list-two body-size">
         <li data-hover="overalls" class="header__list_padding">Спецодежда
           <ul class="header__list-three">
-            <li class="header__list_main"><a href="">Спецодежда</a></li>
-            <li><a href="">Спецодежда летняя</a></li>
-            <li><a href="">Спецодежда медицинская</a></li>
-            <li><a href="">Одежда для сферы услуг</a></li>
-            <li><a href="">Спецодежда зимняя</a></li>
-            <li><a href="">Спецодежда влагозащитная</a></li>
-            <li><a href="">Одежда специальная</a></li>
-            <li><a href="">Спецодежда сигнальная</a></li>
-            <li><a href="">Спецодежда для охранных структур</a></li>
-            <li><a href="">Головные уборы</a></li>
-            <li><a href="">Трикотаж</a></li>
+            <li><a href="category/summer_workwear">Спецодежда летняя</a></li>
+            <li><a href="category/medical_workwear">Спецодежда медицинская</a></li>
+            <li><a href="category/clothing_for_the_service_sector">Одежда для сферы услуг</a></li>
+            <li><a href="category/winter_workwear">Спецодежда зимняя</a></li>
+            <li><a href="category/protective_protective_workwear">Спецодежда влагозащитная</a></li>
+            <li><a href="category/special_workwear">Одежда специальная</a></li>
+            <li><a href="category/signal_workwear">Спецодежда сигнальная</a></li>
+            <li><a href="category/protective_clothing_of_security_structures">Спецодежда для охранных структур</a></li>
+            <li><a href="category/hats">Головные уборы</a></li>
+            <li><a href="category/knitwearg">Трикотаж</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Обувь
           <ul class="header__list-three">
-            <li class="header__list_main"><a href="">Спецодежда</a></li>
-            <li><a href="">Спецодежда летняя</a></li>
-            <li><a href="">Спецодежда медицинская</a></li>
-            <li><a href="">Одежда для сферы услуг</a></li>
-            <li><a href="">Спецодежда зимняя</a></li>
-            <li><a href="">Спецодежда влагозащитная</a></li>
-            <li><a href="">Одежда специальная</a></li>
-            <li><a href="">Спецодежда сигнальная</a></li>
-            <li><a href="">Спецодежда для охранных структур</a></li>
-            <li><a href="">Головные уборы</a></li>
-            <li><a href="">Трикотаж</a></li>
+            <li><a href="category/summer_shoes">Обувь летняя,демисезонная</a></li>
+            <li><a href="category/insulated_shoes">Обувь утепленная</a></li>
+            <li><a href="category/special_insulated_shoes">Обувь специальная, утепленная</a></li>
+            <li><a href="category/pvc_rubber_shoes">Обувь резиновая ПВХ</a></li>
+            <li><a href="category/casual_walking_shoes">Обувь повседневная, прогулочная</a></li>
+            <li><a href="category/medical_shoes">Обувь медицинская</a></li>
+            <li><a href="category/shoe_accessories">Аксессуары для обуви</a></li>
           </ul>
         </li>
-        <li class="header__list_padding">Средства индивидуальной защиты</li>
-        <li class="header__list_padding">Защита рук</li>
-        <li class="header__list_padding">Постельные принадлежности</li>
-        <li class="header__list_padding">Инструменты и хоз. инвентарь</li>
+        <li data-hover="overalls" class="header__list_padding">Средства индивидуальной защиты
+          <ul class="header__list-three">
+            <li><a href="category/head_and_face_protection_products">Средства защиты головы и лица</a></li>
+            <li><a href="category/means_of_protection_of_the_organs_of_vision">Средства защиты органов зрения</a></li>
+            <li><a href="category/protective_equipment_during_welding_operations">Средства защиты при проведении сварочных работ</a></li>
+            <li><a href="category/hearing_protection_equipment">Средства защиты органов слуха</a></li>
+            <li><a href="category/respiratory_protection_equipment">Средства защиты органов дыхания</a></li>
+            <li><a href="category/protective_equipment_during_highrise_works">Средства защиты при проведении высотных работ</a></li>
+            <li><a href="category/clothing_with_limited_service_life">Одежда с ограниченным сроком эксплуатации</a></li>
+            <li><a href="category/dielectric_safety_devices">Диэлектрические средства безопасности</a></li>
+          </ul>
+        </li>
+        <li data-hover="overalls" class="header__list_padding">Защита рук
+          <ul class="header__list-three">
+            <li><a href="category/knitted_gloves">Перчатки трикотажные</a></li>
+            <li><a href="category/wool_blend_gloves">Перчатки полушерстяные</a></li>
+            <li><a href="category/split_gloves_combined">Перчатки спилковые, комбинированные</a></li>
+            <li><a href="category/kragi_vachegi">Краги, вачеги</a></li>
+            <li><a href="category/specialized_gloves">Перчатки специализированные</a></li>
+            <li><a href="category/household_gloves_disposable">Перчатки хозяйственные, одноразовые</a></li>
+            <li><a href="category/working_gloves">Рукавицы рабочие</a></li>
+            <li><a href="category/insulated_mittens">Рукавицы утепленные</a></li>
+          </ul>
+        </li>
+        <li data-hover="overalls" class="header__list_padding">Постельные принадлежности
+          <ul class="header__list-three">
+            <li><a href="category/bed_linen_sets">Комплекты постельного белья</a></li>
+            <li><a href="category/mattresses">Матрасы</a></li>
+            <li><a href="category/blankets">Одеяла</a></li>
+            <li><a href="category/pillows">Подушки</a></li>
+            <li><a href="category/bedspreads_blankets">Покрывала, пледы</a></li>
+            <li><a href="category/waffle_towels">Полотенца вафельные</a></li>
+            <li><a href="category/terry_towels">Полотенца махровые</a></li>
+          </ul>
+        </li>
+        <li data-hover="overalls" class="header__list_padding">Инструменты и хоз. инвентарь
+          <ul class="header__list-three">
+            <li><a href="category/technical_fabrics">Технические ткани</a></li>
+            <li><a href="category/detergents_and_household_chemicals">Моющие средства и бытовая химия</a></li>
+            <li><a href="category/firefighting_equipment_fire_extinguishers">Противопожарные средства,огнетушители</a></li>
+            <li><a href="category/protective_equipment">Оградительные средства</a></li>
+            <li><a href="category/household_goods">Хозяйственные товары</a></li>
+            <li><a href="category/snow_removal_equipment">Снегоуборочный инвентарь</a></li>
+            <li><a href="category/gardening_tools">Садово-огородный инвентарь</a></li>
+            <li><a href="category/bristle_and_brush_products">Щетинно щеточные изделия</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="header__background"></div>
     </div>
@@ -90,8 +128,12 @@
       Закрыть
     </div>
     <ul class="list">
-      <li class="list__li">Новости</li>
-      <li class="list__li">Контакты</li>
+      <a href="">
+        <li class="list__li">Новости</li>
+      </a>
+      <a href="">
+        <li class="list__li">Контакты</li>
+      </a>
       <li>
         <p data-button="list_2" class="list__li">Cпецодежда</p>
         <ul class="list_2">
@@ -99,25 +141,108 @@
             <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
             Назад
           </li>
-          <li class="list__li_2"><a href="">Спецодежда летняя</a></li>
-          <li class="list__li_2"><a href="">Спецодежда медицинская</a></li>
-          <li class="list__li_2"><a href="">Одежда для сферы услуг</a></li>
-          <li class="list__li_2"><a href="">Спецодежда зимняя</a></li>
-          <li class="list__li_2"><a href="">Спецодежда влагозащитная</a></li>
-          <li class="list__li_2"><a href="">Одежда специальная</a></li>
-          <li class="list__li_2"><a href="">Спецодежда сигнальная</a></li>
-          <li class="list__li_2"><a href="">Спецодежда для охранных структур</a></li>
-          <li class="list__li_2"><a href="">Головные уборы</a></li>
-          <li class="list__li_2"><a href="">Трикотаж</a></li>
+          <a href="category/summer_workwear"><li class="list__li_2">Спецодежда летняя</li></a>
+          <a href="category/medical_workwear"><li class="list__li_2">Спецодежда медицинская</li></a>
+          <a href="category/clothing_for_the_service_sector"><li class="list__li_2">Одежда для сферы услуг</li></a>
+          <a href="category/winter_workwear"><li class="list__li_2">Спецодежда зимняя</li></a>
+          <a href="category/protective_protective_workwear"><li class="list__li_2">Спецодежда влагозащитная</li></a>
+          <a href="category/special_workwear"><li class="list__li_2">Одежда специальная</li></a>
+          <a href="category/signal_workwear"><li class="list__li_2">Спецодежда сигнальная</li></a>
+          <a href="category/protective_clothing_of_security_structures"><li class="list__li_2">Спецодежда для охранных структур</li></a>
+          <a href="category/hats"><li class="list__li_2">Головные уборы</li></a>
+          <a href="category/knitwearg"><li class="list__li_2">Трикотаж</li></a>
         </ul>
       </li>
-      <li class="list__li">Обувь</li>
-      <li class="list__li">Средства индивидуальной защиты</li>
-      <li class="list__li">Защита рук</li>
-      <li class="list__li">Инструменты и хоз. инвентарь</li>
-      <li class="list__li">Постельные принадлежности</li>
-      <li class="list__li">Корзина</li>
-      <li class="list__li">Доставка и оплата</li></ul>
+      <li class="list__li">
+        <p data-button="list_2" class="list__li">Обувь</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="category/summer_shoes"><li class="list__li_2">Обувь летняя,демисезонная</li></a>
+          <a href="category/insulated_shoes"><li class="list__li_2">Обувь утепленная</li></a>
+          <a href="category/special_insulated_shoes"><li class="list__li_2">Обувь специальная, утепленная</li></a>
+          <a href="category/pvc_rubber_shoes"><li class="list__li_2">Обувь резиновая ПВХ</li></a>
+          <a href="category/casual_walking_shoes"><li class="list__li_2">Обувь повседневная, прогулочная</li></a>
+          <a href="category/medical_shoes"><li class="list__li_2">Обувь медицинская</li></a>
+          <a href="category/shoe_accessories"><li class="list__li_2">Аксессуары для обуви</li></a>
+        </ul>
+      </li>
+      <li class="list__li">
+        <p data-button="list_2" class="list__li">Средства индивидуальной защиты</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="category/head_and_face_protection_products"><li class="list__li_2">Средства защиты головы и лица</li></a>
+          <a href="category/means_of_protection_of_the_organs_of_vision"><li class="list__li_2">Средства защиты органов зрения</li></a>
+          <a href="category/protective_equipment_during_welding_operations"><li class="list__li_2">Средства защиты при проведении сварочных работ</li></a>
+          <a href="category/hearing_protection_equipment"><li class="list__li_2">Средства защиты органов слуха</li></a>
+          <a href="category/respiratory_protection_equipment"><li class="list__li_2">Средства защиты органов дыхания</li></a>
+          <a href="category/protective_equipment_during_highrise_works"><li class="list__li_2">Средства защиты при проведении высотных работ</li></a>
+          <a href="category/clothing_with_limited_service_life"><li class="list__li_2">Одежда с ограниченным сроком эксплуатации</li></a>
+          <a href="category/dielectric_safety_devices"><li class="list__li_2">Диэлектрические средства безопасности</li></a>
+        </ul>
+      </li>
+      <li class="list__li">
+        <p data-button="list_2" class="list__li">Защита рук</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="category/knitted_gloves"><li class="list__li_2">Перчатки трикотажные</li></a>
+          <a href="category/wool_blend_gloves"><li class="list__li_2">Перчатки полушерстяные</li></a>
+          <a href="category/split_gloves_combined"><li class="list__li_2">Перчатки спилковые, комбинированные</li></a>
+          <a href="category/kragi_vachegi"><li class="list__li_2">Краги, вачеги</li></a>
+          <a href="category/specialized_gloves"><li class="list__li_2">Перчатки специализированные</li></a>
+          <a href="category/household_gloves_disposable"><li class="list__li_2">Перчатки хозяйственные, одноразовые</li></a>
+          <a href="category/working_gloves"><li class="list__li_2">Рукавицы рабочие</li></a>
+          <a href="category/insulated_mittens"><li class="list__li_2">Рукавицы утепленные</li></a>
+        </ul>
+      </li>
+      <li class="list__li">
+        <p data-button="list_2" class="list__li">Инструменты и хоз. инвентарь</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="category/technical_fabrics"><li class="list__li_2">Технические ткани</li></a>
+          <a href="category/detergents_and_household_chemicals"><li class="list__li_2">Моющие средства и бытовая химия</li></a>
+          <a href="category/firefighting_equipment_fire_extinguishers"><li class="list__li_2">Противопожарные средства,огнетушители</li></a>
+          <a href="category/protective_equipment"><li class="list__li_2">Оградительные средства</li></a>
+          <a href="category/household_goods"><li class="list__li_2">Хозяйственные товары</li></a>
+          <a href="category/snow_removal_equipment"><li class="list__li_2">Снегоуборочный инвентарь</li></a>
+          <a href="category/gardening_tools"><li class="list__li_2">Садово-огородный инвентарь</li></a>
+          <a href="category/bristle_and_brush_products"><li class="list__li_2">Щетинно щеточные изделия</li></a>
+        </ul>
+      </li>
+      <li class="list__li">
+        <p data-button="list_2" class="list__li">Постельные принадлежности</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="category/bed_linen_sets"><li class="list__li_2">Комплекты постельного белья</li></a>
+          <a href="category/mattresses"><li class="list__li_2">Матрасы</li></a>
+          <a href="category/blankets"><li class="list__li_2">Одеяла</li></a>
+          <a href="category/pillows"><li class="list__li_2">Подушки</li></a>
+          <a href="category/bedspreads_blankets"><li class="list__li_2">Покрывала, пледы</li></a>
+          <a href="category/waffle_towels"><li class="list__li_2">Полотенца вафельные</li></a>
+          <a href="category/terry_towels"><li class="list__li_2">Полотенца махровые</li></a>
+        </ul>
+      </li>
+      <a href="">
+        <li class="list__li">Корзина</li>
+      </a>
+      <a href="">
+        <li class="list__li">Доставка и оплата</li>
+      </a>
+    </ul>
     <div class="phone">
       <a href="tel:+74997358283">+7 (499) 735-82-83</a>
       <a href="tel:+74997344058">+7 (499) 734-40-58</a>
@@ -168,10 +293,10 @@
         <li class="footer__link footer__list footer__list_font-size_15"><a href="">Блог</a></li>
       </ul>
       <hr class="footer__line">
-      <div class="footer__link footer__list footer__list_color"><a href="">Политика конфиденциальности</a></div>
-      <div class="footer__link footer__list footer__list_color"><a href="">Публичкая оферта</a></div>
-      <div class="footer__list">
-        <p class="footer__list_color ">Дизайнено в Sixty6</p>
+      <div class="footer__link footer__list_text footer__list footer__list_color"><a href="">Политика конфиденциальности</a></div>
+      <div class="footer__link footer__list_text footer__list footer__list_color"><a href="">Публичкая оферта</a></div>
+      <div class="footer__list footer__list_text_2 footer__list_margin footer__list_margin">
+        <p class="footer__list_color">Дизайнено в Sixty6</p>
         <p class="footer__list_color">Программирование Yagoodco</p>
       </div>
     </div>
@@ -202,8 +327,7 @@
       </div>
     </div>
   </footer>
-</div>	
+</div>
 </body>
 <script type="text/javascript" src="{% static "js/bundle.js" %}"></script>
-<script type="text/javascript" src="{% static "js/bundle.js.map" %}"></script>
 </html>
