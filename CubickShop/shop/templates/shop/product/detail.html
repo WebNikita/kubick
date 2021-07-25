@@ -6,21 +6,11 @@
     <div class="container container__product_preview">
         <div class="block__product_preview block__product_preview_first">
             <div id="slider">
-                <div class="slide">
-                    <img src="./image/1.png" alt="">
-                </div>
-                <div class="slide">
-                    <img src="./image/2.png" alt="">
-                </div>
-                <div class="slide">
-                    <img src="./image/1.png" alt="">
-                </div>
-                <div class="slide">
-                    <img src="./image/1.png" alt="">
-                </div>
-                <div class="slide">
-                    <img src="./image/3.png" alt="">
-                </div>
+                {% for image in product.images.all %}
+                    <div class="slide">
+                        <img src="{{ image.image.url }}" alt="">
+                    </div>
+                {% endfor %}
             </div>
         </div>
         <div class="block__product_preview block__product_preview_second">
@@ -45,14 +35,14 @@
                         Таблица размеров
                     </p>
                 </div>
-                <div class="block__product_preview_second-center_choice">
+                <!-- <div class="block__product_preview_second-center_choice">
                     <p class="choice-size">
                         Выбрать размер
                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
                             <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
                         </svg>
                     </p>
-                </div>
+                </div> -->
             </div>
             <div class="block__product_preview_second-bottom">
                 <div class="block__product_preview_second-bottom_counter">
@@ -206,17 +196,17 @@
             {% include 'shop/product/terry_towels_specification.html' %}
         {% endif %}
     </div>
-    <div class="block__append-to-card">
+    <!-- <div class="block__append-to-card">
         <div class="container__append-to-card">
             <div class="block__append-to-card_title">
                 <p>
-                    Выберите размер
+                    Выберите кол-во
                 </p>
                 <p class="close">
                     Закрыть
                 </p>
-            </div>
-            <div class="counter_block">
+            </div> -->
+            <!-- <div class="counter_block">
                 <div class="block__append-to-card_counter">
                     <div class="counter_size">
                         88-92 / 170-176
@@ -286,7 +276,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="block__size">
         <div class="container__size">

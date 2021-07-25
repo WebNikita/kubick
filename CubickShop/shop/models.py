@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.urls import reverse
 
 
@@ -23,7 +24,8 @@ class All_products:
 
 def get_product_url(obj,viewname):
     ct_model = obj.__class__.meta.model_name
-    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
+    id = obj.__class__.meta.id
+    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug, 'id': id})
 
 
 class Category(models.Model):
@@ -92,8 +94,11 @@ class Gallery(models.Model):
         verbose_name = 'Фотографии товара'
         verbose_name_plural = 'Фотографии товара'
 
-    image = models.ImageField(upload_to='gallproducts/%Y/%m/%d', verbose_name='Фото')
+    image = models.ImageField(upload_to='products/%Y/%m/%d', verbose_name='Фото')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')
+
+    def get_urls_to_img(self):
+        return self.image
 
 
 class Summer_workwear(Product):
@@ -870,3 +875,31 @@ class Terry_towels(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
+
+
+class CartProduct(models.Model):
+
+    cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE, related_name='related_products')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    qty = models.PositiveIntegerField(default=1)
+    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
+
+    def __str__(self):
+        return "Продукт: {} (для корзины)".format(self.content_object.title)
+
+    def save(self, *args, **kwargs):
+        self.final_price = self.qty * self.content_object.price
+        super().save(*args, **kwargs)
+
+
+class Cart(models.Model):
+
+    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
+    total_products = models.PositiveIntegerField(default=0)
+    final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая цена')
+    in_order = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id)
