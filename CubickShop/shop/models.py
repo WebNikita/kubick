@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 
@@ -24,9 +22,10 @@ class All_products:
 
 
 def get_product_url(obj,viewname):
-    ct_model = obj.__class__.meta.model_name
-    id = obj.__class__.meta.id
-    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug, 'id': id})
+    print(viewname)
+    ct_model = obj.__class__._meta.model_name
+    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
+
 
 
 class Category(models.Model):
@@ -81,8 +80,8 @@ class Product(models.Model):
                           default=MALE,
                           verbose_name='Пол')
     
-    def get_absolute_url(self):
-        return reverse('shop:product_detail', args=[self.id, self.slug])
+    # def get_absolute_url(self):
+    #     return get_product_url(self, 'shop:product_detail')
     
     def __str__(self):
         return self.name
@@ -101,63 +100,6 @@ class Gallery(models.Model):
     def get_urls_to_img(self):
         return self.image
 
-User = get_user_model()
-
-class CartProduct(models.Model):
-
-    cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE, related_name='related_products')
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
-    qty = models.PositiveIntegerField(default=1)
-    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
-
-    def __str__(self):
-        return "Продукт: {} (для корзины)".format(self.content_object.title)
-
-    def save(self, *args, **kwargs):
-        self.final_price = self.qty * self.content_object.price
-        super().save(*args, **kwargs)
-
-
-class Cart(models.Model):
-
-
-    owner = models.ForeignKey('Customer', null=True, verbose_name='Владелец', on_delete=models.CASCADE)
-    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart')
-    total_products = models.PositiveIntegerField(default=0)
-    final_price = models.DecimalField(max_digits=9, default=0, decimal_places=2, verbose_name='Общая цена')
-    in_order = models.BooleanField(default=False)
-    for_anonymous_user = models.BooleanField(default=False)
-
-    def __str__(self):
-        return str(self.id)
-
-
-class Customer(models.Model):
-
-    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
-    phone = models.CharField(max_length=20, verbose_name='Номер телефона', null=True, blank=True)
-    email = models.CharField(max_length=200, verbose_name='Почта', null=True, blank=True)
-
-    def __str__(self):
-        return "Покупатель: {} {}".format(self.user.first_name, self.user.last_name)
-
-
-class Order(models.Model):
-    
-    customer = models.ForeignKey(Customer, verbose_name='Покупатель', related_name='related_orders', on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255, verbose_name='Имя')
-    last_name = models.CharField(max_length=255, verbose_name='Фамилия')
-    phone = models.CharField(max_length=20, verbose_name='Телефон')
-    cart = models.ForeignKey(Cart, verbose_name='Корзина', on_delete=models.CASCADE, null=True, blank=True)
-    comment = models.TextField(verbose_name='Комментарий к заказу', null=True, blank=True)
-
-    def __str__(self):
-        return str(self.id)
-
-
-
 
 class Summer_workwear(Product):
 
@@ -171,7 +113,7 @@ class Summer_workwear(Product):
         verbose_name_plural = 'Летняя спецодежда'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:shop:product_detail')
 
 
 class Winter_workwear(Product):
@@ -186,7 +128,7 @@ class Winter_workwear(Product):
         verbose_name_plural = 'Зимняя спецодежда'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Medical_workwear(Product):
@@ -199,7 +141,7 @@ class Medical_workwear(Product):
         verbose_name_plural = 'Медицинская спецодежда'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Clothing_for_the_service_sector(Product):
@@ -212,7 +154,7 @@ class Clothing_for_the_service_sector(Product):
         verbose_name_plural = 'Одежда для сферы услуг'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Protective_clothing_of_security_structures(Product):
@@ -226,7 +168,7 @@ class Protective_clothing_of_security_structures(Product):
         verbose_name_plural = 'Спецодежда охранных структур'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Special_workwear(Product):
@@ -241,7 +183,7 @@ class Special_workwear(Product):
         verbose_name_plural = 'Специальная спецодежда'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Signal_workwear(Product):
@@ -257,7 +199,7 @@ class Signal_workwear(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Protective_protective_workwear(Product):
@@ -274,7 +216,7 @@ class Protective_protective_workwear(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 
@@ -290,7 +232,7 @@ class Clothing_for_hunting_and_fishing(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Knitwearg(Product):
@@ -304,7 +246,7 @@ class Knitwearg(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Hats(Product):
@@ -319,7 +261,7 @@ class Hats(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Summer_shoes(Product):
@@ -334,7 +276,7 @@ class Summer_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Insulated_shoes(Product):
@@ -350,7 +292,7 @@ class Insulated_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Special_insulated_shoes(Product):
@@ -366,7 +308,7 @@ class Special_insulated_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class PVC_rubber_shoes(Product):
@@ -382,7 +324,7 @@ class PVC_rubber_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Casual_walking_shoes(Product):
@@ -397,7 +339,7 @@ class Casual_walking_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Medical_shoes(Product):
@@ -412,7 +354,7 @@ class Medical_shoes(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Shoe_accessories(Product):
@@ -424,10 +366,9 @@ class Shoe_accessories(Product):
         verbose_name = 'Аксессуары для обуви'
         verbose_name_plural = 'Аксессуары для обуви'
 
-    
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Head_and_face_protection_products(Product):
@@ -445,7 +386,7 @@ class Head_and_face_protection_products(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Means_of_protection_of_the_organs_of_vision(Product):
@@ -463,7 +404,7 @@ class Means_of_protection_of_the_organs_of_vision(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Protective_equipment_during_welding_operations(Product):
@@ -481,7 +422,7 @@ class Protective_equipment_during_welding_operations(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Hearing_protection_equipment(Product):
@@ -498,7 +439,7 @@ class Hearing_protection_equipment(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Respiratory_protection_equipment(Product):
@@ -516,7 +457,7 @@ class Respiratory_protection_equipment(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Protective_equipment_during_highrise_works(Product):
@@ -534,7 +475,7 @@ class Protective_equipment_during_highrise_works(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Clothing_with_limited_service_life(Product):
@@ -550,7 +491,7 @@ class Clothing_with_limited_service_life(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Dielectric_safety_devices(Product):
@@ -562,7 +503,7 @@ class Dielectric_safety_devices(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 
@@ -580,7 +521,7 @@ class Knitted_gloves(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:shop:product_detail')
 
 
 class Wool_blend_gloves(Product):
@@ -599,7 +540,7 @@ class Wool_blend_gloves(Product):
         verbose_name_plural = 'Перчатки полушерстяные'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Split_gloves_combined(Product):
@@ -615,7 +556,7 @@ class Split_gloves_combined(Product):
         verbose_name_plural = 'Перчатки спилковые, комбинированные'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Kragi_vachegi(Product):
@@ -633,7 +574,7 @@ class Kragi_vachegi(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Specialized_gloves(Product):
@@ -650,7 +591,7 @@ class Specialized_gloves(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Household_gloves_disposable(Product):
@@ -665,7 +606,7 @@ class Household_gloves_disposable(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Working_gloves(Product):
@@ -684,7 +625,7 @@ class Working_gloves(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Insulated_mittens(Product):
@@ -701,7 +642,7 @@ class Insulated_mittens(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Medical_supplies(Product):
@@ -715,7 +656,7 @@ class Medical_supplies(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Dermatological_agents(Product):
@@ -729,7 +670,7 @@ class Dermatological_agents(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Technical_fabrics(Product):
@@ -743,7 +684,7 @@ class Technical_fabrics(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Detergents_and_household_chemicals(Product):
@@ -757,7 +698,7 @@ class Detergents_and_household_chemicals(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Firefighting_equipment_fire_extinguishers(Product):
@@ -771,7 +712,7 @@ class Firefighting_equipment_fire_extinguishers(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Protective_equipment(Product):
@@ -785,7 +726,7 @@ class Protective_equipment(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Household_goods(Product):
@@ -799,7 +740,7 @@ class Household_goods(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Snow_removal_equipment(Product):
@@ -813,7 +754,7 @@ class Snow_removal_equipment(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Gardening_tools(Product):
@@ -827,7 +768,7 @@ class Gardening_tools(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Bristle_and_brush_products(Product):
@@ -841,7 +782,7 @@ class Bristle_and_brush_products(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Bed_linen_sets(Product):
@@ -854,7 +795,7 @@ class Bed_linen_sets(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Mattresses(Product):
@@ -867,7 +808,7 @@ class Mattresses(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Blankets(Product):
@@ -880,7 +821,7 @@ class Blankets(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Pillows(Product):
@@ -893,7 +834,7 @@ class Pillows(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Bedspreads_blankets(Product):
@@ -906,7 +847,7 @@ class Bedspreads_blankets(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Waffle_towels(Product):
@@ -919,7 +860,7 @@ class Waffle_towels(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Terry_towels(Product):
@@ -932,7 +873,7 @@ class Terry_towels(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 

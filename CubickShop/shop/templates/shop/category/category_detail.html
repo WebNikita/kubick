@@ -177,13 +177,13 @@
         {% for product in category_products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
-                <img src="{{ product.image.url }}" alt="1">
+                <img src="" alt="1">
                 <div class="quickly__preview">
                     <p class="quickly__preview_button">Быстрый просмотр</p>
                 </div>
             </div>
             <div class="card__text">
-                <p class="card__text_name">{{ product.name }}</p>
+                <a href="{{ product.get_absolute_url }}"><p class="card__text_name">{{ product.name }}</p></a>
                 <p class="card__text_article">Артикул: {{ product.article }}</p>
                 <p class="card__text_low">    
                     {{ product.price }} Р

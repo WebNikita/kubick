@@ -3,6 +3,8 @@ from django.views.generic import DetailView, View
 from django.http import HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
 
+from cart.forms import CartAddProductForm
+
 from .mixins import CategoryDetailMixin
 
 
@@ -22,7 +24,7 @@ from .models import Dermatological_agents, Technical_fabrics, Detergents_and_hou
 from .models import Firefighting_equipment_fire_extinguishers, Protective_equipment, Household_goods
 from .models import Snow_removal_equipment, Gardening_tools, Bristle_and_brush_products
 from .models import Bed_linen_sets, Mattresses, Blankets, Pillows, Bedspreads_blankets
-from .models import Waffle_towels, Terry_towels, Gallery, CartProduct, Cart, Customer, Order
+from .models import Waffle_towels, Terry_towels, Gallery
 
 
 
@@ -112,43 +114,6 @@ class ProductDetailView(DetailView):
         context['ct_model'] = self.model._meta.model_name
         return context
     
-class AddToCartView(View):
-
-    def get(self, request, *args, **kwargs):
-        ct_model = kwargs.get('ct_model')
-        product_slug = kwargs.get('slug')
-        customer = Customer.objects.get(user=request.user)
-        cart = Cart.objects.get(owner=customer, in_order=False)
-        content_type = ContentType.objects.get(model=ct_model)
-        product = content_type.model_class().objects.get(slug=product_slug)
-        cart_product, created = CartProduct.objects.get_or_create(
-            user = cart.owner, cart=cart, content_object=product, object_id=product.id, final_price=product.price
-        )
-        cart.products.add(cart_product)
-        return HttpResponseRedirect('/cart/')
-
-
-class DeleteFromCartView(View):
-
-    def get(self, request, *args, **kwargs):
-        ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
-        content_type = ContentType.objects.get(model=ct_model)
-        product = content_type.model_class().objects.get(slug=product_slug)
-        cart_product = CartProduct.objects.get(
-            user=self.cart.owner, cart=self.cart, content_type=content_type, object_id=product.id
-        )
-        self.cart.products.remove(cart_product)
-        cart_product.delete()
-        recalc_cart(self.cart)
-        messages.add_message(request, messages.INFO, "Товар успешно удален")
-        return HttpResponseRedirect('/cart/')
-
-
-class CartView(View):
-
-    def get(self, request, *args, **kwargs):
-        return render(request, 'cart/detail.html')
-
 
 
     
