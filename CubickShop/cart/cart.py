@@ -16,6 +16,7 @@ class Cart(object):
     def add(self, product, quantity=1, update_quantity=False):
         """Добавление товара в корзину или обновление его количества."""
         product_id = str(product.id)
+        print(product_id)
         if product_id not in self.cart:
             self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
         if update_quantity:
@@ -35,8 +36,20 @@ class Cart(object):
             del self.cart[product_id]
         self.save()
     
-    def __iter__(self):
-        """Проходим по товарам корзины и получаем соответствующие объекты Product."""
+    # def __iter__(self):
+    #     """Проходим по товарам корзины и получаем соответствующие объекты Product."""
+    #     product_ids = self.cart.keys()
+    #     # Получаем объекты модели Product и передаем их в корзину.
+    #     products = Product.objects.filter(id__in=product_ids)
+    #     cart = self.cart.copy()
+    #     for product in products:
+    #         cart[str(product.id)]['product'] = product
+    #     for item in cart.values():
+    #         item['price'] = Decimal(item['price'])
+    #         item['total_price'] = item['price'] * item['quantity']
+    #     yield item
+    
+    def get_cart_info(self):
         product_ids = self.cart.keys()
         # Получаем объекты модели Product и передаем их в корзину.
         products = Product.objects.filter(id__in=product_ids)
@@ -46,13 +59,16 @@ class Cart(object):
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
-        yield item
+        return cart
     
     def __len__(self):
         """Возвращает общее количество товаров в корзине."""
         return sum(item['quantity'] for item in self.cart.values())
     
     def get_total_price(self):
+        print(self.cart)
+        print(Decimal(item['price']) * item['quantity']
+            for item in self.cart.values())
         return sum(
             Decimal(item['price']) * item['quantity']
             for item in self.cart.values()

@@ -7,14 +7,12 @@ from .forms import CartAddProductForm
 
 @require_GET
 def cart_add(request, *args,**kwargs):
-    print(kwargs)
     ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
     cart = Cart(request)
     content_type = ContentType.objects.get(model=ct_model)
     product = content_type.model_class().objects.get(slug=product_slug)
     cart_product = get_object_or_404(Product, id=product.id)
-    cart.add(product=cart_product)
-    print(cart)
+    cart.add(product=cart_product, quantity=1)
     return redirect('cart:cart_detail')
 
 def cart_remove(request, product_id):
@@ -24,5 +22,6 @@ def cart_remove(request, product_id):
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
-    cart = Cart(request)
-    return render(request, 'cart/detail.html', {'cart': cart})
+    cart = Cart(request).get_cart_info()
+    total_price = Cart(request).get_total_price()
+    return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price})

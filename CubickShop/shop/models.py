@@ -80,8 +80,8 @@ class Product(models.Model):
                           default=MALE,
                           verbose_name='Пол')
     
-    # def get_absolute_url(self):
-    #     return get_product_url(self, 'shop:product_detail')
+    def get_absolute_url(self):
+        return get_product_url(self, 'shop:product_detail')
     
     def __str__(self):
         return self.name
@@ -113,7 +113,7 @@ class Summer_workwear(Product):
         verbose_name_plural = 'Летняя спецодежда'
 
     def get_absolute_url(self):
-        return get_product_url(self, 'shop:shop:product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Winter_workwear(Product):
