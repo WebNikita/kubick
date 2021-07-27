@@ -1,5 +1,8 @@
 from django.forms import ModelChoiceField
 from django.contrib import admin
+
+from import_export.admin import ImportExportModelAdmin
+
 from .models import Category, Product, Summer_workwear, Winter_workwear
 from .models import Medical_workwear, Clothing_for_the_service_sector, Protective_clothing_of_security_structures
 from .models import Special_workwear, Signal_workwear, Protective_protective_workwear
@@ -18,6 +21,24 @@ from .models import Snow_removal_equipment, Gardening_tools, Bristle_and_brush_p
 from .models import Bed_linen_sets, Mattresses, Blankets, Pillows, Bedspreads_blankets
 from .models import Waffle_towels, Terry_towels, Gallery
 
+from .resources import Summer_workwearResource, Winter_workwearResource
+from .resources import Medical_workwearResource, Clothing_for_the_service_sectorResource, Protective_clothing_of_security_structuresResource
+from .resources import Special_workwearResource, Signal_workwearResource, Protective_protective_workwearResource
+from .resources import Clothing_for_hunting_and_fishingResource, KnitweargResource, HatsResource
+from .resources import Summer_shoesResource, Insulated_shoesResource, Special_insulated_shoesResource
+from .resources import PVC_rubber_shoesResource, Casual_walking_shoesResource, Medical_shoesResource
+from .resources import Shoe_accessoriesResource, Head_and_face_protection_productsResource, Means_of_protection_of_the_organs_of_visionResource
+from .resources import Protective_equipment_during_welding_operationsResource, Hearing_protection_equipmentResource, Respiratory_protection_equipmentResource 
+from .resources import Protective_equipment_during_highrise_worksResource, Clothing_with_limited_service_lifeResource, Dielectric_safety_devicesResource
+from .resources import Knitted_glovesResource, Wool_blend_glovesResource, Split_gloves_combinedResource
+from .resources import Kragi_vachegiResource, Specialized_glovesResource, Household_gloves_disposableResource
+from .resources import Working_glovesResource, Insulated_mittensResource, Medical_suppliesResource
+from .resources import Dermatological_agentsResource, Technical_fabricsResource, Detergents_and_household_chemicalsResource
+from .resources import Firefighting_equipment_fire_extinguishersResource, Protective_equipmentResource, Household_goodsResource
+from .resources import Snow_removal_equipmentResource, Gardening_toolsResource, Bristle_and_brush_productsResource
+from .resources import Bed_linen_setsResource, MattressesResource, BlanketsResource, PillowsResource, Bedspreads_blanketsResource
+from .resources import Waffle_towelsResource, Terry_towelsResource
+
 
 class GalleryInline(admin.TabularInline):
     fk_name = 'product'
@@ -31,26 +52,31 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Summer_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+    
+    resource_class = Summer_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
             return ModelChoiceField(Category.objects.filter(slug='summer_workwear'))
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
 
 
 @admin.register(Winter_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Winter_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -59,12 +85,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Medical_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Medical_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -73,12 +101,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Clothing_for_the_service_sector)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Clothing_for_the_service_sectorResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -87,12 +117,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Protective_clothing_of_security_structures)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Protective_clothing_of_security_structuresResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -101,12 +133,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Special_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Special_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -115,12 +149,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Signal_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Signal_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -129,12 +165,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Protective_protective_workwear)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Protective_protective_workwearResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -143,12 +181,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Knitwearg)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = KnitweargResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -157,12 +197,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Hats)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = HatsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -171,12 +213,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Summer_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Summer_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -185,12 +229,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Insulated_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Insulated_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -199,12 +245,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Special_insulated_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Special_insulated_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -213,12 +261,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(PVC_rubber_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = PVC_rubber_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -227,12 +277,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Casual_walking_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Casual_walking_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -241,12 +293,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Medical_shoes)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Medical_shoesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -255,12 +309,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Shoe_accessories)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Shoe_accessoriesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -269,12 +325,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Head_and_face_protection_products)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Head_and_face_protection_productsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -283,12 +341,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Means_of_protection_of_the_organs_of_vision)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Means_of_protection_of_the_organs_of_visionResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -297,12 +357,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Protective_equipment_during_welding_operations)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Protective_equipment_during_welding_operationsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -311,12 +373,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Hearing_protection_equipment)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Hearing_protection_equipmentResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -326,12 +390,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Respiratory_protection_equipment)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Respiratory_protection_equipmentResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -340,12 +406,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Protective_equipment_during_highrise_works)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Protective_equipment_during_highrise_worksResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -354,12 +422,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Clothing_with_limited_service_life)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Clothing_with_limited_service_lifeResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -368,12 +438,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Dielectric_safety_devices)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Dielectric_safety_devicesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -382,12 +454,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Clothing_for_hunting_and_fishing)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Clothing_for_hunting_and_fishingResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -396,12 +470,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Knitted_gloves)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Knitted_glovesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -410,12 +486,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Wool_blend_gloves)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Wool_blend_glovesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -424,12 +502,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Split_gloves_combined)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Split_gloves_combinedResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -438,12 +518,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Kragi_vachegi)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Kragi_vachegiResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -452,12 +534,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Specialized_gloves)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Specialized_glovesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -466,12 +550,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Household_gloves_disposable)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Household_gloves_disposableResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -480,12 +566,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Working_gloves)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Working_glovesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -494,12 +582,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Insulated_mittens)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Insulated_mittensResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -508,12 +598,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Medical_supplies)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Medical_suppliesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -522,12 +614,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 #########################
 @admin.register(Dermatological_agents)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Dermatological_agentsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -536,12 +630,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Technical_fabrics)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Technical_fabricsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -550,12 +646,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Detergents_and_household_chemicals)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Detergents_and_household_chemicalsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -564,12 +662,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Firefighting_equipment_fire_extinguishers)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Firefighting_equipment_fire_extinguishersResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -578,12 +678,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Protective_equipment)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Protective_equipmentResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -592,12 +694,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Household_goods)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Household_goodsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -606,12 +710,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Snow_removal_equipment)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Snow_removal_equipmentResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -620,12 +726,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Gardening_tools)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Gardening_toolsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -634,12 +742,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Bristle_and_brush_products)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Bristle_and_brush_productsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -648,12 +758,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Bed_linen_sets)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Bed_linen_setsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -662,12 +774,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Mattresses)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = MattressesResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -676,12 +790,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Blankets)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = BlanketsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -690,12 +806,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Pillows)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = PillowsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -704,12 +822,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Bedspreads_blankets)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Bedspreads_blanketsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -718,12 +838,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Waffle_towels)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
+
+    resource_class = Waffle_towelsResource
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
@@ -732,14 +854,18 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 @admin.register(Terry_towels)
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(ImportExportModelAdmin):
     inlines = [GalleryInline,]
     list_display = ['name', 'slug', 'price', 'available']
     list_filter = ['available']
     list_editable = ['price', 'available']
     prepopulated_fields = {'slug': ('name',)}
 
+    resource_class = Terry_towelsResource
+
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
             return ModelChoiceField(Category.objects.filter(slug='terry_towels'))
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
