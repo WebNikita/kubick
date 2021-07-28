@@ -10974,8 +10974,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.quickly__preview_button').on('click', function() {
+  const ProductId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().attr('id');
+  console.log(ProductId);
   console.log('on');
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.block__preview').css('display', 'block');
+
+  const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#${ProductId}`);
+  jquery__WEBPACK_IMPORTED_MODULE_0__(BlockPreview).css('display', 'block');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '0.5');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
 });
@@ -11200,8 +11204,8 @@ const $button = jquery__WEBPACK_IMPORTED_MODULE_0__('.block__product_preview_sec
 // console.log($button);
 $button.on('click', function() {
   // console.log('on');
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card').css('display', 'block');
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '0.5');
+  // $('.block__append-to-card').css('display', 'block');
+  // $('.container').css('opacity', '0.5');
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.choice-size').on('click', function() {
@@ -11271,26 +11275,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.minus').on('click', function() {
     console.log(count);
     console.log(price);
   }
-});
-
-
-/***/ }),
-
-/***/ "./style/js/product_info.js":
-/*!**********************************!*\
-  !*** ./style/js/product_info.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-
-
-jquery__WEBPACK_IMPORTED_MODULE_0__('.button_blur').on('click', function() {
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_info').toggleClass('blur');
-  jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().toggleClass('rotate');
 });
 
 
@@ -11793,21 +11777,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_catalog_preview_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @js/catalog_preview.js */ "./style/js/catalog_preview.js");
 /* harmony import */ var _js_catalog_phone_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @js/catalog_phone.js */ "./style/js/catalog_phone.js");
 /* harmony import */ var _js_product_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @js/product.js */ "./style/js/product.js");
-/* harmony import */ var _js_product_info_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @js/product_info.js */ "./style/js/product_info.js");
-/* harmony import */ var _js_product_counter_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @js/product_counter.js */ "./style/js/product_counter.js");
-/* harmony import */ var _js_product_size_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @js/product_size.js */ "./style/js/product_size.js");
-/* harmony import */ var _js_filter_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @js/filter.js */ "./style/js/filter.js");
-/* harmony import */ var _js_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @js/header */ "./style/js/header.js");
-/* harmony import */ var _js_header_mobile__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @js/header-mobile */ "./style/js/header-mobile.js");
-/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @js/slider.js */ "./style/js/slider.js");
-/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_slider_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./index.scss */ "./index.scss");
+/* harmony import */ var _js_product_counter_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @js/product_counter.js */ "./style/js/product_counter.js");
+/* harmony import */ var _js_product_size_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @js/product_size.js */ "./style/js/product_size.js");
+/* harmony import */ var _js_filter_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @js/filter.js */ "./style/js/filter.js");
+/* harmony import */ var _js_header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @js/header */ "./style/js/header.js");
+/* harmony import */ var _js_header_mobile__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @js/header-mobile */ "./style/js/header-mobile.js");
+/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @js/slider.js */ "./style/js/slider.js");
+/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_js_slider_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./index.scss */ "./index.scss");
 
 
 
 
 
-
+// import '@js/product_info.js';
 
 
 
