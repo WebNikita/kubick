@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import DetailView, View
+from django.views.generic import DetailView, ListView
 from django.http import HttpResponseRedirect
 from django.contrib.contenttypes.models import ContentType
+from django.db.models import Q
 
 from cart.forms import CartAddProductForm
 
@@ -32,6 +33,15 @@ from .models import Waffle_towels, Terry_towels, Gallery
 def main_page(request):
     return render(request, 'shop/main.html')
 
+
+class SearchResultsView(ListView):
+    model = Product
+    template_name = 'shop/search/search_results.html'
+    def get_queryset(self): # новый
+        # query = self.request.GET.get('q')
+        # object_list = self.model.objects.filter(name__icontains=query)
+        object_list = self.model.objects.filter(Q(name__icontains='Те'))
+        return object_list
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
 

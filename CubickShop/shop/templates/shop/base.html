@@ -258,14 +258,14 @@
     <div class="footer body-size">
       <ul class="footer__block">
         <li class="footer__list_main">Каталог</li>
-        <li class="footer__list footer__link"><a href="">Мужская спецодежда</a></li>
-        <li class="footer__list footer__link"><a href="">Женская спецодежда</a></li>
-        <li class="footer__list footer__link"><a href="">Мужская обувь</a></li>
-        <li class="footer__list footer__link"><a href="">Женская обувь</a></li>
-        <li class="footer__list footer__link"><a href="">Средства индивидуальной защиты</a></li>
-        <li class="footer__list footer__link"><a href="">Иструменты и хоз. инвентарь</a></li>
-        <li class="footer__list footer__link"><a href="">Постельные принадлежности</a></li>
-        <li class="footer__list footer__link"><a href="">Дерматологические средства</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='summer_workwear' %}">Летняя спецодежда</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='winter_workwear' %}">Зимняя спецодежда</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='summer_shoes' %}">Обувь летняя</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='casual_walking_shoes' %}">Обувь повседневная</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='head_and_face_protection_products' %}">Средства защиты головы и лица</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='household_goods' %}">Иструменты и хоз. инвентарь</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='bed_linen_sets' %}">Постельные принадлежности</a></li>
+        <li class="footer__list footer__link"><a href="{% url 'shop:category_detail' slug='dermatological_agents' %}">Дерматологические средства</a></li>
       </ul>
       <ul class="footer__block">
         <li class="footer__list_main">Контакты</li>

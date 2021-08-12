@@ -177,7 +177,7 @@
         {% for product in category_products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
-                <img src="" alt="1">
+                <img src="{{ product.image.url }}" alt="1">
                 <div class="quickly__preview">
                     <p class="quickly__preview_button">Быстрый просмотр</p>
                 </div>

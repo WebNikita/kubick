@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls', namespace='cart')),
+    path('blog/', include('blog.urls', namespace='blog')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('shop.urls', namespace='shop')),
 ]
 if settings.DEBUG:
