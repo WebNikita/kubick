@@ -38,8 +38,9 @@ class SearchResultsView(ListView):
     model = Product
     template_name = 'shop/search/search_results.html'
     def get_queryset(self): # новый
-        # query = self.request.GET.get('q')
-        # object_list = self.model.objects.filter(name__icontains=query)
+        print(self.request.GET.get('q'))
+        query = self.request.GET.get('q')
+        object_list = self.model.objects.filter(name__icontains=query)
         object_list = self.model.objects.filter(Q(name__icontains='Те'))
         return object_list
 

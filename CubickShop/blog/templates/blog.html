@@ -6,18 +6,17 @@
     <div class="app">
       <div class="blog blog__margin body-size">
         <div class="blog__name blog__margin_mobile">Новости</div>
+        {% for post in posts %}
         <hr class="blog__hr">
         <div class="blog__card blog__card_line">
-          <img class="blog__none" src="./image/blog-1.jpg" alt="img">
+          <img class="blog__none" src="{% if post.img %}{{ post.img.url }}{% endif %}" alt="img">
           <div>
-            <div class="blog__card-name">Работа «ТД «Кубик» в условиях вынужденной самоизоляции</div>
-            <div class="blog__card-text">Дорогие и любимые наши клиенты!
-              Поздравляем Вас с Днем Влюблённых!
-              И не важно, отмечаете ли Вы 14 февраля или нет, мы уверены, у каждого из Вас есть люди, которых Вы любите! Рассказать о своих нежных чувствах близким — никогда не будет лишним!
-    
+            <div class="blog__card-name">{{ post.title }}</div>
+            <div class="blog__card-text">
+              {{ post.previev_text }}
             </div>
             <div class="blog__card-next">
-              <a href="">Читать далее
+              <a href="{{ post.get_absolute_url }}">Читать далее
                 <svg width="4" height="7" viewBox="0 0 4 7" fill="#3F3F3F" xmlns="http://www.w3.org/2000/svg">
                   <path
                       d="M-2.70282e-07 0.816667L2.48649 3.5L-3.56976e-08 6.18333L0.756757 7L4 3.5L0.756756 -3.30789e-08L-2.70282e-07 0.816667Z"
@@ -28,20 +27,7 @@
           </div>
         </div>
         <hr class="blog__hr">
-        <div class="blog__card">
-          <img class="blog__none" src="./image/blog-2.jpg" alt="img">
-          <div>
-            <div class="blog__card-name">С Днём Влюблённых!</div>
-            <div class="blog__card-text">Дорогие и любимые наши клиенты!
-              Поздравляем Вас с Днем Влюблённых!
-              И не важно, отмечаете ли Вы 14 февраля или нет, мы уверены, у каждого из Вас есть люди, которых Вы любите!
-              Рассказать о своих нежных чувствах близким — никогда не будет лишним!
-              Пусть в Вашей жизни Вас всегда сопровождает истинная любовь — любовь, которая придает Вам силу, дает энергию,
-              вдохновляет и радует! Пусть у Вас будет больше времени, которое Вы сможете проводить с любимыми людьми!
-            </div>
-          </div>
-        </div>
-        <hr class="blog__hr">
+        {% endfor %}
       </div>
     </div>
     </body>
