@@ -5763,6 +5763,12 @@ button {
   display: grid;
   margin-top: 70px;
   margin-bottom: 70px; }
+  .blog__img {
+    max-width: 350px;
+    max-height: 400px; }
+    .blog__img_2 {
+      max-width: 350px;
+      max-height: 185px; }
   .blog__margin {
     margin-right: auto;
     margin-left: auto; }
