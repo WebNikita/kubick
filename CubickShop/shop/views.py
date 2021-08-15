@@ -45,6 +45,7 @@ class SearchResultsView(ListView):
         query = json.loads(request.body)['name']
         print(query)
         object_list = Product.objects.filter(name__icontains=query)
+        print(object_list)
         return object_list
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
