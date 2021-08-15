@@ -11338,7 +11338,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').on('click', function(
   // объявляем метод
   const xhr = new XMLHttpRequest();
   // задаем адрес
-  const url = 'http://192.168.0.1:8000/search';
+  const url = 'http://127.0.0.1:8000/search';
   const name = document.querySelector('[data-focus="input"]');
   console.log(name.value);
   xhr.open('POST', url, true);
