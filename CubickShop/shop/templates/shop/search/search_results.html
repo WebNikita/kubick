@@ -9,7 +9,7 @@
     {% for object in object_list %}
     <div id="{{ object.id }}" class="card card__product">
         <div class="card__img">
-            <img src="{{ object.image.url }}" alt="1">
+            <img src="{% if {{ object.image }} %}{{ object.image.url }}{% endif%}" alt="1">
             <div class="quickly__preview">
                 <p class="quickly__preview_button">Быстрый просмотр</p>
             </div>

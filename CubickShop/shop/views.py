@@ -1,3 +1,5 @@
+from django.views.decorators.csrf import csrf_exempt
+import json
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
 from django.http import HttpResponseRedirect
@@ -35,13 +37,14 @@ def main_page(request):
 
 
 class SearchResultsView(ListView):
+    
     model = Product
     template_name = 'shop/search/search_results.html'
-    def get_queryset(self): # новый
-        print(self.request.GET.get('q'))
-        query = self.request.GET.get('q')
-        object_list = self.model.objects.filter(name__icontains=query)
-        object_list = self.model.objects.filter(Q(name__icontains='Те'))
+    
+    def post(self, request, format=None): # новый
+        query = json.loads(request.body)['name']
+        print(query)
+        object_list = Product.objects.filter(name__icontains=query)
         return object_list
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
