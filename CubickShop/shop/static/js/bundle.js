@@ -11077,42 +11077,49 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_fourth`).on('click', 
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.accept-filter').on('click', function() {
-  // объявляем метод
-  let filter;
-  const content = [];
-  const xhr = new XMLHttpRequest();
-  // задаем адрес
-  const url = 'http://127.0.0.1:8000/';
-  const value = document.querySelectorAll('.block__select-filter li');
-  // const ClassName = document.querySelector('');
-  // const filter;
-  // console.log(value);
-  value.forEach(function(elem) {
-    // console.log();
-    // console.log(i);
-    // console.log(i.className);
-    // console.log(i.innerText);
-    filter = {
-      'class': elem.className,
-      'value': elem.innerText,
-    };
-    // console.log(filter);
-    content.push(filter);
-    // console.log(content);
-  });
+	
 
-  // console.log(data);
+	// const name = document.querySelector('[data-focus="input"]');
+	// const form = document.querySelector('[id="search_form"]');
+	// if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
+	// 	form.submit()
+    // }
+//   // объявляем метод
+//   let filter;
+//   const content = [];
+//   const xhr = new XMLHttpRequest();
+//   // задаем адрес
+//   const url = 'http://127.0.0.1:8000/';
+//   const value = document.querySelectorAll('.block__select-filter li');
+//   // const ClassName = document.querySelector('');
+//   // const filter;
+//   // console.log(value);
+//   value.forEach(function(elem) {
+//     // console.log();
+//     // console.log(i);
+//     // console.log(i.className);
+//     // console.log(i.innerText);
+//     filter = {
+//       'class': elem.className,
+//       'value': elem.innerText,
+//     };
+//     // console.log(filter);
+//     content.push(filter);
+//     // console.log(content);
+//   });
 
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  // отправка на сервер
-  // if ($('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
-  // console.log('send');
-  // const data = JSON.stringify({ClassName: name.value});
-  const data = JSON.stringify(content);
-  xhr.send(data);
-  // console.log(xhr.status);
-  // }
+//   // console.log(data);
+
+//   xhr.open('POST', url, true);
+//   xhr.setRequestHeader('Content-Type', 'application/json');
+//   // отправка на сервер
+//   // if ($('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
+//   // console.log('send');
+//   // const data = JSON.stringify({ClassName: name.value});
+//   const data = JSON.stringify(content);
+//   xhr.send(data);
+//   // console.log(xhr.status);
+//   // }
 })
 
 
