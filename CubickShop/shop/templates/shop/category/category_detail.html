@@ -32,9 +32,11 @@
                         <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
                     </svg>
                 </p>
-                <form class="sidebar__list_filter">
+                
                     {% if category.slug == 'summer_workwear' %}
+                    <form class="sidebar__list_filter" action="{% url 'shop:filter' category.slug%}" method="get">
                         {% include 'shop/category/summer_workwear_filter.html' %}
+                    </form>
                     {% elif category.slug == 'winter_workwear' %}
                         {% include 'shop/category/winter_workwear_filter.html' %}
                     {% elif category.slug == 'medical_workwear' %}
@@ -136,7 +138,6 @@
                     {% elif category.slug == 'terry_towels' %}
                         {% include 'shop/category/terry_towels_filter.html' %}
                     {% endif %}
-                </form>
             </li>
             <li class="sidebar__sort">
                 <p style = "color: #767676;">

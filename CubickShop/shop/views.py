@@ -55,7 +55,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     slug_url_kwarg = 'slug'
 
 class FilterProductView(DetailView):
-
+    model = Category
     template_name = 'shop/category/category_detail.html'
 
     def get_queryset(self): # новый
