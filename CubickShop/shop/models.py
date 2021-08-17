@@ -521,7 +521,7 @@ class Knitted_gloves(Product):
     
 
     def get_absolute_url(self):
-        return get_product_url(self, 'shop:shop:product_detail')
+        return get_product_url(self, 'shop:product_detail')
 
 
 class Wool_blend_gloves(Product):

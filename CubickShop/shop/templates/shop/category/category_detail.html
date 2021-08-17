@@ -177,7 +177,7 @@
         {% for product in category_products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
-                <img src="{{ product.image.url }}" alt="1">
+                <img src="{% if product.image %}{{ product.image.url }}{% endif %}" alt="1">
                 <div class="quickly__preview">
                     <p class="quickly__preview_button">Быстрый просмотр</p>
                 </div>
@@ -214,27 +214,11 @@
         </div>
     </div>
     
-    <div class="block__preview">
-        {% for product in category_products %}
-        <div id="{{ product.id }}" class="container container__product_preview">
+    {% for product in category_products %}
+    <div id="tr_{{ product.id }}" class="block__preview">
+        <div class="container container__product_preview">
             <div class="block__product_preview block__product_preview_first">
-                <div id="slider">
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/2.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/3.png" alt="">
-                    </div>
-                </div>
+                <img src="{% if product.image %}{{ product.image.url }}{% endif%}" alt="">
             </div>
             <div class="block__product_preview block__product_preview_second">
                 <div class="block__product_preview_second-top">
@@ -277,8 +261,8 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
     
     <div class="block__append-to-card">
         <div class="container__append-to-card">

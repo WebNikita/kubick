@@ -10977,8 +10977,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.quickly__preview_button').on('click', func
   const ProductId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().attr('id');
   console.log(ProductId);
   console.log('on');
-
-  const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#${ProductId}`);
+  
+  const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#tr_${ProductId}`);
+  console.log(BlockPreview);
   jquery__WEBPACK_IMPORTED_MODULE_0__(BlockPreview).css('display', 'block');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '0.5');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
@@ -11015,13 +11016,15 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children('li').on('click', functi
 function check(className) {
   const Content = (className.html());
   const ID = (className.attr('id'));
+  const Class = (className.attr('class').split(' ')[0]);
+  // console.log(Class);
   if (className.hasClass('select')) {
     // console.log('on');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 30px !important;');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
     console.log('on');
     // console.log($('.block__select-filter').children('li').length>0);
-    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}">
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}" class="${Class}">
                                         ${Content}
                                           <svg class="delete-filter" xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="none" viewBox="0 0 7 7">
                                             <path fill="#767676" d="M7 .825L6.175 0 3.5 2.675.825 0 0 .825 2.675 3.5 0 6.175.825 7 3.5 4.325 6.175 7 7 6.175 4.325 3.5 7 .825z"/>
@@ -11053,7 +11056,6 @@ function check(className) {
   });
 }
 
-
 const SidebarListFilter = 'sidebar__list_filter';
 const BlockFilter = 'block__filter';
 
@@ -11072,6 +11074,46 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_third`).on('click', f
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_fourth`).on('click', function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_three`).css('display', 'block');
 });
+
+
+jquery__WEBPACK_IMPORTED_MODULE_0__('.accept-filter').on('click', function() {
+  // объявляем метод
+  let filter;
+  const content = [];
+  const xhr = new XMLHttpRequest();
+  // задаем адрес
+  const url = 'http://127.0.0.1:8000/';
+  const value = document.querySelectorAll('.block__select-filter li');
+  // const ClassName = document.querySelector('');
+  // const filter;
+  // console.log(value);
+  value.forEach(function(elem) {
+    // console.log();
+    // console.log(i);
+    // console.log(i.className);
+    // console.log(i.innerText);
+    filter = {
+      'class': elem.className,
+      'value': elem.innerText,
+    };
+    // console.log(filter);
+    content.push(filter);
+    // console.log(content);
+  });
+
+  // console.log(data);
+
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  // отправка на сервер
+  // if ($('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
+  // console.log('send');
+  // const data = JSON.stringify({ClassName: name.value});
+  const data = JSON.stringify(content);
+  xhr.send(data);
+  // console.log(xhr.status);
+  // }
+})
 
 
 /***/ }),
@@ -11335,21 +11377,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').on('click', function() {
-  // объявляем метод
-  const xhr = new XMLHttpRequest();
-  // задаем адрес
-  const url = 'http://127.0.0.1:8000/search';
+
   const name = document.querySelector('[data-focus="input"]');
-  console.log(name.value);
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  // отправка на сервер
+  const form = document.querySelector('[id="search_form"]');
+  
   if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
-    // console.log('send');
-    const data = JSON.stringify({'type': 'search', 'name': name.value});
-    xhr.send(data);
-    // console.log(xhr.status);
-  }
+		form.submit()
+	}
 })
 
 
