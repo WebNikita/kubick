@@ -43,9 +43,7 @@ class SearchResultsView(ListView):
     
     def get_queryset(self): # новый
         query = self.request.GET.get('q')
-        print(query)
         object_list = Product.objects.filter(name__icontains=query)
-        print(object_list)
         return object_list
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
@@ -56,25 +54,28 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     template_name = 'shop/category/category_detail.html'
     slug_url_kwarg = 'slug'
 
-    def filter_result(self):
-        model = Product
-        query = self.request.GET
+class FilterProductView(DetailView):
+
+    template_name = 'shop/category/category_detail.html'
+
+    def get_queryset(self): # новый
+        query = self.request.GET.get('q')
         print(query)
 
-    def get_pagination(self):
-        paginator = Paginator(self.queryset, 2)
-        page = self.request.GET.get('page')
+    # def get_pagination(self):
+    #     paginator = Paginator(self.queryset, 2)
+    #     page = self.request.GET.get('page')
 
-        try:
-            products = paginator.page(page)
-        except PageNotAnInteger:
-            products = paginator.page(1)
-        except EmptyPage:
-            products = paginator.page(paginator.num_pages)
-        
-        print(products, page)
+    #     try:
+    #         products = paginator.page(page)
+    #     except PageNotAnInteger:
+    #         products = paginator.page(1)
+    #     except EmptyPage:
+    #         products = paginator.page(paginator.num_pages)
+    #     print('!!!!!')
+    #     print(products, page)
 
-        return page, products
+    #     return page, products
 
 
 
