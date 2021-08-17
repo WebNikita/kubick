@@ -1,8 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt
-import json
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, request
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 
@@ -55,6 +55,23 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     context_object_name = 'category'
     template_name = 'shop/category/category_detail.html'
     slug_url_kwarg = 'slug'
+
+    def get_pagination(self):
+        paginator = Paginator(self.queryset, 2)
+        page = self.request.GET.get('page')
+
+        try:
+            products = paginator.page(page)
+        except PageNotAnInteger:
+            products = paginator.page(1)
+        except EmptyPage:
+            products = paginator.page(paginator.num_pages)
+        
+        print(products, page)
+
+        return page, products
+
+
 
 
 class ProductDetailView(DetailView):
