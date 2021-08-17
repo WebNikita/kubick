@@ -9,7 +9,7 @@
     {% for object in object_list %}
     <div id="{{ object.id }}" class="card card__product">
         <div class="card__img">
-            <img src="{% if {{ object.image }} %}{{ object.image.url }}{% endif%}" alt="1">
+            <img src="{% if object.image %}{{ object.image.url }}{% endif%}" alt="1">
             <div class="quickly__preview">
                 <p class="quickly__preview_button">Быстрый просмотр</p>
             </div>
@@ -25,25 +25,10 @@
     {% endfor %}
     </div>
     <div class="block__preview">
-        {% for product in object_list %}
-        <div id="{{ product.id }}" class="container container__product_preview">
+        {% for object in object_list %}
+        <div id="{{ object.id }}" class="container container__product_preview">
             <div class="block__product_preview block__product_preview_first">
                 <div id="slider">
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/2.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/1.png" alt="">
-                    </div>
-                    <div class="slide">
-                        <img src="./image/3.png" alt="">
-                    </div>
                 </div>
             </div>
             <div class="block__product_preview block__product_preview_second">
@@ -52,16 +37,16 @@
                         Закрыть
                     </div>
                     <div class="block__product_preview_second-top_name">
-                        {{ product.name }}
+                        {{ object.name }}
                     </div>
                     <div class="block__product_preview_second-top_price">
-                        {{ product.price }} Р
+                        {{ object.price }} Р
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
                     <div class="block__product_preview_second-center_size">
                         <p>Размер</p>
-                        <p>{{ product.size }}</p>
+                        <p>{{ object.size }}</p>
                     </div>
                     <div class="block__product_preview_second-center_info">
                         <p class="open-size">

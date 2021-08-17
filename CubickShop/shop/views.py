@@ -2,7 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, ListView
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 
@@ -41,8 +41,8 @@ class SearchResultsView(ListView):
     model = Product
     template_name = 'shop/search/search_results.html'
     
-    def post(self, request, format=None): # новый
-        query = json.loads(request.body)['name']
+    def get_queryset(self): # новый
+        query = self.request.GET.get('q')
         print(query)
         object_list = Product.objects.filter(name__icontains=query)
         print(object_list)

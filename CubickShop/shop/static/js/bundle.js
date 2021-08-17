@@ -11376,21 +11376,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').on('click', function() {
-  // объявляем метод
-  const xhr = new XMLHttpRequest();
-  // задаем адрес
-  const url = 'http://127.0.0.1:8000/search/';
+
   const name = document.querySelector('[data-focus="input"]');
-  console.log(name.value);
-  xhr.open('POST', url, true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  // отправка на сервер
+  const form = document.querySelector('[id="search_form"]');
+  
   if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
-    // console.log('send');
-    const data = JSON.stringify({'type': 'search', 'name': name.value});
-    xhr.send(data);
-    // console.log(xhr.status);
-  }
+		form.submit()
+	}
 })
 
 
