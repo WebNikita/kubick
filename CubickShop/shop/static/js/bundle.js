@@ -11084,6 +11084,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.accept-filter').on('click', function() {
 	// if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
 	// 	form.submit()
     // }
+	
 //   // объявляем метод
 //   let filter;
 //   const content = [];
