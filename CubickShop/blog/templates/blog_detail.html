@@ -1,0 +1,16 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+<body>
+    <div class="app">
+      <div class="blog blog__margin body-size">
+        <div class="blog__card_grid">
+          <div class="blog__card-name blog__margin_mobile">{{ post.title }}</div>
+          <div class="blog__card-text blog__margin_mobile">{{ post.previev_text }}</div>
+          <div><img class="blog__img" src="{% if post.img %}{{ post.main_img.url }}{% endif %}" alt="img"></div>
+          <div class="blog__card-text blog__margin_mobile">{{ post.body|safe}}</div>
+      </div>
+    </div>
+</body>
+{% endblock %}
