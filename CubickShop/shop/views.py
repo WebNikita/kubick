@@ -56,6 +56,11 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     template_name = 'shop/category/category_detail.html'
     slug_url_kwarg = 'slug'
 
+    def filter_result(self):
+        model = Product
+        query = self.request.GET
+        print(query)
+
     def get_pagination(self):
         paginator = Paginator(self.queryset, 2)
         page = self.request.GET.get('page')
