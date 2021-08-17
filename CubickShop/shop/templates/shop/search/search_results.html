@@ -24,12 +24,11 @@
     </div>
     {% endfor %}
     </div>
-    <div class="block__preview">
-        {% for object in object_list %}
-        <div id="{{ object.id }}" class="container container__product_preview">
+    {% for object in object_list %}
+    <div class="block__preview" id="tr_{{ object.id }}">
+        <div  class="container container__product_preview">
             <div class="block__product_preview block__product_preview_first">
-                <div id="slider">
-                </div>
+                <img src="{% if object.image %}{{ object.image.url }}{% endif%}" alt="">
             </div>
             <div class="block__product_preview block__product_preview_second">
                 <div class="block__product_preview_second-top">
@@ -72,6 +71,6 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
 {% endblock %}

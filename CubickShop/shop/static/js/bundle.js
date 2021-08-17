@@ -10977,8 +10977,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.quickly__preview_button').on('click', func
   const ProductId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().attr('id');
   console.log(ProductId);
   console.log('on');
-
-  const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#${ProductId}`);
+  
+  const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#tr_${ProductId}`);
+  console.log(BlockPreview);
   jquery__WEBPACK_IMPORTED_MODULE_0__(BlockPreview).css('display', 'block');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '0.5');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
