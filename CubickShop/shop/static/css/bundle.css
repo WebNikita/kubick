@@ -200,8 +200,12 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
-          margin-bottom: 5px;
-          cursor: pointer; }
+          margin-bottom: 5px; }
+          .block__sidebar .sidebar__list_filter ul li label {
+            cursor: pointer;
+            user-select: none; }
+            .block__sidebar .sidebar__list_filter ul li label input {
+              display: none; }
         .block__sidebar .sidebar__list_filter ul li:first-child {
           margin-top: 20px; }
         .block__sidebar .sidebar__list_filter ul li:last-child {
@@ -404,6 +408,10 @@
     list-style: none;
     margin-right: 30px;
     margin-bottom: 20px; }
+    .block__select-filter li label {
+      user-select: none; }
+      .block__select-filter li label input {
+        display: none; }
     .block__select-filter li .delete-filter:hover {
       cursor: pointer; }
 
@@ -1938,8 +1946,12 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
-          margin-bottom: 5px;
-          cursor: pointer; }
+          margin-bottom: 5px; }
+          .block__sidebar .sidebar__list_filter ul li label {
+            cursor: pointer;
+            user-select: none; }
+            .block__sidebar .sidebar__list_filter ul li label input {
+              display: none; }
         .block__sidebar .sidebar__list_filter ul li:first-child {
           margin-top: 20px; }
         .block__sidebar .sidebar__list_filter ul li:last-child {
@@ -2142,6 +2154,10 @@
     list-style: none;
     margin-right: 30px;
     margin-bottom: 20px; }
+    .block__select-filter li label {
+      user-select: none; }
+      .block__select-filter li label input {
+        display: none; }
     .block__select-filter li .delete-filter:hover {
       cursor: pointer; }
 
@@ -3502,8 +3518,12 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
-          margin-bottom: 5px;
-          cursor: pointer; }
+          margin-bottom: 5px; }
+          .block__sidebar .sidebar__list_filter ul li label {
+            cursor: pointer;
+            user-select: none; }
+            .block__sidebar .sidebar__list_filter ul li label input {
+              display: none; }
         .block__sidebar .sidebar__list_filter ul li:first-child {
           margin-top: 20px; }
         .block__sidebar .sidebar__list_filter ul li:last-child {
@@ -3706,6 +3726,10 @@
     list-style: none;
     margin-right: 30px;
     margin-bottom: 20px; }
+    .block__select-filter li label {
+      user-select: none; }
+      .block__select-filter li label input {
+        display: none; }
     .block__select-filter li .delete-filter:hover {
       cursor: pointer; }
 

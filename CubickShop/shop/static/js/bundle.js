@@ -10977,9 +10977,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.quickly__preview_button').on('click', func
   const ProductId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().attr('id');
   console.log(ProductId);
   console.log('on');
-  
+
   const BlockPreview = jquery__WEBPACK_IMPORTED_MODULE_0__(`.block__preview#tr_${ProductId}`);
-  console.log(BlockPreview);
+  console.log(BlockPreview.attr('id'));
   jquery__WEBPACK_IMPORTED_MODULE_0__(BlockPreview).css('display', 'block');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '0.5');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
@@ -11008,15 +11008,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // console.log($('.filter_first_one-content').children());
-jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children('li').on('click', function() {
-  jquery__WEBPACK_IMPORTED_MODULE_0__(this).toggleClass('select');
-  check(jquery__WEBPACK_IMPORTED_MODULE_0__(this));
+const filter = jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children();
+jquery__WEBPACK_IMPORTED_MODULE_0__(filter).children().on('click', function() {
+  if (jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().is(':checked')) {
+    // console.log('check');
+    jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().toggleClass('select');
+  } else {
+    // console.log('uncheck');
+  }
+  check(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent());
 });
 
 function check(className) {
   const Content = (className.html());
   const ID = (className.attr('id'));
-  const Class = (className.attr('class').split(' ')[0]);
+  // const Class = (className.attr('class').split(' ')[0]);
   // console.log(Class);
   if (className.hasClass('select')) {
     // console.log('on');
@@ -11024,7 +11030,7 @@ function check(className) {
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
     console.log('on');
     // console.log($('.block__select-filter').children('li').length>0);
-    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}" class="${Class}">
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}">
                                         ${Content}
                                           <svg class="delete-filter" xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="none" viewBox="0 0 7 7">
                                             <path fill="#767676" d="M7 .825L6.175 0 3.5 2.675.825 0 0 .825 2.675 3.5 0 6.175.825 7 3.5 4.325 6.175 7 7 6.175 4.325 3.5 7 .825z"/>
@@ -11048,6 +11054,7 @@ function check(className) {
     // console.log($(this).parent().attr('id'));
     const thisId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().attr('id');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children(`#${thisId}`).removeClass('select');
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children(`#${thisId}`).children().children().prop('checked', false);
     jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().remove();
     if (jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').children('li').length==0) {
       jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 130px !important;');
@@ -11076,15 +11083,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_fourth`).on('click', 
 });
 
 
-jquery__WEBPACK_IMPORTED_MODULE_0__('.accept-filter').on('click', function() {
-	
-
-	// const name = document.querySelector('[data-focus="input"]');
-	// const form = document.querySelector('[id="search_form"]');
-	// if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
-	// 	form.submit()
-    // }
-	
+// $('.accept-filter').on('click', function() {
 //   // объявляем метод
 //   let filter;
 //   const content = [];
@@ -11121,7 +11120,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.accept-filter').on('click', function() {
 //   xhr.send(data);
 //   // console.log(xhr.status);
 //   // }
-})
+// })
 
 
 /***/ }),
@@ -11385,13 +11384,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').on('click', function() {
-
   const name = document.querySelector('[data-focus="input"]');
   const form = document.querySelector('[id="search_form"]');
-  
+  // отправка на сервер
   if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
-		form.submit()
-	}
+    form.submit();
+  }
 })
 
 
