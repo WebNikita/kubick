@@ -54,13 +54,28 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     template_name = 'shop/category/category_detail.html'
     slug_url_kwarg = 'slug'
 
-class FilterProductView(DetailView):
-    model = Category
-    template_name = 'shop/category/category_detail.html'
-
     def get_queryset(self): # новый
-        query = self.request.GET.get('q')
-        print(query)
+        query = self.request.GET.dict()
+        if len(query) != 0:
+            slug = self.kwargs['slug']
+            print(self.queryset)
+            object_list = Category.get(name=slug).products
+            print(object_list)
+            return object_list
+        else:
+            print(self.queryset)
+            return self.queryset
+
+# class FilterProductView(DetailView):
+#     model = Product
+#     template_name = 'shop/category/category_detail.html'
+
+#     def get_queryset(self): # новый
+#         query = self.request.GET.get('q')
+#         object_list = Product.objects.filter(name__icontains='Ку')
+#         print(object_list)
+#         return object_list
+        
 
     # def get_pagination(self):
     #     paginator = Paginator(self.queryset, 2)

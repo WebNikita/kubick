@@ -34,7 +34,7 @@
                 </p>
                 
                     {% if category.slug == 'summer_workwear' %}
-                    <form class="sidebar__list_filter" action="{% url 'shop:filter' category.slug%}" method="get">
+                    <form class="sidebar__list_filter" action="{% url 'shop:category_detail' category.slug%}" method="get">
                         {% include 'shop/category/summer_workwear_filter.html' %}
                     </form>
                     {% elif category.slug == 'winter_workwear' %}
