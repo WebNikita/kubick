@@ -7,6 +7,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Q
 
 from cart.forms import CartAddProductForm
+from itertools import chain
 
 from .mixins import CategoryDetailMixin
 
@@ -47,24 +48,43 @@ class SearchResultsView(ListView):
         return object_list
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
-
+    
     model = Category
-    queryset = Category.objects.all()
-    context_object_name = 'category'
     template_name = 'shop/category/category_detail.html'
-    slug_url_kwarg = 'slug'
+    context_object_name = 'category'
+    queryset = Category.objects.all()
 
-    def get_queryset(self): # новый
-        query = self.request.GET.dict()
+    
+
+    # def get_queryset(self): # новый
+    #     slug = self.kwargs['slug']
+    #     queryset = Category.objects.get(slug=slug).products.all()
+    #     print(queryset)
+    #     query = self.request.GET.dict()
+    #     return queryset
+        # if len(query) != 0:
+        #     print(query)
+        #     queryset = Category.objects.get(slug=slug).products.all()
+        #     return queryset
+        # else:
+        #     return queryset
+
+    def get_context_data(self, **kwargs):
+        slug = self.kwargs['slug']
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET
+
+        for key in dict(query).keys():
+            print(f'{key}--->{dict(query)[key]}')
+
         if len(query) != 0:
-            slug = self.kwargs['slug']
-            print(self.queryset)
-            object_list = Category.get(name=slug).products
-            print(object_list)
-            return object_list
+            print(query)
+            context['products'] = Category.objects.get(slug=slug).products.filter(name=['Куртка', 'Вася'])
+            print(context['products'])
         else:
-            print(self.queryset)
-            return self.queryset
+            context['products'] = Category.objects.get(slug=slug).products.all()
+            print(context['products'])
+        return context
 
 # class FilterProductView(DetailView):
 #     model = Product
