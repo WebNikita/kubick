@@ -22,7 +22,7 @@ class All_products:
 
 
 def get_product_url(obj,viewname):
-    print(viewname)
+    print(obj.__class__)
     ct_model = obj.__class__._meta.model_name
     return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
 

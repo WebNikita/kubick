@@ -184,7 +184,7 @@
                 </div>
             </div>
             <div class="card__text">
-                <a href="{{ product.get_absolute_url }}"><p class="card__text_name">{{ product.name }}</p></a>
+                <a href="{% url 'shop:product_detail' ct_model=category.slug slug=product.slug %}"><p class="card__text_name">{{ product.name }}</p></a>
                 <p class="card__text_article">Артикул: {{ product.article }}</p>
                 <p class="card__text_low">    
                     {{ product.price }} Р

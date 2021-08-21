@@ -54,20 +54,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
     context_object_name = 'category'
     queryset = Category.objects.all()
 
-    
-
-    # def get_queryset(self): # новый
-    #     slug = self.kwargs['slug']
-    #     queryset = Category.objects.get(slug=slug).products.all()
-    #     print(queryset)
-    #     query = self.request.GET.dict()
-    #     return queryset
-        # if len(query) != 0:
-        #     print(query)
-        #     queryset = Category.objects.get(slug=slug).products.all()
-        #     return queryset
-        # else:
-        #     return queryset
 
     def get_context_data(self, **kwargs):
         CT_MODEL_MODEL_CLASS = {
