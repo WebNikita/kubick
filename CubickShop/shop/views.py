@@ -129,7 +129,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         query_dict = dict(self.request.GET)
         filter = {}
         filter_results = CT_MODEL_MODEL_CLASS[slug].objects.none()
-        
+        object_list = Category.objects.get(slug=slug).products.all()
 
         if len(query_dict) != 0:
             for key in query_dict.keys():
@@ -147,10 +147,18 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     filter_results = filter_results & search_model
             context['products'] = filter_results
         else:
-            page_obj = Paginator(Category.objects.get(slug=slug).products.all(), 1)
-            context['products'] = Category.objects.get(slug=slug).products.all()
-            context['page_obj'] = page_obj
-            # print(context['products'])
+            paginator = Paginator(object_list, 1)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+
+            context['products'] = products
+            context['page'] = page
+            print(context['products'])
         print(context)
         
         return context

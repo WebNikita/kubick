@@ -197,21 +197,25 @@
 
     <div class="container block__page">
         <div class="page__prev">
+            {% if products.has_previous %}
             <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                 <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
             </svg>
-            Назад
+            <a href="?page={{products.previous_page_number}}">Назад</a>
+            {% endif %}
         </div>
         <ul class="page__list">
-            <li class="select_page">1</li>
-            <li>2</li>
-            <li>3</li>
+            {% for page_counter in products %}
+            <li class="select_page">{{ products.number }}</li>
+            {% endfor %}
         </ul>
         <div class="page__next">
-            Далее
+            {% if products.has_next %}
+            <a href="?page={{ products.next_page_number }}">Далее</a>
             <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                 <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
             </svg>
+            {% endif %}
         </div>
     </div>
     
