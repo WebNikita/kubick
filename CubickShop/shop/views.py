@@ -133,7 +133,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     filter_results = filter_results & search_model
             context['products'] = filter_results
         else:
-            paginator = Paginator(object_list, 1)
+            paginator = Paginator(object_list, 6)
             page = self.request.GET.get('page')
             try:
                 products = paginator.page(page)
