@@ -138,7 +138,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             try:
                 products = paginator.page(page)
             except PageNotAnInteger:
-                products = paginator.page(1)
+                products = paginator.page(15)
             except EmptyPage:
                 products = paginator.page(paginator.num_pages)
 
