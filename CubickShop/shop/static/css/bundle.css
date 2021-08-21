@@ -5617,7 +5617,6 @@ button {
     font-size: 12px;
     color: #A0A0A0;
     padding: 3px;
-    text-transform: capitalize;
     transform: translate(-100%, -1px);
     width: 185px;
     outline: none; }
