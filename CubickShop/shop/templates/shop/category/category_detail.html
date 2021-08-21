@@ -1,6 +1,6 @@
 {% extends "shop/base.html" %}
 {% load static %}
-
+{% load filters %}
 {% block title%}
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
 {% endblock %}
@@ -205,8 +205,8 @@
             {% endif %}
         </div>
         <ul class="page__list">
-            {% for page_counter in products %}
-            <li class="select_page">{{ products.number }}</li>
+            {% for page_counter in products.paginator.count|create_range:1 %}
+            <li class="select_page"><a href="?page={{ page_counter }}">{{ page_counter }}</a></li>
             {% endfor %}
         </ul>
         <div class="page__next">
