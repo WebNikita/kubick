@@ -191,7 +191,7 @@
                         </form>
                     {% elif category.slug == 'protective_equipment' %}
                         <form class="sidebar__list_filter" action="{% url 'shop:category_detail' category.slug%}" method="get">
-                            {% include 'shop/category/protective_equipment_combined_filter.html' %}
+                            {% include 'shop/category/protective_equipment_filter.html' %}
                         </form>
                     {% elif category.slug == 'household_goods' %}
                         <form class="sidebar__list_filter" action="{% url 'shop:category_detail' category.slug%}" method="get">
