@@ -11013,18 +11013,65 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(filter).children().on('click', function() {
   if (jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().is(':checked')) {
     // console.log('check');
     jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().toggleClass('select');
-  } else {
-    // console.log('uncheck');
+    // console.log($(this).parent())
+    check(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent());
   }
-  check(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent());
 });
 
 function check(className) {
   const Content = (className.html());
   const ID = (className.attr('id'));
+  // className.toggleClass('select');
+  // console.log('VKL FILTER');
   // const Class = (className.attr('class').split(' ')[0]);
   // console.log(Class);
   if (className.hasClass('select')) {
+    // console.log('on');
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 30px !important;');
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
+    console.log('on');
+    // console.log($('.block__select-filter').children('li').length>0);
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}">
+                                        ${Content}
+                                          <svg class="delete-filter" xmlns="http://www.w3.org/2000/svg" width="7" height="7" fill="none" viewBox="0 0 7 7">
+                                            <path fill="#767676" d="M7 .825L6.175 0 3.5 2.675.825 0 0 .825 2.675 3.5 0 6.175.825 7 3.5 4.325 6.175 7 7 6.175 4.325 3.5 7 .825z"/>
+                                          </svg>
+                                       </li>`);
+    // console.log($('.block__select-filter').children('li').length>0);
+    // console.log($('.block__select-filter').is('li'));
+  } else {
+    // console.log('off');
+    // console.log(Content);
+    // console.log($('.block__select-filter').children(`#${ID}`).attr('id'));
+    // console.log($('.block__select-filter').children(`#${ID}`).remove());
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').children(`#${ID}`).remove();
+    if (jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').children('li').length==0) {
+      jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 130px !important;');
+      jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 0px !important; margin-bottom: 0px !important;');
+    }
+  }
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.delete-filter').on('click', function() {
+    console.log('delete');
+    // console.log($(this).parent().attr('id'));
+    const thisId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().attr('id');
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children(`#${thisId}`).removeClass('select');
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.filter').children(`#${thisId}`).children().children().prop('checked', false);
+    jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().remove();
+    if (jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').children('li').length==0) {
+      jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 130px !important;');
+      jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 0px !important; margin-bottom: 0px !important;');
+    }
+  });
+}
+
+function loadFilter(thisFilter) {
+  const Content = (thisFilter.html());
+  const ID = (thisFilter.attr('id'));
+  thisFilter.toggleClass('select');
+  // console.log('VKL FILTER');
+  // const Class = (className.attr('class').split(' ')[0]);
+  // console.log(Class);
+  if (thisFilter.hasClass('select')) {
     // console.log('on');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 30px !important;');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
@@ -11081,6 +11128,61 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_third`).on('click', f
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_fourth`).on('click', function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_three`).css('display', 'block');
 });
+
+
+jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
+  function parseGetParams() {
+    const $_GET = {};
+    const __GET = window.location.search.replace(/\+/g, '%20').substring(1).split('&');
+    console.log(__GET);
+    for (let i=0; i<__GET.length; i++) {
+      const getVar = __GET[i].split('=');
+      $_GET[getVar[i]] = typeof(getVar[1])=='undefined' ? '' : getVar[1];
+    }
+    return $_GET;
+  }
+  const GETArr = parseGetParams();
+
+  // let ert;
+  // console.log('text');
+
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter input:checkbox').each(function() {
+    const ert = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+    // console.log($(this).parent().parent());
+    // console.log(ert);
+    for (const key in GETArr) {
+      if (decodeURIComponent(GETArr[key]) == ert) {
+        jquery__WEBPACK_IMPORTED_MODULE_0__(this).checked = true;
+        console.log(jquery__WEBPACK_IMPORTED_MODULE_0__(this).is(':checked'));
+        loadFilter(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent());
+        // console.log('start');
+        // console.log(decodeURIComponent(GETArr[key]));
+      }
+    }
+    // console.log('test')
+  });
+  console.log(GETArr);
+
+
+  // GETArr.forEach(e => {
+
+  // });
+})
+
+
+// const menu = {
+//   width: 300,
+//   height: 200,
+//   title: 'Menu',
+// };
+// let counter = 0;
+// for (const key in menu) {
+//   if (menu[key] != '') {
+//     // alert(key + '' + menu[key]);
+//     counter++;
+//   }
+// }
+// alert( 'Всего свойств: ' + counter );
 
 
 /***/ }),
@@ -11347,17 +11449,14 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').on('click', function(
   const name = document.querySelector('[data-focus="input"]');
   const form = document.querySelector('[id="search_form"]');
   // отправка на сервер
+  name.addEventListener('input', function() {
+    this.value = this.value[0].toUpperCase() + this.value.slice(1);
+  })
   if (jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').hasClass('active__loop') && name.value != '') {
     form.submit();
   }
 })
 
-
-const input = document.querySelector('[data-focus="input"]');
-
-input.addEventListener('input', function() {
-  this.value = this.value[0].toUpperCase() + this.value.slice(1);
-})
 
 
 /***/ }),
