@@ -11152,7 +11152,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
     // console.log(ert);
     for (const key in GETArr) {
       if (decodeURIComponent(GETArr[key]) == ert) {
-        jquery__WEBPACK_IMPORTED_MODULE_0__(this).checked = true;
+        jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('checked', true);
         console.log(jquery__WEBPACK_IMPORTED_MODULE_0__(this).is(':checked'));
         loadFilter(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent());
         // console.log('start');
