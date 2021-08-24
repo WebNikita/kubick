@@ -149,34 +149,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         return context
 
-# class FilterProductView(DetailView):
-#     model = Product
-#     template_name = 'shop/category/category_detail.html'
-
-#     def get_queryset(self): # новый
-#         query = self.request.GET.get('q')
-#         object_list = Product.objects.filter(name__icontains='Ку')
-#         print(object_list)
-#         return object_list
-        
-
-    # def get_pagination(self):
-    #     paginator = Paginator(self.queryset, 2)
-    #     page = self.request.GET.get('page')
-
-    #     try:
-    #         products = paginator.page(page)
-    #     except PageNotAnInteger:
-    #         products = paginator.page(1)
-    #     except EmptyPage:
-    #         products = paginator.page(paginator.num_pages)
-    #     print('!!!!!')
-    #     print(products, page)
-
-    #     return page, products
-
-
-
 
 class ProductDetailView(DetailView):
 
