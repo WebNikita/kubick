@@ -103,7 +103,7 @@
                         </form>
                     {% elif category.slug == 'medical_supplies' %}
                         <form class="sidebar__list_filter" action="{% url 'shop:category_detail' category.slug%}" method="get">
-                            {% include 'shop/category/medical_supplies.html' %}
+                            {% include 'shop/category/medical_supplies_filter.html' %}
                         </form>
                     {% elif category.slug == 'head_and_face_protection_products' %}
                         <form class="sidebar__list_filter" action="{% url 'shop:category_detail' category.slug%}" method="get">
