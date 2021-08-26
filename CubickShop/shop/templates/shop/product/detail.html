@@ -6,9 +6,9 @@
     <div class="container container__product_preview">
         <div class="block__product_preview block__product_preview_first">
             <div id="slider">
-                {% for image in product.images.all %}
+                {% for image in img_url %}
                     <div class="slide">
-                        <img src="{{ image.image.url }}" alt="">
+                        <img src="{{ image }}" alt="">
                     </div>
                 {% endfor %}
             </div>

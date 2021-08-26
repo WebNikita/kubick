@@ -81,6 +81,7 @@ class Product(models.Model):
                           default=MALE,
                           verbose_name='Пол')
     
+    
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
     

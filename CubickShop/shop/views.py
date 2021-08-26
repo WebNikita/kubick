@@ -26,6 +26,7 @@ from .models import Waffle_towels, Terry_towels
 
 
 import py7zr
+import os.path
 
 
 def main_page(request):
@@ -111,18 +112,16 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         filter = {}
         filter_results = CT_MODEL_MODEL_CLASS[slug].objects.none()
         object_list = Category.objects.get(slug=slug).products.all()
+        img_url = {}
 
         if len(query_dict) != 0 and 'page' not in query_dict:
             for key in query_dict.keys():
-                print(key, '->>>>', query_dict[key])
                 if len(query_dict[key]) != 1:
-                    print('true')
                     for item in query_dict[key]:
                         filter = {key: item}
                         search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                         filter_results = filter_results | search_model
                 else:
-                    print('else')
                     filter = {key: query_dict[key][0]}
                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                     filter_results = search_model
@@ -139,8 +138,31 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
             context['products'] = products
             # context['page'] = page
-            print(context['products'])
-        print(context)
+        
+        
+
+        for item in context['products']:
+            if os.path.exists(item.image.path[:-3]):
+                print('True')
+                files = os.listdir(item.image.path[:-3])
+                bufer = []
+                for items in files:
+                    bufer.append(f"/media/products/{item.image.path.split('/')[-1][:-3]}/" + items)
+                img_url[item.name] = bufer
+            else:
+                print('False')
+                archive = py7zr.SevenZipFile(item.image.path, mode='r')
+                archive.extractall(path='/home/froot/Linux_HDD/Yandex.Disk/Work/2021/Кубик/kubick/kubick/CubickShop/media/products/')
+                archive.close()
+                files = os.listdir(item.image.path[:-3])
+                bufer = []
+                for items in files:
+                    bufer.append(f"/media/products/{item.image.path.split('/')[-1][:-3]}/" + items)
+                img_url[item.name] = bufer
+        
+
+        # context['img_url'] = img_url
+        # print(context['img_url'])
         
         return context
 
@@ -205,11 +227,6 @@ class ProductDetailView(DetailView):
     template_name = 'shop/product/detail.html'
     slug_url_kwarg = 'slug'
 
-    def unzip(self, path):
-        archive = py7zr.SevenZipFile(path, mode='r')
-        archive.extractall(path="products/")
-        archive.close()
-
 
     def dispatch(self, request, *args, **kwargs):
         self.model = self.CT_MODEL_MODEL_CLASS[kwargs['ct_model']]
@@ -218,9 +235,24 @@ class ProductDetailView(DetailView):
 
 
     def get_context_data(self, **kwargs):
+        iamges_urls = []
         context = super().get_context_data(**kwargs)
-        print(kwargs['object'].image.file.open('r'))
-        print(kwargs['object'].size.split('\n'))
+        print(kwargs['object'].image.path.split('/')[-1][:-3])
+        if os.path.exists(kwargs['object'].image.path[:-3]):
+            print('True')
+            files = os.listdir(kwargs['object'].image.path[:-3])
+            for items in files:
+                iamges_urls.append(f"/media/products/{kwargs['object'].image.path.split('/')[-1][:-3]}/" + items)
+        else:
+            print('False')
+            archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
+            archive.extractall(path='/home/froot/Linux_HDD/Yandex.Disk/Work/2021/Кубик/kubick/kubick/CubickShop/media/products/')
+            archive.close()
+            files = os.listdir(kwargs['object'].image.path[:-3])
+            for items in files:
+                iamges_urls.append(f"/media/products/{kwargs['object'].image.path.split('/')[-1][:-3]}/" + items)
+        context['img_url'] = iamges_urls
+        print( context['img_url'])
         context['size'] = kwargs['object'].size.split('\n')
         context['ct_model'] = self.model._meta.model_name
 
