@@ -1,13 +1,7 @@
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, request
-from django.contrib.contenttypes.models import ContentType
-from django.db.models import F
 
-from cart.forms import CartAddProductForm
-from itertools import chain
 
 from .mixins import CategoryDetailMixin
 
@@ -28,9 +22,10 @@ from .models import Dermatological_agents, Technical_fabrics, Detergents_and_hou
 from .models import Firefighting_equipment_fire_extinguishers, Protective_equipment, Household_goods
 from .models import Snow_removal_equipment, Gardening_tools, Bristle_and_brush_products
 from .models import Bed_linen_sets, Mattresses, Blankets, Pillows, Bedspreads_blankets
-from .models import Waffle_towels, Terry_towels, Gallery
+from .models import Waffle_towels, Terry_towels
 
 
+import py7zr
 
 
 def main_page(request):
@@ -125,12 +120,12 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     for item in query_dict[key]:
                         filter = {key: item}
                         search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                        filter_results = filter_results & search_model
+                        filter_results = filter_results | search_model
                 else:
                     print('else')
                     filter = {key: query_dict[key][0]}
                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                    filter_results = filter_results & search_model
+                    filter_results = search_model
             context['products'] = filter_results
         else:
             paginator = Paginator(object_list, 6)
@@ -210,6 +205,11 @@ class ProductDetailView(DetailView):
     template_name = 'shop/product/detail.html'
     slug_url_kwarg = 'slug'
 
+    def unzip(self, path):
+        archive = py7zr.SevenZipFile(path, mode='r')
+        archive.extractall(path="products/")
+        archive.close()
+
 
     def dispatch(self, request, *args, **kwargs):
         self.model = self.CT_MODEL_MODEL_CLASS[kwargs['ct_model']]
@@ -219,6 +219,7 @@ class ProductDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(kwargs['object'].image.file.open('r'))
         print(kwargs['object'].size.split('\n'))
         context['size'] = kwargs['object'].size.split('\n')
         context['ct_model'] = self.model._meta.model_name
