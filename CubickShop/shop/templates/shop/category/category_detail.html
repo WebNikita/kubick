@@ -278,10 +278,14 @@
         {% for product in products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
-                <img src="" alt="1">
-                <div class="quickly__preview">
-                    <p class="quickly__preview_button">Быстрый просмотр</p>
-                </div>
+                {% for key,value in img_url.items  %}
+                    {% if key == product.name %}
+                        <img src="{{value.0}}" alt="1">
+                        <div class="quickly__preview">
+                            <p class="quickly__preview_button">Быстрый просмотр</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="card__text">
                 <a href="{% url 'shop:product_detail' ct_model=category.slug slug=product.slug %}"><p class="card__text_name">{{ product.name }}</p></a>
@@ -327,7 +331,11 @@
     <div id="tr_{{ product.id }}" class="block__preview">
         <div class="container container__product_preview">
             <div class="block__product_preview block__product_preview_first">
-                <img src="" alt="">
+                {% for key,value in img_url.items  %}
+                    {% if key == product.name %}
+                    <img src="{{value.0}}" alt="1">               
+                    {% endif %}
+                {% endfor %}
             </div>
             <div class="block__product_preview block__product_preview_second">
                 <div class="block__product_preview_second-top">

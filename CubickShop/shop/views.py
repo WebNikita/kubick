@@ -137,29 +137,29 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
-            # context['page'] = page
         
         
-
         for item in context['products']:
+            print(os.path.exists(item.image.path[:-3]))
             if os.path.exists(item.image.path[:-3]):
                 print('True')
                 files = os.listdir(item.image.path[:-3])
                 bufer = []
                 for items in files:
-                    bufer.append(f"/media/products/{item.image.path.split('/')[-1][:-3]}/" + items)
-                img_url[item.name] = bufer
+                    bufer.append("\\media\\products\\"+item.image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
             else:
                 print('False')
                 archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                archive.extractall(path='/home/froot/Linux_HDD/Yandex.Disk/Work/2021/Кубик/kubick/kubick/CubickShop/media/products/')
+                archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
                 archive.close()
-                files = os.listdir(item.image.path[:-3])
+                files = os.listdir(item.image.path[:-3].replace('_',' '))
                 bufer = []
                 for items in files:
-                    bufer.append(f"/media/products/{item.image.path.split('/')[-1][:-3]}/" + items)
-                img_url[item.name] = bufer
-        
+                    bufer.append("\\media\\products\\"+item.image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+            img_url[item.name] = bufer
+        print(img_url)
+        context['img_url'] = img_url
+        print(context)
 
         # context['img_url'] = img_url
         # print(context['img_url'])
@@ -240,17 +240,18 @@ class ProductDetailView(DetailView):
         print(kwargs['object'].image.path.split('/')[-1][:-3])
         if os.path.exists(kwargs['object'].image.path[:-3]):
             print('True')
-            files = os.listdir(kwargs['object'].image.path[:-3])
+            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
             for items in files:
-                iamges_urls.append(f"/media/products/{kwargs['object'].image.path.split('/')[-1][:-3]}/" + items)
+                iamges_urls.append("\\media\\products\\"+kwargs['object'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
         else:
             print('False')
             archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
-            archive.extractall(path='/home/froot/Linux_HDD/Yandex.Disk/Work/2021/Кубик/kubick/kubick/CubickShop/media/products/')
+            print(kwargs['object'].image.path)
+            archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
             archive.close()
-            files = os.listdir(kwargs['object'].image.path[:-3])
+            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
             for items in files:
-                iamges_urls.append(f"/media/products/{kwargs['object'].image.path.split('/')[-1][:-3]}/" + items)
+                iamges_urls.append("\\media\\products\\"+kwargs['object'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
         context['img_url'] = iamges_urls
         print( context['img_url'])
         context['size'] = kwargs['object'].size.split('\n')
