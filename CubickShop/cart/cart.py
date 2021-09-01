@@ -13,7 +13,8 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
     
-    def add(self, product, quantity=1, update_quantity=False):
+    def add(self, size ,product, quantity=1, update_quantity=False):
+        
         """Добавление товара в корзину или обновление его количества."""
         product_id = str(product.id)
         print(product_id)
@@ -23,6 +24,10 @@ class Cart(object):
             self.cart[product_id]['quantity'] = quantity
         else:
             self.cart[product_id]['quantity'] += quantity
+        if size != 0:
+            self.cart[product_id]['size'] = size
+        else:
+            self.cart[product_id]['size'] = 'None'
         self.save()
     
     def save(self):
@@ -35,19 +40,6 @@ class Cart(object):
         if product_id in self.cart:
             del self.cart[product_id]
         self.save()
-    
-    # def __iter__(self):
-    #     """Проходим по товарам корзины и получаем соответствующие объекты Product."""
-    #     product_ids = self.cart.keys()
-    #     # Получаем объекты модели Product и передаем их в корзину.
-    #     products = Product.objects.filter(id__in=product_ids)
-    #     cart = self.cart.copy()
-    #     for product in products:
-    #         cart[str(product.id)]['product'] = product
-    #     for item in cart.values():
-    #         item['price'] = Decimal(item['price'])
-    #         item['total_price'] = item['price'] * item['quantity']
-    #     yield item
     
     def get_cart_info(self):
         product_ids = self.cart.keys()
@@ -78,3 +70,4 @@ class Cart(object):
         # Очистка корзины.
         del self.session[settings.CART_SESSION_ID]
         self.save()
+    

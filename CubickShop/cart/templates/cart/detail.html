@@ -14,8 +14,11 @@
                 <hr>
                     <div class="block__card_product">
                         <div class="block__card_product_img">
-                            <img src="{% if product.image %}{{ product.image.url }}
-                                    {% else %}{% static "img/no_image.png" %}{% endif %}" alt="1">
+                            {% for key,value in img_url.items  %}
+                                {% if key == product.name %}
+                                    <img src="{{value.0}}" alt="1">               
+                                {% endif %}
+                            {% endfor %}
                         </div>
                         <div class="block__card_product_info">
                             <a class="block__card_product_info_name" href="{{ product.get_absolute_url }}"></a>
@@ -25,13 +28,14 @@
                         <div class="block__card_product_price">
                             <p class="price-for-one">
                                 {{ product.price }}
+                                {{ item.size }}
                             </p>
                             <p class="multiply">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="none" viewBox="0 0 8 8">
                                     <path fill="#767676" d="M8 .943L7.057 0 4 3.057.943 0 0 .943 3.057 4 0 7.057.943 8 4 4.943 7.057 8 8 7.057 4.943 4 8 .943z"/>
                                 </svg>
                             </p>
-                            <div class="counter">
+                            <!-- <div class="counter">
                                 <p class="minus">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
                                         <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
@@ -45,7 +49,20 @@
                                         <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
                                     </svg>
                                 </p>
-                            </div>
+                            </div> -->
+                            <form action="">
+                                <p class="minus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
+                                        <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
+                                    </svg>
+                                </p>
+                                <input class="count" type="number" value="{{ item.quantity }}">
+                                <p class="plus">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                        <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                    </svg>
+                                </p>
+                            </form>
                             <p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                                     <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
@@ -89,6 +106,7 @@
             </div>
             <div class="block__append-order_form">
                 <div class="data">
+                    <form action="{% url 'cart:send_order' %}">
                     <label class="data__label">
                       <input type="text" placeholder="Ваше имя">
                       <input type="tel" placeholder="Телефон">
@@ -96,7 +114,8 @@
                     </label>
                     <p class="data__text">Нажимая на кнопку, Вы даете согласие на
                       <a href="">обработку персональных данных</a></p>
-                    <button class="data__button">Оформить заказ</button>
+                    <button type="submit" class="data__button">Оформить заказ</button>
+                </form>
                 </div>
             </div>
         </div>

@@ -1,19 +1,27 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET
 from django.contrib.contenttypes.models import ContentType
+
 from shop.models import Product
+
 from .cart import Cart
 from .forms import CartAddProductForm
 
+import os
+import py7zr
+
+
 @require_GET
 def cart_add(request, *args,**kwargs):
-    ct_model, product_slug = kwargs.get('ct_model'), kwargs.get('slug')
+    print(kwargs)
+    ct_model, product_slug, product_size = kwargs.get('ct_model'), kwargs.get('slug'), kwargs.get('size')
     cart = Cart(request)
     content_type = ContentType.objects.get(model=ct_model)
     product = content_type.model_class().objects.get(slug=product_slug)
     cart_product = get_object_or_404(Product, id=product.id)
-    cart.add(product=cart_product, quantity=1)
+    cart.add(product=cart_product, quantity=1, size=product_size)
     return redirect('cart:cart_detail')
+
 
 def cart_remove(request, product_id):
     cart = Cart(request)
@@ -21,7 +29,32 @@ def cart_remove(request, product_id):
     cart.remove(product)
     return redirect('cart:cart_detail')
 
-def cart_detail(request):
-    cart = Cart(request).get_cart_info()
+def cart_detail(request, **kwargs):
+    cart = Cart(request).get_cart_info() 
+    img_bufer = {}
+    for item in cart:
+        images_urls = []
+        folder_path = cart[item]['product'].image.path[:-3]
+        if os.path.exists(folder_path):
+            print('True')
+            files = os.listdir(folder_path.replace('_',' '))
+            for items in files:
+                images_urls.append("\\media\\products\\"+cart[item]['product'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+        else:
+            print('False')
+            archive = py7zr.SevenZipFile(cart[item]['product'].image.path, mode='r')
+            archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
+            archive.close()
+            files = os.listdir(folder_path.replace('_',' '))
+            for items in files:
+                images_urls.append("\\media\\products\\"+cart[item]['product'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+        img_bufer[cart[item]['product'].name] = images_urls
+    print(img_bufer)
     total_price = Cart(request).get_total_price()
-    return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price})
+    return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price, 'img_url': img_bufer})
+
+@require_GET
+def send_order_to_the_email(request, **kwargs):
+    print(kwargs, request)
+    print('________________________')
+    return redirect('cart:cart_detail')
