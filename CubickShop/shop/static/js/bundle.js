@@ -11379,7 +11379,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.plus').on('click', function() {
 jquery__WEBPACK_IMPORTED_MODULE_0__('.minus').on('click', function() {
   const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
   let count = parseInt($input.val()) - 1;
-  count = count < 1 ? 1 : count;
+  count = count < 0 ? 0 : count;
   $input.val(count);
   const price = $input.val()*inter;
   $input.change();
@@ -11391,7 +11391,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   let endPrice
   let totalPrice = 0;
   const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
-  $input.val() < 1 && ($input.val() == 1);
+  if ($input.val() < 0) {
+    $input.val('0');
+  }
   const price = inter * $input.val();
   jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
 
