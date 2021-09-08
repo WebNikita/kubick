@@ -5266,6 +5266,12 @@
         height: 30px;
         background-color: #F4F4F4; }
         .block__card_product_price .counter .count {
+          height: 20px;
+          width: 30px;
+          text-align: center;
+          font-size: 26px;
+          border: none;
+          background-color: #F4F4F4;
           user-select: none;
           color: #3F3F3F !important;
           font-size: 18px;
@@ -5365,7 +5371,9 @@
     max-width: 500px;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: "info" "img" "price"; }
+    grid-template-areas: "info"
+ "img"
+ "price"; }
     .block__card_product_img {
       grid-area: img;
       grid-column: auto;
@@ -5396,7 +5404,9 @@
         display: none; }
   .block__card_order {
     grid-template-columns: auto;
-    grid-template-areas: "end-price" "append" "info";
+    grid-template-areas: "end-price"
+ "append"
+ "info";
     margin: 70px 0; }
     .block__card_order_info {
       grid-area: info;
