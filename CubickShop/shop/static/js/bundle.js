@@ -11096,6 +11096,7 @@ function loadFilter(thisFilter) {
       jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 0px !important; margin-bottom: 0px !important;');
     }
   }
+
   jquery__WEBPACK_IMPORTED_MODULE_0__('.delete-filter').on('click', function() {
     console.log('delete');
     // console.log($(this).parent().attr('id'));
@@ -11363,32 +11364,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
-let count = 0;
 const text = jquery__WEBPACK_IMPORTED_MODULE_0__('.price-for-one').prop('innerText');
 const inter = parseInt(text);
 
 console.log(text);
 jquery__WEBPACK_IMPORTED_MODULE_0__('.plus').on('click', function() {
-  count++;
-  const price =inter*count;
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').html(price + ' Р');
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.count').html(count);
-  console.log(count);
-  console.log(price);
+  const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
+  const count = $input.val(parseInt($input.val()) + 1);
+  const price = $input.val()*inter;
+  jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
+  $input.change();
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.minus').on('click', function() {
-  if (count >= 1) {
-    const end = jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').prop('innerText');
-    const price = parseInt(end);
-    count--;
-    const priceEnd = price-inter;
-    jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').html(priceEnd + ' Р');
-    jquery__WEBPACK_IMPORTED_MODULE_0__('.count').html(count);
-    console.log(count);
-    console.log(price);
-  }
+  const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
+  let count = parseInt($input.val()) - 1;
+  count = count < 1 ? 1 : count;
+  $input.val(count);
+  const price = $input.val()*inter;
+  $input.change();
+  jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.count').html(count);
 });
+
+jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
+  let endPrice
+  let totalPrice = 0;
+  const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
+  $input.val() < 1 && ($input.val() == 1);
+  const price = inter * $input.val();
+  jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
+
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
+    endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
+    console.log(endPrice);
+    totalPrice = totalPrice + endPrice;
+    console.log(' цена ' + totalPrice);
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
+});
+
 
 
 /***/ }),

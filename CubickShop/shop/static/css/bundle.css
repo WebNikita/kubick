@@ -1047,6 +1047,12 @@
         height: 30px;
         background-color: #F4F4F4; }
         .block__append-to-card_counter .counter_price .counter .count {
+          height: 20px;
+          width: 30px;
+          text-align: center;
+          font-size: 26px;
+          border: none;
+          background-color: #F4F4F4;
           user-select: none;
           color: #3F3F3F !important;
           font-size: 18px;
@@ -2797,6 +2803,12 @@
         height: 30px;
         background-color: #F4F4F4; }
         .block__append-to-card_counter .counter_price .counter .count {
+          height: 20px;
+          width: 30px;
+          text-align: center;
+          font-size: 26px;
+          border: none;
+          background-color: #F4F4F4;
           user-select: none;
           color: #3F3F3F !important;
           font-size: 18px;
@@ -4373,6 +4385,12 @@
         height: 30px;
         background-color: #F4F4F4; }
         .block__append-to-card_counter .counter_price .counter .count {
+          height: 20px;
+          width: 30px;
+          text-align: center;
+          font-size: 26px;
+          border: none;
+          background-color: #F4F4F4;
           user-select: none;
           color: #3F3F3F !important;
           font-size: 18px;

@@ -146,16 +146,16 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 files = os.listdir(item.image.path[:-3])
                 bufer = []
                 for items in files:
-                    bufer.append("\\media\\products\\"+item.image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
             else:
                 print('False')
                 archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
+                archive.extractall(path='/home/proot/kubick/CubickShop/media/products/')
                 archive.close()
                 files = os.listdir(item.image.path[:-3].replace('_',' '))
                 bufer = []
                 for items in files:
-                    bufer.append("\\media\\products\\"+item.image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
             img_url[item.name] = bufer
         print(img_url)
         context['img_url'] = img_url
@@ -242,16 +242,16 @@ class ProductDetailView(DetailView):
             print('True')
             files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
             for items in files:
-                iamges_urls.append("\\media\\products\\"+kwargs['object'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
         else:
             print('False')
             archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
             print(kwargs['object'].image.path)
-            archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
+            archive.extractall(path='/home/proot/kubick/CubickShop/media/products/')
             archive.close()
             files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
             for items in files:
-                iamges_urls.append("\\media\\products\\"+kwargs['object'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
         context['img_url'] = iamges_urls
         print( context['img_url'])
         context['size'] = kwargs['object'].size.split('\n')
