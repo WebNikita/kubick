@@ -11388,7 +11388,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.minus').on('click', function() {
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
-  let endPrice
+  let endPrice;
   let totalPrice = 0;
   const $input = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().find('input');
   if ($input.val() < 0) {
@@ -11407,7 +11407,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
-  let endPrice
+  let endPrice;
   let totalPrice = 0;
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
