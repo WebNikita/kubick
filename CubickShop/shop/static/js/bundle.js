@@ -11406,6 +11406,24 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 });
 
+jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
+  let endPrice
+  let totalPrice = 0;
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
+    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+    const price = value * inter;
+    jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
+  })
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
+    endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
+    console.log(endPrice);
+    totalPrice = totalPrice + endPrice;
+    console.log(' цена ' + totalPrice);
+  });
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
+  // console.log('text' + $input.val());
+})
+
 
 
 /***/ }),
