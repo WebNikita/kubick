@@ -68,7 +68,7 @@ class Product(models.Model):
                                 on_delete=models.CASCADE,
                                 verbose_name='Категория')
     name = models.CharField(max_length=200, db_index=True, verbose_name='Название товара')
-    full_name = models.CharField(max_length=200, db_index=True, verbose_name='Полное название товара', null=True)
+    full_name = models.CharField(max_length=200, db_index=True, verbose_name='Полное название товара')
     slug = models.CharField(max_length=200, db_index=True, verbose_name='Ссылка на товар(не трогать)')
     image = models.FileField (upload_to='products/', blank=True, verbose_name='Картинки товара')
     description = models.TextField(blank=True, verbose_name='Описание товара')
