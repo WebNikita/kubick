@@ -163,7 +163,7 @@
 .block__sidebar_phone {
   display: none; }
 
-.select_page a{
+.select_page a {
   color: #4C95BD; }
 
 .block__sidebar {
@@ -1078,14 +1078,15 @@
       justify-content: center;
       align-items: center;
       background-color: #4C95BD;
-      color: white;
       width: 350px;
-      height: 60px;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 22px; }
+      height: 60px; }
+      .block__append-to-card_bottom button a {
+        color: white;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px; }
     .block__append-to-card_bottom .end-price {
       color: #3F3F3F;
       font-family: Inter;
@@ -1920,7 +1921,7 @@
 .block__sidebar_phone {
   display: none; }
 
-.select_page {
+.select_page a {
   color: #4C95BD; }
 
 .block__sidebar {
@@ -2835,14 +2836,15 @@
       justify-content: center;
       align-items: center;
       background-color: #4C95BD;
-      color: white;
       width: 350px;
-      height: 60px;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 22px; }
+      height: 60px; }
+      .block__append-to-card_bottom button a {
+        color: white;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px; }
     .block__append-to-card_bottom .end-price {
       color: #3F3F3F;
       font-family: Inter;
@@ -3503,7 +3505,7 @@
 .block__sidebar_phone {
   display: none; }
 
-.select_page {
+.select_page a {
   color: #4C95BD; }
 
 .block__sidebar {
@@ -4418,14 +4420,15 @@
       justify-content: center;
       align-items: center;
       background-color: #4C95BD;
-      color: white;
       width: 350px;
-      height: 60px;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 22px; }
+      height: 60px; }
+      .block__append-to-card_bottom button a {
+        color: white;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px; }
     .block__append-to-card_bottom .end-price {
       color: #3F3F3F;
       font-family: Inter;
@@ -5375,9 +5378,7 @@
     max-width: 500px;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: "info"
- "img"
- "price"; }
+    grid-template-areas: "info" "img" "price"; }
     .block__card_product_img {
       grid-area: img;
       grid-column: auto;
@@ -5408,9 +5409,7 @@
         display: none; }
   .block__card_order {
     grid-template-columns: auto;
-    grid-template-areas: "end-price"
- "append"
- "info";
+    grid-template-areas: "end-price" "append" "info";
     margin: 70px 0; }
     .block__card_order_info {
       grid-area: info;

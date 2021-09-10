@@ -11409,10 +11409,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   let endPrice;
   let totalPrice = 0;
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().children().attr('href');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
+    const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
     const price = value * inter;
-    jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().find('.end_price_product').html(price + ' Р');
+    container.find('.end_price_product').html(price + ' Р');
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
@@ -11422,6 +11424,24 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
   // console.log('text' + $input.val());
+})
+
+jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().on('click', function() {
+  const value = jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input');
+  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').split('/');
+  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').replace(split[split.length - 1], '');
+  jquery__WEBPACK_IMPORTED_MODULE_0__(value).each(function() {
+    const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
+    if (value.val() > 0) {
+      let textSize = container.parent().find('.counter_size').text();
+      textSize = textSize.replace(/\s+/g, ' ');
+      // console.log(textSize);
+      hrefReplace = hrefReplace + textSize + ',';
+      // console.log(hrefReplace);
+    }
+  })
+  // console.log(hrefReplace);
+  jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href', hrefReplace);
 })
 
 
