@@ -74,7 +74,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, verbose_name='Описание товара')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     available = models.BooleanField(default=True, verbose_name='Наличие')
-    size = models.TextField(max_length=200, db_index=False, verbose_name='Размер')
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер')
     article = models.CharField(max_length=200, db_index=False, verbose_name='Артикул')
     sex = models.CharField(max_length=1, 
                           choices=SEX_CHOICES,
