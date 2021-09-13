@@ -146,6 +146,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         
         for item in context['products']:
+            print(item)
             print(os.path.exists(item.image.path[:-3]))
             if os.path.exists(item.image.path[:-3]):
                 print('True')
