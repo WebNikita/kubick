@@ -32,6 +32,12 @@ import os.path
 def main_page(request):
     return render(request, 'shop/main.html')
 
+def contact_page(request):
+    return render(request, 'shop/contact.html')
+
+def payment_page(request):
+    return render(request, 'shop/payment.html')
+
 
 class SearchResultsView(ListView):
     
