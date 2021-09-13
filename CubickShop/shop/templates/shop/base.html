@@ -24,9 +24,9 @@
         </a>
       </li>
       <li data-hover="catalog" class="header__list_padding_first header__mobile_none">Каталог</li>
-      <li class="header__mobile_none"><a href="">Новости</a></li>
-      <li class="header__mobile_none"><a href="">Доставка и оплата</a></li>
-      <li class="header__mobile_none"><a href="">Контакты</a></li>
+      <li class="header__mobile_none"><a href="{% url 'blog:blog_list' %}">Новости</a></li>
+      <li class="header__mobile_none"><a href="{% url 'shop:payment_page' %}">Доставка и оплата</a></li>
+      <li class="header__mobile_none"><a href="{% url 'shop:contact_page' %}">Контакты</a></li>
       <li class="header__phone-number header__mobile_none footer__list_ff">
         <a href="tel:+74997358283">+7 (499) 735-82-83</a>
         <a href="tel:+74997344058">+7 (499) 734-40-58</a>
