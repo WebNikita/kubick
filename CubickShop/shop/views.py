@@ -166,8 +166,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 img_url[item.name] = bufer
                 print(img_url)
                 context['img_url'] = img_url
-            except Exception as e:
-                print(e)
+            except Exception:
+                pass
         print(context)
 
         # context['img_url'] = img_url
@@ -246,23 +246,26 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         iamges_urls = []
         context = super().get_context_data(**kwargs)
-        print(kwargs['object'].image.path.split('/')[-1][:-3])
-        if os.path.exists(kwargs['object'].image.path[:-3]):
-            print('True')
-            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-            for items in files:
-                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        else:
-            print('False')
-            archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
-            print(kwargs['object'].image.path)
-            archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-            archive.close()
-            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-            for items in files:
-                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        context['img_url'] = iamges_urls
-        print( context['img_url'])
+        try:
+            print(kwargs['object'].image.path.split('/')[-1][:-3])
+            if os.path.exists(kwargs['object'].image.path[:-3]):
+                print('True')
+                files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
+                for items in files:
+                    iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+            else:
+                print('False')
+                archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
+                print(kwargs['object'].image.path)
+                archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
+                archive.close()
+                files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
+                for items in files:
+                    iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+            context['img_url'] = iamges_urls
+            print( context['img_url'])
+        except Exception:
+            pass
         context['size'] = kwargs['object'].size.split('\n')
         context['ct_model'] = self.model._meta.model_name
 
