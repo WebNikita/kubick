@@ -119,6 +119,13 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         filter_results = CT_MODEL_MODEL_CLASS[slug].objects.none()
         object_list = Category.objects.get(slug=slug).products.all()
         img_url = {}
+        pagintation_count = 6
+
+        if 'pagintation_count' in query_dict:
+            pagintation_count = int(self.request.GET.get('pagintation_count'))
+        else:
+            pagintation_count = 6
+
 
         if len(query_dict) != 0 and 'page' not in query_dict:
             for key in query_dict.keys():
@@ -133,7 +140,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     filter_results = search_model
             context['products'] = filter_results
         else:
-            paginator = Paginator(object_list, 6)
+            paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
             try:
                 products = paginator.page(page)
