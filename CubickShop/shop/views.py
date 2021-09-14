@@ -146,26 +146,29 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         
         for item in context['products']:
-            print(item.image)
-            print(os.path.exists(item.image.path[:-3]))
-            if os.path.exists(item.image.path[:-3]):
-                print('True')
-                files = os.listdir(item.image.path[:-3])
-                bufer = []
-                for items in files:
-                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-            else:
-                print('False')
-                archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-                archive.close()
-                files = os.listdir(item.image.path[:-3].replace('_',' '))
-                bufer = []
-                for items in files:
-                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-            img_url[item.name] = bufer
-        print(img_url)
-        context['img_url'] = img_url
+            try:
+                print(os.path.exists(item.image.path[:-3]))
+                if os.path.exists(item.image.path[:-3]):
+                    print('True')
+                    files = os.listdir(item.image.path[:-3])
+                    bufer = []
+                    for items in files:
+                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                else:
+                    print('False')
+                    archive = py7zr.SevenZipFile(item.image.path, mode='r')
+                    archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
+                    archive.close()
+                    files = os.listdir(item.image.path[:-3].replace('_',' '))
+                    bufer = []
+                    for items in files:
+                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                img_url[item.name] = bufer
+                print(img_url)
+                context['img_url'] = img_url
+            except Exception as e:
+                print(e)
+                context['img_url'] = []
         print(context)
 
         # context['img_url'] = img_url
