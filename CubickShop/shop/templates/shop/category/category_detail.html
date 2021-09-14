@@ -261,12 +261,15 @@
         {% for product in products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
+            
                 {% for key,value in img_url.items  %}
                     {% if key == product.name %}
                         <img src="{{value.0}}" alt="1">
                         <div class="quickly__preview">
                             <p class="quickly__preview_button">Быстрый просмотр</p>
                         </div>
+                    {% else %}
+                        <img src="" alt="No img">    
                     {% endif %}
                 {% endfor %}
             </div>
