@@ -122,10 +122,10 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         pagintation_count = 6
 
         
-
-        if 'product_count' in query_dict:
-            print(int(self.request.GET.get('product_count')))
-            pagintation_count = int(self.request.GET.get('product_count'))
+        print(query_dict)
+        # if 'product_count' in query_dict:
+        #     print(int(self.request.GET.get('product_count')))
+        #     pagintation_count = int(self.request.GET.get('product_count'))
 
         if len(query_dict) != 0 and 'page' not in query_dict:
             for key in query_dict.keys():
