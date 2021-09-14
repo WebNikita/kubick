@@ -129,10 +129,10 @@
       Закрыть
     </div>
     <ul class="list">
-      <a href="">
+      <a href="{% url 'blog:blog_list' %}">
         <li class="list__li">Новости</li>
       </a>
-      <a href="">
+      <a href="{% url 'shop:contact_page' %}">
         <li class="list__li">Контакты</li>
       </a>
       <li>
@@ -240,7 +240,7 @@
       <a href="">
         <li class="list__li">Корзина</li>
       </a>
-      <a href="">
+      <a href="{% url 'shop:payment_page' %}">
         <li class="list__li">Доставка и оплата</li>
       </a>
     </ul>
