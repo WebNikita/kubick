@@ -16,10 +16,10 @@
     <ul class="header__list body-size">
       <li class="header__menu-mobile">
         <img class="header__menu-mobile_menu" data-button="menu-mobile" src="{% static "image/menu.svg" %}" alt="menu">
-        <img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo">
+        <a href="{% url 'shop:main_page' %}"><img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo"></a>
       </li>
       <li>
-        <a href="#">
+        <a href="{% url 'shop:main_page' %}">
           <img class="header__logo header__mobile_none_700" src="{% static "image/Logo.jpg" %}" alt="logo">
         </a>
       </li>
