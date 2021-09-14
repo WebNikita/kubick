@@ -121,11 +121,10 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         img_url = {}
         pagintation_count = 6
 
+        print(int(self.request.GET.get('pagintation_count')))
+
         if 'pagintation_count' in query_dict:
             pagintation_count = int(self.request.GET.get('pagintation_count'))
-        else:
-            pagintation_count = 6
-
 
         if len(query_dict) != 0 and 'page' not in query_dict:
             for key in query_dict.keys():
