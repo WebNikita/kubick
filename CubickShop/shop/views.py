@@ -235,6 +235,7 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
     template_name = 'shop/product/detail.html'
     slug_url_kwarg = 'slug'
+    pagination_count = 'pagination'
 
 
     def dispatch(self, request, *args, **kwargs):
