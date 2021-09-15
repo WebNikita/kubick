@@ -157,6 +157,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 else:
                     print('Началась разархивация')
+                    print(item.image.path)
                     print(os.path.exists(item.image.path[:-3]))
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
                     archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
