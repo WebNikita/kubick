@@ -171,7 +171,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
-        print(kwargs['object'].size.split('\n'))
+        print(kwargs['object'])
         # context['img_url'] = img_url
         # print(context['img_url'])
         
