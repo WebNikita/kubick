@@ -376,9 +376,9 @@
                         Закрыть
                     </p>
                 </div>
-                {% if '-' not in size %}
+                {% if '-' not in product.size %}
                     <div class="counter_block">
-                        {% for item in size %}
+                        {% for item in product.size %}
                             <div class="block__append-to-card_counter">
                                 <div class="counter_size">
                                 {{ item }}
