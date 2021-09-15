@@ -168,8 +168,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 img_url[item.name] = bufer
                 print(img_url)
                 context['img_url'] = img_url
-            except Exception:
-                pass
+            except Exception as e:
+                print(e)
         print(context)
 
         # context['img_url'] = img_url
