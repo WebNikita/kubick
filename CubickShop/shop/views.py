@@ -167,6 +167,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 img_url[item.name] = bufer
+                print(img_url)
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
