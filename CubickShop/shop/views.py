@@ -122,7 +122,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         img_url = {}
         pagintation_count = 6
 
-        if len(query_dict) != 0 and 'page' not in query_dict:
+        if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
                     for item in query_dict[key]:
