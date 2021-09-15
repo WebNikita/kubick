@@ -150,13 +150,13 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             try:
                 print(item.image.path[:-3])
                 if os.path.exists(item.image.path[:-3]):
-                    print('True')
+                    print('Разархивация не требуется, добавил путь в буфер')
                     files = os.listdir(item.image.path[:-3])
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 else:
-                    print('False')
+                    print('Началась разархивация')
                     print(os.path.exists(item.image.path[:-3]))
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
                     archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
@@ -166,11 +166,9 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 img_url[item.name] = bufer
-                print(img_url)
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
-        print(context)
 
         # context['img_url'] = img_url
         # print(context['img_url'])
