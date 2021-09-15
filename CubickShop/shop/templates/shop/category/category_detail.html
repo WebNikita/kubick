@@ -13,7 +13,7 @@
         </div>
         <div class="sidebar__list">
             <button class="sidebar__sort_phone">
-                Сортировать
+                Показать
             </button>
             <button class="sidebar__filter_phone">
                 Фильтры
@@ -319,7 +319,7 @@
             <div class="block__product_preview block__product_preview_first">
                 {% for key,value in img_url.items  %}
                     {% if key == product.name %}
-                    <img src="{{value.0}}" alt="1">               
+                    <img src="{{value.0}}" alt="1">          
                     {% endif %}
                 {% endfor %}
             </div>
@@ -906,7 +906,7 @@
             </div>
         </div>
     </div>
-
+<form action="">
     <div class="block__filter_phone">
         <ul class="sidebar__list_filter_phone">
             <div class="close_phone">
@@ -1065,7 +1065,7 @@
             <button class="accept-filter">Применить фильтры</button>
         </ul>
     </div>
-    
+</form>
 
     <div class="block__sort_phone">
         <ul class="sidebar__list_sort">
@@ -1078,13 +1078,13 @@
                 </p>
             </div>
             <hr>
-            <li>Рекомендованное</li>
+            <li>По 15</li>
             <hr>
-            <li>Самое новое</li>
+            <li>По 30</li>
             <hr>
-            <li>Цена: высокая-низкая</li>
+            <li>По 45</li>
             <hr>
-            <li>Цена: низкая-высокая</li>
+            <li>Все</li>
             <hr>
         </ul>
     </div>
