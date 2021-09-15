@@ -122,7 +122,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         img_url = {}
         pagintation_count = 6
 
-        print(query_dict['product_counter'])
         if len(query_dict) != 0 and 'product_counter' in query_dict:
             pagintation_count = int(query_dict['product_counter'][0])
 
