@@ -58,6 +58,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
 
     def get_context_data(self, **kwargs):
+        bufer_product_size = {}
         CT_MODEL_MODEL_CLASS = {
             'summer_workwear': Summer_workwear,
             'winter_workwear': Winter_workwear,
@@ -173,7 +174,9 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 print(e)
         
         for product in context['products']:
-            print(f'name: {product.name} \n size: {product.size}')
+            bufer_product_size[product.name] = product.size.split('\n')
+        
+        context['size'] = bufer_product_size
 
         # context['img_url'] = img_url
         # print(context['img_url'])
