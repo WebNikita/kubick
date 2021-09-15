@@ -148,7 +148,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         for item in context['products']:
             try:
-                print(item.image.path[:-3])
+                print(os.path.exists(item.image.path[:-3]))
                 if os.path.exists(item.image.path[:-3]):
                     print('Разархивация не требуется, добавил путь в буфер')
                     files = os.listdir(item.image.path[:-3])
