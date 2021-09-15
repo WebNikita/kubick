@@ -368,57 +368,63 @@
     {% endfor %}
     {% for product in products %}
     <div class="block__append-to-card">
-        <div class="container__append-to-card">
-            <div class="block__append-to-card_title">
-                <p>
-                    Выберите размер
-                </p>
-                <p class="close">
-                    Закрыть
-                </p>
-            </div>
-            <div class="counter_block">
-                <div class="block__append-to-card_counter">
-                    <div class="counter_size">
-                        88-92 / 170-176
-                    </div>
-                    <div class="counter_price">
-                        <div class="price-counter">
-                            <span class="minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
-                                </svg>
-                            </span>
-                            <span class="count">
-                                0
-                            </span>
-                            <span class="plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
-                                </svg>
-                            </span>
-                        </div>
-                        
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="end_price">
-                            0 Р
-                        </div>
+        <form action="">
+            <div class="container__append-to-card">
+                <div class="block__append-to-card_title">
+                    <p>
+                        Выберите кол-во
+                    </p>
+                    <p class="close">
+                        Закрыть
+                    </p>
+                </div>
+                {% if '-' not in size %}
+                    <div class="counter_block">
+                        {% for item in size %}
+                            <div class="block__append-to-card_counter">
+                                <div class="counter_size">
+                                {{ item }}
+                                </div>
+                                <div class="counter_price" id="{{ item }}">
+                                        <div class="counter">
+                                            <p class="minus">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
+                                                    <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
+                                                </svg>
+                                            </p>
+                                            <input class="count" type="text" value="0">
+                                            <p class="plus">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                                </svg>
+                                            </p>
+                                        </div>
+                                        <p>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
+                                            </svg>
+                                        </p>
+                                    <p class="end_price_product">
+                                        0 Р
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                    {% endfor %}
+                </div>
+                {% endif %}       
+                <div class="block__append-to-card_bottom">
+                    <button>
+                        <a href="">
+                            Добавить в корзину
+                         </a>
+                    </button>
+                    <div class="end-price">
+                        0 Р
                     </div>
                 </div>
-                <hr>
             </div>
-            <div class="block__append-to-card_bottom">
-                <button>Добавить в корзину</button>
-                <div class="end-price">
-                    0 Р
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
     {% endfor %}
     <div class="block__size">
