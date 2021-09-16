@@ -848,6 +848,9 @@
 .close {
   cursor: pointer; }
 
+.close-size {
+  cursor: pointer; }
+
 .display_block {
   display: block !important; }
 
@@ -2606,6 +2609,9 @@
 .close {
   cursor: pointer; }
 
+.close-size {
+  cursor: pointer; }
+
 .display_block {
   display: block !important; }
 
@@ -4188,6 +4194,9 @@
   transform: rotate(180deg); }
 
 .close {
+  cursor: pointer; }
+
+.close-size {
   cursor: pointer; }
 
 .display_block {
