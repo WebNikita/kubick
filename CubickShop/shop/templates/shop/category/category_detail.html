@@ -354,7 +354,7 @@
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">
-                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.name  size=0 %}">
+                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">
                             Добавить в корзину
                         </a>
                     </div>
@@ -369,7 +369,7 @@
     
     {% for product in products %}
     <div class="block__append-to-card" id="size_{{ product.id }}">
-        <form action="">
+        
             <div class="container__append-to-card">
                 <div class="block__append-to-card_title">
                     <p>
@@ -379,6 +379,7 @@
                         Закрыть
                     </p>
                 </div>
+                <form action="">
                 {% for key,value in size.items  %}
                     {% if key == product.name %}
                         {% if '-' not in value %}
@@ -414,11 +415,13 @@
                                 </div>
                                 <hr>
                             {% endfor %}
+                        </form>
                         </div>
-                        {% endif %}   
+                        {% endif %}
+                       
                     <div class="block__append-to-card_bottom">
                         <button>
-                            <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.name  size=0 %}">
+                            <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">
                                 Добавить в корзину
                             </a>
                         </button>
@@ -429,7 +432,6 @@
                 {% endif %}
                 {% endfor %}  
             </div>
-        </form>
     </div>
     {% endfor %}
     <div class="block__size">
