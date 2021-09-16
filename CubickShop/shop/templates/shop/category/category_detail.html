@@ -354,7 +354,9 @@
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">
-                        Добавить в корзину
+                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.name  size=0 %}">
+                            Добавить в корзину
+                        </a>
                     </div>
                     <div class="block__product_preview_second-bottom_ability">
                         Возможно нанесение логотипа
