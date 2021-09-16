@@ -182,7 +182,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context['size'] = bufer_product_size
 
         context['category_slug'] = CT_MODEL_MODEL_CLASS[slug]
-        print(context)
+        print(CT_MODEL_MODEL_CLASS[slug])
         
         return context
 
