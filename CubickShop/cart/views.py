@@ -39,15 +39,15 @@ def cart_detail(request, **kwargs):
             print('True')
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
-                images_urls.append("\\media\\products\\"+cart[item]['product'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
         else:
             print('False')
             archive = py7zr.SevenZipFile(cart[item]['product'].image.path, mode='r')
-            archive.extractall(path='C:\\Users\\shvora.n\\Desktop\\Out\\kubick\\CubickShop\\media\\products\\')
+            archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
             archive.close()
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
-                images_urls.append("\\media\\products\\"+cart[item]['product'].image.path.split('\\')[-1][:-3].replace('_',' ')+"\\" + items)
+                images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
         img_bufer[cart[item]['product'].name] = images_urls
     print(img_bufer)
     total_price = Cart(request).get_total_price()
