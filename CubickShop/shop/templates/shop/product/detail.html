@@ -246,7 +246,7 @@
                 {% endif %}       
                 <div class="block__append-to-card_bottom">
                     <button>
-                        <a href="{% url 'cart:cart_add' ct_model=ct_model slug=product.slug  size=0 %}">
+                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">
                             Добавить в корзину
                          </a>
                     </button>
