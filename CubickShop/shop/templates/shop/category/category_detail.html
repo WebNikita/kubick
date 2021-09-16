@@ -413,19 +413,19 @@
                                 <hr>
                             {% endfor %}
                         </div>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}     
-                <div class="block__append-to-card_bottom">
-                    <button>
-                        <a href="">
-                            Добавить в корзину
-                         </a>
-                    </button>
-                    <div class="end-price">
-                        0 Р
+                        {% endif %}   
+                    <div class="block__append-to-card_bottom">
+                        <button>
+                            <a href="{% url 'cart:cart_add' ct_model=slug slug=product.name  size=0 %}">
+                                Добавить в корзину
+                            </a>
+                        </button>
+                        <div class="end-price">
+                            0 Р
+                        </div>
                     </div>
-                </div>
+                {% endif %}
+                {% endfor %}  
             </div>
         </form>
     </div>
