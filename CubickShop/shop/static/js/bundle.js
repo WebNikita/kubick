@@ -10996,6 +10996,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.close_preview').on('click', function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '1');
 });
 
+jquery__WEBPACK_IMPORTED_MODULE_0__('.close-size').on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent().parent().css('display', 'none');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_info').css('opacity', '1');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.container__card').css('opacity', '1');
+})
+
 
 /***/ }),
 
@@ -11340,7 +11347,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__card_order_append').on('click', fun
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.close').on('click', function() {
   // console.log('off');
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-order').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.block__size').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
