@@ -73,7 +73,7 @@
                                 {{ item.total_price }}Р
                             </p>
                             <p class="delete_product">
-                                <a href="{% url "cart:cart_remove" product.id %}">Убрать</a>
+                                <a href="{% url "cart:cart_remove" product.id item.size%}">Убрать</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="none" viewBox="0 0 8 8">
                                     <path fill="#767676" d="M8 .943L7.057 0 4 3.057.943 0 0 .943 3.057 4 0 7.057.943 8 4 4.943 7.057 8 8 7.057 4.943 4 8 .943z"/>
                                 </svg>
