@@ -16,38 +16,42 @@ class Cart(object):
     def add(self, size ,product, quantity=1, update_quantity=False):
         
         """Добавление товара в корзину или обновление его количества."""
-        product_id = str(product.id)
-        print(product_id)
-        if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 0, 'price': str(product.price)}
+        product_cart_id = f"{str(product.id)}_{size}"
+        if product_cart_id not in self.cart:
+            self.cart[product_cart_id] = {'quantity': 0, 'price': str(product.price)}
         if update_quantity:
-            self.cart[product_id]['quantity'] = quantity
+            self.cart[product_cart_id]['quantity'] = quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            self.cart[product_cart_id]['quantity'] += quantity
         if size != 0:
-            self.cart[product_id]['size'] = size
+            self.cart[product_cart_id]['size'] = size
         else:
-            self.cart[product_id]['size'] = 'None'
+            self.cart[product_cart_id]['size'] = 'None'
         self.save()
     
     def save(self):
         # Помечаем сессию как измененную
         self.session.modified = True
     
-    def remove(self, product):
+    def remove(self, product, size):
         """Удаление товара из корзины."""
-        product_id = str(product.id)
-        if product_id in self.cart:
-            del self.cart[product_id]
+        product_cart_id = f"{str(product.id)}_{size}"
+        if product_cart_id in self.cart:
+            del self.cart[product_cart_id]
         self.save()
     
     def get_cart_info(self):
-        product_ids = self.cart.keys()
-        # Получаем объекты модели Product и передаем их в корзину.
-        products = Product.objects.filter(id__in=product_ids)
+        product_ids = []
+        product_ids_with_size = self.cart.keys()
         cart = self.cart.copy()
-        for product in products:
-            cart[str(product.id)]['product'] = product
+        
+        # Получаем объекты модели Product и передаем их в корзину.
+
+        for product_id in product_ids_with_size:
+            product = Product.objects.filter(id=int(product_id.split('_')[0]))
+            cart[str(product_id)]['product'] = product[0]
+        
+
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']

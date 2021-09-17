@@ -23,12 +23,11 @@
                         <div class="block__card_product_info">
                             <a class="block__card_product_info_name" href="{{ product.get_absolute_url }}"></a>
                             <a href="{% url 'shop:product_detail' slug=product.slug ct_model=product.category.slug %}"><p class="block__card_product_info_name">{{ product.name }}</p></a>
-                            <p class="block__card_product_info_article">Артикул: <span>{{ product.article }}</span></p>
+                            <p class="block__card_product_info_article">Размер: <span>{{ item.size }}</span></p>
                         </div>
                         <div class="block__card_product_price">
                             <p class="price-for-one">
                                 {{ product.price }}
-                                {{ item.size }}
                             </p>
                             <p class="multiply">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="none" viewBox="0 0 8 8">
@@ -74,7 +73,7 @@
                                 {{ item.total_price }}Р
                             </p>
                             <p class="delete_product">
-                                <a href="{% url "cart:cart_remove" product.id %}">Убрать</a>
+                                <a href="{% url "cart:cart_remove" product.id item.size%}">Убрать</a>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="none" viewBox="0 0 8 8">
                                     <path fill="#767676" d="M8 .943L7.057 0 4 3.057.943 0 0 .943 3.057 4 0 7.057.943 8 4 4.943 7.057 8 8 7.057 4.943 4 8 .943z"/>
                                 </svg>
