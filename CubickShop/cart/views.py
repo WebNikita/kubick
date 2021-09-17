@@ -27,6 +27,7 @@ def cart_add(request, *args,**kwargs):
 
 def cart_remove(request, product_id):
     cart = Cart(request)
+    print(cart)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('cart:cart_detail')
