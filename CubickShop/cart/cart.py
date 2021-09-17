@@ -42,6 +42,7 @@ class Cart(object):
     
     def get_cart_info(self):
         product_ids = self.cart.keys()
+        print(product_ids)
         # Получаем объекты модели Product и передаем их в корзину.
         products = Product.objects.filter(id__in=int(product_ids.split('_')[0]))
         cart = self.cart.copy()
