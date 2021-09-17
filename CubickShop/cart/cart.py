@@ -51,7 +51,7 @@ class Cart(object):
 
         for product_id in product_ids_with_size:
             product = Product.objects.filter(id=int(product_id.split('_')[0]))
-            cart[str(product_id)]['product'] = product
+            cart[str(product_id)]['product'] = product[0]
         
         print(cart)
 
