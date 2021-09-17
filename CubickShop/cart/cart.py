@@ -52,7 +52,7 @@ class Cart(object):
         products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()
         for product in products:
-            cart[product_ids_bufer[counter]]['product'] = product
+            cart[list(product_ids_bufer)[counter]]['product'] = product
             counter += 1
         for item in cart.values():
             item['price'] = Decimal(item['price'])
