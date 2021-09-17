@@ -11438,20 +11438,22 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
 })
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().on('click', function() {
-  const value = jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input');
   const split = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').split('/');
   let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').replace(split[split.length - 1], '');
-  jquery__WEBPACK_IMPORTED_MODULE_0__(value).each(function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
+    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
+    console.log(value.val())
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
+    // console.log(container);
     if (value.val() > 0) {
-      let textSize = container.parent().find('.counter_size').text();
+      let textSize = container.find('.counter_size').text();
       textSize = textSize.replace(/\s+/g, ' ');
-      // console.log(textSize);
+      console.log(textSize);
       hrefReplace = hrefReplace + textSize + ',';
       // console.log(hrefReplace);
     }
   })
-  // console.log(hrefReplace);
+  console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href', hrefReplace);
 })
 
