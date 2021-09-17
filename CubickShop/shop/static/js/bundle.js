@@ -11354,7 +11354,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__card_order_append').on('click', fun
 jquery__WEBPACK_IMPORTED_MODULE_0__('.close').on('click', function() {
   // console.log('off');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-order').css('display', 'none');
-  // $('.block__append-to-card').css('display', 'none');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.block__size').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_preview').css('opacity', '1');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.container__product_info').css('opacity', '1');
