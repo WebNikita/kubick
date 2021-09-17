@@ -48,7 +48,7 @@ def cart_detail(request, **kwargs):
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
                 images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        img_bufer[cart[item]['product'].name] = images_urls)
+        img_bufer[cart[item]['product'].name] = images_urls
     total_price = Cart(request).get_total_price()
     return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price, 'img_url': img_bufer})
 
