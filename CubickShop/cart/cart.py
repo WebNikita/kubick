@@ -46,7 +46,7 @@ class Cart(object):
         product_ids_bufer = self.cart.keys()
 
         for id in product_ids_bufer:
-            product_ids.append(id)
+            product_ids.append(id.split('_')[0])
 
         # Получаем объекты модели Product и передаем их в корзину.
         products = Product.objects.filter(id__in=product_ids)
