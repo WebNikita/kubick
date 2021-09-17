@@ -53,6 +53,8 @@ class Cart(object):
             product = Product.objects.filter(id=int(product_id.split('_')[0]))
             cart[str(product_id)]['product'] = product
         
+        print(cart)
+
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
