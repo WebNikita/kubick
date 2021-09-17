@@ -327,7 +327,7 @@
                         Закрыть
                     </div>
                     <div class="block__product_preview_second-top_name">
-                        {{ product.name }}
+                        <a href="{% url 'shop:product_detail' ct_model=category.slug slug=product.slug %}">{{ product.name }}</a> 
                     </div>
                     <div class="block__product_preview_second-top_price price-for-one">
                         {{ product.price }} Р
