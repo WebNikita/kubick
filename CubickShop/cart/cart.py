@@ -41,15 +41,17 @@ class Cart(object):
         self.save()
     
     def get_cart_info(self):
-        product_ids = self.cart.keys()
+        product_ids = []
+        product_ids_with_size = self.cart.keys()
         cart = self.cart.copy()
         
         print(product_ids)
         print(cart)
         # Получаем объекты модели Product и передаем их в корзину.
-        products = Product.objects.filter(id__in=product_ids)
-        for product in products:
-            cart[str(product.id)]['product'] = product
+
+        for product_id in product_ids_with_size:
+            product = Product.objects.filter(id=int(product_id.split('_')[0]))
+            cart[str(product_id)]['product'] = product
         
         for item in cart.values():
             item['price'] = Decimal(item['price'])
