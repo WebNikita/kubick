@@ -53,10 +53,10 @@ def cart_detail(request, **kwargs):
     total_price = Cart(request).get_total_price()
     return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price, 'img_url': img_bufer})
 
-@require_GET
-def send_order_to_the_email(request, **kwargs):
-    cart = Cart(request).get_cart_info() 
-    print('________________________')
-    print(cart)
-    print('________________________')
-    return redirect('cart:cart_detail')
+# @require_GET
+# def send_order_to_the_email(request, **kwargs):
+#     cart = Cart(request).get_cart_info() 
+#     print('________________________')
+#     print(cart)
+#     print('________________________')
+#     return redirect('cart:cart_detail')
