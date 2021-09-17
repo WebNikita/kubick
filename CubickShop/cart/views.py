@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_GET
 from django.contrib.contenttypes.models import ContentType
+from collections import Counter
 
 from shop.models import Product
 
@@ -13,13 +14,11 @@ import py7zr
 
 @require_GET
 def cart_add(request, *args,**kwargs):
-    print(kwargs)
     ct_model, product_slug, product_size_list = kwargs.get('ct_model'), kwargs.get('slug'), kwargs.get('size').split(',')
     cart = Cart(request)
     content_type = ContentType.objects.get(model=ct_model)
     product = content_type.model_class().objects.get(slug=product_slug)
     cart_product = get_object_or_404(Product, id=product.id)
-    print(product_size_list)
     for product_size in product_size_list:
         cart.add(product=cart_product, quantity=1, size=product_size)
     return redirect('cart:cart_detail')
@@ -39,20 +38,17 @@ def cart_detail(request, **kwargs):
         images_urls = []
         folder_path = cart[item]['product'].image.path[:-3]
         if os.path.exists(folder_path):
-            print('True')
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
                 images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
         else:
-            print('False')
             archive = py7zr.SevenZipFile(cart[item]['product'].image.path, mode='r')
             archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
             archive.close()
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
                 images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        img_bufer[cart[item]['product'].name] = images_urls
-    print(img_bufer)
+        img_bufer[cart[item]['product'].name] = images_urls)
     total_price = Cart(request).get_total_price()
     return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price, 'img_url': img_bufer})
 

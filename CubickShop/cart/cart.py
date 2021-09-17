@@ -33,7 +33,7 @@ class Cart(object):
         # Помечаем сессию как измененную
         self.session.modified = True
     
-    def remove(self, product):
+    def remove(self, product, size):
         """Удаление товара из корзины."""
         product_cart_id = f"{str(product.id)}_{size}"
         if product_cart_id in self.cart:
@@ -45,15 +45,12 @@ class Cart(object):
         product_ids_with_size = self.cart.keys()
         cart = self.cart.copy()
         
-        print(product_ids)
-        print(cart)
         # Получаем объекты модели Product и передаем их в корзину.
 
         for product_id in product_ids_with_size:
             product = Product.objects.filter(id=int(product_id.split('_')[0]))
             cart[str(product_id)]['product'] = product[0]
         
-        print(cart)
 
         for item in cart.values():
             item['price'] = Decimal(item['price'])
@@ -67,7 +64,7 @@ class Cart(object):
     def get_total_price(self):
         print(self.cart)
         print(Decimal(item['price']) * item['quantity']
-            for item in self.cart.values())
+            for item in self.cart.values()
         return sum(
             Decimal(item['price']) * item['quantity']
             for item in self.cart.values()
