@@ -41,18 +41,19 @@ class Cart(object):
         self.save()
     
     def get_cart_info(self):
+        counter = 0
         product_ids = []
         product_ids_bufer = self.cart.keys()
-        
+
         for id in product_ids_bufer:
-            product_ids.append(id.split('_')[0])
-        
+            product_ids.append(id)
+
         # Получаем объекты модели Product и передаем их в корзину.
         products = Product.objects.filter(id__in=product_ids)
-        print(products)
         cart = self.cart.copy()
         for product in products:
-            cart[str(product.id)]['product'] = product
+            cart[product_ids_bufer[counter]]['product'] = product
+            counter += 1
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
