@@ -11458,10 +11458,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
 })
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').on('click', function() {
-  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').split('/');
-  console.log(split);
-  console.log(split[split.length - 1]);
-  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').replace(split[split.length - 1], '');
+  // const split = $(this).children().attr('href').split('/');
+  // console.log(split);
+  // console.log(split[split.length - 1]);
+  // split[split.length - 1].replace('');
+  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').slice(0, -1);
   console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
