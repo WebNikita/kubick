@@ -11417,9 +11417,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 
   const href = jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children();
-  // const split = $(href).attr('href').split('/');
-  // console.log(split);
-  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(href).attr('href').slice(0, -1);
+  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(href).attr('href').split('/');
+  split.slice(0, -1);
+  console.log(split);
+  let hrefReplace = split.join('/');
+  console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
     console.log(value.val())
