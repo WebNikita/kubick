@@ -11470,12 +11470,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').on('click',
     if (value.val() > 0) {
       let textSize = container.find('.counter_size').text();
       textSize = textSize.replace(/\s+/g, ' ');
-      console.log(textSize);
+      // console.log(textSize);
       hrefReplace = hrefReplace + textSize + ',';
       // console.log(hrefReplace);
     }
   })
-  console.log(hrefReplace);
+  // console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href', hrefReplace);
 })
 
