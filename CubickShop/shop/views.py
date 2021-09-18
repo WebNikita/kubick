@@ -68,7 +68,7 @@ class SearchResultsView(ListView):
                 img_url[item.name] = bufer
             except Exception as e:
                 print(e)
-        return object_list
+        return [object_list, img_url]
     
 
             
