@@ -79,6 +79,7 @@ class SearchResultsView(ListView):
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
+        print(context)
 
             
 
