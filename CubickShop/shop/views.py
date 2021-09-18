@@ -56,7 +56,7 @@ class SearchResultsView(ListView):
         
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
-        context['products'] = object_list
+        context['products'] = list(object_list)
 
         for item in context['products']:
             try:
