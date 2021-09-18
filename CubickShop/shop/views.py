@@ -51,14 +51,16 @@ class SearchResultsView(ListView):
     
     def get_context_data(self, **kwargs):
     
-        query = self.request.GET.get('q')
-        object_list = Product.objects.filter(name__icontains=query)
+        
 
-        print('!!!!!!!!!!!!!!!!!\n', object_list)
 
         context = super().get_context_data(**kwargs)
         img_url = {}
         
+        query = self.request.GET.get('q')
+        object_list = Product.objects.filter(name__icontains=query)
+        context['products'] = object_list
+
         for item in context['products']:
             try:
                 print(os.path.exists(item.image.path[:-3]))
@@ -84,6 +86,8 @@ class SearchResultsView(ListView):
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
+
+            
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
     
