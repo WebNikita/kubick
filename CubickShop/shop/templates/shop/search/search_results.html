@@ -22,6 +22,7 @@
             </div>
         </div>
         <div class="card__text">
+            <a href="{% url 'shop:product_detail' ct_model=object.category.slug slug=object.slug %}"><p class="card__text_name">{{ object.name }}</p></a>
             <p class="card__text_article">Артикул: {{ object.article }}</p>
             <p class="card__text_low">    
                 {{ object.price }} Р
