@@ -11417,7 +11417,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 
   const href = jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children();
-  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(href).attr('href').split('/');
+  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href').split('/');
   console.log(split);
   split.splice(-1, 1);
   console.log(split);
@@ -11432,7 +11432,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
       let textSize = container.find('.counter_size').text();
       textSize = textSize.replace(/\s+/g, '');
       console.log(textSize);
-      hrefReplace = hrefReplace + textSize + '';
+      hrefReplace = hrefReplace + textSize + ',';
       // console.log(hrefReplace);
     }
   })
