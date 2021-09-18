@@ -203,7 +203,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     print(item.image.path)
                     print(os.path.exists(item.image.path[:-3]))
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                    archive.extractall(path='/home/proot/kubick/CubickShop/media/products/')
+                    archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
                     archive.close()
                     files = os.listdir(item.image.path[:-3].replace('_',' '))
                     bufer = []
@@ -308,7 +308,7 @@ class ProductDetailView(DetailView):
                 print('False')
                 archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
                 print(kwargs['object'].image.path)
-                archive.extractall(path='/home/proot/kubick/CubickShop/media/products/')
+                archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
                 archive.close()
                 files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
                 for items in files:
