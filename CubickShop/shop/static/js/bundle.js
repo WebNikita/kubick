@@ -11460,7 +11460,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
 jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').on('click', function() {
   const split = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').split('/');
   console.log(split);
-  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').replace(split[split.length - 1], '');
+  let hrefReplace = jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href').replace([split.length - 1], '');
   console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
