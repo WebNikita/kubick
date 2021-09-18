@@ -17,9 +17,6 @@
                         </div>   
                     {% endif %}
                 {% endfor %}
-            <div class="quickly__preview">
-                <p class="quickly__preview_button">Быстрый просмотр</p>
-            </div>
         </div>
         <div class="card__text">
             <a href="{% url 'shop:product_detail' ct_model=object.category.slug slug=object.slug %}"><p class="card__text_name">{{ object.name }}</p></a>
