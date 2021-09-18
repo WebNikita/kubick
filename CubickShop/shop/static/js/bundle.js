@@ -11437,7 +11437,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
     }
   })
   console.log(hrefReplace);
-  jquery__WEBPACK_IMPORTED_MODULE_0__(href).attr('href', hrefReplace);
+  jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href', hrefReplace);
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
