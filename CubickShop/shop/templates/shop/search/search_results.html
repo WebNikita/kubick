@@ -1,0 +1,90 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    Кубик | Поиск
+{% endblock %}
+{% block content %}
+
+    <div  class="container block__card container__catalog">
+    {% for object in products %}
+    <div id="{{ object.id }}" class="card card__product">
+        <div class="card__img">
+            {% for key,value in img_url.items  %}
+                {% if key == object.name %}
+                    <img src="{{value.0}}" alt="1">
+                    <div class="quickly__preview">
+                        <p class="quickly__preview_button">Быстрый просмотр</p>
+                    </div>   
+                {% endif %}
+            {% endfor %}
+            <div class="quickly__preview">
+                <p class="quickly__preview_button">Быстрый просмотр</p>
+            </div>
+        </div>
+        <div class="card__text">
+            <a href="{% url 'shop:product_detail' ct_model=object.category.slug slug=object.slug %}"><p class="card__text_name">{{ object.name }}</p></a>
+            <p class="card__text_article">Артикул: {{ object.article }}</p>
+            <p class="card__text_low">    
+                {{ object.price }} Р
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    {% for object in products %}
+    <div class="block__preview" id="tr_{{ object.id }}">
+        <div  class="container container__product_preview">
+            <div class="block__product_preview block__product_preview_first">
+                {% for key,value in img_url.items  %}
+                    {% if key == object.name %}
+                        <img src="{{value.0}}" alt="1">
+                        <div class="quickly__preview">
+                            <p class="quickly__preview_button">Быстрый просмотр</p>
+                        </div>   
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="block__product_preview block__product_preview_second">
+                <div class="block__product_preview_second-top">
+                    <div class="close_preview">
+                        Закрыть
+                    </div>
+                    <div class="block__product_preview_second-top_name">
+                        {{ object.name }}
+                    </div>
+                    <div class="block__product_preview_second-top_price">
+                        {{ object.price }} Р
+                    </div>
+                </div>
+                <div class="block__product_preview_second-center">
+                    <div class="block__product_preview_second-center_size">
+                        <p>Размер</p>
+                        <p>{{ object.size }}</p>
+                    </div>
+                    <div class="block__product_preview_second-center_info">
+                        <p class="open-size">
+                            Таблица размеров
+                        </p>
+                    </div>
+                    <div class="block__product_preview_second-center_choice">
+                        <p class="choice-size">
+                            Выбрать размер
+                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
+                                <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
+                            </svg>
+                        </p>
+                    </div>
+                </div>
+                <div class="block__product_preview_second-bottom">
+                    <div class="block__product_preview_second-bottom_button-append">
+                        Добавить в корзину
+                    </div>
+                    <div class="block__product_preview_second-bottom_ability">
+                        Возможно нанесение логотипа
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
