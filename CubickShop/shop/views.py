@@ -45,14 +45,10 @@ class SearchResultsView(ListView):
     template_name = 'shop/search/search_results.html'
     
     def get_queryset(self): # новый
-        img_url = {}
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
         return object_list
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        print(context)
 
             
 
