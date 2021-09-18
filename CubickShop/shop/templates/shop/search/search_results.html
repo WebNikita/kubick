@@ -37,10 +37,7 @@
             <div class="block__product_preview block__product_preview_first">
                 {% for key,value in object_list.1.items  %}
                     {% if key == object.name %}
-                        <img src="{{value.0}}" alt="1">
-                        <div class="quickly__preview">
-                            <p class="quickly__preview_button">Быстрый просмотр</p>
-                        </div>   
+                        <img src="{{value.0}}" alt="1">  
                     {% endif %}
                 {% endfor %}
             </div>
