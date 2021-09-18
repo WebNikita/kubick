@@ -11421,7 +11421,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   console.log(split);
   split.splice(-1, 1);
   console.log(split);
-  let hrefReplace = split.join('/');
+  let hrefReplace = split.join('/') + '/';
   console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
     const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
