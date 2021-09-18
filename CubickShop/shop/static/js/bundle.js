@@ -11426,9 +11426,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
     // console.log(container);
     if (value.val() > 0) {
       let textSize = container.find('.counter_size').text();
-      textSize = textSize.replace(/\s+/g, ' ');
+      textSize = textSize.replace(/\s+/g, '');
       console.log(textSize);
-      hrefReplace = hrefReplace + textSize + ',';
+      hrefReplace = hrefReplace + textSize;
       // console.log(hrefReplace);
     }
   })
