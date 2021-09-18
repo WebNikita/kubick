@@ -11436,8 +11436,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
       // console.log(hrefReplace);
     }
   })
-  hrefReplace.slice(0, -2);
+  // typeof hrefReplace;
+  // console.log(hrefReplace);
+  hrefReplace = hrefReplace.slice(0, -1);
   console.log(hrefReplace);
+  // hrefReplace.substring(0, hrefReplace.length - 1);
+  // console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href', hrefReplace);
 });
 
