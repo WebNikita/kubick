@@ -418,7 +418,9 @@
                         </div>
                         {% endif %}
                         <div class="block__append-to-card_bottom">
-                            <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">Добавить в корзину</a>   
+                            <button>
+                                <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">Добавить в корзину</a>   
+                            </button>
                             <div class="end-price">
                                 0 Р
                             </div>
