@@ -44,41 +44,41 @@ class SearchResultsView(ListView):
     model = Product
     template_name = 'shop/search/search_results.html'
     
-    # def get_queryset(self): # новый
-    #     query = self.request.GET.get('q')
-    #     object_list = Product.objects.filter(name__icontains=query)
-    #     return object_list
-    
-    def get_context_data(self, **kwargs):
-    
-        context = super().get_context_data(**kwargs)
-        img_url = {}
-        
+    def get_queryset(self): # новый
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
+        return object_list
+    
+    # def get_context_data(self, **kwargs):
+    
+    #     context = super().get_context_data(**kwargs)
+    #     img_url = {}
+        
+    #     query = self.request.GET.get('q')
+    #     object_list = Product.objects.filter(name__icontains=query)
 
-        for item in object_list:
-            try:
-                if os.path.exists(item.image.path[:-3]):
-                    print('Разархивация не требуется, добавил путь в буфер')
-                    files = os.listdir(item.image.path[:-3])
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                else:
-                    print('Началась разархивация')
-                    archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                    archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-                    archive.close()
-                    files = os.listdir(item.image.path[:-3].replace('_',' '))
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                img_url[item.name] = bufer
-                context['img_url'] = img_url
-            except Exception as e:
-                print(e)
-        print(context)
+    #     for item in object_list:
+    #         try:
+    #             if os.path.exists(item.image.path[:-3]):
+    #                 print('Разархивация не требуется, добавил путь в буфер')
+    #                 files = os.listdir(item.image.path[:-3])
+    #                 bufer = []
+    #                 for items in files:
+    #                     bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+    #             else:
+    #                 print('Началась разархивация')
+    #                 archive = py7zr.SevenZipFile(item.image.path, mode='r')
+    #                 archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
+    #                 archive.close()
+    #                 files = os.listdir(item.image.path[:-3].replace('_',' '))
+    #                 bufer = []
+    #                 for items in files:
+    #                     bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+    #             img_url[item.name] = bufer
+    #             context['img_url'] = img_url
+    #         except Exception as e:
+    #             print(e)
+    #     print(context)
 
             
 
