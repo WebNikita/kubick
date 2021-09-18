@@ -51,9 +51,6 @@ class SearchResultsView(ListView):
     
     def get_context_data(self, **kwargs):
     
-        
-
-
         context = super().get_context_data(**kwargs)
         img_url = {}
         
@@ -86,6 +83,8 @@ class SearchResultsView(ListView):
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
+            
+            print(context)
 
             
 
