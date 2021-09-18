@@ -7,28 +7,7 @@
 
     <div  class="container block__card container__catalog">
     {% for object in object_list.0 %}
-    <div id="{{ object.id }}" class="card card__product">
-        <div class="card__img">
-            {% for key,value in object_list.1.items  %}
-                {% if key == object.name %}
-                    <img src="{{value.0}}" alt="1">
-                    <div class="quickly__preview">
-                        <p class="quickly__preview_button">Быстрый просмотр</p>
-                    </div>   
-                {% endif %}
-            {% endfor %}
-            <div class="quickly__preview">
-                <p class="quickly__preview_button">Быстрый просмотр</p>
-            </div>
-        </div>
-        <div class="card__text">
-            <a href="{% url 'shop:product_detail' ct_model=object.category.slug slug=object.slug %}"><p class="card__text_name">{{ object.name }}</p></a>
-            <p class="card__text_article">Артикул: {{ object.article }}</p>
-            <p class="card__text_low">    
-                {{ object.price }} Р
-            </p>
-        </div>
-    </div>
+    1
     {% endfor %}
     </div>
     {% for object in object_list.0 %}
