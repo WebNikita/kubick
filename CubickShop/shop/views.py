@@ -68,7 +68,7 @@ class SearchResultsView(ListView):
                 img_url[item.name] = bufer
             except Exception as e:
                 print(e)
-        return [object_list, img_url]
+        return {'object_list': object_list, "img_url": img_url}
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
