@@ -11419,7 +11419,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   const href = jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children();
   const split = jquery__WEBPACK_IMPORTED_MODULE_0__(href).attr('href').split('/');
   console.log(split);
-  split.splice(0, -1);
+  split.splice(-1, 1);
   console.log(split);
   let hrefReplace = split.join('/');
   console.log(hrefReplace);
