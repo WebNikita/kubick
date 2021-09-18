@@ -11416,33 +11416,33 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 
-  const href = jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children();
-  const split = jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href').split('/');
-  console.log(split);
-  split.splice(-1, 1);
-  console.log(split);
-  let hrefReplace = split.join('/') + '/';
-  console.log(hrefReplace);
-  jquery__WEBPACK_IMPORTED_MODULE_0__('.counter').find('input').each(function() {
-    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this);
-    console.log(value.val())
-    const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
-    // console.log(container);
-    if (value.val() > 0) {
-      let textSize = container.find('.counter_size').text();
-      textSize = textSize.replace(/\s+/g, '');
-      console.log(textSize);
-      hrefReplace = hrefReplace + textSize + ',';
-      // console.log(hrefReplace);
-    }
-  })
-  // typeof hrefReplace;
+  // const href = $('.block__append-to-card_bottom').children();
+  // const split = $(href).children().attr('href').split('/');
+  // console.log(split);
+  // split.splice(-1, 1);
+  // console.log(split);
+  // let hrefReplace = split.join('/') + '/';
   // console.log(hrefReplace);
-  hrefReplace = hrefReplace.slice(0, -1);
-  console.log(hrefReplace);
-  // hrefReplace.substring(0, hrefReplace.length - 1);
+  // $('.counter').find('input').each(function() {
+  //   const value = $(this);
+  //   console.log(value.val())
+  //   const container = $(this).parent().parent().parent()
+  //   // console.log(container);
+  //   if (value.val() > 0) {
+  //     let textSize = container.find('.counter_size').text();
+  //     textSize = textSize.replace(/\s+/g, '');
+  //     console.log(textSize);
+  //     hrefReplace = hrefReplace + textSize + ',';
+  //     // console.log(hrefReplace);
+  //   }
+  // })
+  // // typeof hrefReplace;
+  // // console.log(hrefReplace);
+  // hrefReplace = hrefReplace.slice(0, -1);
   // console.log(hrefReplace);
-  jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href', hrefReplace);
+  // // hrefReplace.substring(0, hrefReplace.length - 1);
+  // // console.log(hrefReplace);
+  // $(href).children().attr('href', hrefReplace);
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
