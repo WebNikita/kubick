@@ -19,7 +19,7 @@ def cart_add(request, *args,**kwargs):
     content_type = ContentType.objects.get(model=ct_model)
     product = content_type.model_class().objects.get(slug=product_slug)
     cart_product = get_object_or_404(Product, id=product.id)
-    for product_size in product_size_list[:-1]:
+    for product_size in product_size_list:
         cart.add(product=cart_product, quantity=1, size=product_size)
     return redirect('cart:cart_detail')
 
