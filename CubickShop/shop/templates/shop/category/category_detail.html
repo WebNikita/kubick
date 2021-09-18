@@ -417,14 +417,12 @@
                         </form>
                         </div>
                         {% endif %}
-                    <div class="block__product_preview_second-bottom_button-append">
-                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">Добавить в корзину</a>   
-                    </div>
-                    <div class="block__append-to-card_bottom">
-                    <div class="end-price">
-                        0 Р
-                    </div>
-                    </div>
+                        <div class="block__append-to-card_bottom">
+                            <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">Добавить в корзину</a>   
+                            <div class="end-price">
+                                0 Р
+                            </div>
+                        </div>
                 {% endif %}
                 {% endfor %}  
             </div>
