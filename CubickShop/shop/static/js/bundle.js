@@ -11436,7 +11436,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
       // console.log(hrefReplace);
     }
   })
-  hrefReplace.slice(0, -1);
+  hrefReplace.slice(0, -2);
   console.log(hrefReplace);
   jquery__WEBPACK_IMPORTED_MODULE_0__(href).children().attr('href', hrefReplace);
 });
