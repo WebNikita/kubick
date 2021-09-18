@@ -6,10 +6,17 @@
 {% block content %}
 
     <div  class="container block__card container__catalog">
-    {% for object in object_list %}
+    {% for object in products %}
     <div id="{{ object.id }}" class="card card__product">
         <div class="card__img">
-            <img src="{% if object.image %}{{ object.image.url }}{% endif%}" alt="1">
+            {% for key,value in img_url.items  %}
+                {% if key == object.name %}
+                    <img src="{{value.0}}" alt="1">
+                    <div class="quickly__preview">
+                        <p class="quickly__preview_button">Быстрый просмотр</p>
+                    </div>   
+                {% endif %}
+            {% endfor %}
             <div class="quickly__preview">
                 <p class="quickly__preview_button">Быстрый просмотр</p>
             </div>
