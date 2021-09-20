@@ -290,7 +290,7 @@
       .block__card .card__img img {
         width: 162px;
         height: 470px;
-        object-fit: cover; }
+        object-fit: contain; }
       .block__card .card__img .quickly__preview {
         display: none;
         justify-content: center;
