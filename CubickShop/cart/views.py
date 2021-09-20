@@ -20,8 +20,11 @@ def cart_add(request, *args,**kwargs):
     product = content_type.model_class().objects.get(slug=product_slug)
     cart_product = get_object_or_404(Product, id=product.id)
     print(product_size_list)
-    for product_size in product_size_list:
-        cart.add(product=cart_product, quantity=int(product_size.split('|')[1]), size=product_size.split('|')[0])
+    if '0' not in product_size_list: 
+        for product_size in product_size_list:
+            cart.add(product=cart_product, quantity=int(product_size.split('|')[1]), size=product_size.split('|')[0])
+    else:
+        cart.add(product=cart_product, quantity=1, size=0)
     return redirect('cart:cart_detail')
 
 
