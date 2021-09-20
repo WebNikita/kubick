@@ -547,6 +547,8 @@
         user-select: none; }
         .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
+      .block__filter_phone li a, .block__filter_one li a, .block__filter_two li a, .block__filter_three li a, .block__filter_four li a, .block__filter_five li a, .block__sort_phone li a {
+        color: #767676; }
     .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
     .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
@@ -2329,6 +2331,8 @@
         user-select: none; }
         .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
+      .block__filter_phone li a, .block__filter_one li a, .block__filter_two li a, .block__filter_three li a, .block__filter_four li a, .block__filter_five li a, .block__sort_phone li a {
+        color: #767676; }
     .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
     .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
@@ -3937,6 +3941,8 @@
         user-select: none; }
         .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
+      .block__filter_phone li a, .block__filter_one li a, .block__filter_two li a, .block__filter_three li a, .block__filter_four li a, .block__filter_five li a, .block__sort_phone li a {
+        color: #767676; }
     .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
     .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
