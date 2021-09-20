@@ -248,8 +248,9 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
-        color: #767676;
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_sort li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_sort li:hover {
@@ -2029,8 +2030,9 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
-        color: #767676;
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_sort li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_sort li:hover {
@@ -3636,8 +3638,9 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
-        color: #767676;
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_sort li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_sort li:hover {
