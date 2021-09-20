@@ -10954,6 +10954,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.close_phone').on('click', function() {
     jquery__WEBPACK_IMPORTED_MODULE_0__('.container').css('opacity', '1');
     mainBlock.css('display', 'grid');
     mainBlock.parent().css('display', 'none');
+  } else {
+    jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'block');
+    mainBlock.css('display', 'none');
   }
 });
 
@@ -11127,19 +11130,28 @@ const SidebarListFilter = 'sidebar__list_filter';
 const BlockFilter = 'block__filter';
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_first`).on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_one`).css('display', 'block');
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_second`).on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_two`).css('display', 'block');
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_third`).on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_four`).css('display', 'block');
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_fourth`).on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'none');
   jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_three`).css('display', 'block');
+});
+
+jquery__WEBPACK_IMPORTED_MODULE_0__(`.${SidebarListFilter}_five`).on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_phone').css('display', 'none');
+  jquery__WEBPACK_IMPORTED_MODULE_0__(`.${BlockFilter}_five`).css('display', 'block');
 });
 
 
@@ -11641,6 +11653,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_three-head').on('click', func
 jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_four-head').on('click', function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_four-button').toggleClass('on');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_four-content').toggleClass('on');
+});
+
+jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_five-head').on('click', function() {
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_five-button').toggleClass('on');
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.filter_first_five-content').toggleClass('on');
 });
 
 jquery__WEBPACK_IMPORTED_MODULE_0__('.page__list').children().on('click', function() {

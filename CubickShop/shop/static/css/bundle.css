@@ -145,13 +145,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -188,6 +188,7 @@
     grid-column-gap: 42px;
     width: 350px; }
     .block__sidebar .sidebar__list li {
+      color: #767676;
       list-style: none; }
     .block__sidebar .sidebar__list_filter {
       justify-content: flex-end;
@@ -200,6 +201,7 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
+          color: #767676;
           margin-bottom: 5px; }
           .block__sidebar .sidebar__list_filter ul li label {
             cursor: pointer;
@@ -221,6 +223,8 @@
       .block__sidebar .sidebar__list_filter_third {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter_fourth {
+        padding: 0 20px; }
+      .block__sidebar .sidebar__list_filter_five {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter button {
         cursor: pointer;
@@ -244,6 +248,7 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
+        color: #767676;
         margin-bottom: 10px; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
@@ -258,6 +263,8 @@
       background-color: white; }
       .block__sidebar .sidebar__list_reveal li {
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_reveal li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_reveal li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_reveal li:hover {
@@ -504,17 +511,17 @@
   .block__preview .block__product_preview_first img {
     width: 125px;
     height: 355px; }
-  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__sort_phone {
+  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__filter_five, .block__sort_phone {
     display: none;
     position: absolute;
     top: 0;
     background-color: white;
     width: 100vw; }
-    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__sort_phone .close_phone {
+    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__filter_five .close_phone, .block__sort_phone .close_phone {
       margin: 19px 0 19px 20px;
       display: flex;
       align-items: center; }
-      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__sort_phone .close_phone p {
+      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__filter_five .close_phone p, .block__sort_phone .close_phone p {
         margin-left: 10px;
         color: #767676;
         font-family: Montserrat;
@@ -522,9 +529,9 @@
         font-weight: 600;
         font-size: 13px;
         line-height: 13px; }
-    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__sort_phone ul {
+    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__filter_five ul, .block__sort_phone ul {
       display: block; }
-    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__sort_phone li {
+    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__filter_five li, .block__sort_phone li {
       list-style: none;
       margin: 13px 20px;
       color: #767676;
@@ -532,16 +539,16 @@
       font-style: normal;
       font-weight: normal;
       font-size: 12px; }
-      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__sort_phone li label {
+      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__filter_five li label, .block__sort_phone li label {
         cursor: pointer;
         user-select: none; }
-        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__sort_phone li label input {
+        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
-    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__sort_phone hr {
+    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
-    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__sort_phone hr:last-child {
+    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
       margin-bottom: 20px; }
-    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__sort_phone button {
+    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__filter_five button, .block__sort_phone button {
       cursor: pointer;
       margin: 20px auto 20px;
       display: flex;
@@ -836,13 +843,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -872,6 +879,8 @@
   font-size: 24px;
   line-height: 29px;
   letter-spacing: 0.03em; }
+  .block__product_preview_second-top_name a {
+    color: #3F3F3F; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -1913,13 +1922,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -1956,6 +1965,7 @@
     grid-column-gap: 42px;
     width: 350px; }
     .block__sidebar .sidebar__list li {
+      color: #767676;
       list-style: none; }
     .block__sidebar .sidebar__list_filter {
       justify-content: flex-end;
@@ -1968,6 +1978,7 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
+          color: #767676;
           margin-bottom: 5px; }
           .block__sidebar .sidebar__list_filter ul li label {
             cursor: pointer;
@@ -1989,6 +2000,8 @@
       .block__sidebar .sidebar__list_filter_third {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter_fourth {
+        padding: 0 20px; }
+      .block__sidebar .sidebar__list_filter_five {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter button {
         cursor: pointer;
@@ -2012,6 +2025,7 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
+        color: #767676;
         margin-bottom: 10px; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
@@ -2026,6 +2040,8 @@
       background-color: white; }
       .block__sidebar .sidebar__list_reveal li {
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_reveal li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_reveal li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_reveal li:hover {
@@ -2272,17 +2288,17 @@
   .block__preview .block__product_preview_first img {
     width: 125px;
     height: 355px; }
-  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__sort_phone {
+  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__filter_five, .block__sort_phone {
     display: none;
     position: absolute;
     top: 0;
     background-color: white;
     width: 100vw; }
-    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__sort_phone .close_phone {
+    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__filter_five .close_phone, .block__sort_phone .close_phone {
       margin: 19px 0 19px 20px;
       display: flex;
       align-items: center; }
-      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__sort_phone .close_phone p {
+      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__filter_five .close_phone p, .block__sort_phone .close_phone p {
         margin-left: 10px;
         color: #767676;
         font-family: Montserrat;
@@ -2290,9 +2306,9 @@
         font-weight: 600;
         font-size: 13px;
         line-height: 13px; }
-    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__sort_phone ul {
+    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__filter_five ul, .block__sort_phone ul {
       display: block; }
-    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__sort_phone li {
+    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__filter_five li, .block__sort_phone li {
       list-style: none;
       margin: 13px 20px;
       color: #767676;
@@ -2300,16 +2316,16 @@
       font-style: normal;
       font-weight: normal;
       font-size: 12px; }
-      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__sort_phone li label {
+      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__filter_five li label, .block__sort_phone li label {
         cursor: pointer;
         user-select: none; }
-        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__sort_phone li label input {
+        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
-    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__sort_phone hr {
+    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
-    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__sort_phone hr:last-child {
+    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
       margin-bottom: 20px; }
-    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__sort_phone button {
+    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__filter_five button, .block__sort_phone button {
       cursor: pointer;
       margin: 20px auto 20px;
       display: flex;
@@ -2604,13 +2620,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -2640,6 +2656,8 @@
   font-size: 24px;
   line-height: 29px;
   letter-spacing: 0.03em; }
+  .block__product_preview_second-top_name a {
+    color: #3F3F3F; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -3507,13 +3525,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -3550,6 +3568,7 @@
     grid-column-gap: 42px;
     width: 350px; }
     .block__sidebar .sidebar__list li {
+      color: #767676;
       list-style: none; }
     .block__sidebar .sidebar__list_filter {
       justify-content: flex-end;
@@ -3562,6 +3581,7 @@
         margin-top: 20px;
         user-select: none; }
         .block__sidebar .sidebar__list_filter ul li {
+          color: #767676;
           margin-bottom: 5px; }
           .block__sidebar .sidebar__list_filter ul li label {
             cursor: pointer;
@@ -3583,6 +3603,8 @@
       .block__sidebar .sidebar__list_filter_third {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter_fourth {
+        padding: 0 20px; }
+      .block__sidebar .sidebar__list_filter_five {
         padding: 0 20px; }
       .block__sidebar .sidebar__list_filter button {
         cursor: pointer;
@@ -3606,6 +3628,7 @@
       padding-top: 10px;
       background-color: white; }
       .block__sidebar .sidebar__list_sort li {
+        color: #767676;
         margin-bottom: 10px; }
       .block__sidebar .sidebar__list_sort li:first-child {
         margin-top: 20px; }
@@ -3620,6 +3643,8 @@
       background-color: white; }
       .block__sidebar .sidebar__list_reveal li {
         margin-bottom: 10px; }
+        .block__sidebar .sidebar__list_reveal li a {
+          color: #767676; }
       .block__sidebar .sidebar__list_reveal li:first-child {
         margin-top: 20px; }
       .block__sidebar .sidebar__list_reveal li:hover {
@@ -3866,17 +3891,17 @@
   .block__preview .block__product_preview_first img {
     width: 125px;
     height: 355px; }
-  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__sort_phone {
+  .block__filter_phone, .block__filter_one, .block__filter_two, .block__filter_three, .block__filter_four, .block__filter_five, .block__sort_phone {
     display: none;
     position: absolute;
     top: 0;
     background-color: white;
     width: 100vw; }
-    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__sort_phone .close_phone {
+    .block__filter_phone .close_phone, .block__filter_one .close_phone, .block__filter_two .close_phone, .block__filter_three .close_phone, .block__filter_four .close_phone, .block__filter_five .close_phone, .block__sort_phone .close_phone {
       margin: 19px 0 19px 20px;
       display: flex;
       align-items: center; }
-      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__sort_phone .close_phone p {
+      .block__filter_phone .close_phone p, .block__filter_one .close_phone p, .block__filter_two .close_phone p, .block__filter_three .close_phone p, .block__filter_four .close_phone p, .block__filter_five .close_phone p, .block__sort_phone .close_phone p {
         margin-left: 10px;
         color: #767676;
         font-family: Montserrat;
@@ -3884,9 +3909,9 @@
         font-weight: 600;
         font-size: 13px;
         line-height: 13px; }
-    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__sort_phone ul {
+    .block__filter_phone ul, .block__filter_one ul, .block__filter_two ul, .block__filter_three ul, .block__filter_four ul, .block__filter_five ul, .block__sort_phone ul {
       display: block; }
-    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__sort_phone li {
+    .block__filter_phone li, .block__filter_one li, .block__filter_two li, .block__filter_three li, .block__filter_four li, .block__filter_five li, .block__sort_phone li {
       list-style: none;
       margin: 13px 20px;
       color: #767676;
@@ -3894,16 +3919,16 @@
       font-style: normal;
       font-weight: normal;
       font-size: 12px; }
-      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__sort_phone li label {
+      .block__filter_phone li label, .block__filter_one li label, .block__filter_two li label, .block__filter_three li label, .block__filter_four li label, .block__filter_five li label, .block__sort_phone li label {
         cursor: pointer;
         user-select: none; }
-        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__sort_phone li label input {
+        .block__filter_phone li label input, .block__filter_one li label input, .block__filter_two li label input, .block__filter_three li label input, .block__filter_four li label input, .block__filter_five li label input, .block__sort_phone li label input {
           display: none; }
-    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__sort_phone hr {
+    .block__filter_phone hr, .block__filter_one hr, .block__filter_two hr, .block__filter_three hr, .block__filter_four hr, .block__filter_five hr, .block__sort_phone hr {
       margin: 0 10px; }
-    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__sort_phone hr:last-child {
+    .block__filter_phone hr:last-child, .block__filter_one hr:last-child, .block__filter_two hr:last-child, .block__filter_three hr:last-child, .block__filter_four hr:last-child, .block__filter_five hr:last-child, .block__sort_phone hr:last-child {
       margin-bottom: 20px; }
-    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__sort_phone button {
+    .block__filter_phone button, .block__filter_one button, .block__filter_two button, .block__filter_three button, .block__filter_four button, .block__filter_five button, .block__sort_phone button {
       cursor: pointer;
       margin: 20px auto 20px;
       display: flex;
@@ -4198,13 +4223,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
@@ -4234,6 +4259,8 @@
   font-size: 24px;
   line-height: 29px;
   letter-spacing: 0.03em; }
+  .block__product_preview_second-top_name a {
+    color: #3F3F3F; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -5215,13 +5242,13 @@
   .container__size {
     grid-template-columns: 100vw; } }
 
-.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
+.filter_first_one-content, .filter_first_two-content, .filter_first_three-content, .filter_first_four-content, .filter_first_five-content, .filter_first_one-content-phone, .filter_first_two-content-phone, .filter_first_three-content-phone, .filter_first_four-content-phone, .filter_first_five-content-phone, .block__sidebar .sidebar__list_filter, .block__sidebar .sidebar__list_sort, .block__sidebar .sidebar__list_reveal, .block__append-to-card, .block__size, .block__size .size_content_men_table, .block__size .size_content_women_table, .block__size .size_content_shoes_table, .block__size .size_content_shirt_table, .block__size .size_content_tee_table, .block__size .size_content_glove_table, .block__append-order {
   display: none; }
 
-.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on {
+.filter_first_one-content.on, .filter_first_two-content.on, .filter_first_three-content.on, .filter_first_four-content.on, .filter_first_five-content.on {
   display: block; }
 
-.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on {
+.filter_first_one-button.on, .filter_first_two-button.on, .filter_first_three-button.on, .filter_first_four-button.on, .filter_first_five-button.on {
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
