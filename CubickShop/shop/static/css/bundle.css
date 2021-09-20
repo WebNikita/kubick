@@ -5302,7 +5302,8 @@
       padding: 5px 0; }
       .block__card_product_img img {
         width: 65px;
-        height: 190px; }
+        height: 190px; 
+        object-fit: contain;}
     .block__card_product_info {
       grid-column: 3/4;
       margin-top: 60px; }
