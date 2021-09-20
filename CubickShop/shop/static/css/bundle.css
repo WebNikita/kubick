@@ -881,6 +881,8 @@
   letter-spacing: 0.03em; }
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
+  .block__product_preview_second-top_name a:hover {
+    color: #8FBBD3; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -2658,6 +2660,8 @@
   letter-spacing: 0.03em; }
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
+  .block__product_preview_second-top_name a:hover {
+    color: #8FBBD3; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -4261,6 +4265,8 @@
   letter-spacing: 0.03em; }
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
+  .block__product_preview_second-top_name a:hover {
+    color: #8FBBD3; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
