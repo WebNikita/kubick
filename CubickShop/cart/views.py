@@ -44,6 +44,7 @@ def cart_detail(request, **kwargs):
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
                 images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+            images_urls.sort()
         else:
             archive = py7zr.SevenZipFile(cart[item]['product'].image.path, mode='r')
             archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
@@ -51,6 +52,7 @@ def cart_detail(request, **kwargs):
             files = os.listdir(folder_path.replace('_',' '))
             for items in files:
                 images_urls.append("/media/products/"+cart[item]['product'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+            images_urls.sort()
         img_bufer[cart[item]['product'].name] = images_urls
     total_price = Cart(request).get_total_price()
     return render(request, 'cart/detail.html', {'cart': cart, 'total_price': total_price, 'img_url': img_bufer})
