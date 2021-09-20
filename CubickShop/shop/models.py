@@ -53,7 +53,7 @@ class Product(models.Model):
         verbose_name = 'Позиции'
         verbose_name_plural = 'Позиции'
 
-    MALE = 'M'
+    MALE = 'М'
     FEMAIL = 'Ж'
     FORALL = 'В'
 
