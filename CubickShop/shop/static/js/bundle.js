@@ -11490,10 +11490,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
     // console.log(container);
     if (value.val() > 0) {
+      console.log(value.val());
       let textSize = container.find('.counter_size').text();
       textSize = textSize.replace(/\s+/g, '');
       console.log(textSize);
-      hrefReplace = hrefReplace + textSize + '|' + value.val +',';
+      hrefReplace = hrefReplace + textSize + '|' + value.val() +',';
       // console.log(hrefReplace);
     }
   })
