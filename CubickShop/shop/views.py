@@ -183,6 +183,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                    bufer.sort()
                 else:
                     print('Началась разархивация')
                     print(item.image.path)
@@ -194,6 +195,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                    bufer.sort()
                 img_url[item.name] = bufer
                 print(img_url)
                 context['img_url'] = img_url
@@ -289,6 +291,7 @@ class ProductDetailView(DetailView):
                 files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
                 for items in files:
                     iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                iamges_urls.sort()
             else:
                 print('False')
                 archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
@@ -298,6 +301,7 @@ class ProductDetailView(DetailView):
                 files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
                 for items in files:
                     iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                iamges_urls.sort()
             context['img_url'] = iamges_urls
             print( context['img_url'])
         except Exception:
