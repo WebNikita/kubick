@@ -324,6 +324,8 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 20px; }
+      .block__card .card__text_name:hover {
+        color: #3F3F3F; }
       .block__card .card__text_article {
         color: #767676;
         font-family: Inter;
@@ -882,7 +884,7 @@
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
   .block__product_preview_second-top_name a:hover {
-    color: #8FBBD3; }
+    color: #4C95BD; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -2103,6 +2105,8 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 20px; }
+      .block__card .card__text_name:hover {
+        color: #3F3F3F; }
       .block__card .card__text_article {
         color: #767676;
         font-family: Inter;
@@ -2661,7 +2665,7 @@
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
   .block__product_preview_second-top_name a:hover {
-    color: #8FBBD3; }
+    color: #4C95BD; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
@@ -3708,6 +3712,8 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 20px; }
+      .block__card .card__text_name:hover {
+        color: #3F3F3F; }
       .block__card .card__text_article {
         color: #767676;
         font-family: Inter;
@@ -4266,7 +4272,7 @@
   .block__product_preview_second-top_name a {
     color: #3F3F3F; }
   .block__product_preview_second-top_name a:hover {
-    color: #8FBBD3; }
+    color: #4C95BD; }
 
 .block__product_preview_second-top_price {
   padding-top: 30px;
