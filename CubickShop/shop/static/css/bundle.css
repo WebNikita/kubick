@@ -2074,7 +2074,7 @@
       .block__card .card__img img {
         width: 162px;
         height: 470px;
-        object-fit: cover; }
+        object-fit: contain; }
       .block__card .card__img .quickly__preview {
         display: none;
         justify-content: center;
@@ -3684,7 +3684,7 @@
       .block__card .card__img img {
         width: 162px;
         height: 470px;
-        object-fit: cover; }
+        object-fit: contain; }
       .block__card .card__img .quickly__preview {
         display: none;
         justify-content: center;
@@ -6417,7 +6417,7 @@ button {
     .main__picture .picture {
       display: none;
       max-height: 500px;
-      object-fit: cover; }
+      object-fit: contain; }
       .main__picture .picture__mobile {
         display: block; }
     .main__picture .text {
