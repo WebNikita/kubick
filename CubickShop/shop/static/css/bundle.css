@@ -403,7 +403,8 @@
     .block__preview .block__product_preview_first img {
       width: 250px;
       height: 710px;
-      pointer-events: none; }
+      pointer-events: none;
+      object-fit: contain; }
   .block__preview .close_preview {
     display: flex;
     justify-content: flex-end;
