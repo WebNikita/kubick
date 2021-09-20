@@ -11493,7 +11493,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().
       let textSize = container.find('.counter_size').text();
       textSize = textSize.replace(/\s+/g, '');
       console.log(textSize);
-      hrefReplace = hrefReplace + textSize + ',';
+      hrefReplace = hrefReplace + textSize + '|' + value.val +',';
       // console.log(hrefReplace);
     }
   })
