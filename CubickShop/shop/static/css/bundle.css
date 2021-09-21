@@ -1046,6 +1046,7 @@
     margin-bottom: 73px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -1054,6 +1055,13 @@
     letter-spacing: 0.03em;
     color: #3F3F3F; }
     .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
+    .block__append-to-card_title .close {
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1174,6 +1182,7 @@
     margin-bottom: 70px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -2997,6 +3006,7 @@
     margin-bottom: 73px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -3005,6 +3015,13 @@
     letter-spacing: 0.03em;
     color: #3F3F3F; }
     .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
+    .block__append-to-card_title .close {
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3125,6 +3142,7 @@
     margin-bottom: 70px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -4774,6 +4792,7 @@
     margin-bottom: 73px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
@@ -4782,6 +4801,13 @@
     letter-spacing: 0.03em;
     color: #3F3F3F; }
     .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
+    .block__append-to-card_title .close {
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4902,6 +4928,7 @@
     margin-bottom: 70px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
