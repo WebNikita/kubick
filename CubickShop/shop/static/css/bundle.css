@@ -1180,13 +1180,12 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
-  .block__size .size_content li {
-    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
     margin-top: 70px; }
   .block__size .size_content_men_table p {
+    user-select: none;
     margin-top: 100px;
     margin-bottom: 50px;
     font-family: Inter;
@@ -1202,6 +1201,7 @@
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1222,6 +1222,7 @@
       text-align: left; }
     .block__size .size_content_men_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1237,6 +1238,7 @@
   .block__size .size_content_women_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -1250,6 +1252,7 @@
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1270,6 +1273,7 @@
       text-align: left; }
     .block__size .size_content_women_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1285,6 +1289,7 @@
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -1293,6 +1298,7 @@
     color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1306,6 +1312,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1314,6 +1321,7 @@
     color: #767676; }
     .block__size .size_content_shoes_table-first ul {
       text-align: right;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -1327,6 +1335,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1342,6 +1351,7 @@
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1354,6 +1364,7 @@
     grid-column-gap: 50px;
     margin-bottom: 70px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1371,6 +1382,7 @@
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1388,6 +1400,7 @@
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1398,6 +1411,7 @@
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -1411,6 +1425,7 @@
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3090,13 +3105,12 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
-  .block__size .size_content li {
-    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
     margin-top: 70px; }
   .block__size .size_content_men_table p {
+    user-select: none;
     margin-top: 100px;
     margin-bottom: 50px;
     font-family: Inter;
@@ -3112,6 +3126,7 @@
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3132,6 +3147,7 @@
       text-align: left; }
     .block__size .size_content_men_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3147,6 +3163,7 @@
   .block__size .size_content_women_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -3160,6 +3177,7 @@
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3180,6 +3198,7 @@
       text-align: left; }
     .block__size .size_content_women_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3195,6 +3214,7 @@
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -3203,6 +3223,7 @@
     color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3216,6 +3237,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3224,6 +3246,7 @@
     color: #767676; }
     .block__size .size_content_shoes_table-first ul {
       text-align: right;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -3237,6 +3260,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3252,6 +3276,7 @@
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3264,6 +3289,7 @@
     grid-column-gap: 50px;
     margin-bottom: 70px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3281,6 +3307,7 @@
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3298,6 +3325,7 @@
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3308,6 +3336,7 @@
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -3321,6 +3350,7 @@
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -4826,13 +4856,12 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
-  .block__size .size_content li {
-    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
     margin-top: 70px; }
   .block__size .size_content_men_table p {
+    user-select: none;
     margin-top: 100px;
     margin-bottom: 50px;
     font-family: Inter;
@@ -4848,6 +4877,7 @@
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4868,6 +4898,7 @@
       text-align: left; }
     .block__size .size_content_men_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4883,6 +4914,7 @@
   .block__size .size_content_women_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -4896,6 +4928,7 @@
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
       padding-bottom: 13px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4916,6 +4949,7 @@
       text-align: left; }
     .block__size .size_content_women_table-second li {
       padding-bottom: 30px;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4931,6 +4965,7 @@
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
     margin-bottom: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: 500;
@@ -4939,6 +4974,7 @@
     color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -4952,6 +4988,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -4960,6 +4997,7 @@
     color: #767676; }
     .block__size .size_content_shoes_table-first ul {
       text-align: right;
+      user-select: none;
       font-family: Inter;
       font-style: normal;
       font-weight: normal;
@@ -4973,6 +5011,7 @@
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -4988,6 +5027,7 @@
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -5000,6 +5040,7 @@
     grid-column-gap: 50px;
     margin-bottom: 70px;
     margin-left: 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -5017,6 +5058,7 @@
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -5034,6 +5076,7 @@
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -5044,6 +5087,7 @@
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
     padding-bottom: 30px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -5057,6 +5101,7 @@
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
     margin: 70px 0 70px 50px;
+    user-select: none;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
