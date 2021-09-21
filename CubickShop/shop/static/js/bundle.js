@@ -11083,14 +11083,16 @@ function loadFilter(thisFilter) {
   const Content = (thisFilter.html());
   const ID = (thisFilter.attr('id'));
   thisFilter.toggleClass('select');
-  // console.log('VKL FILTER');
+  console.log('VKL FILTER');
+  console.log(Content)
+  console.log(ID)
   // const Class = (className.attr('class').split(' ')[0]);
   // console.log(Class);
   if (thisFilter.hasClass('select')) {
     // console.log('on');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 30px !important;');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
-    console.log('on');
+    console.log('select');
     // console.log($('.block__select-filter').children('li').length>0);
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}">
                                         ${Content}
@@ -11161,12 +11163,18 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
     const __GET = window.location.search.replace(/\+/g, '%20').substring(1).split('&');
     console.log(__GET);
     for (let i=0; i<__GET.length; i++) {
+      console.log(i);
       const getVar = __GET[i].split('=');
-      $_GET[getVar[i]] = typeof(getVar[1])=='undefined' ? '' : getVar[1];
+      console.log(getVar);
+
+      $_GET[getVar[0]] = typeof(getVar[1])=='undefined' ? '' : getVar[1];
+      console.log($_GET[getVar[0]])
     }
     return $_GET;
   }
   const GETArr = parseGetParams();
+  // console.log('массив');
+  console.log(GETArr);
 
   // let ert;
   // console.log('text');
@@ -11176,6 +11184,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
     // console.log($(this).parent().parent());
     // console.log(ert);
     for (const key in GETArr) {
+      console.log(decodeURIComponent(GETArr[key]))
       if (decodeURIComponent(GETArr[key]) == ert) {
         jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('checked', true);
         console.log(jquery__WEBPACK_IMPORTED_MODULE_0__(this).is(':checked'));
@@ -11186,28 +11195,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
     }
     // console.log('test')
   });
-  console.log(GETArr);
+  // console.log(GETArr);
 
 
   // GETArr.forEach(e => {
 
   // });
 })
-
-
-// const menu = {
-//   width: 300,
-//   height: 200,
-//   title: 'Menu',
-// };
-// let counter = 0;
-// for (const key in menu) {
-//   if (menu[key] != '') {
-//     // alert(key + '' + menu[key]);
-//     counter++;
-//   }
-// }
-// alert( 'Всего свойств: ' + counter );
 
 
 /***/ }),
@@ -11422,9 +11416,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
 
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
-    console.log(endPrice);
+    // console.log(endPrice);
     totalPrice = totalPrice + endPrice;
-    console.log(' цена ' + totalPrice);
+    // console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 
@@ -11469,9 +11463,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
-    console.log(endPrice);
+    // console.log(endPrice);
     totalPrice = totalPrice + endPrice;
-    console.log(' цена ' + totalPrice);
+    // console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
   // console.log('text' + $input.val());
