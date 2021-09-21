@@ -56,6 +56,7 @@ class SearchResultsView(ListView):
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                        bufer.sort()
                 else:
                     print('Началась разархивация')
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
@@ -65,6 +66,7 @@ class SearchResultsView(ListView):
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
+                        bufer.sort()
                 img_url[item.name] = bufer
             except Exception as e:
                 print(e)
