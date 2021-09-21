@@ -5964,7 +5964,7 @@
     margin-bottom: 50px; }
 
 @media (max-width: 640px) {
-  .block__card_order .data-button {
+  .block__card_order .data__button {
     width: 100%; } }
 
 @media (min-width: 320px) and (max-width: 1224px) {
