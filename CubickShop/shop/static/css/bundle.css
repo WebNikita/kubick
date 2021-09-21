@@ -1180,6 +1180,8 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
+  .block__size .size_content li {
+    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
@@ -3088,6 +3090,8 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
+  .block__size .size_content li {
+    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
@@ -4822,6 +4826,8 @@
         line-height: 13px; }
   .block__size li {
     list-style: none; }
+  .block__size .size_content li {
+    user-select: none; }
   .block__size .size_content_men p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_men_table p:first-child {
