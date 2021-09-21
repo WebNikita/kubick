@@ -24,7 +24,7 @@ def cart_add(request, *args,**kwargs):
         for product_size in product_size_list:
             cart.add(product=cart_product, quantity=int(product_size.split('|')[1]), size=product_size.split('|')[0])
     else:
-        cart.add(product=cart_product, quantity=1, size=0)
+        cart.add(product=cart_product, quantity=1, size='0')
     return redirect('cart:cart_detail')
 
 
