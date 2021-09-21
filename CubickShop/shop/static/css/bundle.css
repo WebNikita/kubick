@@ -1149,7 +1149,21 @@
     margin-top: 70px;
     margin-bottom: 70px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__size_title .close {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__size_title-phone {
     display: none; }
     .block__size_title-phone .close_phone {
@@ -1172,14 +1186,26 @@
     margin-top: 70px; }
   .block__size .size_content_men_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_men_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_men_table-second {
@@ -1193,7 +1219,13 @@
     .block__size .size_content_men_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_men_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women p {
@@ -1202,14 +1234,26 @@
     margin-top: 70px; }
   .block__size .size_content_women_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_women_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women_table-second {
@@ -1223,7 +1267,13 @@
     .block__size .size_content_women_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_women_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_shoes p {
@@ -1232,25 +1282,55 @@
     margin-top: 70px; }
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_shoes_table-first {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-first ul {
-      text-align: right; }
+      text-align: right;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_shoes_table-first ul:first-child {
       text-align: left; }
   .block__size .size_content_shoes_table-second {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-second ul {
       text-align: right; }
     .block__size .size_content_shoes_table-second ul:first-child {
@@ -1259,13 +1339,25 @@
     display: grid;
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table-four {
     display: grid;
     grid-template-columns: 24px 56px 56px;
     grid-column-gap: 50px;
     margin-bottom: 70px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shirt p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_shirt_table li {
@@ -1276,7 +1368,13 @@
     display: grid;
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_tee p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_tee_table li {
@@ -1287,20 +1385,45 @@
     display: grid;
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_glove_table-first {
     display: grid;
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_title {
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #4C95BD; }
 
 @media (max-width: 400px) {
   .counter_size {
@@ -2188,7 +2311,8 @@
     .block__preview .block__product_preview_first img {
       width: 250px;
       height: 710px;
-      pointer-events: none; }
+      pointer-events: none;
+      object-fit: contain; }
   .block__preview .close_preview {
     display: flex;
     justify-content: flex-end;
@@ -2933,7 +3057,21 @@
     margin-top: 70px;
     margin-bottom: 70px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__size_title .close {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__size_title-phone {
     display: none; }
     .block__size_title-phone .close_phone {
@@ -2956,14 +3094,26 @@
     margin-top: 70px; }
   .block__size .size_content_men_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_men_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_men_table-second {
@@ -2977,7 +3127,13 @@
     .block__size .size_content_men_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_men_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women p {
@@ -2986,14 +3142,26 @@
     margin-top: 70px; }
   .block__size .size_content_women_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_women_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women_table-second {
@@ -3007,7 +3175,13 @@
     .block__size .size_content_women_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_women_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_shoes p {
@@ -3016,25 +3190,55 @@
     margin-top: 70px; }
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_shoes_table-first {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-first ul {
-      text-align: right; }
+      text-align: right;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_shoes_table-first ul:first-child {
       text-align: left; }
   .block__size .size_content_shoes_table-second {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-second ul {
       text-align: right; }
     .block__size .size_content_shoes_table-second ul:first-child {
@@ -3043,13 +3247,25 @@
     display: grid;
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table-four {
     display: grid;
     grid-template-columns: 24px 56px 56px;
     grid-column-gap: 50px;
     margin-bottom: 70px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shirt p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_shirt_table li {
@@ -3060,7 +3276,13 @@
     display: grid;
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_tee p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_tee_table li {
@@ -3071,20 +3293,45 @@
     display: grid;
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_glove_table-first {
     display: grid;
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_title {
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #4C95BD; }
 
 @media (max-width: 400px) {
   .counter_size {
@@ -3798,7 +4045,8 @@
     .block__preview .block__product_preview_first img {
       width: 250px;
       height: 710px;
-      pointer-events: none; }
+      pointer-events: none;
+      object-fit: contain; }
   .block__preview .close_preview {
     display: flex;
     justify-content: flex-end;
@@ -4543,7 +4791,21 @@
     margin-top: 70px;
     margin-bottom: 70px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__size_title .close {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__size_title-phone {
     display: none; }
     .block__size_title-phone .close_phone {
@@ -4566,14 +4828,26 @@
     margin-top: 70px; }
   .block__size .size_content_men_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_men_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_men_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_men_table-second {
@@ -4587,7 +4861,13 @@
     .block__size .size_content_men_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_men_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_men_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women p {
@@ -4596,14 +4876,26 @@
     margin-top: 70px; }
   .block__size .size_content_women_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_women_table-first {
     display: grid;
     grid-template-columns: 130px 82px;
     grid-column-gap: 70px;
     margin-left: 50px; }
     .block__size .size_content_women_table-first li {
-      padding-bottom: 13px; }
+      padding-bottom: 13px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-first li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_women_table-second {
@@ -4617,7 +4909,13 @@
     .block__size .size_content_women_table-second ul:first-child {
       text-align: left; }
     .block__size .size_content_women_table-second li {
-      padding-bottom: 30px; }
+      padding-bottom: 30px;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_women_table-second li:last-child {
       padding-bottom: 0px; }
   .block__size .size_content_shoes p {
@@ -4626,25 +4924,55 @@
     margin-top: 70px; }
   .block__size .size_content_shoes_table p {
     margin-top: 100px;
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #3F3F3F; }
   .block__size .size_content_shoes_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_shoes_table-first {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-first ul {
-      text-align: right; }
+      text-align: right;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #767676; }
     .block__size .size_content_shoes_table-first ul:first-child {
       text-align: left; }
   .block__size .size_content_shoes_table-second {
     display: grid;
     grid-template-columns: 140px 30px 30px 30px 30px 30px 30px 30px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
     .block__size .size_content_shoes_table-second ul {
       text-align: right; }
     .block__size .size_content_shoes_table-second ul:first-child {
@@ -4653,13 +4981,25 @@
     display: grid;
     grid-template-columns: 24px 24px 24px 24px 24px 24px 24px 24px;
     grid-column-gap: 50px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shoes_table-four {
     display: grid;
     grid-template-columns: 24px 56px 56px;
     grid-column-gap: 50px;
     margin-bottom: 70px;
-    margin-left: 50px; }
+    margin-left: 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_shirt p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_shirt_table li {
@@ -4670,7 +5010,13 @@
     display: grid;
     grid-template-columns: 95px 82px 74px;
     grid-column-gap: 70px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_tee p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_tee_table li {
@@ -4681,20 +5027,45 @@
     display: grid;
     grid-template-columns: 54px 54px 54px 54px 54px 54px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove p {
     margin: 15px 0 15px 50px; }
   .block__size .size_content_glove_table li {
-    padding-bottom: 30px; }
+    padding-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_glove_table li:last-child {
     padding-bottom: 0; }
   .block__size .size_content_glove_table-first {
     display: grid;
     grid-template-columns: 14px 14px 14px 24px;
     grid-column-gap: 50px;
-    margin: 70px 0 70px 50px; }
+    margin: 70px 0 70px 50px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #767676; }
   .block__size .size_content_title {
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    color: #4C95BD; }
 
 @media (max-width: 400px) {
   .counter_size {
@@ -5010,8 +5381,8 @@
 .slide img {
   width: 250px;
   height: 710px;
-  pointer-events: none; 
-  object-fit: contain;}
+  pointer-events: none;
+  object-fit: contain; }
 
 .slider {
   position: relative;
@@ -5302,8 +5673,8 @@
       padding: 5px 0; }
       .block__card_product_img img {
         width: 65px;
-        height: 190px; 
-        object-fit: contain;}
+        height: 190px;
+        object-fit: contain; }
     .block__card_product_info {
       grid-column: 3/4;
       margin-top: 60px; }
@@ -5459,9 +5830,7 @@
     max-width: 500px;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    grid-template-areas: "info"
- "img"
- "price"; }
+    grid-template-areas: "info" "img" "price"; }
     .block__card_product_img {
       grid-area: img;
       grid-column: auto;
@@ -5492,9 +5861,7 @@
         display: none; }
   .block__card_order {
     grid-template-columns: auto;
-    grid-template-areas: "end-price"
- "append"
- "info";
+    grid-template-areas: "end-price" "append" "info";
     margin: 70px 0; }
     .block__card_order_info {
       grid-area: info;
