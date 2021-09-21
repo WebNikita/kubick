@@ -1035,7 +1035,21 @@
     margin-top: 50px;
     margin-bottom: 73px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__append-to-card_title-phone {
     display: none; }
     .block__append-to-card_title-phone .close_phone {
@@ -2960,7 +2974,21 @@
     margin-top: 50px;
     margin-bottom: 73px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__append-to-card_title-phone {
     display: none; }
     .block__append-to-card_title-phone .close_phone {
@@ -4711,7 +4739,21 @@
     margin-top: 50px;
     margin-bottom: 73px;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.03em;
+    color: #3F3F3F; }
+    .block__append-to-card_title .close-size {
+      font-family: Inter;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15px;
+      color: #767676; }
   .block__append-to-card_title-phone {
     display: none; }
     .block__append-to-card_title-phone .close_phone {
