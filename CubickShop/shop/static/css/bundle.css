@@ -1076,7 +1076,7 @@
     line-height: 19px;
     align-items: center; }
     .block__append-to-card_counter .counter_price {
-      width: 260px;
+      width: 280px;
       display: flex;
       justify-content: space-between;
       font-size: 20px;
@@ -1456,7 +1456,9 @@
     letter-spacing: 0.03em;
     color: #4C95BD; }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
+  .counter_price {
+    width: 300px !important; }
   .counter_size {
     margin-bottom: 20px; } }
 
@@ -3015,7 +3017,7 @@
     line-height: 19px;
     align-items: center; }
     .block__append-to-card_counter .counter_price {
-      width: 260px;
+      width: 280px;
       display: flex;
       justify-content: space-between;
       font-size: 20px;
@@ -3395,7 +3397,9 @@
     letter-spacing: 0.03em;
     color: #4C95BD; }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
+  .counter_price {
+    width: 300px !important; }
   .counter_size {
     margin-bottom: 20px; } }
 
@@ -4780,7 +4784,7 @@
     line-height: 19px;
     align-items: center; }
     .block__append-to-card_counter .counter_price {
-      width: 260px;
+      width: 280px;
       display: flex;
       justify-content: space-between;
       font-size: 20px;
@@ -5160,7 +5164,9 @@
     letter-spacing: 0.03em;
     color: #4C95BD; }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
+  .counter_price {
+    width: 300px !important; }
   .counter_size {
     margin-bottom: 20px; } }
 
