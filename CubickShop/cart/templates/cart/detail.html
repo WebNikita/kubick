@@ -8,10 +8,9 @@
             Корзина
         </div>
         <div class="block__card">
-            
+            <hr>
             {% for item in cart.values %}
             {% with product=item.product %}
-                <hr>
                     <div class="block__card_product">
                         <div class="block__card_product_img">
                             {% for key,value in img_url.items  %}
