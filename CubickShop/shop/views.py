@@ -146,7 +146,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         filter_results = CT_MODEL_MODEL_CLASS[slug].objects.none()
         object_list = Category.objects.get(slug=slug).products.all()
         img_url = {}
-        pagintation_count = 6
+        pagintation_count = 15
 
         if len(query_dict) != 0 and 'product_counter' in query_dict:
             pagintation_count = int(query_dict['product_counter'][0])
