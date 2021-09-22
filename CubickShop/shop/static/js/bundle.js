@@ -11083,16 +11083,14 @@ function loadFilter(thisFilter) {
   const Content = (thisFilter.html());
   const ID = (thisFilter.attr('id'));
   thisFilter.toggleClass('select');
-  console.log('VKL FILTER');
-  console.log(Content)
-  console.log(ID)
+  // console.log('VKL FILTER');
   // const Class = (className.attr('class').split(' ')[0]);
   // console.log(Class);
   if (thisFilter.hasClass('select')) {
     // console.log('on');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__sidebar').css('cssText', 'margin-bottom: 30px !important;');
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').css('cssText', 'margin-top: 30px !important; margin-bottom: 70px !important;');
-    console.log('select');
+    console.log('on');
     // console.log($('.block__select-filter').children('li').length>0);
     jquery__WEBPACK_IMPORTED_MODULE_0__('.block__select-filter').append(`<li id="${ID}">
                                         ${Content}
@@ -11161,19 +11159,16 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   function parseGetParams() {
     const $_GET = {};
     const __GET = window.location.search.replace(/\+/g, '%20').substring(1).split('&');
-    console.log(__GET);
+    // console.log(__GET);
     for (let i=0; i<__GET.length; i++) {
-      console.log(i);
       const getVar = __GET[i].split('=');
-      console.log(getVar);
-
+      getVar[0] = i;
       $_GET[getVar[0]] = typeof(getVar[1])=='undefined' ? '' : getVar[1];
-      console.log($_GET[getVar[0]])
     }
+    // console.log($_GET)
     return $_GET;
   }
   const GETArr = parseGetParams();
-  // console.log('массив');
   console.log(GETArr);
 
   // let ert;
@@ -11182,9 +11177,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter input:checkbox').each(function() {
     const ert = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
     // console.log($(this).parent().parent());
-    // console.log(ert);
+    console.log(ert);
     for (const key in GETArr) {
-      console.log(decodeURIComponent(GETArr[key]))
+      // console.log( 'Ключ: ' + key + ' значение: ' + decodeURIComponent(GETArr[key]) )
       if (decodeURIComponent(GETArr[key]) == ert) {
         jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('checked', true);
         console.log(jquery__WEBPACK_IMPORTED_MODULE_0__(this).is(':checked'));
@@ -11193,9 +11188,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
         // console.log(decodeURIComponent(GETArr[key]));
       }
     }
-    // console.log('test')
   });
-  // console.log(GETArr);
+  console.log(GETArr);
 
 
   // GETArr.forEach(e => {
@@ -11416,9 +11410,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
 
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
-    // console.log(endPrice);
+    console.log(endPrice);
     totalPrice = totalPrice + endPrice;
-    // console.log(' цена ' + totalPrice);
+    console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
 
@@ -11463,9 +11457,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
-    // console.log(endPrice);
+    console.log(endPrice);
     totalPrice = totalPrice + endPrice;
-    // console.log(' цена ' + totalPrice);
+    console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
   // console.log('text' + $input.val());
