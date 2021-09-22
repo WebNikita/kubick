@@ -293,9 +293,9 @@
         </div>
         <ul class="page__list">
             {% if products.has_previous %}
-                <li class="select_page"><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
+            <li><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
             {% endif %}
-            <li class="select_page"><a href="?page={{ products.number }}">{{ products.number }}</a></li>
+            <li><a class="select_page" href="?page={{ products.number }}">{{ products.number }}</a></li>
             {% if products.has_next %}        
             <li><a href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
             {% endif %}
