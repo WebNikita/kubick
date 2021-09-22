@@ -169,7 +169,7 @@
   display: none; }
 
 .select_page a {
-  color: #4C95BD; }
+  color: #4C95BD !important; }
 
 .block__sidebar {
   display: flex;
@@ -2149,7 +2149,7 @@
   display: none; }
 
 .select_page a {
-  color: #4C95BD; }
+  color: #4C95BD !important; }
 
 .block__sidebar {
   display: flex;
@@ -3955,7 +3955,7 @@
   display: none; }
 
 .select_page a {
-  color: #4C95BD; }
+  color: #4C95BD !important; }
 
 .block__sidebar {
   display: flex;
