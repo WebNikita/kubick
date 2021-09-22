@@ -887,17 +887,23 @@
   display: flex;
   align-items: center; }
 
-.block__product_preview_second-top_category a {
+.block__product_preview_second-top_category span {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 15px;
   color: #767676; }
-
-.block__product_preview_second-top_category a:hover {
-  color: #8FBBD3;
-  text-decoration: underline; }
+  .block__product_preview_second-top_category span a {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #767676; }
+  .block__product_preview_second-top_category span a:hover {
+    color: #8FBBD3;
+    text-decoration: underline; }
 
 .block__product_preview_second-top_name {
   padding-top: 20px;
@@ -2859,17 +2865,23 @@
   display: flex;
   align-items: center; }
 
-.block__product_preview_second-top_category a {
+.block__product_preview_second-top_category span {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 15px;
   color: #767676; }
-
-.block__product_preview_second-top_category a:hover {
-  color: #8FBBD3;
-  text-decoration: underline; }
+  .block__product_preview_second-top_category span a {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #767676; }
+  .block__product_preview_second-top_category span a:hover {
+    color: #8FBBD3;
+    text-decoration: underline; }
 
 .block__product_preview_second-top_name {
   padding-top: 20px;
@@ -4657,17 +4669,23 @@
   display: flex;
   align-items: center; }
 
-.block__product_preview_second-top_category a {
+.block__product_preview_second-top_category span {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 15px;
   color: #767676; }
-
-.block__product_preview_second-top_category a:hover {
-  color: #8FBBD3;
-  text-decoration: underline; }
+  .block__product_preview_second-top_category span a {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #767676; }
+  .block__product_preview_second-top_category span a:hover {
+    color: #8FBBD3;
+    text-decoration: underline; }
 
 .block__product_preview_second-top_name {
   padding-top: 20px;
