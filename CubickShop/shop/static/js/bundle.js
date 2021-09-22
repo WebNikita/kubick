@@ -11126,6 +11126,11 @@ function loadFilter(thisFilter) {
   });
 }
 
+function loadFilterPhone(thisFilter) {
+  // console.log(thisFilter);
+  thisFilter.toggleClass('select');
+}
+
 const SidebarListFilter = 'sidebar__list_filter';
 const BlockFilter = 'block__filter';
 
@@ -11177,7 +11182,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter input:checkbox').each(function() {
     const ert = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
     // console.log($(this).parent().parent());
-    console.log(ert);
+    // console.log(ert);
     for (const key in GETArr) {
       // console.log( 'Ключ: ' + key + ' значение: ' + decodeURIComponent(GETArr[key]) )
       if (decodeURIComponent(GETArr[key]) == ert) {
@@ -11190,7 +11195,18 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
     }
   });
   console.log(GETArr);
-
+  jquery__WEBPACK_IMPORTED_MODULE_0__('.sidebar__list_filter_mobile input:checkbox').each(function() {
+    const mobFilter = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+    console.log(mobFilter);
+    for (const key in GETArr) {
+      if (decodeURIComponent(GETArr[key]) == mobFilter) {
+        jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('checked', true);
+        console.log(jquery__WEBPACK_IMPORTED_MODULE_0__(this).is(':checked'));
+        loadFilterPhone(jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent());
+      }
+    }
+    // loadFilterPhone($(this).parent().parent())
+  });
 
   // GETArr.forEach(e => {
 
