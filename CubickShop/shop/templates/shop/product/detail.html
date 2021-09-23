@@ -17,7 +17,7 @@
             <div class="block__product_preview_second-top">
                 <div class="block__product_preview_second-top_category">
                     <span>
-                        <a href="{% url 'shop:category_detail' slug='summer_workwear' %}">
+                        <a href="{% url 'shop:category_detail' slug='{{product.category.slug}}' %}">
                             {{ product.category }}
                         </a>
                         /
