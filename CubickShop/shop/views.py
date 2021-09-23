@@ -162,8 +162,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     filter = {key: query_dict[key][0]}
                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                     filter_results = search_model
-            context['products'] = filter_results
-            paginator = Paginator(object_list, pagintation_count)
+            paginator = Paginator(filter_results, pagintation_count)
             page = self.request.GET.get('page')
             try:
                 products = paginator.page(page)
@@ -171,6 +170,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(1)
             except EmptyPage:
                 products = paginator.page(paginator.num_pages)
+            context['products'] = products
         else:
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
