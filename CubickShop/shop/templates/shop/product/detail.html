@@ -17,11 +17,11 @@
             <div class="block__product_preview_second-top">
                 <div class="block__product_preview_second-top_category">
                     <span>
-                        <a href="{% url 'shop:category_detail' slug='{{product.category.slug}}' %}">
+                        <a href="/category/{{product.category.slug}}">
                             {{ product.category }}
                         </a>
                         /
-                        <a href="">
+                        <a href="#">
                             {{ product.name }}
                         </a>
                     </span>
