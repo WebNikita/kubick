@@ -174,8 +174,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
-            context['pagination_count'] = pagintation_count
-            print(context['pagination_count'])
+        context['pagination_count'] = pagintation_count
+        print(context)
         
         
         for item in context['products']:
