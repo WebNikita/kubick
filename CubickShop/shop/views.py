@@ -176,7 +176,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 except EmptyPage:
                     products = paginator.page(paginator.num_pages)
                 context['products'] = products
-        elif 'page' in query_dict or 'product_counter' in query_dict:
+        elif 'page' in query_dict or 'product_counter' in query_dict or len(query_dict) == 0:
             filter_str = '-'
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
