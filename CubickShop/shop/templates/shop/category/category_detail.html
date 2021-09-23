@@ -247,9 +247,14 @@
                 </svg>
             </p>
             <ul class="sidebar__list_reveal">
-                <li><a href="?{{ filter_url }}product_counter=15&page={{ products.number }}">По 15</a></li>
-                <li><a href="?{{ filter_url }}product_counter=30&page={{ products.number }}">По 30</a></li>
-                <li><a href="?{{ filter_url }}product_counter=45&page={{ products.number }}">По 45</a></li>
+                {% if filter_url != '-' %}
+                    <li><a href="?{{ filter_url }}product_counter=15&page={{ products.number }}">По 15</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=30&page={{ products.number }}">По 30</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=45&page={{ products.number }}">По 45</a></li>
+                {% else %}
+                    <li><a href="?product_counter=15&page={{ products.number }}">По 15</a></li>
+                    <li><a href="?product_counter=30&page={{ products.number }}">По 30</a></li>
+                    <li><a href="?product_counter=45&page={{ products.number }}">По 45</a></li>
             </ul>
         </li>
     </div>
