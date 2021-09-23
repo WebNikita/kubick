@@ -152,14 +152,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
-            paginator = Paginator(object_list, pagintation_count)
-            page = self.request.GET.get('page')
-            try:
-                products = paginator.page(page)
-            except PageNotAnInteger:
-                products = paginator.page(1)
-            except EmptyPage:
-                products = paginator.page(paginator.num_pages)
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
                     for item in query_dict[key]:
@@ -171,6 +163,14 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                     filter_results = search_model
             context['products'] = filter_results
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
         else:
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
