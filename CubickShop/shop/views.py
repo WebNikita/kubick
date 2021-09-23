@@ -152,6 +152,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
+        print(query_dict)
         if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
