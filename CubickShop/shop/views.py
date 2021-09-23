@@ -313,6 +313,8 @@ class ProductDetailView(DetailView):
         context['size'] = kwargs['object'].size.split('\n')
         context['ct_model'] = self.model._meta.model_name
 
+        print(context)
+
         return context
     
 
