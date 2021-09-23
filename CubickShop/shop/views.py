@@ -151,6 +151,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         if len(query_dict) != 0 and 'product_counter' in query_dict:
             pagintation_count = int(query_dict['product_counter'][0])
 
+        filter_str = ''
         if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
@@ -158,11 +159,12 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         filter = {key: item}
                         search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                         filter_results = filter_results | search_model
+                        filter_str += f'{key}={item}&'
                 else:
                     filter = {key: query_dict[key][0]}
                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                     filter_results = search_model
-            print(filter)
+                    filter_str += f'{key}={item}&'
             paginator = Paginator(filter_results, pagintation_count)
             page = self.request.GET.get('page')
             try:
@@ -174,6 +176,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             context['products'] = products
 
         else:
+            filter_str = '-'
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
             try:
@@ -185,6 +188,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
             context['products'] = products
         context['pagination_count'] = pagintation_count
+        context['filter_url'] = filter_str
         print(context)
         
         
