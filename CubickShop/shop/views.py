@@ -152,30 +152,30 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
-        print(query_dict)
-        if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
+        print()
+        if len(query_dict) != 0:
             for key in query_dict.keys():
-                if len(query_dict[key]) != 1:
-                    for item in query_dict[key]:
-                        filter = {key: item}
+                if key != 'page' and key != 'product_counter':
+                    if len(query_dict[key]) != 1:
+                        for item in query_dict[key]:
+                            filter = {key: item}
+                            search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            filter_results = filter_results | search_model
+                            filter_str += f'{key}={item}&'
+                    else:
+                        filter = {key: query_dict[key][0]}
                         search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                        filter_results = filter_results | search_model
-                        filter_str += f'{key}={item}&'
-                else:
-                    filter = {key: query_dict[key][0]}
-                    search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                    filter_results = search_model
-                    filter_str += f'{key}={query_dict[key][0]}&'
-            paginator = Paginator(filter_results, pagintation_count)
-            page = self.request.GET.get('page')
-            try:
-                products = paginator.page(page)
-            except PageNotAnInteger:
-                products = paginator.page(1)
-            except EmptyPage:
-                products = paginator.page(paginator.num_pages)
-            context['products'] = products
-
+                        filter_results = search_model
+                        filter_str += f'{key}={query_dict[key][0]}&'
+                paginator = Paginator(filter_results, pagintation_count)
+                page = self.request.GET.get('page')
+                try:
+                    products = paginator.page(page)
+                except PageNotAnInteger:
+                    products = paginator.page(1)
+                except EmptyPage:
+                    products = paginator.page(paginator.num_pages)
+                context['products'] = products
         else:
             filter_str = '-'
             paginator = Paginator(object_list, pagintation_count)
