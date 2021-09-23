@@ -293,16 +293,16 @@
         </div>
         <ul class="page__list">
             {% if products.has_previous %}
-            <li><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
+            <li><a href="?page={{ products.previous_page_number }}&?product_counter={{pagination_count}}">{{ products.previous_page_number }}</a></li>
             {% endif %}
-            <li><a class="select_page" href="?page={{ products.number }}">{{ products.number }}</a></li>
+            <li><a class="select_page" href="?page={{ products.number }}&?product_counter={{pagination_count}}">{{ products.number }}</a></li>
             {% if products.has_next %}        
-            <li><a href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
+            <li><a href="?page={{ products.next_page_number }}&?product_counter={{pagination_count}}">{{ products.next_page_number }}</a></li>
             {% endif %}
         </ul>
         <div class="page__next">
             {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}">Далее</a>
+            <a href="?page={{ products.next_page_number }}&?product_counter={{pagination_count}}">Далее</a>
             <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                 <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
             </svg>
