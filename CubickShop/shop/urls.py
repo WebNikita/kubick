@@ -11,4 +11,5 @@ urlpatterns = [
     path('search/', csrf_exempt(views.SearchResultsView.as_view()), name='search_results'),
     path('/contact', views.contact_page, name='contact_page'),
     path('/payment', views.payment_page, name='payment_page'),
+    path('/get_price_list', views.get_price_list, name='get_price_list'),
     ]

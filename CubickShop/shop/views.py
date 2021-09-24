@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.views.decorators.http import require_GET
+from django.conf import settings
+from django.core.mail import send_mail
 
 from .mixins import CategoryDetailMixin
 
@@ -151,19 +153,11 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         if len(query_dict) != 0 and 'product_counter' in query_dict:
             pagintation_count = int(query_dict['product_counter'][0])
 
-        if len(query_dict) != 0 and 'page' not in query_dict and 'product_counter' not in query_dict:
-            for key in query_dict.keys():
-                if len(query_dict[key]) != 1:
-                    for item in query_dict[key]:
-                        filter = {key: item}
-                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                        filter_results = filter_results | search_model
-                else:
-                    filter = {key: query_dict[key][0]}
-                    search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                    filter_results = search_model
-            context['products'] = filter_results
-        else:
+        filter_str = ''
+
+        # Если на странице ничего не передаётся
+        if len(query_dict) == 0:
+            filter_str = '-'
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
             try:
@@ -175,7 +169,73 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
             context['products'] = products
         
+        # Если передаётся кол-во товаров и страница
+        elif len(query_dict) == 2 and 'page' in query_dict and 'product_counter' in query_dict:
+            filter_str = '-'
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+
+            context['products'] = products
         
+        # Если передаётся кол-во товаров, страница и фльтры
+        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
+            for key in query_dict.keys():
+                if key != 'page' and key != 'product_counter':
+                    if len(query_dict[key]) != 1:
+                        for item in query_dict[key]:
+                            filter = {key: item}
+                            search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            filter_results = filter_results | search_model
+                            filter_str += f'{key}={item}&'
+                    else:
+                        filter = {key: query_dict[key][0]}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = search_model
+                        filter_str += f'{key}={query_dict[key][0]}&'
+                    paginator = Paginator(filter_results, pagintation_count)
+                    page = self.request.GET.get('page')
+                    try:
+                        products = paginator.page(page)
+                    except PageNotAnInteger:
+                        products = paginator.page(1)
+                    except EmptyPage:
+                        products = paginator.page(paginator.num_pages)
+                    context['products'] = products
+        
+        # Если передаются только фильтры
+        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict:
+            for key in query_dict.keys():
+                if len(query_dict[key]) != 1:
+                    for item in query_dict[key]:
+                        filter = {key: item}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = filter_results | search_model
+                        filter_str += f'{key}={item}&'
+                else:
+                    filter = {key: query_dict[key][0]}
+                    search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                    filter_results = search_model
+                    filter_str += f'{key}={query_dict[key][0]}&'
+                paginator = Paginator(filter_results, pagintation_count)
+                page = self.request.GET.get('page')
+                try:
+                    products = paginator.page(page)
+                except PageNotAnInteger:
+                    products = paginator.page(1)
+                except EmptyPage:
+                    products = paginator.page(paginator.num_pages)
+                context['products'] = products
+
+        context['pagination_count'] = pagintation_count
+        context['filter_url'] = filter_str
+        
+        # Картинки для карточке товара
         for item in context['products']:
             try:
                 print(os.path.exists(item.image.path[:-3]))
@@ -204,6 +264,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             except Exception as e:
                 print(e)
         
+        # Размер для формы размера
         for product in context['products']:
             bufer_product_size[product.name] = product.size.split('\n')
         
@@ -311,11 +372,24 @@ class ProductDetailView(DetailView):
         context['size'] = kwargs['object'].size.split('\n')
         context['ct_model'] = self.model._meta.model_name
 
+        print(context)
+
         return context
     
 
 
-    
+@require_GET
+def get_price_list(request):
+    user_info = request.GET
+    message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}'
+    print(message_body)
+    send_mail('Запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
+    try:
+        send_mail('Успешный запрос','Здравствуйте, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!', settings.EMAIL_HOST_USER, [user_info["email"]])
+    except Exception as e:
+        pass
+    print('________________________')
+    return redirect('shop:main_page')
 
 
 
