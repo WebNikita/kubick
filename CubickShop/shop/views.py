@@ -152,6 +152,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
+
+        # Если на странице ничего не передаётся
         if len(query_dict) == 0:
             filter_str = '-'
             paginator = Paginator(object_list, pagintation_count)
@@ -164,8 +166,26 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
+        # Если передаётся кол-во товаров и страница
+        elif len(query_dict) == 2 and 'page' in query_dict and 'product_counter' in query_dict:
+            filter_str = '-'
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+
+            context['products'] = products
+        
+        
+        
         context['pagination_count'] = pagintation_count
         context['filter_url'] = filter_str
+
+
 
         # if len(query_dict) >= 2 and 'page' in query_dict and 'product_counter' in query_dict:
         #     for key in query_dict.keys():
