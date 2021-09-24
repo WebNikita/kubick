@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.views.decorators.http import require_GET
+from django.conf import settings
+from django.core.mail import send_mail
 
 from .mixins import CategoryDetailMixin
 
@@ -376,7 +378,15 @@ class ProductDetailView(DetailView):
     
 
 
-    
+@require_GET
+def get_price_list(request, **kwargs):
+    counter = 0
+    user_info = request.GET
+    message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n-------------------\n'
+    print(message_body)
+    send_mail('запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
+    print('________________________')
+    return redirect('shop:main_page')
 
 
 
