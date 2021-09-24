@@ -383,7 +383,7 @@ def get_price_list(request):
     user_info = request.GET
     message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}'
     print(message_body)
-    send_mail('Запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
+    send_mail('Запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
     send_mail('Успешный запрос','Здравствуйте, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!', settings.EMAIL_HOST_USER, [user_info["email"]])
     print('________________________')
     return redirect('shop:main_page')
