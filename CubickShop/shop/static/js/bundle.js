@@ -14541,7 +14541,7 @@ __webpack_require__.r(__webpack_exports__);
 
 console.log('work-valid')
 
-const selector = document.getElementById('phone-valid');
+const selector = document.querySelector('input[name="phone"]');
 
 const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
 im.mask(selector);
