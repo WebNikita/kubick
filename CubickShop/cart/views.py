@@ -3,6 +3,9 @@ from django.views.decorators.http import require_GET
 from django.contrib.contenttypes.models import ContentType
 from collections import Counter
 
+from django.conf import settings
+from django.core.mail import send_mail
+
 from shop.models import Product
 
 from .cart import Cart
@@ -65,5 +68,6 @@ def send_order_to_the_email(request, **kwargs):
     cart = Cart(request).get_cart_info() 
     print('________________________')
     print(cart)
+    send_mail('Тема', 'Тело письма', settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
     print('________________________')
     return redirect('cart:cart_detail')
