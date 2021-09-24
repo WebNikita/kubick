@@ -105,11 +105,11 @@
             </div>
             <div class="block__append-order_form">
                 <div class="data">
-                    <form action="{% url 'cart:send_order' %}">
+                    <form action="{% url 'cart:send_order' %}" method="get">
                         <label class="data__label">
-                        <input type="text" placeholder="Ваше имя">
-                        <input type="tel" placeholder="Телефон">
-                        <input type="email" placeholder="E-mail">
+                        <input type="text" name="name" placeholder="Ваше имя">
+                        <input type="tel" name="phone" placeholder="Телефон">
+                        <input type="email" name="email" placeholder="E-mail">
                         </label>
                         <p class="data__text">Нажимая на кнопку, Вы даете согласие на
                         <a href="">обработку персональных данных</a></p>
