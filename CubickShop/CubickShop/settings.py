@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "cubik_shop@mail.ru"
-EMAIL_HOST_PASSWORD = "JlKqwerT3228"
+EMAIL_HOST_PASSWORD = "wwcjsdkDjjCaSZiqSpyz"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
