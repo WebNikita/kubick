@@ -14177,22 +14177,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').click(function() {
 /*!**************************!*\
   !*** ./style/js/main.js ***!
   \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @scss/main.scss */ "./style/scss/main.scss");
-/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask */ "../node_modules/inputmask/dist/inputmask.js");
-/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-console.log('work-valid')
-
-const selector = document.getElementById('phone-valid');
-
-const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
-im.mask(selector);
 
 
 /***/ }),
@@ -14543,7 +14529,22 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.page__list').children().on('click', functi
 /*!****************************!*\
   !*** ./style/js/slider.js ***!
   \****************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @scss/main.scss */ "./style/scss/main.scss");
+/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask */ "../node_modules/inputmask/dist/inputmask.js");
+/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+console.log('work-valid')
+
+const selector = document.getElementById('phone-valid');
+
+const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
+im.mask(selector);
 
 const SliderClassName = 'slider';
 const SliderDraggableClassName = 'slider-draggable';
@@ -14908,6 +14909,7 @@ var __webpack_exports__ = {};
   \******************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/main.js */ "./style/js/main.js");
+/* harmony import */ var _js_main_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_main_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_search_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @js/search.js */ "./style/js/search.js");
 /* harmony import */ var _js_sidebar_list_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @js/sidebar_list.js */ "./style/js/sidebar_list.js");
 /* harmony import */ var _js_catalog_preview_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @js/catalog_preview.js */ "./style/js/catalog_preview.js");
@@ -14919,7 +14921,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @js/header */ "./style/js/header.js");
 /* harmony import */ var _js_header_mobile__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @js/header-mobile */ "./style/js/header-mobile.js");
 /* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @js/slider.js */ "./style/js/slider.js");
-/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_js_slider_js__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./index.scss */ "./index.scss");
 
 
