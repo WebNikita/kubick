@@ -232,47 +232,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
         context['pagination_count'] = pagintation_count
         context['filter_url'] = filter_str
-
-
-
-        # if len(query_dict) >= 2 and 'page' in query_dict and 'product_counter' in query_dict:
-        #     for key in query_dict.keys():
-        #         if key != 'page' and key != 'product_counter':
-        #             if len(query_dict[key]) != 1:
-        #                 for item in query_dict[key]:
-        #                     filter = {key: item}
-        #                     search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-        #                     filter_results = filter_results | search_model
-        #                     filter_str += f'{key}={item}&'
-        #             else:
-        #                 filter = {key: query_dict[key][0]}
-        #                 search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-        #                 filter_results = search_model
-        #                 filter_str += f'{key}={query_dict[key][0]}&'
-        #             paginator = Paginator(filter_results, pagintation_count)
-        #             page = self.request.GET.get('page')
-        #             try:
-        #                 products = paginator.page(page)
-        #             except PageNotAnInteger:
-        #                 products = paginator.page(1)
-        #             except EmptyPage:
-        #                 products = paginator.page(paginator.num_pages)
-        #             context['products'] = products
-        # elif 'page' in query_dict and 'product_counter' in query_dict and len(query_dict) == 2:
-        #     filter_str = '-'
-        #     paginator = Paginator(object_list, pagintation_count)
-        #     page = self.request.GET.get('page')
-        #     try:
-        #         products = paginator.page(page)
-        #     except PageNotAnInteger:
-        #         products = paginator.page(1)
-        #     except EmptyPage:
-        #         products = paginator.page(paginator.num_pages)
-
-        #     context['products'] = products
-        # context['pagination_count'] = pagintation_count
-        # context['filter_url'] = filter_str
-        # print(context)
         
         # Картинки для карточке товара
         for item in context['products']:
