@@ -65,14 +65,18 @@ def cart_detail(request, **kwargs):
 
 @require_GET
 def send_order_to_the_email(request, **kwargs):
-    print(request.GET)
+    counter = 0
+    user_info = request.GET
     cart = Cart(request).get_cart_info() 
     print('________________________')
     print(cart)
-    # message_body = 'Новый заказ\n'
-    # for item in cart:
-    #     print(cart[item])
-    #     message_body += f''
+    message_body = f'Новый заказ от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n'
+    
+    for item in cart:
+        counter += 1
+        print(cart[item])
+        message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name} Артикул: {cart[item]["product"].article} Кол-во: {cart[item]["quantity"]} Размер: {cart[item]["size"]}'
+    print(message_body)
     send_mail('Тема', 'Тело письма', settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
     print('________________________')
     return redirect('cart:cart_detail')
