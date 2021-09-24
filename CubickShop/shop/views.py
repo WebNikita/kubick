@@ -379,10 +379,9 @@ class ProductDetailView(DetailView):
 
 
 @require_GET
-def get_price_list(request, **kwargs):
-    counter = 0
+def get_price_list(request):
     user_info = request.GET
-    message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n-------------------\n'
+    message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}'
     print(message_body)
     send_mail('запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
     print('________________________')

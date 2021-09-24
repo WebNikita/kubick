@@ -55,14 +55,17 @@
       <div class="main__request main__margin main__margin_mobile body-size">
         <div class="main__name payment__name main__name_margin main__request_size">Запросить прайс-лист</div>
         <div class="data main__request_size">
-          <label class="data__label">
-            <input type="text" placeholder="Ваше имя">
-            <input type="tel" placeholder="Телефон">
-            <input type="email" placeholder="E-mail">
-          </label>
-          <p class="data__text">Нажимая на кнопку, Вы даете согласие на
-            <a href="">обработку персональных данных</a></p>
-          <button class="data__button">Запросить прайс-лист</button>
+          <form action="{% url 'shop:get_price_list' %}" method="get">
+            <label class="data__label">
+              <input type="text" name="name" placeholder="Ваше имя">
+              <input type="tel" name="phone" placeholder="Телефон">
+              <input type="email" name="email" placeholder="E-mail">
+            </label>
+            <p class="data__text">Нажимая на кнопку, Вы даете согласие на
+              <a href="">обработку персональных данных</a></p>
+              <button type="submit" class="data__button">Запросить прайс-лист</button>
+            </div>
+          </form>
         </div>
         <div class="main__request_contact">
           <div class="number">
