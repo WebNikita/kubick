@@ -70,12 +70,12 @@ def send_order_to_the_email(request, **kwargs):
     cart = Cart(request).get_cart_info() 
     print('________________________')
     print(cart)
-    message_body = f'Новый заказ от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n'
+    message_body = f'Новый заказ от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n-------------------\n'
     
     for item in cart:
         counter += 1
         print(cart[item])
-        message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name} Артикул: {cart[item]["product"].article} Кол-во: {cart[item]["quantity"]} Размер: {cart[item]["size"]}\n'
+        message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
     print(message_body)
     send_mail('Новый заказ', message_body, settings.EMAIL_HOST_USER, ['nikshvora@gmail.com'])
     print('________________________')
