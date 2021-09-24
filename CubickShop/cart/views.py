@@ -69,7 +69,7 @@ def send_order_to_the_email(request, **kwargs):
     print('________________________')
     print(cart)
     for item in cart:
-        print(item)
+        print(cart[item])
         print('_____')
     mail_body = f'''
 Новый заказ
