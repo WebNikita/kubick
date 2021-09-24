@@ -65,7 +65,7 @@ def cart_detail(request, **kwargs):
 
 @require_GET
 def send_order_to_the_email(request, **kwargs):
-    print(request)
+    print(request.GET)
     cart = Cart(request).get_cart_info() 
     print('________________________')
     print(cart)
