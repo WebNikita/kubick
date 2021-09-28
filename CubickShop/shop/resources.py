@@ -42,6 +42,7 @@ class Medical_workwearResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 class Clothing_for_the_service_sectorResource(resources.ModelResource):
 
@@ -50,6 +51,7 @@ class Clothing_for_the_service_sectorResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Protective_clothing_of_security_structuresResource(resources.ModelResource):
@@ -59,6 +61,7 @@ class Protective_clothing_of_security_structuresResource(resources.ModelResource
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Special_workwearResource(resources.ModelResource):
@@ -68,6 +71,7 @@ class Special_workwearResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Signal_workwearResource(resources.ModelResource):
@@ -77,6 +81,7 @@ class Signal_workwearResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Protective_protective_workwearResource(resources.ModelResource):
@@ -86,6 +91,7 @@ class Protective_protective_workwearResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Clothing_for_hunting_and_fishingResource(resources.ModelResource):
@@ -95,6 +101,7 @@ class Clothing_for_hunting_and_fishingResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class KnitweargResource(resources.ModelResource):
@@ -104,6 +111,7 @@ class KnitweargResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class HatsResource(resources.ModelResource):
@@ -113,6 +121,7 @@ class HatsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Summer_shoesResource(resources.ModelResource):
@@ -122,6 +131,7 @@ class Summer_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Insulated_shoesResource(resources.ModelResource):
@@ -131,6 +141,7 @@ class Insulated_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Special_insulated_shoesResource(resources.ModelResource):
@@ -140,6 +151,7 @@ class Special_insulated_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class PVC_rubber_shoesResource(resources.ModelResource):
@@ -149,6 +161,7 @@ class PVC_rubber_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Casual_walking_shoesResource(resources.ModelResource):
@@ -158,6 +171,7 @@ class Casual_walking_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Medical_shoesResource(resources.ModelResource):
@@ -167,6 +181,7 @@ class Medical_shoesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Shoe_accessoriesResource(resources.ModelResource):
@@ -176,6 +191,7 @@ class Shoe_accessoriesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
         # exclude = ('product_ptr','id','category')
 
 
@@ -186,6 +202,7 @@ class Head_and_face_protection_productsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Means_of_protection_of_the_organs_of_visionResource(resources.ModelResource):
@@ -195,6 +212,7 @@ class Means_of_protection_of_the_organs_of_visionResource(resources.ModelResourc
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Protective_equipment_during_welding_operationsResource(resources.ModelResource):
@@ -204,6 +222,7 @@ class Protective_equipment_during_welding_operationsResource(resources.ModelReso
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Hearing_protection_equipmentResource(resources.ModelResource):
@@ -213,6 +232,7 @@ class Hearing_protection_equipmentResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Respiratory_protection_equipmentResource(resources.ModelResource):
@@ -222,6 +242,7 @@ class Respiratory_protection_equipmentResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Protective_equipment_during_highrise_worksResource(resources.ModelResource):
@@ -231,6 +252,7 @@ class Protective_equipment_during_highrise_worksResource(resources.ModelResource
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Clothing_with_limited_service_lifeResource(resources.ModelResource):
@@ -240,6 +262,7 @@ class Clothing_with_limited_service_lifeResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Dielectric_safety_devicesResource(resources.ModelResource):
@@ -249,6 +272,7 @@ class Dielectric_safety_devicesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 
@@ -259,6 +283,7 @@ class Knitted_glovesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Wool_blend_glovesResource(resources.ModelResource):
@@ -268,6 +293,7 @@ class Wool_blend_glovesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Split_gloves_combinedResource(resources.ModelResource):
@@ -277,6 +303,7 @@ class Split_gloves_combinedResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Kragi_vachegiResource(resources.ModelResource):
@@ -286,6 +313,7 @@ class Kragi_vachegiResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Specialized_glovesResource(resources.ModelResource):
@@ -295,6 +323,7 @@ class Specialized_glovesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Household_gloves_disposableResource(resources.ModelResource):
@@ -304,6 +333,7 @@ class Household_gloves_disposableResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Working_glovesResource(resources.ModelResource):
@@ -313,6 +343,7 @@ class Working_glovesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Insulated_mittensResource(resources.ModelResource):
@@ -322,6 +353,7 @@ class Insulated_mittensResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Medical_suppliesResource(resources.ModelResource):
@@ -331,6 +363,7 @@ class Medical_suppliesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 class Dermatological_agentsResource(resources.ModelResource):
 
@@ -339,6 +372,7 @@ class Dermatological_agentsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Technical_fabricsResource(resources.ModelResource):
@@ -348,6 +382,7 @@ class Technical_fabricsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Detergents_and_household_chemicalsResource(resources.ModelResource):
@@ -357,6 +392,7 @@ class Detergents_and_household_chemicalsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 class Firefighting_equipment_fire_extinguishersResource(resources.ModelResource):
 
@@ -365,6 +401,7 @@ class Firefighting_equipment_fire_extinguishersResource(resources.ModelResource)
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Protective_equipmentResource(resources.ModelResource):
@@ -374,6 +411,7 @@ class Protective_equipmentResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Household_goodsResource(resources.ModelResource):
@@ -383,6 +421,7 @@ class Household_goodsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Snow_removal_equipmentResource(resources.ModelResource):
@@ -392,6 +431,7 @@ class Snow_removal_equipmentResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Gardening_toolsResource(resources.ModelResource):
@@ -401,6 +441,7 @@ class Gardening_toolsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Bristle_and_brush_productsResource(resources.ModelResource):
@@ -410,6 +451,7 @@ class Bristle_and_brush_productsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Bed_linen_setsResource(resources.ModelResource):
@@ -420,6 +462,7 @@ class Bed_linen_setsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class MattressesResource(resources.ModelResource):
@@ -430,6 +473,7 @@ class MattressesResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class BlanketsResource(resources.ModelResource):
@@ -440,6 +484,7 @@ class BlanketsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class PillowsResource(resources.ModelResource):
@@ -450,6 +495,7 @@ class PillowsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Bedspreads_blanketsResource(resources.ModelResource):
@@ -460,6 +506,7 @@ class Bedspreads_blanketsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Waffle_towelsResource(resources.ModelResource):
@@ -470,6 +517,7 @@ class Waffle_towelsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 class Terry_towelsResource(resources.ModelResource):
@@ -480,3 +528,4 @@ class Terry_towelsResource(resources.ModelResource):
 
     def import_data(self, *args, **kwargs):
         print(**kwargs)
+        return super().import_data(*args, **kwargs)
