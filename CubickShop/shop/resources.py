@@ -26,11 +26,10 @@ class Summer_workwearResource(resources.ModelResource):
         model = Summer_workwear
     
     def import_data(self, *args, **kwargs):
-        
-        print(type(args['id']))
-        print(args['id'])
+    
         for i in args:
             print(i['id'])
+            print('______')
             
             print(i['image'])
         print(self)
