@@ -26,7 +26,9 @@ class Summer_workwearResource(resources.ModelResource):
         model = Summer_workwear
     
     def import_data(self, *args, **kwargs):
+        
         for i in args:
+            print(i['id'])
             print(i['image'])
         print(self)
         return super().import_data(*args, **kwargs)
