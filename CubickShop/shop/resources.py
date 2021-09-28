@@ -24,13 +24,22 @@ class Summer_workwearResource(resources.ModelResource):
 
     class Meta:
         model = Summer_workwear
+    
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+        return super().import_data(*args, **kwargs)
 
 
 
 class Winter_workwearResource(resources.ModelResource):
 
-   class Meta:
+    class Meta:
         model = Winter_workwear
+        
+        
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+        return super().import_data(*args, **kwargs)
         # exclude = ("product_ptr", 'category','slug','image')
         # fields = ('name','description','price','size','article','sex','protective_properties','product_type','сomposition','protection_class')
 
