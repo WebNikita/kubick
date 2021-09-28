@@ -40,10 +40,16 @@ class Medical_workwearResource(resources.ModelResource):
     class Meta:
         model = Medical_workwear
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 class Clothing_for_the_service_sectorResource(resources.ModelResource):
 
     class Meta:
         model = Clothing_for_the_service_sector
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Protective_clothing_of_security_structuresResource(resources.ModelResource):
@@ -51,11 +57,17 @@ class Protective_clothing_of_security_structuresResource(resources.ModelResource
     class Meta:
         model = Protective_clothing_of_security_structures
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Special_workwearResource(resources.ModelResource):
 
     class Meta:
         model = Special_workwear
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Signal_workwearResource(resources.ModelResource):
@@ -63,11 +75,17 @@ class Signal_workwearResource(resources.ModelResource):
     class Meta:
         model = Signal_workwear
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Protective_protective_workwearResource(resources.ModelResource):
 
     class Meta:
         model = Protective_protective_workwear
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Clothing_for_hunting_and_fishingResource(resources.ModelResource):
@@ -75,11 +93,17 @@ class Clothing_for_hunting_and_fishingResource(resources.ModelResource):
     class Meta:
         model = Clothing_for_hunting_and_fishing
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class KnitweargResource(resources.ModelResource):
 
     class Meta:
         model = Knitwearg
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class HatsResource(resources.ModelResource):
@@ -87,11 +111,17 @@ class HatsResource(resources.ModelResource):
     class Meta:
         model = Hats
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Summer_shoesResource(resources.ModelResource):
 
     class Meta:
         model = Summer_shoes
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Insulated_shoesResource(resources.ModelResource):
@@ -99,11 +129,17 @@ class Insulated_shoesResource(resources.ModelResource):
     class Meta:
         model = Insulated_shoes
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Special_insulated_shoesResource(resources.ModelResource):
 
     class Meta:
         model = Special_insulated_shoes
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class PVC_rubber_shoesResource(resources.ModelResource):
@@ -111,11 +147,17 @@ class PVC_rubber_shoesResource(resources.ModelResource):
     class Meta:
         model = PVC_rubber_shoes
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Casual_walking_shoesResource(resources.ModelResource):
 
     class Meta:
         model = Casual_walking_shoes
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Medical_shoesResource(resources.ModelResource):
@@ -123,11 +165,17 @@ class Medical_shoesResource(resources.ModelResource):
     class Meta:
         model = Medical_shoes
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Shoe_accessoriesResource(resources.ModelResource):
 
     class Meta:
         model = Shoe_accessories
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
         # exclude = ('product_ptr','id','category')
 
 
@@ -136,11 +184,17 @@ class Head_and_face_protection_productsResource(resources.ModelResource):
     class Meta:
         model = Head_and_face_protection_products
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Means_of_protection_of_the_organs_of_visionResource(resources.ModelResource):
 
    class Meta:
         model = Means_of_protection_of_the_organs_of_vision
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Protective_equipment_during_welding_operationsResource(resources.ModelResource):
@@ -148,11 +202,17 @@ class Protective_equipment_during_welding_operationsResource(resources.ModelReso
     class Meta:
         model = Protective_equipment_during_welding_operations
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Hearing_protection_equipmentResource(resources.ModelResource):
 
     class Meta:
         model = Hearing_protection_equipment
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Respiratory_protection_equipmentResource(resources.ModelResource):
@@ -160,11 +220,17 @@ class Respiratory_protection_equipmentResource(resources.ModelResource):
     class Meta:
         model = Respiratory_protection_equipment
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Protective_equipment_during_highrise_worksResource(resources.ModelResource):
 
     class Meta:
         model = Protective_equipment_during_highrise_works
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Clothing_with_limited_service_lifeResource(resources.ModelResource):
@@ -172,11 +238,17 @@ class Clothing_with_limited_service_lifeResource(resources.ModelResource):
     class Meta:
         model = Clothing_with_limited_service_life
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Dielectric_safety_devicesResource(resources.ModelResource):
     
     class Meta:
         model = Dielectric_safety_devices
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 
@@ -185,11 +257,17 @@ class Knitted_glovesResource(resources.ModelResource):
     class Meta:
         model = Knitted_gloves
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Wool_blend_glovesResource(resources.ModelResource):
 
     class Meta:
         model = Wool_blend_gloves
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Split_gloves_combinedResource(resources.ModelResource):
@@ -197,11 +275,17 @@ class Split_gloves_combinedResource(resources.ModelResource):
     class Meta:
         model = Split_gloves_combined
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Kragi_vachegiResource(resources.ModelResource):
 
     class Meta:
         model = Kragi_vachegi
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Specialized_glovesResource(resources.ModelResource):
@@ -209,11 +293,17 @@ class Specialized_glovesResource(resources.ModelResource):
     class Meta:
         model = Specialized_gloves
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Household_gloves_disposableResource(resources.ModelResource):
 
     class Meta:
         model = Household_gloves_disposable
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Working_glovesResource(resources.ModelResource):
@@ -221,11 +311,17 @@ class Working_glovesResource(resources.ModelResource):
     class Meta:
         model = Working_gloves
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Insulated_mittensResource(resources.ModelResource):
 
     class Meta:
         model = Insulated_mittens
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Medical_suppliesResource(resources.ModelResource):
@@ -233,10 +329,16 @@ class Medical_suppliesResource(resources.ModelResource):
     class Meta:
         model = Medical_supplies
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 class Dermatological_agentsResource(resources.ModelResource):
 
     class Meta:
         model = Dermatological_agents
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Technical_fabricsResource(resources.ModelResource):
@@ -244,16 +346,25 @@ class Technical_fabricsResource(resources.ModelResource):
     class Meta:
         model = Technical_fabrics
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Detergents_and_household_chemicalsResource(resources.ModelResource):
 
     class Meta:
         model = Detergents_and_household_chemicals
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 class Firefighting_equipment_fire_extinguishersResource(resources.ModelResource):
 
     class Meta:
         model = Firefighting_equipment_fire_extinguishers
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Protective_equipmentResource(resources.ModelResource):
@@ -261,11 +372,17 @@ class Protective_equipmentResource(resources.ModelResource):
     class Meta:
         model = Protective_equipment
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Household_goodsResource(resources.ModelResource):
 
     class Meta:
         model = Household_goods
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Snow_removal_equipmentResource(resources.ModelResource):
@@ -273,17 +390,26 @@ class Snow_removal_equipmentResource(resources.ModelResource):
     class Meta:
         model = Snow_removal_equipment
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Gardening_toolsResource(resources.ModelResource):
 
     class Meta:
         model = Gardening_tools
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Bristle_and_brush_productsResource(resources.ModelResource):
 
     class Meta:
         model = Bristle_and_brush_products
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Bed_linen_setsResource(resources.ModelResource):
@@ -292,12 +418,18 @@ class Bed_linen_setsResource(resources.ModelResource):
     class Meta:
         model = Bed_linen_sets
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class MattressesResource(resources.ModelResource):
 
     
     class Meta:
         model = Mattresses
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class BlanketsResource(resources.ModelResource):
@@ -306,12 +438,18 @@ class BlanketsResource(resources.ModelResource):
     class Meta:
         model = Blankets
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class PillowsResource(resources.ModelResource):
 
     
     class Meta:
         model = Pillows
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
 
 
 class Bedspreads_blanketsResource(resources.ModelResource):
@@ -320,6 +458,9 @@ class Bedspreads_blanketsResource(resources.ModelResource):
     class Meta:
         model = Bedspreads_blankets
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Waffle_towelsResource(resources.ModelResource):
 
@@ -327,9 +468,15 @@ class Waffle_towelsResource(resources.ModelResource):
     class Meta:
         model = Waffle_towels
 
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
+
 
 class Terry_towelsResource(resources.ModelResource):
 
     
     class Meta:
         model = Terry_towels
+
+    def import_data(self, *args, **kwargs):
+        print(**kwargs)
