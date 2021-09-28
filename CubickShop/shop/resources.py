@@ -190,7 +190,7 @@ class Head_and_face_protection_productsResource(resources.ModelResource):
 
 class Means_of_protection_of_the_organs_of_visionResource(resources.ModelResource):
 
-   class Meta:
+    class Meta:
         model = Means_of_protection_of_the_organs_of_vision
 
     def import_data(self, *args, **kwargs):
