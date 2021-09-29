@@ -14183,6 +14183,35 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('[data-focus="loop"]').click(function() {
 
 /***/ }),
 
+/***/ "./style/js/mask.js":
+/*!**************************!*\
+  !*** ./style/js/mask.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @scss/main.scss */ "./style/scss/main.scss");
+/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask */ "../node_modules/inputmask/dist/inputmask.js");
+/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+// console.log('work-valid')
+const selector = document.querySelector('input[name="phone"]');
+console.log('длина' + jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length);
+
+if (jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length) {
+  const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
+  im.mask(selector);
+}
+
+
+/***/ }),
+
 /***/ "./style/js/product.js":
 /*!*****************************!*\
   !*** ./style/js/product.js ***!
@@ -14529,22 +14558,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.page__list').children().on('click', functi
 /*!****************************!*\
   !*** ./style/js/slider.js ***!
   \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _scss_main_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @scss/main.scss */ "./style/scss/main.scss");
-/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask */ "../node_modules/inputmask/dist/inputmask.js");
-/* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
+// import '@scss/main.scss';
+// import Inputmask from 'inputmask';
 
+// console.log('work-valid')
 
+// const selector = document.querySelector('input[name="phone"]');
 
-console.log('work-valid')
-
-const selector = document.querySelector('input[name="phone"]');
-
-const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
-im.mask(selector);
+// const im = new Inputmask('+7(999)999-99-99');
+// im.mask(selector);
 
 const SliderClassName = 'slider';
 const SliderDraggableClassName = 'slider-draggable';
@@ -14920,8 +14944,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_filter_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @js/filter.js */ "./style/js/filter.js");
 /* harmony import */ var _js_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @js/header */ "./style/js/header.js");
 /* harmony import */ var _js_header_mobile__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @js/header-mobile */ "./style/js/header-mobile.js");
-/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @js/slider.js */ "./style/js/slider.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./index.scss */ "./index.scss");
+/* harmony import */ var _js_mask_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @js/mask.js */ "./style/js/mask.js");
+/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @js/slider.js */ "./style/js/slider.js");
+/* harmony import */ var _js_slider_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_js_slider_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./index.scss */ "./index.scss");
 
 
 
@@ -14929,6 +14955,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // import '@js/product_info.js';
+
 
 
 
