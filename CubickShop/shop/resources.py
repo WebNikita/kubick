@@ -1,3 +1,4 @@
+from django.utils.datastructures import ImmutableList
 from import_export import resources
 
 from .models import Summer_workwear, Winter_workwear
@@ -41,6 +42,7 @@ class Summer_workwearResource(resources.ModelResource):
 
         for i in args:
             print(i['image'])
+            i['image'] = []
             i['image'] = img_bufer
             print('__________')
             print(i['image'])
