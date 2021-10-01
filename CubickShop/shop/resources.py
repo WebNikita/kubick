@@ -37,6 +37,8 @@ class Summer_workwearResource(resources.ModelResource):
             except:
                 img_bufer.append(None)
 
+        print(img_bufer)
+
         print(args[0]['image'])
         del args[0]['image']
         args[0].append_col(img_bufer, header='image')
