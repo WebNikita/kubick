@@ -44,7 +44,7 @@ class Summer_workwearResource(resources.ModelResource):
             print(i['image'])
             i['image'] = img_bufer
             print('__________')
-            print(i['image'])
+            print(type(i['image']))
         
         print(self)
         return super().import_data(*args, **kwargs)
