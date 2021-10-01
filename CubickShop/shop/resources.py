@@ -32,9 +32,8 @@ class Summer_workwearResource(resources.ModelResource):
         img_bufer = []        
         
         for i in args[0]['id']:
-            print(i)
-            print(Summer_workwear.objects.filter(id=i)[0].image.path)
             try:
+                print(Summer_workwear.objects.filter(id=i)[0].image.path)
                 img_bufer.append(Summer_workwear.objects.filter(id=i)[0].image.path)
             except:
                 img_bufer.append(None)
