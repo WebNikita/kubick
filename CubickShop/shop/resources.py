@@ -31,7 +31,7 @@ class Summer_workwearResource(resources.ModelResource):
     
         img_bufer = []        
         
-        for i in args[0]['image']:
+        for i in args[0]['id']:
             print(i)
             print(Summer_workwear.objects.filter(id=i))
             try:
