@@ -37,7 +37,12 @@ class Summer_workwearResource(resources.ModelResource):
             print(Summer_workwear.objects.filter(id=i)[0].image)
             img_bufer.append(Summer_workwear.objects.filter(id=i)[0].image)
             print('______')
-            
+
+        for i in args:
+            i['image'] = []
+            i['image'] = img_bufer
+            print(i['image'])
+        
         print(self)
         return super().import_data(*args, **kwargs)
 
