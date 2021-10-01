@@ -42,8 +42,7 @@ class Summer_workwearResource(resources.ModelResource):
 
         for i in args:
             print(i['image'])
-            del i['image'][0:-1]
-            
+            i['image'] = img_bufer
             print('__________')
             print(i['image'])
         
