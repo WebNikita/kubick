@@ -1,5 +1,6 @@
 from django.utils.datastructures import ImmutableList
 from import_export import resources
+import tablib
 
 from .models import Summer_workwear, Winter_workwear
 from .models import Medical_workwear, Clothing_for_the_service_sector, Protective_clothing_of_security_structures
@@ -37,7 +38,7 @@ class Summer_workwearResource(resources.ModelResource):
                 img_bufer.append(None)
 
 
-        args[0]['image'] = img_bufer
+        print(args.headers)
         # for i in args:
         #     print(type(i['image']))
         #     i['image'] = img_bufer
