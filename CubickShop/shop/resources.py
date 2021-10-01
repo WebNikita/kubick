@@ -38,10 +38,12 @@ class Summer_workwearResource(resources.ModelResource):
             except:
                 img_bufer.append(None)
 
-        print(img_bufer)
 
         for i in args:
-            print(i['image'], type(i['image']))
+            print(i['image'])
+            i['image'] = img_bufer
+            print('__________')
+            print(i['image'])
         
         print(self)
         return super().import_data(*args, **kwargs)
