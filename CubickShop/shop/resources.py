@@ -33,7 +33,7 @@ class Summer_workwearResource(resources.ModelResource):
             id_bufer = i['id']
         
         for i in id_bufer:
-            img_bufer.append(Summer_workwear.objects.filter(id=i)[0].image[0])
+            img_bufer.append(Summer_workwear.objects.filter(id=i)[0].image.url)
 
         print(img_bufer)
 
