@@ -36,7 +36,6 @@ class Summer_workwearResource(resources.ModelResource):
             print(Summer_workwear.objects.filter(id=i))
         print('______')
             
-        print(i['image'])
         print(self)
         return super().import_data(*args, **kwargs)
 
