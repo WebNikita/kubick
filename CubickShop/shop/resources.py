@@ -42,7 +42,8 @@ class Summer_workwearResource(resources.ModelResource):
 
         for i in args:
             print(i['image'])
-            i['image'].clear()
+            del i['image'][0:-1]
+            
             print('__________')
             print(i['image'])
         
