@@ -105,11 +105,12 @@ class Summer_workwear(Product):
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
     protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
-    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер')
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sex = models.CharField(max_length=1, 
                           choices=SEX_CHOICES,
                           default=MALE,
-                          verbose_name='Пол')
+                          verbose_name='Пол',
+                          null=True)
 
     class Meta:
         verbose_name = 'Летняя спецодежда'
