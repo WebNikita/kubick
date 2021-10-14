@@ -53,16 +53,6 @@ class Product(models.Model):
         verbose_name = 'Позиции'
         verbose_name_plural = 'Позиции'
 
-    MALE = 'м'
-    FEMAIL = 'ж'
-    FORALL = 'в'
-
-    SEX_CHOICES = [
-        (MALE, 'Mужской'),
-        (FEMAIL, 'Женский'),
-        (FORALL, 'Для всех'),
-    ]
-    
     category = models.ForeignKey(Category,
                                 related_name='products',
                                 on_delete=models.CASCADE,
@@ -74,12 +64,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, verbose_name='Описание товара')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
     available = models.BooleanField(default=True, verbose_name='Наличие')
-    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер')
     article = models.CharField(max_length=200, db_index=False, verbose_name='Артикул')
-    sex = models.CharField(max_length=1, 
-                          choices=SEX_CHOICES,
-                          default=MALE,
-                          verbose_name='Пол')
     
     
     def get_absolute_url(self):
@@ -105,10 +90,26 @@ class Gallery(models.Model):
 
 class Summer_workwear(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    
+
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
     protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер')
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол')
 
     class Meta:
         verbose_name = 'Летняя спецодежда'
