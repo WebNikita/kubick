@@ -267,8 +267,10 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Размер для формы размера
         print(context['products'])
         for product in context['products']:
-            if product.size:
+            try:
                 bufer_product_size[product.name] = product.size.split('\n')
+            except Exception:
+                pass
         
         context['size'] = bufer_product_size
 
