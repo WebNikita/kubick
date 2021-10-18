@@ -104,7 +104,6 @@ class Summer_workwear(Product):
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
-    protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sex = models.CharField(max_length=1, 
                           choices=SEX_CHOICES,
@@ -122,6 +121,23 @@ class Summer_workwear(Product):
 
 class Winter_workwear(Product):
 
+
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
@@ -137,6 +153,23 @@ class Winter_workwear(Product):
 
 class Medical_workwear(Product):
 
+
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
     
@@ -150,6 +183,22 @@ class Medical_workwear(Product):
 
 class Clothing_for_the_service_sector(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
     
@@ -162,6 +211,21 @@ class Clothing_for_the_service_sector(Product):
 
 
 class Protective_clothing_of_security_structures(Product):
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
 
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
@@ -176,6 +240,21 @@ class Protective_clothing_of_security_structures(Product):
 
 
 class Special_workwear(Product):
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
 
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
@@ -192,6 +271,22 @@ class Special_workwear(Product):
 
 class Signal_workwear(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
     protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
@@ -207,6 +302,22 @@ class Signal_workwear(Product):
 
 
 class Protective_protective_workwear(Product):
+
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
 
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
@@ -226,6 +337,22 @@ class Protective_protective_workwear(Product):
 
 class Clothing_for_hunting_and_fishing(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     season = models.CharField(max_length=255, verbose_name='Сезон')
     
@@ -241,6 +368,22 @@ class Clothing_for_hunting_and_fishing(Product):
 
 class Knitwearg(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
+
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     
     class Meta:
@@ -254,6 +397,22 @@ class Knitwearg(Product):
 
 
 class Hats(Product):
+
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
 
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=255, verbose_name='Состав')
@@ -270,6 +429,21 @@ class Hats(Product):
 
 class Summer_shoes(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     
@@ -285,6 +459,21 @@ class Summer_shoes(Product):
 
 class Insulated_shoes(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
@@ -301,6 +490,21 @@ class Insulated_shoes(Product):
 
 class Special_insulated_shoes(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
@@ -317,6 +521,21 @@ class Special_insulated_shoes(Product):
 
 class PVC_rubber_shoes(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     features = models.CharField(max_length=255, verbose_name='Особенности')
@@ -333,6 +552,21 @@ class PVC_rubber_shoes(Product):
 
 class Casual_walking_shoes(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
     
@@ -347,7 +581,22 @@ class Casual_walking_shoes(Product):
 
 
 class Medical_shoes(Product):
+    
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
 
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
     
@@ -363,6 +612,7 @@ class Medical_shoes(Product):
 
 class Shoe_accessories(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     insulation_material = models.CharField(max_length=255, verbose_name='Утеплитель')
     
@@ -377,6 +627,21 @@ class Shoe_accessories(Product):
 
 class Head_and_face_protection_products(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
@@ -395,6 +660,7 @@ class Head_and_face_protection_products(Product):
 
 class Means_of_protection_of_the_organs_of_vision(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     lens_coating = models.CharField(max_length=255, verbose_name='Покрытие линз')
@@ -466,6 +732,7 @@ class Respiratory_protection_equipment(Product):
 
 class Protective_equipment_during_highrise_works(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
@@ -484,6 +751,7 @@ class Protective_equipment_during_highrise_works(Product):
 
 class Clothing_with_limited_service_life(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
@@ -513,6 +781,21 @@ class Dielectric_safety_devices(Product):
 
 class Knitted_gloves(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
     features = models.CharField(max_length=255, verbose_name='Особенности')
@@ -530,6 +813,21 @@ class Knitted_gloves(Product):
 
 class Wool_blend_gloves(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
     features = models.CharField(max_length=255, verbose_name='Особенности')
@@ -549,6 +847,7 @@ class Wool_blend_gloves(Product):
 
 class Split_gloves_combined(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     features = models.CharField(max_length=255, verbose_name='Особенности')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
@@ -565,6 +864,7 @@ class Split_gloves_combined(Product):
 
 class Kragi_vachegi(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     lining = models.CharField(max_length=255, verbose_name='Подкладка')
@@ -583,6 +883,21 @@ class Kragi_vachegi(Product):
 
 class Specialized_gloves(Product):
 
+    MALE = 'м'
+    FEMAIL = 'ж'
+    FORALL = 'в'
+
+    SEX_CHOICES = [
+        (MALE, 'Mужской'),
+        (FEMAIL, 'Женский'),
+        (FORALL, 'Для всех'),
+    ]
+    sex = models.CharField(max_length=1, 
+                          choices=SEX_CHOICES,
+                          default=MALE,
+                          verbose_name='Пол',
+                          null=True)
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     protection_class = models.CharField(max_length=255, verbose_name='Класс защиты')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
@@ -600,6 +915,7 @@ class Specialized_gloves(Product):
 
 class Household_gloves_disposable(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
@@ -615,6 +931,7 @@ class Household_gloves_disposable(Product):
 
 class Working_gloves(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     lining = models.CharField(max_length=255, verbose_name='Подкладка')
@@ -634,6 +951,7 @@ class Working_gloves(Product):
 
 class Insulated_mittens(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     features = models.CharField(max_length=255, verbose_name='Особенности')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     insulation_material = models.CharField(max_length=255, verbose_name='Утеплитель')
@@ -749,6 +1067,7 @@ class Household_goods(Product):
 
 class Snow_removal_equipment(Product):
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     
     class Meta:
@@ -791,13 +1110,13 @@ class Bristle_and_brush_products(Product):
 
 class Bed_linen_sets(Product):
 
-    
     class Meta:
         verbose_name = 'Комплекты постельного белья'
         verbose_name_plural = 'Комплекты постельного белья'
 
     
 
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
@@ -809,8 +1128,7 @@ class Mattresses(Product):
         verbose_name = 'Матрасы'
         verbose_name_plural = 'Матрасы'
 
-    
-
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
@@ -822,8 +1140,7 @@ class Blankets(Product):
         verbose_name = 'Одеяла'
         verbose_name_plural = 'Одеяла'
 
-    
-
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
@@ -835,8 +1152,7 @@ class Pillows(Product):
         verbose_name = 'Подушки'
         verbose_name_plural = 'Подушки'
 
-    
-
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
@@ -848,20 +1164,17 @@ class Bedspreads_blankets(Product):
         verbose_name = 'Покрывала, пледы'
         verbose_name_plural = 'Покрывала, пледы'
 
-    
-
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
 
 class Waffle_towels(Product):
 
-    
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     class Meta:
         verbose_name = 'Полотенца вафельные'
         verbose_name_plural = 'Полотенца вафельные'
-
-    
 
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
@@ -874,8 +1187,7 @@ class Terry_towels(Product):
         verbose_name = 'Полотенца махровые'
         verbose_name_plural = 'Полотенца махровые'
 
-    
-
+    size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     def get_absolute_url(self):
         return get_product_url(self, 'shop:product_detail')
 
