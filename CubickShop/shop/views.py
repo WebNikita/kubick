@@ -373,7 +373,10 @@ class ProductDetailView(DetailView):
             print( context['img_url'])
         except Exception:
             pass
-        context['size'] = kwargs['object'].size.split('\n')
+        try:
+            context['size'] = kwargs['object'].size.split('\n')
+        except:
+            pass
         context['ct_model'] = self.model._meta.model_name
 
         print(context)

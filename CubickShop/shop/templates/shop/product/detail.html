@@ -34,6 +34,7 @@
                 </div>
             </div>
             <div class="block__product_preview_second-center">
+                {% if product.size %}
                 <div class="block__product_preview_second-center_size">
                     <p>Размер</p>
                     <p>{{ product.size|linebreaksbr }}</p>
@@ -43,6 +44,7 @@
                         Таблица размеров
                     </p>
                 </div>
+                {% endif %}
                 {% if '-' not in size %}
                 <div class="block__product_preview_second-center_choice">
                     <p class="choice-size-product">
