@@ -53,8 +53,10 @@
                 <circle cx="5" cy="5" r="5" fill="#F4F4F4"/>
               </svg>
               {% with total_items=cart|length %}
-                {% if cart|length > 0%} 
-                <span class="header__label_text">{{total_items}}</span>
+                {% if cart|length > 0 %} 
+                  <span class="header__label_text">{{total_items}}</span>
+                {% else %}
+                  <span class="header__label_text">0</span>
                 {% endif %}
               {% endwith %}
             </span>
