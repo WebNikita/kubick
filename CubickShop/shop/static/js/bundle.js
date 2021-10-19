@@ -14202,7 +14202,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // console.log('work-valid')
 const selector = document.querySelector('input[name="phone"]');
-console.log('длина' + jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length);
+// console.log('длина' + $(selector).length);
 
 if (jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length) {
   const im = new (inputmask__WEBPACK_IMPORTED_MODULE_1___default())('+7(999)999-99-99');
