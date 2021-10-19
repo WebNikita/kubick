@@ -6338,7 +6338,22 @@ button {
   cursor: pointer; }
 
 .header__label {
-  margin-right: 30px; }
+  margin-right: 30px;
+  position: relative; }
+  .header__label_active {
+    fill: #4C95BD; }
+  .header__label_svg {
+    position: absolute;
+    top: -7px;
+    left: 10px; }
+  .header__label_text {
+    position: absolute;
+    color: black;
+    left: 22%;
+    top: 22%;
+    font-weight: 600;
+    font-size: 8px;
+    line-height: 10px; }
   .header__label .active__grid {
     display: inline; }
   .header__label .active__loop {
@@ -6400,8 +6415,8 @@ button {
     margin-top: 20px;
     margin-bottom: 20px !important; }
   .header__list-two {
-    grid-template-columns: auto auto auto auto auto auto;
-    white-space: nowrap; }
+    grid-template-columns: auto auto auto auto auto auto auto;
+    column-gap: 20px; }
   .header__list-three {
     display: none;
     position: absolute;
