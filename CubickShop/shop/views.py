@@ -182,7 +182,25 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
-        #
+        
+        # Если передаётся кол-во товаров и страница и сортировка
+        elif len(query_dict) == 3 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
+            filter_str = '-'
+            if query_dict['sort'] == 'low_hight':
+                object_list.order_by('price')
+            else:
+                object_list.order_by('-price')
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+
+            context['products'] = products
+        
         # Если передаётся кол-во товаров, страница, фльтры
         elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
             for key in query_dict.keys():
