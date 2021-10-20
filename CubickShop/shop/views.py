@@ -154,7 +154,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
-
+        print('------------',query_dict,'-----------')
         # Если на странице ничего не передаётся
         if len(query_dict) == 0:
             filter_str = '-'
