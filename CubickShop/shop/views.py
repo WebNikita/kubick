@@ -418,7 +418,7 @@ class ProductDetailView(DetailView):
         context['ct_model'] = self.model._meta.model_name
 
         print(context['size'])
-
+        print(context)
         return context
     
 
