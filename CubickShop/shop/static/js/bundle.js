@@ -14355,10 +14355,11 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
       const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
       const price = value * card;
       container.find('.end_price_product').html(price + ' Р');
+    } else {
+      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+      const price = value * inter;
+      container.find('.end_price_product').html(price + ' Р');
     }
-    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
-    const price = value * inter;
-    container.find('.end_price_product').html(price + ' Р');
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
