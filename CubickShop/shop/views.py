@@ -414,7 +414,7 @@ class ProductDetailView(DetailView):
         try:
             context['size'] = kwargs['object'].size.split('\n')
         except:
-            pass
+            context['size'] = '-'
         context['ct_model'] = self.model._meta.model_name
 
         return context
