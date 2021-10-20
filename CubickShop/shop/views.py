@@ -206,8 +206,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         products = paginator.page(1)
                     except EmptyPage:
                         products = paginator.page(paginator.num_pages)
-                    print(type(products))
-                    print('______________')
                     context['products'] = products
         
         # Если передаются только фильтры
@@ -267,6 +265,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 print(e)
         
         # Размер для формы размера
+        print(type(context['products']))
+        print('______________')
         print(context['products'])
         for product in context['products']:
             try:
