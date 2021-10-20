@@ -21,7 +21,11 @@
                         <div class="block__card_product_info">
                             <a class="block__card_product_info_name" href="{{ product.get_absolute_url }}"></a>
                             <a href="{% url 'shop:product_detail' slug=product.slug ct_model=product.category.slug %}"><p class="block__card_product_info_name">{{ product.name }}</p></a>
-                            <p class="block__card_product_info_article">Размер: <span>{{ item.size }}</span></p>
+                            {% if item.size == "0" %}
+                                <p class="block__card_product_info_article">Размер: <span>Размер не выбран</span></p>
+                            {% else %}
+                                <p class="block__card_product_info_article">Размер: <span>{{ item.size }}</span></p>
+                            {% endif %}
                         </div>
                         <div class="block__card_product_price">
                             <p class="price-for-one">
