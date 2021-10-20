@@ -389,7 +389,9 @@
                 </div>
                 <div class="block__product_preview_second-center">
                     {% for key,value in size.items  %}
+                        {{value}}
                         {% if key == product.name %}
+
                             {% if value != '-'%}
                             <div class="block__product_preview_second-center_size">
                                 <p>Размер</p>
@@ -411,7 +413,6 @@
                             {% endif %}         
                         {% endif %}
                     {% endfor %}
-                    
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">
