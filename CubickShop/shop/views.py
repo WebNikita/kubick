@@ -69,7 +69,7 @@ class SearchResultsView(ListView):
                         bufer.sort()
                 img_url[item.name] = bufer
             except Exception as e:
-                print(e)
+                pass
         return [object_list, img_url]
     
 
@@ -302,7 +302,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 img_url[item.name] = bufer
                 context['img_url'] = img_url
             except Exception as e:
-                print(e)
+                pass
         
         # Размер для формы размера
         for product in context['products']:
