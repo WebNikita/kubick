@@ -186,6 +186,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Если передаётся кол-во товаров и страница и сортировка
         elif len(query_dict) == 3 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
             filter_str = '-'
+            print('------------',query_dict['sort'],'------------')
             if query_dict['sort'] == 'low_hight':
                 object_list.order_by('price')
                 print('-----------',object_list,'---------------')
