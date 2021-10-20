@@ -235,7 +235,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     context['products'] = products
 
         # Если передаются только фильтры
-        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict:
+        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict and 'sort' not in query_dict: 
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
                     for item in query_dict[key]:
