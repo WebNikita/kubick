@@ -183,14 +183,9 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Если передаётся кол-во товаров и страница и сортировка
         elif len(query_dict) == 3 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
             filter_str = '-'
-            print(query_dict['sort'])
-            print(query_dict['sort'][0] == 'low_hight')
             if query_dict['sort'][0] == 'low_hight':
-                print('OK')
                 object_list = object_list.order_by('price')
-                print('-----------',object_list,'---------------')
             else:
-                print('OK_!')
                 object_list = object_list.order_by('-price')
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
@@ -318,7 +313,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         context['size'] = bufer_product_size
         context['category_slug'] = slug
-        print(context['size'])
         return context
 
 
@@ -415,8 +409,6 @@ class ProductDetailView(DetailView):
         except:
             context['size'] = '-'
         context['ct_model'] = self.model._meta.model_name
-
-        print(context['size'])
         
         return context
     
