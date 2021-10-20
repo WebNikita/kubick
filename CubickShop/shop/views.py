@@ -318,7 +318,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         context['size'] = bufer_product_size
         context['category_slug'] = slug
-        
+        print(context['size'])
         return context
 
 
