@@ -211,7 +211,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Если передаётся кол-во товаров, страница, фльтры и сортировка
         elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
             for key in query_dict.keys():
-                if key != 'page' and key != 'product_counter':
+                if key != 'page' and key != 'product_counter' and key != 'sort':
                     if len(query_dict[key]) != 1:
                         for item in query_dict[key]:
                             filter = {key: item}
