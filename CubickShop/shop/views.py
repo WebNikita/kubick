@@ -202,6 +202,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
+            context['sort'] = query_dict['sort'][0]
         
         # Если передаётся кол-во товаров, страница, фльтры
         elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
@@ -256,6 +257,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                     except EmptyPage:
                         products = paginator.page(paginator.num_pages)
                     context['products'] = products
+                    context['sort'] = query_dict['sort'][0]
 
         # Если передаются только фильтры
         elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict and 'sort' not in query_dict: 
