@@ -389,9 +389,8 @@
                 </div>
                 <div class="block__product_preview_second-center">
                     {% for key,value in size.items  %}
-                        {{value}}
                         {% if key == product.name %}
-
+                            {{value}}
                             {% if value != '-'%}
                             <div class="block__product_preview_second-center_size">
                                 <p>Размер</p>
