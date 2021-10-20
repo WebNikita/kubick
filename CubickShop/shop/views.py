@@ -53,14 +53,12 @@ class SearchResultsView(ListView):
         for item in object_list:
             try:
                 if os.path.exists(item.image.path[:-3]):
-                    print('Разархивация не требуется, добавил путь в буфер')
                     files = os.listdir(item.image.path[:-3])
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                         bufer.sort()
                 else:
-                    print('Началась разархивация')
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
                     archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
                     archive.close()
@@ -154,7 +152,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
-        print('------------',query_dict,'-----------')
         # Если на странице ничего не передаётся
         if len(query_dict) == 0:
             filter_str = '-'
@@ -186,11 +183,12 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Если передаётся кол-во товаров и страница и сортировка
         elif len(query_dict) == 3 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
             filter_str = '-'
-            print('------------',query_dict['sort'],'------------')
             if query_dict['sort'] == 'low_hight':
+                print('OK')
                 object_list.order_by('price')
                 print('-----------',object_list,'---------------')
             else:
+                print('OK_!')
                 object_list.order_by('-price')
             paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
@@ -287,18 +285,13 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         # Картинки для карточке товара
         for item in context['products']:
             try:
-                print(os.path.exists(item.image.path[:-3]))
                 if os.path.exists(item.image.path[:-3]):
-                    print('Разархивация не требуется, добавил путь в буфер')
                     files = os.listdir(item.image.path[:-3])
                     bufer = []
                     for items in files:
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                     bufer.sort()
                 else:
-                    print('Началась разархивация')
-                    print(item.image.path)
-                    print(os.path.exists(item.image.path[:-3]))
                     archive = py7zr.SevenZipFile(item.image.path, mode='r')
                     archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
                     archive.close()
@@ -308,15 +301,11 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                     bufer.sort()
                 img_url[item.name] = bufer
-                print(img_url)
                 context['img_url'] = img_url
             except Exception as e:
                 print(e)
         
         # Размер для формы размера
-        print(type(context['products']))
-        print('______________')
-        print(context['products'])
         for product in context['products']:
             try:
                 bufer_product_size[product.name] = product.size.split('\n')
@@ -326,7 +315,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         context['size'] = bufer_product_size
 
         context['category_slug'] = slug
-        print(slug)
         
         return context
 
@@ -403,17 +391,13 @@ class ProductDetailView(DetailView):
         iamges_urls = []
         context = super().get_context_data(**kwargs)
         try:
-            print(kwargs['object'].image.path.split('/')[-1][:-3])
             if os.path.exists(kwargs['object'].image.path[:-3]):
-                print('True')
                 files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
                 for items in files:
                     iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 iamges_urls.sort()
             else:
-                print('False')
                 archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
-                print(kwargs['object'].image.path)
                 archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
                 archive.close()
                 files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
@@ -421,7 +405,6 @@ class ProductDetailView(DetailView):
                     iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
                 iamges_urls.sort()
             context['img_url'] = iamges_urls
-            print( context['img_url'])
         except Exception:
             pass
         try:
@@ -429,8 +412,6 @@ class ProductDetailView(DetailView):
         except:
             pass
         context['ct_model'] = self.model._meta.model_name
-
-        print(context)
 
         return context
     
@@ -440,13 +421,11 @@ class ProductDetailView(DetailView):
 def get_price_list(request):
     user_info = request.GET
     message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}'
-    print(message_body)
     send_mail('Запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
     try:
         send_mail('Успешный запрос','Здравствуйте, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!', settings.EMAIL_HOST_USER, [user_info["email"]])
     except Exception as e:
         pass
-    print('________________________')
     return redirect('shop:main_page')
 
 
