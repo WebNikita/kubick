@@ -311,6 +311,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         # Размер для формы размера
         for product in context['products']:
+            print(product)
             try:
                 bufer_product_size[product.name] = product.size.split('\n')
             except Exception:
