@@ -38,7 +38,7 @@ class Cart(object):
         self.save()
     
     def product_minus(self,product_cart_id):
-        if self.cart[product_cart_id]['quantity'] < 1:
+        if self.cart[product_cart_id]['quantity'] > 1:
             self.cart[product_cart_id]['quantity'] -= 1
         else:
             del self.cart[product_cart_id]
