@@ -183,8 +183,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
             context['products'] = products
         
-        # Если передаётся кол-во товаров, страница и фльтры
-        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
+        # Если передаётся кол-во товаров, страница, фльтры и сортировка
+        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
             for key in query_dict.keys():
                 if key != 'page' and key != 'product_counter':
                     if len(query_dict[key]) != 1:
@@ -206,6 +206,8 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         products = paginator.page(1)
                     except EmptyPage:
                         products = paginator.page(paginator.num_pages)
+                    print(type(products))
+                    print('______________')
                     context['products'] = products
         
         # Если передаются только фильтры
