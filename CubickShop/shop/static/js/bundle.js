@@ -14349,15 +14349,13 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   // $('.block__append-to-card_bottom').children().children().attr('href');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
-    console.log(container.is('.price-for-one'))
-    if (container.is('.price-for-one')) {
+    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+    const price = value * inter;
+    container.find('.end_price_product').html(price + ' Р');
+    if (container.find('.price-for-one')) {
       const card = parseInt(container.find('.price-for-one').prop('innerText'));
       const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
       const price = value * card;
-      container.find('.end_price_product').html(price + ' Р');
-    } else {
-      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
-      const price = value * inter;
       container.find('.end_price_product').html(price + ' Р');
     }
   })
