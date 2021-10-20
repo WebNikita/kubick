@@ -188,6 +188,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             filter_str = '-'
             if query_dict['sort'] == 'low_hight':
                 object_list.order_by('price')
+                print('-----------',object_list,'---------------')
             else:
                 object_list.order_by('-price')
             paginator = Paginator(object_list, pagintation_count)
