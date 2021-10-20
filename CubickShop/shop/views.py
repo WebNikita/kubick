@@ -227,7 +227,6 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
                         filter_results = search_model
                         filter_str += f'{key}={query_dict[key][0]}&'
-                    print(type(filter_results))
                     paginator = Paginator(filter_results, pagintation_count)
                     page = self.request.GET.get('page')
                     try:
