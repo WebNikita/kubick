@@ -288,7 +288,11 @@
                     {% if key == product.name %}
                         <img src="{{value.0}}" alt="1">
                         <div class="quickly__preview">
-                            <a href="#"><p class="quickly__preview_button">Быстрый просмотр</p></a>
+                            <p class="quickly__preview_button">
+                                <a href="#">
+                                    Быстрый просмотр
+                                </a>
+                            </p>
                         </div>   
                     {% endif %}
                 {% endfor %}
