@@ -14274,7 +14274,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 const text = jquery__WEBPACK_IMPORTED_MODULE_0__('.price-for-one').prop('innerText');
-const inter = parseInt(text);
+let inter = parseInt(text);
 
 console.log(text);
 jquery__WEBPACK_IMPORTED_MODULE_0__('.plus').on('click', function() {
@@ -14349,10 +14349,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   // $('.block__append-to-card_bottom').children().children().attr('href');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
-    // inter = parseInt(container.find('.price-for-one').prop('innerText'));
-    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
-    const price = value * inter;
-    container.find('.end_price_product').html(price + ' Р');
+    console.log('FIND' + container.find('.price-for-one'));
+    if (container.find('.price-for-one')) {
+      inter = parseInt(container.find('.price-for-one').prop('innerText'));
+      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+      const price = value * inter;
+      container.find('.end_price_product').html(price + ' Р');
+    } else {
+      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+      const price = value * inter;
+      container.find('.end_price_product').html(price + ' Р');
+    }
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
