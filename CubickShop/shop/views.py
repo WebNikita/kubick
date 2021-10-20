@@ -317,7 +317,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 bufer_product_size[product.name] = '-'
         
         context['size'] = bufer_product_size
-
+        print(context['size'])
         context['category_slug'] = slug
         
         return context
@@ -416,6 +416,8 @@ class ProductDetailView(DetailView):
         except:
             pass
         context['ct_model'] = self.model._meta.model_name
+
+        print(context['size'])
 
         return context
     
