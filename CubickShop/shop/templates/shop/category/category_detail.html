@@ -388,9 +388,9 @@
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
-                    {% for key in size  %}
+                    {% for key,item in size  %}
                         {% if key == product.name %}
-                            {{key}}
+                            {{item}}
                         {% endif %}
                     {% endfor %}
                     
