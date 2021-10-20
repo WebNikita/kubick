@@ -32,7 +32,7 @@ def cart_add(request, *args,**kwargs):
 
 @require_GET
 def add_product_count(request, *args,**kwargs):
-    print(kwargs.get('ct_model'))
+    print(kwargs.get('slug'))
     return redirect('cart:cart_detail')
 
 
