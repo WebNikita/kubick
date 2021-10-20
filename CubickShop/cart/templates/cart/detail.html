@@ -50,14 +50,14 @@
                             <form action="">
                                 <div class="counter">
                                     <span class="minus">
-                                        <a href="{% url 'cart:add_product_count' ct_model=ct_model slug=product.slug type='minus' %}"></a>
+                                        <a href="{% url 'cart:add_product_count' ct_model=product.category.name slug=product.slug type='minus' %}"></a>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
                                             <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
                                         </svg>
                                     </span>
                                     <input class="count" type="text" value="{{ item.quantity }}">
                                     <span class="plus">
-                                        <a href="{% url 'cart:add_product_count' ct_model=ct_model slug=product.slug type='plus' %}"></a>
+                                        <a href="{% url 'cart:add_product_count' ct_model=product.category.name slug=product.slug type='plus' %}"></a>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
                                             <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
                                         </svg>
