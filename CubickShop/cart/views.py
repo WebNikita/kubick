@@ -32,7 +32,13 @@ def cart_add(request, *args,**kwargs):
 
 @require_GET
 def add_product_count(request, *args,**kwargs):
-    print(kwargs.get('slug'))
+    cart = Cart(request)
+    product_id, count_type = kwargs.get('product_id'), kwargs.get('type')
+    if count_type == 'minus':
+        print(cart)
+    else:
+        print(cart)
+
     return redirect('cart:cart_detail')
 
 
