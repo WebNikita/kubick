@@ -154,7 +154,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             pagintation_count = int(query_dict['product_counter'][0])
 
         filter_str = ''
-
+        print('------------',query_dict,'-----------')
         # Если на странице ничего не передаётся
         if len(query_dict) == 0:
             filter_str = '-'
@@ -182,11 +182,11 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 products = paginator.page(paginator.num_pages)
 
             context['products'] = products
-        #and 'sort' in query_dict
-        # Если передаётся кол-во товаров, страница, фльтры и сортировка
+        #
+        # Если передаётся кол-во товаров, страница, фльтры
         elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
             for key in query_dict.keys():
-                if key != 'page' and key != 'product_counter':
+                if key != 'page' and key != 'product_counter' and key != 'sort':
                     if len(query_dict[key]) != 1:
                         for item in query_dict[key]:
                             filter = {key: item}
@@ -206,11 +206,39 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         products = paginator.page(1)
                     except EmptyPage:
                         products = paginator.page(paginator.num_pages)
-                    print(type())
                     context['products'] = products
         
+        # Если передаётся кол-во товаров, страница, фльтры и сортировка
+        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
+            for key in query_dict.keys():
+                if key != 'page' and key != 'product_counter' and key != 'sort':
+                    if len(query_dict[key]) != 1:
+                        for item in query_dict[key]:
+                            filter = {key: item}
+                            search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            if query_dict['sort'] == 'low_hight':
+                                search_model.order_by('price')
+                            else:
+                                search_model.order_by('-price')
+                            filter_results = filter_results | search_model
+                            filter_str += f'{key}={item}&'
+                    else:
+                        filter = {key: query_dict[key][0]}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = search_model
+                        filter_str += f'{key}={query_dict[key][0]}&'
+                    paginator = Paginator(filter_results, pagintation_count)
+                    page = self.request.GET.get('page')
+                    try:
+                        products = paginator.page(page)
+                    except PageNotAnInteger:
+                        products = paginator.page(1)
+                    except EmptyPage:
+                        products = paginator.page(paginator.num_pages)
+                    context['products'] = products
+
         # Если передаются только фильтры
-        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict:
+        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict and 'sort' not in query_dict: 
             for key in query_dict.keys():
                 if len(query_dict[key]) != 1:
                     for item in query_dict[key]:
