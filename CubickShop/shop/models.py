@@ -62,7 +62,7 @@ class Product(models.Model):
     slug = models.CharField(max_length=200, db_index=True, verbose_name='Ссылка на товар(не трогать)')
     image = models.FileField (upload_to='products/', blank=True, verbose_name='Картинки товара')
     description = models.TextField(blank=True, verbose_name='Описание товара')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    price = models.DecimalField(max_digits=10, decimal_places=0, verbose_name='Цена')
     available = models.BooleanField(default=True, verbose_name='Наличие')
     article = models.CharField(max_length=200, db_index=False, verbose_name='Артикул')
     
