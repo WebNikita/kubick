@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.cart_detail, name='cart_detail'),
     path('add/<str:ct_model>/<str:slug>/<str:size>', views.cart_add, name='cart_add'),
     path('remove/<int:product_id>/<str:size>', views.cart_remove, name='cart_remove'),
-    path('send_order/', views.send_order_to_the_email, name='send_order')
+    path('send_order/', views.send_order_to_the_email, name='send_order'),
+    path('counter/<str:ct_model>/<str:slug>/<str:type>',views.add_product_count, name='add_product_count'),
 ]

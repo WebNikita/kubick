@@ -30,6 +30,11 @@ def cart_add(request, *args,**kwargs):
         cart.add(product=cart_product, quantity=1, size='0')
     return redirect('cart:cart_detail')
 
+@require_GET
+def add_product_count(request, *args,**kwargs):
+    print(kwargs.get('ct_model'))
+    return redirect('cart:cart_detail')
+
 
 def cart_remove(request, product_id, size):
     cart = Cart(request)
