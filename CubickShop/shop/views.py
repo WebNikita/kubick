@@ -314,7 +314,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
             try:
                 bufer_product_size[product.name] = product.size.split('\n')
             except Exception:
-                pass
+                bufer_product_size[product.name] = '-'
         
         context['size'] = bufer_product_size
 
