@@ -247,8 +247,13 @@
                 </svg>
             </p>
             <ul class="sidebar__list_sort">
-                <li>Цена: высокая-низкая</li>
-                <li>Цена: низкая-высокая</li>
+                {% if filter_url != '-' %}
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: высокая-низкая</a></li>
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: низкая-высокая</a></li>
+                {% else %}
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: высокая-низкая</a></li>
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: низкая-высокая</a></li>
+                {% endif %}
             </ul>
         </li>
         <li class="sidebar__reveal">
