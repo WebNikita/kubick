@@ -35,9 +35,9 @@ def add_product_count(request, *args,**kwargs):
     cart = Cart(request)
     product_id, count_type = kwargs.get('product_id'), kwargs.get('type')
     if count_type == 'minus':
-        print(cart[product_id])
+        cart.product_plus(product_id)
     else:
-        print(cart[product_id])
+        cart.product_minus(product_id)
 
     return redirect('cart:cart_detail')
 
