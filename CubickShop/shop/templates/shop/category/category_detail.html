@@ -388,7 +388,10 @@
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
-                    {{size}}
+                    {% for key,value in size  %}
+                        {{key}}
+                        {{value}}
+                    {% endfor %}
                     
                 </div>
                 <div class="block__product_preview_second-bottom">
