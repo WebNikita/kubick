@@ -388,24 +388,29 @@
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
-                    <div class="block__product_preview_second-center_size">
-                        {{product.name}}
-                        <p>Размер</p>
-                    <p>{{ product.size|linebreaksbr }}</p>
-                    </div>
-                    <div class="block__product_preview_second-center_info">
-                        <p class="open-size">
-                            Таблица размеров
-                        </p>
-                    </div>
-                    <div class="block__product_preview_second-center_choice">
-                        <p class="choice-size">
-                            Выбрать размер
-                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
-                                <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
-                            </svg>
-                        </p>
-                    </div>
+                    {% for key,value in size.items  %}
+                        {% if key == product.name %}
+                            {% if value != "-" %}
+                                <div class="block__product_preview_second-center_size">
+                                    <p>Размер</p>
+                                <p>{{ value|linebreaksbr }}</p>
+                                </div>
+                                <div class="block__product_preview_second-center_info">
+                                    <p class="open-size">
+                                        Таблица размеров
+                                    </p>
+                                </div>
+                                <div class="block__product_preview_second-center_choice">
+                                    <p class="choice-size">
+                                        Выбрать размер
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
+                                            <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
+                                        </svg>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">
