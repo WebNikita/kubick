@@ -14350,7 +14350,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
 
-    if (container.find('.price-for-one').prop('innerText') == 'undefined') {
+    if (typeof(container.find('.price-for-one').prop('innerText')) == 'undefined') {
       const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
       const price = value * inter;
       container.find('.end_price_product').html(price + ' Р');
