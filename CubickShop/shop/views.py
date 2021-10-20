@@ -216,6 +216,10 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                         for item in query_dict[key]:
                             filter = {key: item}
                             search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            if query_dict['sort'] == 'low_hight':
+                                search_model.order_by('price')
+                            else:
+                                search_model.order_by('-price')
                             filter_results = filter_results | search_model
                             filter_str += f'{key}={item}&'
                     else:
