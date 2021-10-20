@@ -311,7 +311,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         # Размер для формы размера
         for product in context['products']:
-            print(CT_MODEL_MODEL_CLASS[slug].objects.filter(name = product.name))
+            print(CT_MODEL_MODEL_CLASS[slug].objects.filter(name = product.name)[0].size)
             try:
                 bufer_product_size[product.name] = product.size.split('\n')
             except Exception:
