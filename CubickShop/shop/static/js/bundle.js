@@ -14209,12 +14209,17 @@ if (jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length) {
   im.mask(selector);
 }
 
-jquery__WEBPACK_IMPORTED_MODULE_2__('.data__button').on('click', function () {
-  if (document.forms[0].email.value == '') {
-    document.mailform.email.focus();
-    return false
+const form = document.querySelector('form');
+const formSubmit = document.querySelector('button');
+
+form.addEventListener('change', changeFormHandler);
+
+function changeFormHandler() {
+  console.log(form.checkValidity());
+  if (form.checkValidity()) {
+    formSubmit.removeAttribute('disabled');
   }
-});
+}
 
 
 /***/ }),
