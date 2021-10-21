@@ -34,6 +34,7 @@ def cart_add(request, *args,**kwargs):
 def add_product_count(request):
     get_data = request.GET
     cart = Cart(request)
+    print(get_data['product_id'])
     product_id, count = f"{get_data['product_id'][0]}", get_data['count'][0]
     cart.product_edit_count(product_id,count)
 
