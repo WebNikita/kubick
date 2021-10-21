@@ -14313,35 +14313,21 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
     console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
-
-  // const href = $('.block__append-to-card_bottom').children();
-  // const split = $(href).children().attr('href').split('/');
-  // console.log(split);
-  // split.splice(-1, 1);
-  // console.log(split);
-  // let hrefReplace = split.join('/') + '/';
-  // console.log(hrefReplace);
-  // $('.counter').find('input').each(function() {
-  //   const value = $(this);
-  //   console.log(value.val())
-  //   const container = $(this).parent().parent().parent()
-  //   // console.log(container);
-  //   if (value.val() > 0) {
-  //     let textSize = container.find('.counter_size').text();
-  //     textSize = textSize.replace(/\s+/g, '');
-  //     console.log(textSize);
-  //     hrefReplace = hrefReplace + textSize + ',';
-  //     // console.log(hrefReplace);
-  //   }
-  // })
-  // // typeof hrefReplace;
-  // // console.log(hrefReplace);
-  // hrefReplace = hrefReplace.slice(0, -1);
-  // console.log(hrefReplace);
-  // // hrefReplace.substring(0, hrefReplace.length - 1);
-  // // console.log(hrefReplace);
-  // $(href).children().attr('href', hrefReplace);
+  const productId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).attr('id');
+  // send(productId, $input.val())
+  const ProductInfo = {
+    id: productId,
+    count: $input.val(),
+  }
+  const xhr = new XMLHttpRequest();
+  const data = JSON.stringify(ProductInfo);
+  xhr.open('GET', `http://94.250.255.187/cart/counter`);
+  xhr.send(data);
 });
+
+// function send(product, count) {
+
+// }
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   let endPrice;
