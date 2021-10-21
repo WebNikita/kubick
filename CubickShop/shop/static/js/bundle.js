@@ -14382,6 +14382,21 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.block__append-to-card_bottom').children().
   jquery__WEBPACK_IMPORTED_MODULE_0__(this).children().attr('href', hrefReplace);
 })
 
+function sendform() {
+  if (document.forms[0].name.value == '') {
+    alert('Пожалуйста, введите Ваше имя');
+    document.mailform.name.focus();
+    return false
+  }
+
+  if (document.forms[0].email.value == '') {
+    alert('Пожалуйста, введите электронный адрес');
+    document.mailform.email.focus();
+    return false
+  }
+
+  return true;
+}
 
 
 /***/ }),
