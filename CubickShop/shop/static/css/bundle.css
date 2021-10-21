@@ -970,12 +970,12 @@
   .block__product_preview_second-center_choice .choice-size-product {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size-product a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
   .block__product_preview_second-center_choice .choice-size {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
 
 .block__product_preview_second-bottom_counter {
@@ -2957,12 +2957,12 @@
   .block__product_preview_second-center_choice .choice-size-product {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size-product a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
   .block__product_preview_second-center_choice .choice-size {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
 
 .block__product_preview_second-bottom_counter {
@@ -4770,12 +4770,12 @@
   .block__product_preview_second-center_choice .choice-size-product {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size-product a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
   .block__product_preview_second-center_choice .choice-size {
     cursor: pointer; }
     .block__product_preview_second-center_choice .choice-size a {
-      color: #4C95BD;
+      color: #4C95BD !important;
       text-decoration: none; }
 
 .block__product_preview_second-bottom_counter {
