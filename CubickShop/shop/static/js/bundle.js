@@ -14314,15 +14314,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
   const productId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).attr('id');
-  // send(productId, $input.val())
-  const ProductInfo = {
-    id: productId,
-    count: $input.val(),
-  }
+
   const xhr = new XMLHttpRequest();
-  const data = JSON.stringify(ProductInfo);
-  xhr.open('GET', `http://94.250.255.187/cart/counter`);
-  xhr.send(data);
+  xhr.open('GET', `http://94.250.255.187/cart/counter?product_id=${productId}&count=${$input.val()}`);
+  xhr.send();
 });
 
 // function send(product, count) {
