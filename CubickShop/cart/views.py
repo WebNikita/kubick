@@ -31,10 +31,12 @@ def cart_add(request, *args,**kwargs):
     return redirect('cart:cart_detail')
 
 @require_GET
-def add_product_count(request, *args,**kwargs):
-    cart = Cart(request)
-    product_id, count = f"{kwargs.get('product_id')}", kwargs.get('count')
-    cart.product_edit_count(product_id,count)
+def add_product_count(request):
+    get_data = request.GET
+    print(get_data)
+    # cart = Cart(request)
+    # product_id, count = f"{kwargs.get('product_id')}", kwargs.get('count')
+    # cart.product_edit_count(product_id,count)
 
     return redirect('cart:cart_detail')
 
