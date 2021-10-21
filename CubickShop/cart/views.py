@@ -33,7 +33,7 @@ def cart_add(request, *args,**kwargs):
 @require_GET
 def add_product_count(request):
     get_data = request.GET
-    print(get_data)
+    print('_______________',get_data)
     # cart = Cart(request)
     # product_id, count = f"{kwargs.get('product_id')}", kwargs.get('count')
     # cart.product_edit_count(product_id,count)
