@@ -21,7 +21,11 @@
                         <div class="block__card_product_info">
                             <a class="block__card_product_info_name" href="{{ product.get_absolute_url }}"></a>
                             <a href="{% url 'shop:product_detail' slug=product.slug ct_model=product.category.slug %}"><p class="block__card_product_info_name">{{ product.name }}</p></a>
-                            <p class="block__card_product_info_article">Размер: <span>{{ item.size }}</span></p>
+                            {% if item.size == "0" %}
+                                <p class="block__card_product_info_article">Размер: <span>не выбран</span></p>
+                            {% else %}
+                                <p class="block__card_product_info_article">Размер: <span>{{ item.size }}</span></p>
+                            {% endif %}
                         </div>
                         <div class="block__card_product_price">
                             <p class="price-for-one">
@@ -50,19 +54,15 @@
                             <form action="">
                                 <div class="counter">
                                     <span class="minus">
-                                        <a href="{% url 'cart:add_product_count' product_id=product.id type='minus' size=item.size %}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
                                                 <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
                                             </svg>
-                                        </a>
                                     </span>
-                                    <input class="count" type="text" value="{{ item.quantity }}">
+                                    <input class="count" type="text" value="{{ item.quantity }}" id="{{product.id}}_{{item.size}}">
                                     <span class="plus">
-                                        <a href="{% url 'cart:add_product_count' product_id=product.id type='plus' size=item.size %}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
                                                 <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
                                             </svg>
-                                        </a>
                                     </span>
                                 </div>
                             </form>
@@ -111,9 +111,9 @@
                 <div class="data">
                     <form action="{% url 'cart:send_order' %}" method="get">
                         <label class="data__label">
-                        <input type="text" name="name" placeholder="Ваше имя">
-                        <input type="tel" name="phone" placeholder="Телефон">
-                        <input type="email" name="email" placeholder="E-mail">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                        <input type="tel" name="phone" placeholder="Телефон" required>
+                        <input type="email" name="email" placeholder="E-mail" required>
                         </label>
                         <p class="data__text">Нажимая на кнопку, Вы даете согласие на
                         <a href="">обработку персональных данных</a></p>

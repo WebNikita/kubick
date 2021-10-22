@@ -33,15 +33,8 @@ class Cart(object):
         # Помечаем сессию как измененную
         self.session.modified = True
     
-    def product_plus(self,product_cart_id):
-        self.cart[product_cart_id]['quantity'] += 1
-        self.save()
-    
-    def product_minus(self,product_cart_id):
-        if self.cart[product_cart_id]['quantity'] > 1:
-            self.cart[product_cart_id]['quantity'] -= 1
-        else:
-            del self.cart[product_cart_id]
+    def product_edit_count(self,product_cart_id,count):
+        self.cart[product_cart_id]['quantity'] = count
         self.save()
 
     def remove(self, product, size):

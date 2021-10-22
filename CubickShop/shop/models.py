@@ -62,7 +62,7 @@ class Product(models.Model):
     slug = models.CharField(max_length=200, db_index=True, verbose_name='Ссылка на товар(не трогать)')
     image = models.FileField (upload_to='products/', blank=True, verbose_name='Картинки товара')
     description = models.TextField(blank=True, verbose_name='Описание товара')
-    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+    price = models.DecimalField(max_digits=10, decimal_places=0, verbose_name='Цена')
     available = models.BooleanField(default=True, verbose_name='Наличие')
     article = models.CharField(max_length=200, db_index=False, verbose_name='Артикул')
     
@@ -538,7 +538,7 @@ class PVC_rubber_shoes(Product):
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     
     class Meta:
         verbose_name = 'Обувь резиновая ПВХ'
@@ -645,7 +645,7 @@ class Head_and_face_protection_products(Product):
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     mounting_method = models.CharField(max_length=255, verbose_name='Метод крепления')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -664,7 +664,7 @@ class Means_of_protection_of_the_organs_of_vision(Product):
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     lens_coating = models.CharField(max_length=255, verbose_name='Покрытие линз')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -682,7 +682,7 @@ class Protective_equipment_during_welding_operations(Product):
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -699,7 +699,7 @@ class Hearing_protection_equipment(Product):
 
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -717,7 +717,7 @@ class Respiratory_protection_equipment(Product):
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -736,7 +736,7 @@ class Protective_equipment_during_highrise_works(Product):
     sub_category = models.CharField(max_length=255, verbose_name='Подкатегория')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     
     class Meta:
@@ -798,7 +798,7 @@ class Knitted_gloves(Product):
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     cuff_Type = models.CharField(max_length=255, verbose_name='Тип манжеты')
     
     class Meta:
@@ -830,7 +830,7 @@ class Wool_blend_gloves(Product):
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
     meets_the_requirements_of_the_FSS = models.CharField(max_length=255, verbose_name='Соответствует требованиям ФСС')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     cuff_Type = models.CharField(max_length=255, verbose_name='Тип манжеты')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     insulation_material = models.CharField(max_length=255, verbose_name='Утеплитель')
@@ -849,7 +849,7 @@ class Split_gloves_combined(Product):
 
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
     material = models.CharField(max_length=255, verbose_name='Материал')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     lining = models.CharField(max_length=255, verbose_name='Подкладка')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
@@ -937,7 +937,7 @@ class Working_gloves(Product):
     lining = models.CharField(max_length=255, verbose_name='Подкладка')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')
     product_type = models.CharField(max_length=255, verbose_name='Вид изделия')
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     
     class Meta:
         verbose_name = 'Рукавицы рабочие'
@@ -952,7 +952,7 @@ class Working_gloves(Product):
 class Insulated_mittens(Product):
 
     size = models.TextField(max_length=500, db_index=False, verbose_name='Размер', null=True)
-    features = models.CharField(max_length=255, verbose_name='Особенности')
+    features = models.CharField(max_length=512, verbose_name='Особенности')
     appointment = models.CharField(max_length=255, verbose_name='Назначение')
     insulation_material = models.CharField(max_length=255, verbose_name='Утеплитель')
     protective_properties = models.CharField(max_length=255, verbose_name='Защитные свойства')

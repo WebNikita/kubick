@@ -248,11 +248,11 @@
             </p>
             <ul class="sidebar__list_sort">
                 {% if filter_url != '-' %}
-                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: высокая-низкая</a></li>
-                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: низкая-высокая</a></li>
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: высокая-низкая</a></li>
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: низкая-высокая</a></li>
                 {% else %}
-                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: высокая-низкая</a></li>
-                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: низкая-высокая</a></li>
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: высокая-низкая</a></li>
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: низкая-высокая</a></li>
                 {% endif %}
             </ul>
         </li>
@@ -265,13 +265,13 @@
             </p>
             <ul class="sidebar__list_reveal">
                 {% if filter_url != '-' %}
-                    <li><a href="?{{ filter_url }}product_counter=15&page={{ products.number }}">По 15</a></li>
-                    <li><a href="?{{ filter_url }}product_counter=30&page={{ products.number }}">По 30</a></li>
-                    <li><a href="?{{ filter_url }}product_counter=45&page={{ products.number }}">По 45</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=15&page={{ products.number }}&sort={{ sort }}">По 15</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=30&page={{ products.number }}&sort={{ sort }}">По 30</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=45&page={{ products.number }}&sort={{ sort }}">По 45</a></li>
                 {% else %}
-                    <li><a href="?product_counter=15&page={{ products.number }}">По 15</a></li>
-                    <li><a href="?product_counter=30&page={{ products.number }}">По 30</a></li>
-                    <li><a href="?product_counter=45&page={{ products.number }}">По 45</a></li>
+                    <li><a href="?product_counter=15&page={{ products.number }}&sort={{ sort }}">По 15</a></li>
+                    <li><a href="?product_counter=30&page={{ products.number }}&sort={{ sort }}">По 30</a></li>
+                    <li><a href="?product_counter=45&page={{ products.number }}&sort={{ sort }}">По 45</a></li>
                 {% endif %}
             </ul>
         </li>
@@ -288,7 +288,11 @@
                     {% if key == product.name %}
                         <img src="{{value.0}}" alt="1">
                         <div class="quickly__preview">
-                            <p class="quickly__preview_button">Быстрый просмотр</p>
+                            <p class="quickly__preview_button">
+                                <a href="#">
+                                    Быстрый просмотр
+                                </a>
+                            </p>
                         </div>   
                     {% endif %}
                 {% endfor %}
@@ -312,21 +316,21 @@
                 <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                     <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
                 </svg>
-                <a href="?{{filter_url}}page={{products.previous_page_number}}&product_counter={{pagination_count}}">Назад</a>
+                <a href="?{{filter_url}}page={{products.previous_page_number}}&product_counter={{pagination_count}}&sort={{ sort }}">Назад</a>
                 {% endif %}
             </div>
             <ul class="page__list">
                 {% if products.has_previous %}
-                <li><a href="?{{filter_url}}page={{ products.previous_page_number }}&product_counter={{pagination_count}}">{{ products.previous_page_number }}</a></li>
+                <li><a href="?{{filter_url}}page={{ products.previous_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.previous_page_number }}</a></li>
                 {% endif %}
-                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}">{{ products.number }}</a></li>
+                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.number }}</a></li>
                 {% if products.has_next %}        
-                <li><a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}">{{ products.next_page_number }}</a></li>
+                <li><a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.next_page_number }}</a></li>
                 {% endif %}
             </ul>
             <div class="page__next">
                 {% if products.has_next %}
-                <a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}">Далее</a>
+                <a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">Далее</a>
                 <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                     <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
                 </svg>
@@ -338,21 +342,21 @@
                 <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                     <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
                 </svg>
-                <a href="?page={{products.previous_page_number}}&product_counter={{pagination_count}}">Назад</a>
+                <a href="?page={{products.previous_page_number}}&product_counter={{pagination_count}}&sort={{ sort }}">Назад</a>
                 {% endif %}
             </div>
             <ul class="page__list">
                 {% if products.has_previous %}
-                <li><a href="?page={{ products.previous_page_number }}&product_counter={{pagination_count}}">{{ products.previous_page_number }}</a></li>
+                <li><a href="?page={{ products.previous_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.previous_page_number }}</a></li>
                 {% endif %}
-                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}">{{ products.number }}</a></li>
+                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.number }}</a></li>
                 {% if products.has_next %}        
-                <li><a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}">{{ products.next_page_number }}</a></li>
+                <li><a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.next_page_number }}</a></li>
                 {% endif %}
             </ul>
             <div class="page__next">
                 {% if products.has_next %}
-                <a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}">Далее</a>
+                <a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">Далее</a>
                 <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
                     <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
                 </svg>
@@ -384,25 +388,29 @@
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
-                    {% if product.size %}
-                    <div class="block__product_preview_second-center_size">
-                        <p>Размер</p>
-                       <p>{{ product.size|linebreaksbr }}</p>
-                    </div>
-                    <div class="block__product_preview_second-center_info">
-                        <p class="open-size">
-                            Таблица размеров
-                        </p>
-                    </div>
-                    <div class="block__product_preview_second-center_choice">
-                        <p class="choice-size">
-                            Выбрать размер
-                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
-                                <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
-                            </svg>
-                        </p>
-                    </div>
-                    {% endif %}
+                    {% for key,value in size.items  %}
+                        {% if key == product.name %}
+                            {% if value != "-" %}
+                                <div class="block__product_preview_second-center_size">
+                                    <p>Размер</p>
+                                <p>{{ value.0|linebreaksbr }}</p>
+                                </div>
+                                <div class="block__product_preview_second-center_info">
+                                    <p class="open-size">
+                                        Таблица размеров
+                                    </p>
+                                </div>
+                                <div class="block__product_preview_second-center_choice">
+                                    <p class="choice-size">
+                                        <a href="#">Выбрать размер</a>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
+                                            <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
+                                        </svg>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">

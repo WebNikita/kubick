@@ -14209,6 +14209,18 @@ if (jquery__WEBPACK_IMPORTED_MODULE_2__(selector).length) {
   im.mask(selector);
 }
 
+const form = document.querySelector('form');
+const formSubmit = document.querySelector('button');
+
+form.addEventListener('change', changeFormHandler);
+
+function changeFormHandler() {
+  console.log(form.checkValidity());
+  if (form.checkValidity()) {
+    formSubmit.removeAttribute('disabled');
+  }
+}
+
 
 /***/ }),
 
@@ -14313,35 +14325,16 @@ jquery__WEBPACK_IMPORTED_MODULE_0__('.count').on('change', function () {
     console.log(' цена ' + totalPrice);
   });
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end-price').html(totalPrice + 'Р');
+  const productId = jquery__WEBPACK_IMPORTED_MODULE_0__(this).attr('id');
 
-  // const href = $('.block__append-to-card_bottom').children();
-  // const split = $(href).children().attr('href').split('/');
-  // console.log(split);
-  // split.splice(-1, 1);
-  // console.log(split);
-  // let hrefReplace = split.join('/') + '/';
-  // console.log(hrefReplace);
-  // $('.counter').find('input').each(function() {
-  //   const value = $(this);
-  //   console.log(value.val())
-  //   const container = $(this).parent().parent().parent()
-  //   // console.log(container);
-  //   if (value.val() > 0) {
-  //     let textSize = container.find('.counter_size').text();
-  //     textSize = textSize.replace(/\s+/g, '');
-  //     console.log(textSize);
-  //     hrefReplace = hrefReplace + textSize + ',';
-  //     // console.log(hrefReplace);
-  //   }
-  // })
-  // // typeof hrefReplace;
-  // // console.log(hrefReplace);
-  // hrefReplace = hrefReplace.slice(0, -1);
-  // console.log(hrefReplace);
-  // // hrefReplace.substring(0, hrefReplace.length - 1);
-  // // console.log(hrefReplace);
-  // $(href).children().attr('href', hrefReplace);
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', `http://94.250.255.187/cart/counter?product_id=${productId}&count=${$input.val()}`);
+  xhr.send();
 });
+
+// function send(product, count) {
+
+// }
 
 jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   let endPrice;
@@ -14349,9 +14342,17 @@ jquery__WEBPACK_IMPORTED_MODULE_0__(document).ready(function() {
   // $('.block__append-to-card_bottom').children().children().attr('href');
   jquery__WEBPACK_IMPORTED_MODULE_0__('.count').each(function() {
     const container = jquery__WEBPACK_IMPORTED_MODULE_0__(this).parent().parent().parent()
-    const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
-    const price = value * inter;
-    container.find('.end_price_product').html(price + ' Р');
+
+    if (typeof(container.find('.price-for-one').prop('innerText')) == 'undefined') {
+      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+      const price = value * inter;
+      container.find('.end_price_product').html(price + ' Р');
+    } else {
+      const card = parseInt(container.find('.price-for-one').prop('innerText'));
+      const value = jquery__WEBPACK_IMPORTED_MODULE_0__(this).val();
+      const price = value * card;
+      container.find('.end_price_product').html(price + ' Р');
+    }
   })
   jquery__WEBPACK_IMPORTED_MODULE_0__('.end_price_product').each(function() {
     endPrice = parseInt(jquery__WEBPACK_IMPORTED_MODULE_0__(this).prop('innerText'));
