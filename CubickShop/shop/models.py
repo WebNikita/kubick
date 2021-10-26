@@ -258,7 +258,7 @@ class Special_workwear(Product):
 
     product_type = models.CharField(max_length=500, verbose_name='Вид изделия')
     сomposition = models.CharField(max_length=500, verbose_name='Состав')
-    protective_properties = models.CharField(max_length=500, verbose_name='Защитные свойства')
+    protective_properties = models.TextField(max_length=500, verbose_name='Защитные свойства')
     protection_class = models.CharField(max_length=500, verbose_name='Класс защиты')
     
     class Meta:

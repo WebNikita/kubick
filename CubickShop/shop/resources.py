@@ -242,11 +242,11 @@ class KnitweargResource(resources.ModelResource):
         
         for i in args[0]['id']:
             try:
-                
-                img_bufer.append(KnitweargResource.objects.filter(id=i)[0].image.path)
+                img_bufer.append(Knitwearg.objects.filter(id=i)[0].image.path)
             except:
                 img_bufer.append(None)
 
+        
         del args[0]['image']
         args[0].append_col(img_bufer, header='image')
 
