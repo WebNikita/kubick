@@ -76,7 +76,7 @@ class Cart(object):
         
     def clear(self):
         # Очистка корзины.
+        print(self.session[settings.CART_SESSION_ID])
         del self.session[settings.CART_SESSION_ID]
-        print('OK')
         self.save()
     
