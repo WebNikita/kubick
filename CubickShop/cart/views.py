@@ -78,20 +78,19 @@ def send_order_to_the_email(request, **kwargs):
     counter = 0
     user_info = request.GET
     cart = Cart(request).get_cart_info() 
-    cart.clear()
     message_body = f'Новый заказ от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}\nДетали заказа:\n-------------------\n'
     for item in cart:
         counter += 1
         message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
-    # send_mail('Новый заказ', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
+    send_mail('Новый заказ', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
     counter = 0
     message_body = f'Здравствуйте {user_info["name"]}, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!\nВаш заказ:\n'
     for item in cart:
         counter += 1
         message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
-    print('cart_clear!')
     try:
         send_mail('Успешный запрос',message_body, settings.EMAIL_HOST_USER, [user_info["email"]])
+        Cart(request).clear()
     except Exception as e:
         pass
     return redirect('cart:cart_detail')
