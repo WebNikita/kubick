@@ -83,14 +83,14 @@ def send_order_to_the_email(request, **kwargs):
     for item in cart:
         counter += 1
         message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
-    # send_mail('Новый заказ', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
+    send_mail('Новый заказ', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
     counter = 0
     message_body = f'Здравствуйте {user_info["name"]}, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!\nВаш заказ:\n'
     for item in cart:
         counter += 1
         message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
-    print('cart_clear!')
     try:
+        Cart(request).clear()
         send_mail('Успешный запрос',message_body, settings.EMAIL_HOST_USER, [user_info["email"]])
     except Exception as e:
         pass
