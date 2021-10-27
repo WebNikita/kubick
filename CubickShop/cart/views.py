@@ -89,7 +89,9 @@ def send_order_to_the_email(request, **kwargs):
         counter += 1
         message_body += f'{counter}. Наименование позиции: {cart[item]["product"].name}\nАртикул: {cart[item]["product"].article}\nКол-во: {cart[item]["quantity"]}\nРазмер: {cart[item]["size"]}\n-------------------\n'
     try:
+        Cart(request).clear()
         send_mail('Успешный запрос',message_body, settings.EMAIL_HOST_USER, [user_info["email"]])
+        Cart(request).clear()
     except Exception as e:
         pass
     return redirect('cart:cart_detail')
