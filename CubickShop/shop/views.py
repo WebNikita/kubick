@@ -283,26 +283,25 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         # Картинки для карточке товара
         for item in context['products']:
-            try:
-                if os.path.exists(item.image.path[:-3]):
-                    files = os.listdir(item.image.path[:-3])
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                    bufer.sort()
-                else:
-                    archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                    archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-                    archive.close()
-                    files = os.listdir(item.image.path[:-3].replace('_',' '))
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                    bufer.sort()
-                img_url[item.name] = bufer
-                context['img_url'] = img_url
-            except Exception as e:
-                pass
+            if os.path.exists(item.image.path[:-3]):
+                bufer = []
+                for photo in os.listdir(item.image.path[:-3]):
+                    print(item.image.path)
+                    bufer.append(f"/media/products/{item.image.path.split('/')[-2]}/{item.image.path[:-3].split('/')[-1]}/{photo}")
+                bufer.sort()
+            else:
+                path = item.image.path[:-1*(len(item.image.path.split('/')[-1])+1)]
+                archive = py7zr.SevenZipFile(item.image.path, mode='r')
+                archive.extractall(path=path)
+                archive.close()
+                bufer = []
+                for photo in os.listdir(item.image.path[:-3]):
+                    print(item.image.path)
+                    bufer.append(f"/media/products/{item.image.path.split('/')[-2]}/{item.image.path[:-3].split('/')[-1]}/{photo}")
+                bufer.sort()
+            print(bufer)
+            img_url[item.name] = bufer
+            context['img_url'] = img_url
         
         # Размер для формы размера
         for product in context['products']:
@@ -310,7 +309,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
                 bufer_product_size[product.name] = CT_MODEL_MODEL_CLASS[slug].objects.filter(name = product.name)[0].size.split('\n')
             except Exception:
                 bufer_product_size[product.name] = '-'
-        
+        print(context['img_url'])
         context['size'] = bufer_product_size
         context['category_slug'] = slug
         return context
