@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'blog.apps.BlogConfig',
+    'import_photo.apps.ImportPhotoConfig',
     'import_export',
     'ckeditor_uploader',
     'ckeditor',
@@ -137,6 +138,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/products/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/products/')
 CKEDITOR_UPLOAD_PATH = "uploads/"
