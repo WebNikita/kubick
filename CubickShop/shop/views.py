@@ -273,14 +273,14 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         # Картинки для карточке товара
         for item in context['products']:
-            path = item.image.path[:-1*(len(item.image.path.split('\\')[-1])+1)]
+            path = item.image.path[:-1*(len(item.image.path.split('/')[-1])+1)]
             archive = py7zr.SevenZipFile(item.image.path, mode='r')
             archive.extractall(path=path)
             archive.close()
             bufer = []
             for photo in os.listdir(item.image.path[:-3]):
                 print(item.image.path)
-                bufer.append("\\media\\products\\" + item.image.path.split('\\')[-2] + "\\" + item.image.path[:-3].split('\\')[-1] + "\\" + photo)
+                bufer.append("/media/products/" + item.image.path.split('/')[-2] + "/" + item.image.path[:-3].split('/')[-1] + "/" + photo)
             bufer.sort()
             print(bufer)
             img_url[item.name] = bufer
@@ -369,12 +369,12 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         images_urls = []
         context = super().get_context_data(**kwargs)
-        path = kwargs['object'].image.path[:-1*(len(kwargs['object'].image.path.split('\\')[-1])+1)]
+        path = kwargs['object'].image.path[:-1*(len(kwargs['object'].image.path.split('/')[-1])+1)]
         archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
         archive.extractall(path=path)
         archive.close()
         for photo in os.listdir(kwargs['object'].image.path[:-3]):
-            images_urls.append("\\media\\products\\" + kwargs['object'].image.path.split('\\')[-2] + "\\" + kwargs['object'].image.path[:-3].split('\\')[-1] + "\\" + photo)
+            images_urls.append("/media/products/" + kwargs['object'].image.path.split('/')[-2] + "/" + kwargs['object'].image.path[:-3].split('/')[-1] + "/" + photo)
         images_urls.sort()
         context['img_url'] = images_urls
         try:
