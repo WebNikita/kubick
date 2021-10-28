@@ -51,29 +51,19 @@ class SearchResultsView(ListView):
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
         for item in object_list:
-            try:
-                if os.path.exists(item.image.path[:-3]):
-                    files = os.listdir(item.image.path[:-3])
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                        bufer.sort()
-                else:
-                    archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                    archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-                    archive.close()
-                    files = os.listdir(item.image.path[:-3].replace('_',' '))
-                    bufer = []
-                    for items in files:
-                        bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                        bufer.sort()
-                img_url[item.name] = bufer
-            except Exception as e:
-                pass
+            path = item.image.path[:-1*(len(item.image.path.split('\\')[-1])+1)]
+            archive = py7zr.SevenZipFile(item.image.path, mode='r')
+            archive.extractall(path=path)
+            archive.close()
+            bufer = []
+            for photo in os.listdir(item.image.path[:-3]):
+                print(item.image.path)
+                bufer.append("\\media\\products\\" + item.image.path.split('\\')[-2] + "\\" + item.image.path[:-3].split('\\')[-1] + "\\" + photo)
+            bufer.sort()
+            print(bufer)
+            img_url[item.name] = bufer
         return [object_list, img_url]
     
-
-            
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
     
@@ -283,22 +273,15 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         
         # Картинки для карточке товара
         for item in context['products']:
-            if os.path.exists(item.image.path[:-3]):
-                bufer = []
-                for photo in os.listdir(item.image.path[:-3]):
-                    print(item.image.path)
-                    bufer.append(f"/media/products/{item.image.path.split('/')[-2]}/{item.image.path[:-3].split('/')[-1]}/{photo}")
-                bufer.sort()
-            else:
-                path = item.image.path[:-1*(len(item.image.path.split('/')[-1])+1)]
-                archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                archive.extractall(path=path)
-                archive.close()
-                bufer = []
-                for photo in os.listdir(item.image.path[:-3]):
-                    print(item.image.path)
-                    bufer.append(f"/media/products/{item.image.path.split('/')[-2]}/{item.image.path[:-3].split('/')[-1]}/{photo}")
-                bufer.sort()
+            path = item.image.path[:-1*(len(item.image.path.split('\\')[-1])+1)]
+            archive = py7zr.SevenZipFile(item.image.path, mode='r')
+            archive.extractall(path=path)
+            archive.close()
+            bufer = []
+            for photo in os.listdir(item.image.path[:-3]):
+                print(item.image.path)
+                bufer.append("\\media\\products\\" + item.image.path.split('\\')[-2] + "\\" + item.image.path[:-3].split('\\')[-1] + "\\" + photo)
+            bufer.sort()
             print(bufer)
             img_url[item.name] = bufer
             context['img_url'] = img_url
@@ -384,25 +367,16 @@ class ProductDetailView(DetailView):
 
 
     def get_context_data(self, **kwargs):
-        iamges_urls = []
+        images_urls = []
         context = super().get_context_data(**kwargs)
-        try:
-            if os.path.exists(kwargs['object'].image.path[:-3]):
-                files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-                for items in files:
-                    iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                iamges_urls.sort()
-            else:
-                archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
-                archive.extractall(path='/home/cubik/kubick/CubickShop/media/products/')
-                archive.close()
-                files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-                for items in files:
-                    iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-                iamges_urls.sort()
-            context['img_url'] = iamges_urls
-        except Exception:
-            pass
+        path = kwargs['object'].image.path[:-1*(len(kwargs['object'].image.path.split('\\')[-1])+1)]
+        archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
+        archive.extractall(path=path)
+        archive.close()
+        for photo in os.listdir(kwargs['object'].image.path[:-3]):
+            images_urls.append("\\media\\products\\" + kwargs['object'].image.path.split('\\')[-2] + "\\" + kwargs['object'].image.path[:-3].split('\\')[-1] + "\\" + photo)
+        images_urls.sort()
+        context['img_url'] = images_urls
         try:
             context['size'] = kwargs['object'].size.split('\n')
         except:

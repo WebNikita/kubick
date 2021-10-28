@@ -29,18 +29,17 @@ from shop.models import Waffle_towels, Terry_towels
 def extract_zip(path):
     print(path)
     archive = py7zr.SevenZipFile(path, mode='r')
-    archive.extractall(path=os.getcwd() + "/CubickShop/media/products")
+    archive.extractall(path=os.getcwd() + "\\CubickShop\\media\\products")
     archive.close()
     os.remove(path)
 
 def write_to_db(path):
     for slug in os.listdir(path):
-        products_query = Category.objects.get(slug=slug).products.all()
-        for item in os.listdir(path + "/" +slug):
+        for item in os.listdir(path + "\\" +slug):
             print(item)
             if len(Product.objects.filter(article=item.split('.')[0])) != 0:
                 product_info = Product.objects.filter(article=item.split('.')[0])[0]
-                product_info.image = f"{path}/{slug}/{item}"
+                product_info.image = f"{path}\\{slug}\\{item}"
                 product_info.save()   
 
 
@@ -57,7 +56,7 @@ class Products_Photo(models.Model):
         super().save(*args, **kwargs)
         
         extract_zip(path = self.image.path)
-        write_to_db(path = os.getcwd()  + '/CubickShop/media/products')
+        write_to_db(path = os.getcwd()  + '\\CubickShop\\media\\products')
 
 
 
