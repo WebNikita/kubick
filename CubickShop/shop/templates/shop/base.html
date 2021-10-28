@@ -16,17 +16,17 @@
     <ul class="header__list body-size">
       <li class="header__menu-mobile">
         <img class="header__menu-mobile_menu" data-button="menu-mobile" src="{% static "image/menu.svg" %}" alt="menu">
-        <img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo">
+        <a href="{% url 'shop:main_page' %}"><img class="header__mobile" src="{% static "image/cubik.svg" %}" alt="logo"></a>
       </li>
       <li>
-        <a href="#">
-          <img class="header__logo header__mobile_none_700" src="{% static "image/Logo.jpg" %}" alt="logo">
+        <a href="{% url 'shop:main_page' %}">
+          <img class="header__logo header__mobile_none_700" src="{% static "image/Logo.svg" %}" alt="logo">
         </a>
       </li>
       <li data-hover="catalog" class="header__list_padding_first header__mobile_none">Каталог</li>
-      <li class="header__mobile_none"><a href="">Новости</a></li>
-      <li class="header__mobile_none"><a href="">Доставка и оплата</a></li>
-      <li class="header__mobile_none"><a href="">Контакты</a></li>
+      <li class="header__mobile_none"><a href="{% url 'blog:blog_list' %}">Новости</a></li>
+      <li class="header__mobile_none"><a href="{% url 'shop:payment_page' %}">Доставка и оплата</a></li>
+      <li class="header__mobile_none"><a href="{% url 'shop:contact_page' %}">Контакты</a></li>
       <li class="header__phone-number header__mobile_none footer__list_ff">
         <a href="tel:+74997358283">+7 (499) 735-82-83</a>
         <a href="tel:+74997344058">+7 (499) 734-40-58</a>
@@ -41,7 +41,26 @@
           </label>
         </form>
         <a href="{% url 'cart:cart_detail' %}">
-          <img src="{% static "image/shopping-cart.svg" %}" alt="shopping-cart">
+          <div style="position: relative">
+            <svg class="header__label_active" width="16" height="16" viewBox="0 0 16 16" fill="#3F3F3F" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.6688 11.3318C11.5688 11.3318 10.6738 12.2268 10.6738 13.3268C10.6738 14.4268 11.5688 15.3218 12.6688 15.3218C13.7689 15.3218 14.6639 14.4268 14.6639 13.3268C14.6639 12.2268 13.7689 11.3318 12.6688 11.3318ZM12.6688 14.1248C12.2287 14.1248 11.8708 13.7669 11.8708 13.3268C11.8708 12.8867 12.2287 12.5288 12.6688 12.5288C13.1089 12.5288 13.4668 12.8867 13.4668 13.3268C13.4668 13.7669 13.1089 14.1248 12.6688 14.1248Z" fill="auto"/>
+              <path d="M15.8728 3.62105C15.7595 3.47602 15.5857 3.39143 15.4016 3.39143H3.6944L3.15574 1.13766C3.0913 0.868349 2.85049 0.678223 2.57358 0.678223H0.598504C0.267939 0.678191 0 0.94613 0 1.27669C0 1.60726 0.267939 1.8752 0.598504 1.8752H2.10117L4.04631 10.0141C4.11074 10.2836 4.35156 10.4735 4.62846 10.4735H13.9452C14.2204 10.4735 14.4601 10.286 14.5262 10.0191L15.9826 4.13374C16.0266 3.95502 15.9861 3.76608 15.8728 3.62105ZM13.477 9.27656H5.10087L3.98046 4.58843H14.6369L13.477 9.27656Z" fill="auto"/>
+              <path d="M5.42568 11.3318C4.32561 11.3318 3.43066 12.2268 3.43066 13.3268C3.43066 14.4268 4.32564 15.3218 5.42568 15.3218C6.52571 15.3218 7.42069 14.4268 7.42069 13.3268C7.42069 12.2268 6.52571 11.3318 5.42568 11.3318ZM5.42568 14.1248C4.98558 14.1248 4.62767 13.7669 4.62767 13.3268C4.62767 12.8867 4.98558 12.5288 5.42568 12.5288C5.86577 12.5288 6.22368 12.8867 6.22368 13.3268C6.22368 13.7669 5.86577 14.1248 5.42568 14.1248Z" fill="auto"/>
+            </svg>
+            <span class="header__label_svg">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                   xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5" cy="5" r="5" fill="#F4F4F4"/>
+              </svg>
+              {% with total_items=cart|length %}
+                {% if cart|length > 0 %} 
+                  <span class="header__label_text">{{total_items}}</span>
+                {% else %}
+                  <span class="header__label_text">0</span>
+                {% endif %}
+              {% endwith %}
+            </span>
+          </div>
         </a>
       </li>
     </ul>
@@ -49,62 +68,63 @@
       <ul class="header__list header__list-two body-size">
         <li data-hover="overalls" class="header__list_padding">Спецодежда
           <ul class="header__list-three">
-            <li><a href="{% url 'shop:category_detail' slug='summer_workwear' %}">Спецодежда летняя</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='medical_workwear' %}">Спецодежда медицинская</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='clothing_for_the_service_sector' %}">Одежда для сферы услуг</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='winter_workwear' %}">Спецодежда зимняя</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='protective_protective_workwear' %}">Спецодежда влагозащитная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='special_workwear' %}">Одежда специальная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='signal_workwear' %}">Спецодежда сигнальная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='protective_clothing_of_security_structures' %}">Спецодежда для охранных структур</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='hats' %}">Головные уборы</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='knitwearg' %}">Трикотаж</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='summer_workwear'%}">Спецодежда летняя</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='medical_workwear'%}">Спецодежда медицинская</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='clothing_for_the_service_sector'%}">Одежда для сферы услуг</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='winter_workwear'%}">Спецодежда зимняя</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='protective_protective_workwear'%}">Спецодежда влагозащитная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='special_workwear'%}">Одежда специальная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='signal_workwear'%}">Спецодежда сигнальная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='protective_clothing_of_security_structures'%}">Спецодежда для охранных структур</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='clothing_for_hunting_and_fishing'%}">Одежда для охоты и рыбалки</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='hats'%}">Головные уборы</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='knitwearg'%}">Трикотаж</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Обувь
           <ul class="header__list-three">
-            <li><a href="{% url 'shop:category_detail' slug='summer_shoes' %}">Обувь летняя,демисезонная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='insulated_shoes' %}">Обувь утепленная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='special_insulated_shoes' %}">Обувь специальная, утепленная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='pvc_rubber_shoes' %}">Обувь резиновая ПВХ</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='casual_walking_shoes' %}">Обувь повседневная, прогулочная</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='medical_shoes' %}">Обувь медицинская</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='shoe_accessories' %}">Аксессуары для обуви</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='summer_shoes'%}">Обувь летняя,демисезонная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='insulated_shoes'%}">Обувь утепленная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='special_insulated_shoes'%}">Обувь специальная, утепленная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='pvc_rubber_shoes'%}">Обувь резиновая ПВХ</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='casual_walking_shoes'%}">Обувь повседневная, прогулочная</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='medical_shoes'%}">Обувь медицинская</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='shoe_accessories'%}">Аксессуары для обуви</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Средства индивидуальной защиты
           <ul class="header__list-three">
-            <li><a href="{% url 'shop:category_detail' slug='head_and_face_protection_products' %}">Средства защиты головы и лица</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='means_of_protection_of_the_organs_of_vision' %}">Средства защиты органов зрения</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='protective_equipment_during_welding_operations' %}">Средства защиты при проведении сварочных работ</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='hearing_protection_equipment' %}">Средства защиты органов слуха</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='respiratory_protection_equipment' %}">Средства защиты органов дыхания</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='protective_equipment_during_highrise_works' %}">Средства защиты при проведении высотных работ</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='clothing_with_limited_service_life' %}">Одежда с ограниченным сроком эксплуатации</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='dielectric_safety_devices' %}">Диэлектрические средства безопасности</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='head_and_face_protection_products'%}">Средства защиты головы и лица</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='means_of_protection_of_the_organs_of_vision'%}">Средства защиты органов зрения</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='protective_equipment_during_welding_operations'%}">Средства защиты при проведении сварочных работ</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='hearing_protection_equipment'%}">Средства защиты органов слуха</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='respiratory_protection_equipment'%}">Средства защиты органов дыхания</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='protective_equipment_during_highrise_works'%}">Средства защиты при проведении высотных работ</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='clothing_with_limited_service_life'%}">Одежда с ограниченным сроком эксплуатации</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='dielectric_safety_devices'%}">Диэлектрические средства безопасности</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Защита рук
           <ul class="header__list-three">
-            <li><a href="{% url 'shop:category_detail' slug='knitted_gloves' %}">Перчатки трикотажные</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='wool_blend_gloves' %}">Перчатки полушерстяные</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='split_gloves_combined' %}">Перчатки спилковые, комбинированные</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='kragi_vachegi' %}">Краги, вачеги</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='specialized_gloves' %}">Перчатки специализированные</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='household_gloves_disposable' %}">Перчатки хозяйственные, одноразовые</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='working_gloves' %}">Рукавицы рабочие</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='insulated_mittens' %}">Рукавицы утепленные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='knitted_gloves'%}">Перчатки трикотажные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='wool_blend_gloves'%}">Перчатки полушерстяные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='split_gloves_combined'%}">Перчатки спилковые, комбинированные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='kragi_vachegi'%}">Краги, вачеги</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='specialized_gloves'%}">Перчатки специализированные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='household_gloves_disposable'%}">Перчатки хозяйственные, одноразовые</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='working_gloves'%}">Рукавицы рабочие</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='insulated_mittens'%}">Рукавицы утепленные</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Постельные принадлежности
           <ul class="header__list-three">
-            <li><a href="{% url 'shop:category_detail' slug='bed_linen_sets' %}">Комплекты постельного белья</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='mattresses' %}">Матрасы</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='blankets' %}">Одеяла</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='pillows' %}">Подушки</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='bedspreads_blankets' %}">Покрывала, пледы</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='waffle_towels' %}">Полотенца вафельные</a></li>
-            <li><a href="{% url 'shop:category_detail' slug='terry_towels' %}">Полотенца махровые</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='bed_linen_sets'%}">Комплекты постельного белья</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='mattresses'%}">Матрасы</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='blankets'%}">Одеяла</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='pillows'%}">Подушки</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='bedspreads_blankets'%}">Покрывала, пледы</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='waffle_towels'%}">Полотенца вафельные</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='terry_towels'%}">Полотенца махровые</a></li>
           </ul>
         </li>
         <li data-hover="overalls" class="header__list_padding">Инструменты и хоз. инвентарь
@@ -119,6 +139,12 @@
             <li><a href="{% url 'shop:category_detail' slug='bristle_and_brush_products' %}">Щетинно щеточные изделия</a></li>
           </ul>
         </li>
+        <li data-hover="overalls" class="header__list_padding">Дерматологические средства
+          <ul class="header__list-three">
+            <li><a href="{% url 'shop:category_detail' slug='dermatological_agents' %}">Дерматологические средства</a></li>
+            <li><a href="{% url 'shop:category_detail' slug='medical_supplies' %}">Медицинские принадлежности</a></li>
+          </ul>
+        </li>
       </ul>
       <div class="header__background"></div>
     </div>
@@ -129,10 +155,10 @@
       Закрыть
     </div>
     <ul class="list">
-      <a href="">
+      <a href="{% url 'blog:blog_list' %}">
         <li class="list__li">Новости</li>
       </a>
-      <a href="">
+      <a href="{% url 'shop:contact_page' %}">
         <li class="list__li">Контакты</li>
       </a>
       <li>
@@ -154,7 +180,17 @@
           <a href="{% url 'shop:category_detail' slug='knitwearg' %}"><li class="list__li_2">Трикотаж</li></a>
         </ul>
       </li>
-      <li class="list__li">
+      <li>
+        <p data-button="list_2" class="list__li">Дерматологические средства</p>
+        <ul class="list_2">
+          <li data-button="header-back" class="header-mobile_back header-mobile__bd">
+            <img src="{% static "image/arrow-back.svg" %}" alt="arrow">
+            Назад
+          </li>
+          <a href="{% url 'shop:category_detail' slug='dermatological_agents' %}"><li class="list__li_2">Дерматологические средства</li></a>
+        </ul>
+      </li>
+      <li>
         <p data-button="list_2" class="list__li">Обувь</p>
         <ul class="list_2">
           <li data-button="header-back" class="header-mobile_back header-mobile__bd">
@@ -170,7 +206,7 @@
           <a href="{% url 'shop:category_detail' slug='shoe_accessories' %}"><li class="list__li_2">Аксессуары для обуви</li></a>
         </ul>
       </li>
-      <li class="list__li">
+      <li>
         <p data-button="list_2" class="list__li">Средства индивидуальной защиты</p>
         <ul class="list_2">
           <li data-button="header-back" class="header-mobile_back header-mobile__bd">
@@ -187,7 +223,7 @@
           <a href="{% url 'shop:category_detail' slug='dielectric_safety_devices' %}"><li class="list__li_2">Диэлектрические средства безопасности</li></a>
         </ul>
       </li>
-      <li class="list__li">
+      <li>
         <p data-button="list_2" class="list__li">Защита рук</p>
         <ul class="list_2">
           <li data-button="header-back" class="header-mobile_back header-mobile__bd">
@@ -204,7 +240,7 @@
           <a href="{% url 'shop:category_detail' slug='insulated_mittens' %}"><li class="list__li_2">Рукавицы утепленные</li></a>
         </ul>
       </li>
-      <li class="list__li">
+      <li>
         <p data-button="list_2" class="list__li">Инструменты и хоз. инвентарь</p>
         <ul class="list_2">
           <li data-button="header-back" class="header-mobile_back header-mobile__bd">
@@ -221,7 +257,7 @@
           <a href="{% url 'shop:category_detail' slug='bristle_and_brush_products' %}"><li class="list__li_2">Щетинно щеточные изделия</li></a>
         </ul>
       </li>
-      <li class="list__li">
+      <li>
         <p data-button="list_2" class="list__li">Постельные принадлежности</p>
         <ul class="list_2">
           <li data-button="header-back" class="header-mobile_back header-mobile__bd">
@@ -240,7 +276,7 @@
       <a href="">
         <li class="list__li">Корзина</li>
       </a>
-      <a href="">
+      <a href="{% url 'shop:payment_page' %}">
         <li class="list__li">Доставка и оплата</li>
       </a>
     </ul>
@@ -282,19 +318,21 @@
       </ul>
       <ul class="footer__block">
         <li class="footer__list">
+          <form action="{% url 'shop:search_results' %}" method="get" id="search_form">
           <label class="footer__list_label">
-            <input type="text" placeholder="Поиск">
+            <input data-focus="input" name="q" type="text" placeholder="Поиск">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="#767676" xmlns="http://www.w3.org/2000/svg">
               <path d="M15.8045 14.8626L11.2545 10.3126C12.1359 9.22399 12.6665 7.84066 12.6665 6.33401C12.6665 2.84205 9.82522 0.000732422 6.33325 0.000732422C2.84128 0.000732422 0 2.84202 0 6.33398C0 9.82595 2.84132 12.6673 6.33328 12.6673C7.83992 12.6673 9.22325 12.1366 10.3119 11.2553L14.8619 15.8052C14.9919 15.9352 15.1625 16.0006 15.3332 16.0006C15.5039 16.0006 15.6745 15.9352 15.8045 15.8052C16.0652 15.5446 16.0652 15.1232 15.8045 14.8626ZM6.33328 11.3339C3.57597 11.3339 1.33333 9.0913 1.33333 6.33398C1.33333 3.57667 3.57597 1.33403 6.33328 1.33403C9.0906 1.33403 11.3332 3.57667 11.3332 6.33398C11.3332 9.0913 9.09057 11.3339 6.33328 11.3339Z"
                     fill="inherit"/>
             </svg>
           </label>
+          </form>
         </li>
         <li class="footer__link footer__list footer__list_font-size_15"><a href="{% url 'blog:blog_list' %}">Блог</a></li>
       </ul>
       <hr class="footer__line">
       <div class="footer__link footer__list_text footer__list footer__list_color"><a href="">Политика конфиденциальности</a></div>
-      <div class="footer__link footer__list_text footer__list footer__list_color"><a href="">Публичкая оферта</a></div>
+      <div class="footer__link footer__list_text footer__list footer__list_color"><a href="">Публичная оферта</a></div>
       <div class="footer__list footer__list_text_2 footer__list_margin footer__list_margin">
         <p class="footer__list_color">Дизайнено в Sixty6</p>
         <p class="footer__list_color">Программирование Yagoodco</p>
@@ -306,7 +344,7 @@
         <div class="footer__link list_phone footer__list_ff">
           <a href="tel:+74997358283">+7 (499) 735-82-83</a>
           <a href="tel:+74997344058">+7 (499) 734-40-58</a>
-          <p>ПН-ПТ  9:00-17:30</p>
+          <p>ПН-ПТ  9:00-17:00</p>
         </div>
         <div class="list_link footer__link">
           <a href="">Instagram</a>
@@ -329,5 +367,6 @@
   </footer>
 </div>
 </body>
+<script src="//code-ya.jivosite.com/widget/OFSKMYYZcY" async></script>
 <script type="text/javascript" src="{% static "js/bundle.js" %}"></script>
 </html>

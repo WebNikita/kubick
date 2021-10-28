@@ -13,7 +13,7 @@
         </div>
         <div class="sidebar__list">
             <button class="sidebar__sort_phone">
-                Сотрировать
+                Показать
             </button>
             <button class="sidebar__filter_phone">
                 Фильтры
@@ -239,6 +239,23 @@
                         </form>
                     {% endif %}
             </li>
+        <li class="sidebar__sort">
+            <p style = "color: #767676;">
+                Сортировка 
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10" class="sort__button">
+                    <path fill="#767676" d="M8.833 1.917L5 5.75 1.167 1.917 0 3.083l5 5 5-5-1.167-1.167z"/>
+                </svg>
+            </p>
+            <ul class="sidebar__list_sort">
+                {% if filter_url != '-' %}
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: высокая-низкая</a></li>
+                    <li><a href="?{{ filter_url }}product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: низкая-высокая</a></li>
+                {% else %}
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=hight_low">Цена: высокая-низкая</a></li>
+                    <li><a href="?product_counter={{pagination_count}}&page={{ products.number }}&sort=low_hight">Цена: низкая-высокая</a></li>
+                {% endif %}
+            </ul>
+        </li>
         <li class="sidebar__reveal">
             <p  style = "color: #767676;"> 
                 Показать 
@@ -247,10 +264,15 @@
                 </svg>
             </p>
             <ul class="sidebar__list_reveal">
-                <li>По 15</li>
-                <li>По 30</li>
-                <li>По 45</li>
-                <li>Все</li>
+                {% if filter_url != '-' %}
+                    <li><a href="?{{ filter_url }}product_counter=15&page={{ products.number }}&sort={{ sort }}">По 15</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=30&page={{ products.number }}&sort={{ sort }}">По 30</a></li>
+                    <li><a href="?{{ filter_url }}product_counter=45&page={{ products.number }}&sort={{ sort }}">По 45</a></li>
+                {% else %}
+                    <li><a href="?product_counter=15&page={{ products.number }}&sort={{ sort }}">По 15</a></li>
+                    <li><a href="?product_counter=30&page={{ products.number }}&sort={{ sort }}">По 30</a></li>
+                    <li><a href="?product_counter=45&page={{ products.number }}&sort={{ sort }}">По 45</a></li>
+                {% endif %}
             </ul>
         </li>
     </div>
@@ -261,12 +283,17 @@
         {% for product in products %}
         <div id="{{ product.id }}" class="card card__product">
             <div class="card__img">
+            
                 {% for key,value in img_url.items  %}
                     {% if key == product.name %}
                         <img src="{{value.0}}" alt="1">
                         <div class="quickly__preview">
-                            <p class="quickly__preview_button">Быстрый просмотр</p>
-                        </div>
+                            <p class="quickly__preview_button">
+                                <a href="#">
+                                    Быстрый просмотр
+                                </a>
+                            </p>
+                        </div>   
                     {% endif %}
                 {% endfor %}
             </div>
@@ -283,31 +310,59 @@
     
 
     <div class="container block__page">
-        <div class="page__prev">
-            {% if products.has_previous %}
-            <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
-            </svg>
-            <a href="?page={{products.previous_page_number}}">Назад</a>
-            {% endif %}
-        </div>
-        <ul class="page__list">
-            {% if products.has_previous %}
-                <li class="select_page"><a href="?page={{ products.previous_page_number }}">{{ products.previous_page_number }}</a></li>
-            {% endif %}
-            <li class="select_page"><a href="?page={{ products.number }}">{{ products.number }}</a></li>
-            {% if products.has_next %}        
-            <li><a href="?page={{ products.next_page_number }}">{{ products.next_page_number }}</a></li>
-            {% endif %}
-        </ul>
-        <div class="page__next">
-            {% if products.has_next %}
-            <a href="?page={{ products.next_page_number }}">Далее</a>
-            <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
-            </svg>
-            {% endif %}
-        </div>
+        {% if filter_url != '-' %}
+            <div class="page__prev">
+                {% if products.has_previous %}
+                <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                    <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
+                </svg>
+                <a href="?{{filter_url}}page={{products.previous_page_number}}&product_counter={{pagination_count}}&sort={{ sort }}">Назад</a>
+                {% endif %}
+            </div>
+            <ul class="page__list">
+                {% if products.has_previous %}
+                <li><a href="?{{filter_url}}page={{ products.previous_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.previous_page_number }}</a></li>
+                {% endif %}
+                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.number }}</a></li>
+                {% if products.has_next %}        
+                <li><a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.next_page_number }}</a></li>
+                {% endif %}
+            </ul>
+            <div class="page__next">
+                {% if products.has_next %}
+                <a href="?{{filter_url}}page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">Далее</a>
+                <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                    <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
+                </svg>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="page__prev">
+                {% if products.has_previous %}
+                <svg class="arrow_prev" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                    <path fill="#3F3F3F" d="M7.084 8.833L3.251 5l3.833-3.833L5.917 0l-5 5 5 5 1.167-1.167z"/>
+                </svg>
+                <a href="?page={{products.previous_page_number}}&product_counter={{pagination_count}}&sort={{ sort }}">Назад</a>
+                {% endif %}
+            </div>
+            <ul class="page__list">
+                {% if products.has_previous %}
+                <li><a href="?page={{ products.previous_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.previous_page_number }}</a></li>
+                {% endif %}
+                <li><a class="select_page" href="?page={{ products.number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.number }}</a></li>
+                {% if products.has_next %}        
+                <li><a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">{{ products.next_page_number }}</a></li>
+                {% endif %}
+            </ul>
+            <div class="page__next">
+                {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}&product_counter={{pagination_count}}&sort={{ sort }}">Далее</a>
+                <svg class="arrow_next" xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                    <path fill="#3F3F3F" d="M.916 1.167L4.749 5 .916 8.833 2.083 10l5-5-5-5L.916 1.167z"/>
+                </svg>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
     
     {% for product in products %}
@@ -316,7 +371,7 @@
             <div class="block__product_preview block__product_preview_first">
                 {% for key,value in img_url.items  %}
                     {% if key == product.name %}
-                    <img src="{{value.0}}" alt="1">               
+                    <img src="{{value.0}}" alt="1">          
                     {% endif %}
                 {% endfor %}
             </div>
@@ -326,34 +381,42 @@
                         Закрыть
                     </div>
                     <div class="block__product_preview_second-top_name">
-                        {{ product.name }}
+                        <a href="{% url 'shop:product_detail' ct_model=category.slug slug=product.slug %}">{{ product.name }}</a> 
                     </div>
-                    <div class="block__product_preview_second-top_price">
+                    <div class="block__product_preview_second-top_price price-for-one">
                         {{ product.price }} Р
                     </div>
                 </div>
                 <div class="block__product_preview_second-center">
-                    <div class="block__product_preview_second-center_size">
-                        <p>Размер</p>
-                       <p>{{ product.size|linebreaksbr }}</p>
-                    </div>
-                    <div class="block__product_preview_second-center_info">
-                        <p class="open-size">
-                            Таблица размеров
-                        </p>
-                    </div>
-                    <div class="block__product_preview_second-center_choice">
-                        <p class="choice-size">
-                            Выбрать размер
-                            <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
-                                <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
-                            </svg>
-                        </p>
-                    </div>
+                    {% for key,value in size.items  %}
+                        {% if key == product.name %}
+                            {% if value != "-" %}
+                                <div class="block__product_preview_second-center_size">
+                                    <p>Размер</p>
+                                <p>{{ value.0|linebreaksbr }}</p>
+                                </div>
+                                <div class="block__product_preview_second-center_info">
+                                    <p class="open-size">
+                                        Таблица размеров
+                                    </p>
+                                </div>
+                                <div class="block__product_preview_second-center_choice">
+                                    <p class="choice-size">
+                                        <a href="#">Выбрать размер</a>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
+                                            <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
+                                        </svg>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div class="block__product_preview_second-bottom">
                     <div class="block__product_preview_second-bottom_button-append">
-                        Добавить в корзину
+                        <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">
+                            Добавить в корзину
+                        </a>
                     </div>
                     <div class="block__product_preview_second-bottom_ability">
                         Возможно нанесение логотипа
@@ -364,126 +427,76 @@
     </div>
     {% endfor %}
     
-    <div class="block__append-to-card">
-        <div class="container__append-to-card">
-            <div class="block__append-to-card_title">
-                <p>
-                    Выберите размер
-                </p>
-                <p class="close">
-                    Закрыть
-                </p>
+    {% for product in products %}
+    <div class="block__append-to-card" id="size_{{ product.id }}">
+        
+            <div class="container__append-to-card">
+                <div class="block__append-to-card_title">
+                    <p>
+                        Выберите кол-во
+                    </p>
+                    <p class="close">
+                        Закрыть
+                    </p>
+                </div>
+                <div class="block__append-to-card_title-phone">
+                    <p class="close_phone">
+                        Закрыть
+                    </p>
+                    <hr>
+                </div>
+                <form action="">
+                {% for key,value in size.items  %}
+                    {% if key == product.name %}
+                        {% if '-' not in value %}
+                        <div class="counter_block">
+                            {% for item in value %}
+                                <div class="block__append-to-card_counter">
+                                    <div class="counter_size">
+                                    {{ item }}
+                                    </div>
+                                    <div class="counter_price" id="{{ item }}">
+                                            <div class="counter">
+                                                <p class="minus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
+                                                        <path fill="#767676" d="M12 .25H0v1.5h12V.25z"/>
+                                                    </svg>
+                                                </p>
+                                                <input class="count" type="text" value="0">
+                                                <p class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
+                                                        <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
+                                                    </svg>
+                                                </p>
+                                            </div>
+                                            <p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
+                                                    <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
+                                                </svg>
+                                            </p>
+                                        <p class="end_price_product">
+                                            0 Р
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr>
+                            {% endfor %}
+                        </form>
+                        </div>
+                        {% endif %}
+                        <div class="block__append-to-card_bottom">
+                            <button>
+                                <a href="{% url 'cart:cart_add' ct_model=category_slug slug=product.slug  size=0 %}">Добавить в корзину</a>   
+                            </button>
+                            <div class="end-price">
+                                0 Р
+                            </div>
+                        </div>
+                {% endif %}
+                {% endfor %}  
             </div>
-            <div class="counter_block">
-                <div class="block__append-to-card_counter">
-                    <div class="counter_size">
-                        88-92 / 170-176
-                    </div>
-                    <div class="counter_price">
-                        <div class="price-counter">
-                            <span class="minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
-                                </svg>
-                            </span>
-                            <span class="count">
-                                0
-                            </span>
-                            <span class="plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
-                                </svg>
-                            </span>
-                        </div>
-                        
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="end_price">
-                            0 Р
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="block__append-to-card_counter">
-                    <div class="counter_size">
-                        88-92 / 170-176
-                    </div>
-                    <div class="counter_price">
-                        <div class="price-counter">
-                            <span class="minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
-                                </svg>
-                            </span>
-                            <span class="count">
-                                0
-                            </span>
-                            <span class="plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
-                                </svg>
-                            </span>
-                        </div>
-                        
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="end_price">
-                            0 Р
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <div class="block__append-to-card_counter">
-                    <div class="counter_size">
-                        88-92 / 170-176
-                    </div>
-                    <div class="counter_price">
-                        <div class="price-counter">
-                            <span class="minus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M12 5.25H0v1.5h12v-1.5z"/>
-                                </svg>
-                            </span>
-                            <span class="count">
-                                0
-                            </span>
-                            <span class="plus">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12">
-                                    <path fill="#3F3F3F" d="M6.749 5.251V0H5.25v5.251H0V6.75h5.251V12H6.75V6.749H12V5.25H6.749z"/>
-                                </svg>
-                            </span>
-                        </div>
-                        
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" fill="none" viewBox="0 0 8 10">
-                                <path fill="#3F3F3F" d="M8 2.837H0v1.25h8v-1.25zM8 5.385H0v1.25h8v-1.25z"/>
-                            </svg>
-                        </div>
-                        
-                        <div class="end_price">
-                            0 Р
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            </div>
-            <div class="block__append-to-card_bottom">
-                <button>Добавить в корзину</button>
-                <div class="end-price">
-                    0 Р
-                </div>
-            </div>
-        </div>
     </div>
-
+    {% endfor %}
     <div class="block__size">
         <div class="container__size">
             <div class="block__size_title">
@@ -491,6 +504,11 @@
                     Типовые размеры
                 </p>
                 <p class="close">
+                    Закрыть
+                </p>
+            </div>
+            <div class="block__size_title-phone">
+                <p class="close_phone">
                     Закрыть
                 </p>
             </div>
@@ -590,7 +608,7 @@
                 </div>
                 <hr>
                 <div class="size_content_women">
-                    <p>
+                    <p class="size_content_title">
                         Женская одежда
                     </p>
                     <div class="size_content_women_table">
@@ -683,7 +701,7 @@
                 </div>
                 <hr>
                 <div class="size_content_shoes">
-                    <p>
+                    <p class="size_content_title">
                         Обувь
                     </p>
                     <div class="size_content_shoes_table">
@@ -825,8 +843,8 @@
                 </div>
                 <hr>
                 <div class="size_content_shirt">
-                    <p>
-                        Сорчки и рубашки
+                    <p class="size_content_title">
+                        Сорочки и рубашки
                     </p>
                     <div class="size_content_shirt_table">
                         <div class="size_content_shirt_table-first">
@@ -898,7 +916,7 @@
                 </div>
                 <hr>
                 <div class="size_content_tee">
-                    <p>
+                    <p class="size_content_title">
                         Футболки
                     </p>
                     <div class="size_content_tee_table">
@@ -932,7 +950,7 @@
                 </div>
                 <hr>
                 <div class="size_content_glove">
-                    <p>
+                    <p class="size_content_title">
                         Перчатки
                     </p>
                     <div class="size_content_glove_table">
@@ -961,166 +979,211 @@
         </div>
     </div>
 
-    <div class="block__filter_phone">
-        <ul class="sidebar__list_filter_phone">
-            <div class="close_phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
-                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
-                </svg>
-                <p>
-                    Назад
-                </p>
-            </div>
-            <hr>
-            <li class="sidebar__list_filter_first">
-                Защитные свойства
-            </li>
-            <hr>
-            <li class="sidebar__list_filter_second">  
-                Комплектность
-            </li>
-            <hr>
-            <li class="sidebar__list_filter_third">
-                Состав
-            </li>
-            <hr>
-            <li class="sidebar__list_filter_fourth">
-                Класс защиты
-            </li>
-            <hr>
-            <button class="accept-filter">Применить фильтры</button>
-        </ul>
-    </div>
-
-    <div class="block__filter_one">
-        <ul class="filter_first_one-content-phone filter">
-            <div class="close_phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
-                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
-                </svg>
-                <p>
-                    Назад
-                </p>
-            </div>
-            <hr>
-            <li id="f1-1">Кислоты</li>
-            <hr>
-            <li id="f1-2">Вредные биологические факторы</li>
-            <hr>
-            <li id="f1-3">Искры, брызги расплавленного металла</li>
-            <hr>
-            <li id="f1-4">Общие производственные загрязнения</li>
-            <hr>
-            <li id="f1-5">Тепловое излучение</li>
-            <hr>
-            <li id="f1-6">Вибрация</li>
-            <hr>
-            <li id="f1-7">Нагретые поверхности</li>
-            <hr>
-            <li id="f1-8">Статическое электричество</li>
-            <hr>
-            <button class="accept-filter">Применить фильтры</button>
-        </ul>
-    </div>
-
-    <div class="block__filter_two">
-        <ul class="filter_first_two-content-phone filter">
-            <div class="close_phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
-                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
-                </svg>
-                <p>
-                    Назад
-                </p>
-            </div>
-            <hr>
-            <li id="f2-1">Куртка</li>
-            <hr>
-            <li id="f2-2">Брюки</li>
-            <hr>
-            <li id="f2-3">Полукомбинезон</li>
-            <hr>
-            <li id="f2-4">Комбинезон</li>
-            <hr>
-            <li id="f2-5">Жилет</li>
-            <hr>
-            <li id="f2-6">Халат</li>
-            <hr>
-            <li id="f2-7">Костюм</li>
-            <hr>
-            <button class="accept-filter">Применить фильтры</button>
-        </ul>
-    </div>
-    
-    <div class="block__filter_four">
-        <ul class="filter_first_four-content-phone filter">
-            <div class="close_phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
-                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
-                </svg>
-                <p>
-                    Назад
-                </p>
-            </div>
-            <hr>
-            <li id="f3-1">65%ПЭ/35%ХБ</li>
-            <hr>
-            <li id="f3-2">80%ХБ/20%ПЭ,антист.нить</li>
-            <hr>
-            <li id="f3-3">95%ХБ/5%ПА, антистатическая нить</li>
-            <hr>
-            <li id="f3-4">100% ПЭ</li>
-            <hr>
-            <li id="f3-5">100% ХБ</li>
-            <hr>
-            <li id="f3-6">23%ХБ 77%ПЭ</li>
-            <hr>
-            <li id="f3-7">53%ХБ 47%ПЭ</li>
-            <hr>
-            <li id="f3-8">35%ХБ 65%ПЭ</li>
-            <hr>
-            <li id="f3-9">33%ХБ 67%ПЭ</li>
-            <hr>
-            <li id="f3-10">60%ХБ/40%ПЭ</li>
-            <hr>
-            <li id="f3-11">80%ХБ/20%ПЭ</li>
-            <hr>
-            <li id="f3-12">20%ХБ/80%ПЭ</li>
-            <hr>
-            <li id="f3-13">51%ХБ 49%ПЭ</li>
-            <hr>
-            <li id="f3-14">100% ПА</li>
-            <hr>
-            <li id="f3-15">80%ПЭ/20%ХБ</li>
-            <hr>
-            <button class="accept-filter">Применить фильтры</button>
-        </ul>
-    </div>
-    
-    <div class="block__filter_three">
-        <ul class="filter_first_three-content-phone filter">
-            <div class="close_phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="14" fill="none" viewBox="0 0 10 14">
-                    <path fill="#767676" d="M9.316 12.367L3.95 7l5.366-5.367L7.683 0l-7 7 7 7 1.633-1.633z"/>
-                </svg>
-                <p>
-                    Назад
-                </p>
-            </div>
-            <hr>
-            <li id="f4-1">2  класс</li>
-            <hr>
-            <li id="f4-2">3</li>
-            <hr>
-            <li id="f4-3">1</li>
-            <hr>
-            <li id="f4-4">1-2</li>
-            <hr>
-            <button class="accept-filter">Применить фильтры</button>
-        </ul>
-    </div>
-    
-
+    {% if category.slug == 'summer_workwear' %}
+    <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+        {% include 'shop/category/mob_filter/summer_workwear_filter.html' %}
+    </form>
+    {% elif category.slug == 'winter_workwear' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/winter_workwear_filter.html' %}
+        </form>
+    {% elif category.slug == 'medical_workwear' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/medical_workwear_filter.html' %}
+        </form>
+    {% elif category.slug == 'clothing_for_the_service_sector' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/clothing_for_the_service_sector_filter.html' %}
+        </form>
+    {% elif category.slug == 'protective_clothing_of_security_structures' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/protective_clothing_of_security_structures_filter.html' %}
+        </form>
+    {% elif category.slug == 'special_workwear' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/special_workwear_filter.html' %}
+        </form>
+    {% elif category.slug == 'signal_workwear' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/signal_workwear_filter.html' %}
+        </form>
+    {% elif category.slug == 'protective_protective_workwear' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/protective_protective_workwear_filter.html' %}
+        </form>
+    {% elif category.slug == 'clothing_for_hunting_and_fishing' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/clothing_for_hunting_and_fishing_filter.html' %}
+        </form>
+    {% elif category.slug == 'knitwearg' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/knitwearg_filter.html' %}
+        </form>
+    {% elif category.slug == 'hats' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/hats_filter.html' %}
+        </form>
+    {% elif category.slug == 'summer_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/summer_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'insulated_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/insulated_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'special_insulated_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/special_insulated_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'pvc_rubber_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/pvc_rubber_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'casual_walking_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/casual_walking_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'medical_shoes' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/medical_shoes_filter.html' %}
+        </form>
+    {% elif category.slug == 'medical_supplies' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/medical_supplies_filter.html' %}
+        </form>
+    {% elif category.slug == 'head_and_face_protection_products' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/head_and_face_protection_products_filter.html' %}
+        </form>
+    {% elif category.slug == 'means_of_protection_of_the_organs_of_vision' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/means_of_protection_of_the_organs_of_vision_filter.html' %}
+        </form>
+    {% elif category.slug == 'protective_equipment_during_welding_operations' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/protective_equipment_during_welding_operations_filter.html' %}
+        </form>
+    {% elif category.slug == 'hearing_protection_equipment' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/hearing_protection_equipment_filter.html' %}
+        </form>
+    {% elif category.slug == 'respiratory_protection_equipment' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/respiratory_protection_equipment_filter.html' %}
+        </form>
+    {% elif category.slug == 'protective_equipment_during_highrise_works' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/protective_equipment_during_highrise_works_filter.html' %}
+        </form>
+    {% elif category.slug == 'clothing_with_limited_service_life' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/clothing_with_limited_service_life_filter.html' %}
+        </form>
+    {% elif category.slug == 'dielectric_safety_devices' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/dielectric_safety_devices_filter.html' %}
+        </form>
+    {% elif category.slug == 'knitted_gloves' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/knitted_gloves_filter.html' %}
+        </form>
+    {% elif category.slug == 'wool_blend_gloves' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/wool_blend_gloves_filter.html' %}
+        </form>
+    {% elif category.slug == 'split_gloves_combined' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/split_gloves_combined_filter.html' %}
+        </form>
+    {% elif category.slug == 'kragi_vachegi' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/kragi_vachegi_filter.html' %}
+        </form>
+    {% elif category.slug == 'specialized_gloves' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/specialized_gloves_filter.html' %}
+        </form>
+    {% elif category.slug == 'household_gloves_disposable' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/household_gloves_disposable_filter.html' %}
+        </form>
+    {% elif category.slug == 'working_gloves' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/working_gloves_filter.html' %}
+        </form>
+    {% elif category.slug == 'insulated_mittens' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/insulated_mittens_filter.html' %}
+        </form>
+    {% elif category.slug == 'medical_supplies' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/medical_supplies_filter.html' %}
+        </form>
+    {% elif category.slug == 'dermatological_agents' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/dermatological_agents_filter.html' %}
+        </form>
+    {% elif category.slug == 'technical_fabrics' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/technical_fabrics_filter.html' %}
+        </form>
+    {% elif category.slug == 'detergents_and_household_chemicals' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/detergents_and_household_chemicals_filter.html' %}
+        </form>
+    {% elif category.slug == 'firefighting_equipment_fire_extinguishers' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/firefighting_equipment_fire_extinguishers_filter.html' %}
+        </form>
+    {% elif category.slug == 'protective_equipment' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/protective_equipment_filter.html' %}
+        </form>
+    {% elif category.slug == 'household_goods' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/household_goods_filter.html' %}
+        </form>
+    {% elif category.slug == 'snow_removal_equipment' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/snow_removal_equipment_filter.html' %}
+        </form>
+    {% elif category.slug == 'gardening_tools' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/gardening_tools_filter.html' %}
+        </form>
+    {% elif category.slug == 'bristle_and_brush_products' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/bristle_and_brush_products_filter.html' %}
+        </form>
+    {% elif category.slug == 'bed_linen_sets' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/bed_linen_sets_filter.html' %}
+        </form>
+    {% elif category.slug == 'mattresses' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/mattresses_filter.html' %}
+        </form>
+    {% elif category.slug == 'blankets' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/blankets_filter.html' %}
+        </form>
+    {% elif category.slug == 'pillows' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/pillows_filter.html' %}
+        </form>
+    {% elif category.slug == 'bedspreads_blankets' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/bedspreads_blankets_filter.html' %}
+        </form>
+    {% elif category.slug == 'waffle_towels' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/waffle_towels_filter.html' %}
+        </form>
+    {% elif category.slug == 'terry_towels' %}
+        <form class="sidebar__list_filter_mobile" action="{% url 'shop:category_detail' category.slug%}" method="get">
+            {% include 'shop/category/mob_filter/terry_towels_filter.html' %}
+        </form>
+    {% endif %}
     <div class="block__sort_phone">
         <ul class="sidebar__list_sort">
             <div class="close_phone">
@@ -1132,13 +1195,11 @@
                 </p>
             </div>
             <hr>
-            <li>Рекомендованное</li>
+            <li><a href="?product_counter=15&page={{ products.number }}">По 15</a></li>
             <hr>
-            <li>Самое новое</li>
+            <li><a href="?product_counter=30&page={{ products.number }}">По 30</a></li>
             <hr>
-            <li>Цена: высокая-низкая</li>
-            <hr>
-            <li>Цена: низкая-высокая</li>
+            <li><a href="?product_counter=45&page={{ products.number }}">По 45</a></li>
             <hr>
         </ul>
     </div>

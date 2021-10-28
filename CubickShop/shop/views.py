@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import DetailView, ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.views.decorators.http import require_GET
+from django.conf import settings
+from django.core.mail import send_mail
 
 from .mixins import CategoryDetailMixin
 
@@ -32,6 +34,12 @@ import os.path
 def main_page(request):
     return render(request, 'shop/main.html')
 
+def contact_page(request):
+    return render(request, 'shop/contact.html')
+
+def payment_page(request):
+    return render(request, 'shop/payment.html')
+
 
 class SearchResultsView(ListView):
     
@@ -39,9 +47,23 @@ class SearchResultsView(ListView):
     template_name = 'shop/search/search_results.html'
     
     def get_queryset(self): # новый
+        img_url = {}
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
-        return object_list
+        for item in object_list:
+            path = item.image.path[:-1*(len(item.image.path.split('\\')[-1])+1)]
+            archive = py7zr.SevenZipFile(item.image.path, mode='r')
+            archive.extractall(path=path)
+            archive.close()
+            bufer = []
+            for photo in os.listdir(item.image.path[:-3]):
+                print(item.image.path)
+                bufer.append("\\media\\products\\" + item.image.path.split('\\')[-2] + "\\" + item.image.path[:-3].split('\\')[-1] + "\\" + photo)
+            bufer.sort()
+            print(bufer)
+            img_url[item.name] = bufer
+        return [object_list, img_url]
+    
 
 class CategoryDetailView(CategoryDetailMixin, DetailView):
     
@@ -52,6 +74,7 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
 
     def get_context_data(self, **kwargs):
+        bufer_product_size = {}
         CT_MODEL_MODEL_CLASS = {
             'summer_workwear': Summer_workwear,
             'winter_workwear': Winter_workwear,
@@ -111,23 +134,18 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
         query_dict = dict(self.request.GET)
         filter = {}
         filter_results = CT_MODEL_MODEL_CLASS[slug].objects.none()
-        object_list = Category.objects.get(slug=slug).products.all()
+        object_list = Category.objects.get(slug=slug).products.filter(available=True).all()
         img_url = {}
+        pagintation_count = 15
 
-        if len(query_dict) != 0 and 'page' not in query_dict:
-            for key in query_dict.keys():
-                if len(query_dict[key]) != 1:
-                    for item in query_dict[key]:
-                        filter = {key: item}
-                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                        filter_results = filter_results | search_model
-                else:
-                    filter = {key: query_dict[key][0]}
-                    search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
-                    filter_results = search_model
-            context['products'] = filter_results
-        else:
-            paginator = Paginator(object_list, 6)
+        if len(query_dict) != 0 and 'product_counter' in query_dict:
+            pagintation_count = int(query_dict['product_counter'][0])
+
+        filter_str = ''
+        # Если на странице ничего не передаётся
+        if len(query_dict) == 0:
+            filter_str = '-'
+            paginator = Paginator(object_list, pagintation_count)
             page = self.request.GET.get('page')
             try:
                 products = paginator.page(page)
@@ -138,32 +156,145 @@ class CategoryDetailView(CategoryDetailMixin, DetailView):
 
             context['products'] = products
         
-        
-        for item in context['products']:
-            print(os.path.exists(item.image.path[:-3]))
-            if os.path.exists(item.image.path[:-3]):
-                print('True')
-                files = os.listdir(item.image.path[:-3])
-                bufer = []
-                for items in files:
-                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-            else:
-                print('False')
-                archive = py7zr.SevenZipFile(item.image.path, mode='r')
-                archive.extractall(path='/home/cubik/kubickkubick/CubickShop/media/products/')
-                archive.close()
-                files = os.listdir(item.image.path[:-3].replace('_',' '))
-                bufer = []
-                for items in files:
-                    bufer.append("/media/products/"+item.image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-            img_url[item.name] = bufer
-        print(img_url)
-        context['img_url'] = img_url
-        print(context)
+        # Если передаётся кол-во товаров и страница
+        elif len(query_dict) == 2 and 'page' in query_dict and 'product_counter' in query_dict:
+            filter_str = '-'
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
 
-        # context['img_url'] = img_url
-        # print(context['img_url'])
+            context['products'] = products
         
+        # Если передаётся кол-во товаров и страница и сортировка
+        elif len(query_dict) == 3 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
+            filter_str = '-'
+            if query_dict['sort'][0] == 'low_hight':
+                object_list = object_list.order_by('price')
+            else:
+                object_list = object_list.order_by('-price')
+            paginator = Paginator(object_list, pagintation_count)
+            page = self.request.GET.get('page')
+            try:
+                products = paginator.page(page)
+            except PageNotAnInteger:
+                products = paginator.page(1)
+            except EmptyPage:
+                products = paginator.page(paginator.num_pages)
+
+            context['products'] = products
+            context['sort'] = query_dict['sort'][0]
+        
+        # Если передаётся кол-во товаров, страница, фльтры
+        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict:
+            for key in query_dict.keys():
+                if key != 'page' and key != 'product_counter' and key != 'sort':
+                    if len(query_dict[key]) != 1:
+                        for item in query_dict[key]:
+                            filter = {key: item}
+                            search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            filter_results = filter_results | search_model
+                            filter_str += f'{key}={item}&'
+                    else:
+                        filter = {key: query_dict[key][0]}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = search_model
+                        filter_str += f'{key}={query_dict[key][0]}&'
+                    paginator = Paginator(filter_results, pagintation_count)
+                    page = self.request.GET.get('page')
+                    try:
+                        products = paginator.page(page)
+                    except PageNotAnInteger:
+                        products = paginator.page(1)
+                    except EmptyPage:
+                        products = paginator.page(paginator.num_pages)
+                    context['products'] = products
+        
+        # Если передаётся кол-во товаров, страница, фльтры и сортировка
+        elif len(query_dict) > 2 and 'page' in query_dict and 'product_counter' in query_dict and 'sort' in query_dict:
+            for key in query_dict.keys():
+                if key != 'page' and key != 'product_counter' and key != 'sort':
+                    if len(query_dict[key]) != 1:
+                        for item in query_dict[key]:
+                            filter = {key: item}
+                            search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                            if query_dict['sort'] == 'low_hight':
+                                search_model.order_by('price')
+                            else:
+                                search_model.order_by('-price')
+                            filter_results = filter_results | search_model
+                            filter_str += f'{key}={item}&'
+                    else:
+                        filter = {key: query_dict[key][0]}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = search_model
+                        filter_str += f'{key}={query_dict[key][0]}&'
+                    paginator = Paginator(filter_results, pagintation_count)
+                    page = self.request.GET.get('page')
+                    try:
+                        products = paginator.page(page)
+                    except PageNotAnInteger:
+                        products = paginator.page(1)
+                    except EmptyPage:
+                        products = paginator.page(paginator.num_pages)
+                    context['products'] = products
+                    context['sort'] = query_dict['sort'][0]
+
+        # Если передаются только фильтры
+        elif len(query_dict) >= 1 and 'page' not in query_dict and 'product_counter' not in query_dict and 'sort' not in query_dict: 
+            for key in query_dict.keys():
+                if len(query_dict[key]) != 1:
+                    for item in query_dict[key]:
+                        filter = {key: item}
+                        search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                        filter_results = filter_results | search_model
+                        filter_str += f'{key}={item}&'
+                else:
+                    filter = {key: query_dict[key][0]}
+                    search_model = CT_MODEL_MODEL_CLASS[slug].objects.filter(**filter)
+                    filter_results = search_model
+                    filter_str += f'{key}={query_dict[key][0]}&'
+                paginator = Paginator(filter_results, pagintation_count)
+                page = self.request.GET.get('page')
+                try:
+                    products = paginator.page(page)
+                except PageNotAnInteger:
+                    products = paginator.page(1)
+                except EmptyPage:
+                    products = paginator.page(paginator.num_pages)
+                context['products'] = products
+
+        context['pagination_count'] = pagintation_count
+        context['filter_url'] = filter_str
+        
+        # Картинки для карточке товара
+        for item in context['products']:
+            path = item.image.path[:-1*(len(item.image.path.split('/')[-1])+1)]
+            archive = py7zr.SevenZipFile(item.image.path, mode='r')
+            archive.extractall(path=path)
+            archive.close()
+            bufer = []
+            for photo in os.listdir(item.image.path[:-3]):
+                print(item.image.path)
+                bufer.append("/media/products/" + item.image.path.split('/')[-2] + "/" + item.image.path[:-3].split('/')[-1] + "/" + photo)
+            bufer.sort()
+            print(bufer)
+            img_url[item.name] = bufer
+            context['img_url'] = img_url
+        
+        # Размер для формы размера
+        for product in context['products']:
+            try:
+                bufer_product_size[product.name] = CT_MODEL_MODEL_CLASS[slug].objects.filter(name = product.name)[0].size.split('\n')
+            except Exception:
+                bufer_product_size[product.name] = '-'
+        print(context['img_url'])
+        context['size'] = bufer_product_size
+        context['category_slug'] = slug
         return context
 
 
@@ -226,6 +357,7 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
     template_name = 'shop/product/detail.html'
     slug_url_kwarg = 'slug'
+    pagination_count = 'pagination'
 
 
     def dispatch(self, request, *args, **kwargs):
@@ -235,33 +367,36 @@ class ProductDetailView(DetailView):
 
 
     def get_context_data(self, **kwargs):
-        iamges_urls = []
+        images_urls = []
         context = super().get_context_data(**kwargs)
-        print(kwargs['object'].image.path.split('/')[-1][:-3])
-        if os.path.exists(kwargs['object'].image.path[:-3]):
-            print('True')
-            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-            for items in files:
-                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        else:
-            print('False')
-            archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
-            print(kwargs['object'].image.path)
-            archive.extractall(path='/home/cubik/kubick/kubick/CubickShop/media/products/')
-            archive.close()
-            files = os.listdir(kwargs['object'].image.path[:-3].replace('_',' '))
-            for items in files:
-                iamges_urls.append("/media/products/"+kwargs['object'].image.path.split('/')[-1][:-3].replace('_',' ')+"/" + items)
-        context['img_url'] = iamges_urls
-        print( context['img_url'])
-        context['size'] = kwargs['object'].size.split('\n')
+        path = kwargs['object'].image.path[:-1*(len(kwargs['object'].image.path.split('/')[-1])+1)]
+        archive = py7zr.SevenZipFile(kwargs['object'].image.path, mode='r')
+        archive.extractall(path=path)
+        archive.close()
+        for photo in os.listdir(kwargs['object'].image.path[:-3]):
+            images_urls.append("/media/products/" + kwargs['object'].image.path.split('/')[-2] + "/" + kwargs['object'].image.path[:-3].split('/')[-1] + "/" + photo)
+        images_urls.sort()
+        context['img_url'] = images_urls
+        try:
+            context['size'] = kwargs['object'].size.split('\n')
+        except:
+            context['size'] = '-'
         context['ct_model'] = self.model._meta.model_name
-
+        
         return context
     
 
 
-    
+@require_GET
+def get_price_list(request):
+    user_info = request.GET
+    message_body = f'Новый запрос на прайс-лист от {user_info["name"]}\nТел: {user_info["phone"]}\nEmail: {user_info["email"]}'
+    send_mail('Запрос на прайс-лист', message_body, settings.EMAIL_HOST_USER, ['matik007@yandex.ru'])
+    try:
+        send_mail('Успешный запрос','Здравствуйте, ваше обращение зарегистрировано!\nСкоро с вами свяжутся!', settings.EMAIL_HOST_USER, [user_info["email"]])
+    except Exception as e:
+        pass
+    return redirect('shop:main_page')
 
 
 

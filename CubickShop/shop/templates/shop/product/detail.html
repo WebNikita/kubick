@@ -16,7 +16,15 @@
         <div class="block__product_preview block__product_preview_second">
             <div class="block__product_preview_second-top">
                 <div class="block__product_preview_second-top_category">
-                    {{ product.category }}
+                    <span>
+                        <a href="/category/{{product.category.slug}}">
+                            {{ product.category }}
+                        </a>
+                        /
+                        <a href="#">
+                            {{ product.name }}
+                        </a>
+                    </span>
                 </div>
                 <div class="block__product_preview_second-top_name">
                     {{ product.name }}
@@ -26,19 +34,21 @@
                 </div>
             </div>
             <div class="block__product_preview_second-center">
-                <div class="block__product_preview_second-center_size">
-                    <p>Размер</p>
-                    <p>{{ product.size|linebreaksbr }}</p>
-                </div>
-                <div class="block__product_preview_second-center_info">
-                    <p class="open-size">
-                        Таблица размеров
-                    </p>
-                </div>
+                {% if product.size %}
+                    <div class="block__product_preview_second-center_size">
+                        <p>Размер</p>
+                        <p>{{ product.size|linebreaksbr }}</p>
+                    </div>
+                    <div class="block__product_preview_second-center_info">
+                        <p class="open-size">
+                            Таблица размеров
+                        </p>
+                    </div>
+                {% endif %}
                 {% if '-' not in size %}
                 <div class="block__product_preview_second-center_choice">
-                    <p class="choice-size">
-                        Выбрать размер
+                    <p class="choice-size-product">
+                        <a href="#">Выбрать размер</a>
                         <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" fill="none" viewBox="0 0 7 11">
                             <path fill="#4C95BD" d="M0 1.283L3.907 5.5 0 9.717 1.19 11l5.096-5.5L1.189 0 0 1.283z"/>
                         </svg>
@@ -47,7 +57,7 @@
                 {% endif %}
             </div>
             <div class="block__product_preview_second-bottom">
-                <div class="block__product_preview_second-bottom_counter">
+                <!-- <div class="block__product_preview_second-bottom_counter">
                     <div class="counter">
                         <p class="minus">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" fill="none" viewBox="0 0 12 2">
@@ -71,7 +81,7 @@
                     <p class="end_price_product">
                         0 Р
                     </p>
-                </div>
+                </div> -->
                 <div class="block__product_preview_second-bottom_button-append">
                     <a href="{% url 'cart:cart_add' ct_model=ct_model slug=product.slug  size=0 %}">Добавить в корзину</a>  
                 </div>
@@ -118,6 +128,8 @@
             {% include 'shop/product/hats_specification.html' %}
         {% elif product.category.slug == 'summer_shoes' %}
             {% include 'shop/product/summer_shoes_specification.html' %}
+        {% elif product.category.slug == 'shoe_accessories' %}
+            {% include 'shop/product/shoe_accessories_specification.html' %}
         {% elif product.category.slug == 'insulated_shoes' %}
             {% include 'shop/product/insulated_shoes_specification.html' %}
         {% elif product.category.slug == 'special_insulated_shoes' %}
@@ -199,15 +211,21 @@
         {% endif %}
     </div>
     <div class="block__append-to-card">
-        <form action="">
+        <!-- <form action=""> -->
             <div class="container__append-to-card">
                 <div class="block__append-to-card_title">
                     <p>
                         Выберите кол-во
                     </p>
-                    <p class="close">
+                    <p class="close-size">
                         Закрыть
                     </p>
+                </div>
+                <div class="block__append-to-card_title-phone">
+                    <p class="close_phone">
+                        Закрыть
+                    </p>
+                    <hr>
                 </div>
                 {% if '-' not in size %}
                     <div class="counter_block">
@@ -255,7 +273,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        <!-- </form> -->
     </div>
 
     <div class="block__size">
@@ -265,6 +283,11 @@
                     Типовые размеры
                 </p>
                 <p class="close">
+                    Закрыть
+                </p>
+            </div>
+            <div class="block__size_title-phone">
+                <p class="close_phone">
                     Закрыть
                 </p>
             </div>
@@ -364,7 +387,7 @@
                 </div>
                 <hr>
                 <div class="size_content_women">
-                    <p>
+                    <p class="size_content_title">
                         Женская одежда
                     </p>
                     <div class="size_content_women_table">
@@ -457,7 +480,7 @@
                 </div>
                 <hr>
                 <div class="size_content_shoes">
-                    <p>
+                    <p class="size_content_title">
                         Обувь
                     </p>
                     <div class="size_content_shoes_table">
@@ -599,8 +622,8 @@
                 </div>
                 <hr>
                 <div class="size_content_shirt">
-                    <p>
-                        Сорчки и рубашки
+                    <p class="size_content_title">
+                        Сорочки и рубашки
                     </p>
                     <div class="size_content_shirt_table">
                         <div class="size_content_shirt_table-first">
@@ -672,7 +695,7 @@
                 </div>
                 <hr>
                 <div class="size_content_tee">
-                    <p>
+                    <p class="size_content_title">
                         Футболки
                     </p>
                     <div class="size_content_tee_table">
@@ -706,7 +729,7 @@
                 </div>
                 <hr>
                 <div class="size_content_glove">
-                    <p>
+                    <p class="size_content_title">
                         Перчатки
                     </p>
                     <div class="size_content_glove_table">
