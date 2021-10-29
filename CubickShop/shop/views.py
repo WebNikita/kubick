@@ -51,17 +51,20 @@ class SearchResultsView(ListView):
         query = self.request.GET.get('q')
         object_list = Product.objects.filter(name__icontains=query)
         for item in object_list:
-            path = item.image.path[:-1*(len(item.image.path.split('\\')[-1])+1)]
-            archive = py7zr.SevenZipFile(item.image.path, mode='r')
-            archive.extractall(path=path)
-            archive.close()
-            bufer = []
-            for photo in os.listdir(item.image.path[:-3]):
-                print(item.image.path)
-                bufer.append("\\media\\products\\" + item.image.path.split('\\')[-2] + "\\" + item.image.path[:-3].split('\\')[-1] + "\\" + photo)
-            bufer.sort()
-            print(bufer)
-            img_url[item.name] = bufer
+            try:
+                path = item.image.path[:-1*(len(item.image.path.split('/')[-1])+1)]
+                archive = py7zr.SevenZipFile(item.image.path, mode='r')
+                archive.extractall(path=path)
+                archive.close()
+                bufer = []
+                for photo in os.listdir(item.image.path[:-3]):
+                    print(item.image.path)
+                    bufer.append("/media/products/" + item.image.path.split('/')[-2] + "/" + item.image.path[:-3].split('/')[-1] + "/" + photo)
+                bufer.sort()
+                print(bufer)
+                img_url[item.name] = bufer
+            except:
+                pass
         return [object_list, img_url]
     
 
